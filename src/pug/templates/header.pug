@@ -1,19 +1,17 @@
-
 .header__container
   nav.navbar
-    .navbar__logo
-      img(src="../images/secura_insurance_logo.png" alt="Secura Insurance Logo")
+    
+    div.buttons1
+      span.iconLogo.logo
+      a(href="#inicio") Inicio
+      a(href="#renovaciones") Próximas renovaciones
 
-    ul.navbar__menu
-      li
-        a(href="#inicio") Inicio
-      li
-        a(href="#renovaciones") Próximas renovaciones
-
-    ul.navbar__user
-      li
-        a(href="#perfil")
-          span Mi perfil
-      li
-        a(href="#idioma")
-          span Español ▼
+    section.rightNavButtons
+      a(href="#perfil")
+        span.iconNav.user 
+        p Mi perfil
+        span.iconNav.arrow-down
+      a(href="#idioma")
+        span.iconNav.globe
+        p Español 
+        span.iconNav.arrow-down

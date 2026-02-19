@@ -1,6 +1,6 @@
 
 
-//- |  --> Para dar saltos de linea si salirnos de la etiqueta padre: 
+
 //- ul
 //-   li Item 1
 //-   p Holabuenas. Esto es 
@@ -33,25 +33,27 @@ img(src="foto.jpg" alt="una foto")
 <img src="foto.jpg" alt="una foto"/>
 <img src="foto.jpg" alt="una foto"/>
 
+//- ----
 //- PARA AÑADIR id Y clases SE HARA CON # Y . RESPECTIVAMENTE
+//- ----
 p#text párrafo con ID     
 p.text párrafo con clase
 p#text.text párrafo con ID y clase
-
-es equivalente a 
 
 <p id="text">párrafo con ID</p>
 <p class="text">párrafo con clase</p>
 <p class="text" id="text">párrafo con ID y clase</p>
 
-Para intercalar hijos dentro de elementos se utiliza el |
-
+//- |   --> Para dar saltos de linea si salirnos de la etiqueta padre: 
   p Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae enim quam debitis nisi aut est quo accusantium quasi
     a(href="#") incidunt
-    |vel molestiae facere culpa eos obcaecati cumque eum cupiditate rem blanditiis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi dignissimos voluptate, quidem soluta rerum veniam totam laborum maxime at fugit
+    |vel molestiae facere culpa eos obcaecati cumque eum cupiditate rem blanditiis. 
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi dignissimos voluptate, 
+    quidem soluta rerum veniam totam laborum maxime at fugit
 
-Si no queremos hacer muchos saltos en elementos que ocupan poco tenemos la opción de utilizar :
 
+
+Ejemplo
   ul.menu
     li.menu__item: a(href="#").menu__link Item 1
 

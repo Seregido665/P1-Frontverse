@@ -1,0 +1,199 @@
+/* =====================================================
+   CONTENEDORES
+   Centran el contenido y limitan el ancho máximo según
+   el tamaño de pantalla (breakpoints)
+===================================================== */
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+    --bs-gutter-x: 1.5rem; /* Espacio horizontal entre columnas */
+    --bs-gutter-y: 0;      /* Espacio vertical entre columnas */
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5); /* Padding lateral interno */
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto; /* Centrado horizontal */
+    margin-left: auto;
+}
+
+/* Ancho máximo del contenedor en pantallas pequeñas */
+@media (min-width: 576px) {
+    .container,
+    .container-sm {
+        max-width: 540px;
+    }
+}
+
+/* Ancho máximo en tablets */
+@media (min-width: 768px) {
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 720px;
+    }
+}
+
+/* Ancho máximo en pantallas medianas */
+@media (min-width: 992px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        max-width: 960px;
+    }
+}
+
+/* Ancho máximo en pantallas grandes */
+@media (min-width: 1200px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1140px;
+    }
+}
+
+/* Ancho máximo en pantallas muy grandes */
+@media (min-width: 1400px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1320px;
+    }
+}
+
+
+/* =====================================================
+   VARIABLES GLOBALES DE BREAKPOINTS
+   Definen los tamaños de referencia para responsive
+===================================================== */
+
+:root {
+    --bs-breakpoint-xs: 0;
+    --bs-breakpoint-sm: 576px;
+    --bs-breakpoint-md: 768px;
+    --bs-breakpoint-lg: 992px;
+    --bs-breakpoint-xl: 1200px;
+    --bs-breakpoint-xxl: 1400px;
+}
+
+
+/* =====================================================
+   FILAS (ROW)
+   Contenedor flex que agrupa columnas
+===================================================== */
+
+.row {
+    --bs-gutter-x: 1.5rem; /* Separación horizontal entre columnas */
+    --bs-gutter-y: 0;      /* Separación vertical */
+    display: flex;         /* Activa Flexbox */
+    flex-wrap: wrap;       /* Permite salto de línea */
+    margin-top: calc(-1 * var(--bs-gutter-y)); /* Compensa márgenes internos */
+    margin-right: calc(-.5 * var(--bs-gutter-x));
+    margin-left: calc(-.5 * var(--bs-gutter-x));
+}
+
+/* Columnas dentro de una fila */
+.row > * {
+    box-sizing: border-box;
+    flex-shrink: 0;        /* Evita que se reduzcan automáticamente */
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5); /* Espaciado entre columnas */
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-top: var(--bs-gutter-y);
+}
+
+
+/* =====================================================
+   COLUMNAS GENERALES
+===================================================== */
+
+/* Columna flexible que ocupa espacio disponible */
+.col {
+    flex: 1 0 0;
+}
+
+
+/* =====================================================
+   SISTEMA ROW-COLS
+   Divide automáticamente la fila en N columnas iguales
+===================================================== */
+
+.row-cols-auto > * { flex: 0 0 auto; width: auto; }
+.row-cols-1 > *   { flex: 0 0 auto; width: 100%; }
+.row-cols-2 > *   { flex: 0 0 auto; width: 50%; }
+.row-cols-3 > *   { flex: 0 0 auto; width: 33.33333333%; }
+.row-cols-4 > *   { flex: 0 0 auto; width: 25%; }
+.row-cols-5 > *   { flex: 0 0 auto; width: 20%; }
+.row-cols-6 > *   { flex: 0 0 auto; width: 16.66666667%; }
+
+
+/* =====================================================
+   COLUMNAS FIJAS (12 columnas del grid)
+===================================================== */
+
+.col-auto { flex: 0 0 auto; width: auto; }
+
+.col-1  { flex: 0 0 auto; width: 8.33333333%; }
+.col-2  { flex: 0 0 auto; width: 16.66666667%; }
+.col-3  { flex: 0 0 auto; width: 25%; }
+.col-4  { flex: 0 0 auto; width: 33.33333333%; }
+.col-5  { flex: 0 0 auto; width: 41.66666667%; }
+.col-6  { flex: 0 0 auto; width: 50%; }
+.col-7  { flex: 0 0 auto; width: 58.33333333%; }
+.col-8  { flex: 0 0 auto; width: 66.66666667%; }
+.col-9  { flex: 0 0 auto; width: 75%; }
+.col-10 { flex: 0 0 auto; width: 83.33333333%; }
+.col-11 { flex: 0 0 auto; width: 91.66666667%; }
+.col-12 { flex: 0 0 auto; width: 100%; }
+
+
+/* =====================================================
+   OFFSETS
+   Desplazan columnas hacia la derecha
+===================================================== */
+
+.offset-1  { margin-left: 8.33333333%; }
+.offset-2  { margin-left: 16.66666667%; }
+.offset-3  { margin-left: 25%; }
+.offset-4  { margin-left: 33.33333333%; }
+.offset-5  { margin-left: 41.66666667%; }
+.offset-6  { margin-left: 50%; }
+.offset-7  { margin-left: 58.33333333%; }
+.offset-8  { margin-left: 66.66666667%; }
+.offset-9  { margin-left: 75%; }
+.offset-10 { margin-left: 83.33333333%; }
+.offset-11 { margin-left: 91.66666667%; }
+
+
+/* =====================================================
+   GUTTERS (ESPACIADO ENTRE COLUMNAS)
+   Controlan el espacio horizontal y vertical
+===================================================== */
+
+.g-0, .gx-0 { --bs-gutter-x: 0; }
+.g-0, .gy-0 { --bs-gutter-y: 0; }
+
+.g-1, .gx-1 { --bs-gutter-x: 0.25rem; }
+.g-1, .gy-1 { --bs-gutter-y: 0.25rem; }
+
+.g-2, .gx-2 { --bs-gutter-x: 0.5rem; }
+.g-2, .gy-2 { --bs-gutter-y: 0.5rem; }
+
+.g-3, .gx-3 { --bs-gutter-x: 1rem; }
+.g-3, .gy-3 { --bs-gutter-y: 1rem; }
+
+.g-4, .gx-4 { --bs-gutter-x: 1.5rem; }
+.g-4, .gy-4 { --bs-gutter-y: 1.5rem; }
+
+.g-5, .gx-5 { --bs-gutter-x: 3rem; }
+.g-5, .gy-5 { --bs-gutter-y: 3rem; }
