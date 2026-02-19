@@ -2,40 +2,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;                    // espacio entre logo y botones (opcional, pero útil)
-  img {
-    height: 64px;          // Limita la altura máxima a 64px
-    width: 87.89px;               // Mantiene la proporción original (clave)
-  }
+  padding: 16px 88px 16px 88px;
 }
 
-.buttons1,
-.navbar_buttons2 {
-  display: flex;                // ← clave: alinea los <a> en fila
-  align-items: center;          // centra verticalmente el contenido
-  gap: 2rem;                    // espacio entre los enlaces (ajusta según diseño)
+.buttonsLeft{
+  display: flex;                // EN FILA
+  align-items: center;          // CENTRA VERTICALMENTE
+  gap: 2rem; 
+  height: 64px; 
+  .logo {
+    padding-right: 32px;
+  } 
+  .link {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #405258;
+    text-decoration: none;;
+  }           
 }
 
-.navbar_buttons2 a {
-  color: rgb(139, 53, 53);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
 
-}
+
 
 .rightNavButtons{  
   display: flex;
   align-items: center;
   gap: 2.5rem; 
   height: 40px;
-  padding-right: 88px;
   
-  a{
+  button{
     display: flex;        //- EN FILA
     align-items: center;  //- CENTRA HORIZONTALMENTE
     gap: 0.5rem;           
     text-decoration: none;    
+    background: none;
+    border: none;
   }   
   .user, .globe {
     font-size: 24px;      
