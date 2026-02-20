@@ -42,12 +42,15 @@
     background: none;
     border: none;
   }   
-  .user, .globe {
-    font-size: 24px;      
+  .user {
+    font-size: $iconSizeUser;
+  }
+  .globe {
+    font-size: $iconSizeGlobe;      
   }
   .arrow-down{
     padding-left: 8px;
-    font-size: 6px;
+    font-size: $iconSizeArrowDropdown;
   }
   p {
     font-family: sans-serif;
