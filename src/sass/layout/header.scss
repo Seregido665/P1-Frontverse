@@ -1,3 +1,6 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
 .navbar { 
   display: flex;
   align-items: center;
