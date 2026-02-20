@@ -9,22 +9,18 @@
 }
 
 .buttonsLeft{
-  display: flex;                // EN FILA
-  align-items: center;          // CENTRA VERTICALMENTE
+  display: flex;                //- EN FILA
+  align-items: center;          //- CENTRA VERTICALMENTE
   gap: 2rem; 
   height: 64px; 
   .logo {
     padding-right: 32px;
   } 
   .link {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-    color: #405258;
-    text-decoration: none;;
+    @include font-styles($font-weight: bold, $font-size: 16px, $color: #405258);
+    text-decoration: none;
   }           
 }
-
 
 
 
@@ -53,10 +49,7 @@
     font-size: $iconSizeArrowDropdown;
   }
   p {
-    font-family: sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: #405258;
+    @include font-styles($font-weight: "Regular", $font-size: 16px, $color: #405258);
   }
 }
 
