@@ -14,20 +14,16 @@
     text-decoration: none;    
     background: none;
     border: none;
-
     .user {
       font-size: $iconSizeUser;
     }
-
     .globe {
       font-size: $iconSizeGlobe;      
     }
-
     .arrow-dropdown {
       padding-left: 8px;
       font-size: $iconSizeArrowDropdown;
     }
-
     p {
       @include font-styles($font-weight: "Regular", $font-size: 16px, $color: #405258);
     }
