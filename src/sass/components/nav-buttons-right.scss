@@ -1,0 +1,41 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
+.right-nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem; 
+  height: 40px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;           
+    text-decoration: none;    
+    background: none;
+    border: none;
+    .user {
+      font-size: $icon-size-user;
+    }
+    .globe {
+      font-size: $icon-size-globe;      
+    }
+    .arrow-dropdown {
+      padding-left: 8px;
+      font-size: $icon-size-arrowDropdown;
+    }
+    span {
+      @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+  }
+  @include mobile-md-only {
+  
+    button {
+      gap: 0.4rem;            // espacio interno más reducido
+      span, .icon.arrow-dropdown {
+        display: none;
+      }
+
+    }
+  }
+}

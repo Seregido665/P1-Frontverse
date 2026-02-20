@@ -87,6 +87,8 @@ gulp.task('deployCustomCSS', () => {
 gulp.task('copyMinifyedLibs', () => gulp.src(path.minifyedLibs)
   .pipe(gulp.dest('build/js/libs')));
 
+// Copy fonts to build/fonts so compiled CSS (which references ../fonts/...) can find them
+// (main.min.css is placed in build/css/, so ../fonts/ will resolve to build/fonts/)
 gulp.task('buildFONTS', () => gulp.src(path.fonts).pipe(gulp.dest(path.buildFONTS)));
 
 gulp.task('deployFONTS', gulp.series('buildFONTS', function deployFONTSTask() {

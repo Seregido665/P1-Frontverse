@@ -1,4 +1,3 @@
-@use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
 .navbar {
@@ -6,4 +5,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 88px;
+  @include mobile-md-only {
+    padding: 17px 22px;
+    flex-wrap: wrap;    
+  }
 }
