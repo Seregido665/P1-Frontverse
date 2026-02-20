@@ -1,17 +1,4 @@
 .header__container
   nav.navbar
-    
-    div.buttonsLeft
-      img.logo(src="../../images/secura-insurance_logo.svg" alt="Secura Insurance")
-      a.link(href="#inicio") Inicio
-      a.link(href="#renovaciones") Próximas renovaciones
-
-    section.rightNavButtons
-      button(href="#perfil")
-        span.icon.user
-        p Mi perfil
-        span.icon.arrow-dropdown
-      button(href="#idioma")
-        span.icon.globe
-        p Español 
-        span.icon.arrow-dropdown
+    include ../components/navButtonsLeft
+    include ../components/navButtonsRight

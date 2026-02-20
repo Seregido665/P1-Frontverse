@@ -1,56 +1,10 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
-.navbar { 
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 88px 16px 88px;
+  padding: 16px 88px;
+  width: 100%;           // optional – ensures full width if needed
 }
-
-.buttonsLeft{
-  display: flex;                //- EN FILA
-  align-items: center;          //- CENTRA VERTICALMENTE
-  gap: 2rem; 
-  height: 64px; 
-  .logo {
-    padding-right: 32px;
-  } 
-  .link {
-    @include font-styles($font-weight: bold, $font-size: 16px, $color: #405258);
-    text-decoration: none;
-  }           
-}
-
-
-
-.rightNavButtons{  
-  display: flex;
-  align-items: center;
-  gap: 2.5rem; 
-  height: 40px;
-  
-  button{
-    display: flex;        //- EN FILA
-    align-items: center;  //- CENTRA HORIZONTALMENTE
-    gap: 0.5rem;           
-    text-decoration: none;    
-    background: none;
-    border: none;
-  }   
-  .user {
-    font-size: $iconSizeUser;
-  }
-  .globe {
-    font-size: $iconSizeGlobe;      
-  }
-  .arrow-down{
-    padding-left: 8px;
-    font-size: $iconSizeArrowDropdown;
-  }
-  p {
-    @include font-styles($font-weight: "Regular", $font-size: 16px, $color: #405258);
-  }
-}
-
-

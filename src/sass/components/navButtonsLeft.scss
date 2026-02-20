@@ -1,0 +1,17 @@
+@use '../helpers/mixins' as *;
+
+.buttonsLeft {
+  display: flex;
+  align-items: center;
+  gap: 2rem; 
+  height: 64px;
+
+  img {
+    padding-right: 32px;
+  }
+
+  .link {
+    @include font-styles($font-weight: bold, $font-size: 16px, $color: #405258);
+    text-decoration: none;
+  } 
+}
