@@ -1,6 +1,10 @@
-div 
-    section 
-        h1
-        p
-    div 
-        //- COMPONENTES DE MENUS
+include ../fragments/_button-menu-user.pug
+
+.user-menu-window
+  section
+    h1.titulo Mi perfil
+    p.texto
+      | En este espacio puedes acceder, modificar, 
+      | gestionar y consultar todo lo relacionado con
+      | tus servicios de energía. Fácil y rápido.
+    +button-menu-user('frameOn', 'Mis datos personales')

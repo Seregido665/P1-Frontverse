@@ -1,0 +1,17 @@
+@use '../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+@use '../helpers/mixins' as *;
+
+.user-menu-window {
+    background-color: rgb(255, 255, 255);
+    width: 375px;
+    height: 390px;
+    .titulo {
+        @include font-styles( $font-weight: bold, $font-size: 16px, $color: $grey100);
+        padding: 24px 0 22px 24px;
+    }
+    .texto {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        padding: 0 60px 22px 24px;
+    }
+}

@@ -1,12 +1,17 @@
 @use '../helpers/mixins' as *;
+@use '../helpers/icons-variables' as *;
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 88px;
+  padding: 1rem 5.5rem;
 
   @include mobile {
-    padding: 16px 38px;
+    padding: 1rem 3rem;
+  }
+
+  @include tablet {
+    padding: 1rem 5.5rem;
   }
 }
