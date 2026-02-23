@@ -5,8 +5,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px 88px;
-  @include mobile-md-only {
-    padding: 17px 22px;
-    flex-wrap: wrap;    
+
+  @include mobile {
+    padding: 16px 38px;
   }
 }

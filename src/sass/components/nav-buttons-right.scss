@@ -24,18 +24,33 @@
       padding-left: 8px;
       font-size: $icon-size-arrowDropdown;
     }
-    span {
+    .text {
       @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
   }
-  @include mobile-md-only {
-  
-    button {
-      gap: 0.4rem;            // espacio interno más reducido
-      span, .icon.arrow-dropdown {
-        display: none;
-      }
+  .burguer-menu {
+    display: none;
+  }
 
+  @include mobile {
+    gap: 1rem;       
+    .arrow-dropdown, .globe, .text { 
+      display: none;
+    }
+    .burguer-menu {   // MOSTRAR menu-burguer
+      display: inline-block; 
+      font-size: $icon-size-burguerMenu;
+    }
+  }
+
+  @include tablet {
+    gap: 1rem;       
+    .arrow-dropdown, .text { 
+      display: none;
+    }
+    .burguer-menu {   // MOSTRAR menu-burguer
+      display: none; 
     }
   }
 }
+

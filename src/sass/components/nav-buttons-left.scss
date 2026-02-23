@@ -19,9 +19,9 @@
     @include font-styles($font-weight: bold, $font-size: 16px, $color: $grey100);
     text-decoration: none;
   } 
-
-  @include mobile-md-only {
-    .link {
+  @include mobile {
+    gap: 1rem;       
+    .link { 
       display: none;
     }
   }

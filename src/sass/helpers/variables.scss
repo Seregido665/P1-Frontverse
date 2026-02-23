@@ -22,6 +22,16 @@ $subtitle-text: #7579A0;
 $accent: #D8DBF5;
 $inverse-text: #F7F7FC;
 
+/* Media querys */
+$breakpoint-mobile: 30rem;        // 480px
+$breakpoint-tablet: 48rem;        // 768px
+$breakpoint-desktop: 64rem;       // 1024px
+$breakpoint-large-desktop: 75rem; // 1200px
+
+/* Fuentes */
+$fontRoboto: "Roboto";
+
+
 /* Icons-code */
 $icon-user: "\f00d";
 $icon-globe: "\f000";
@@ -155,37 +165,8 @@ $fontReg: "Inter Regular";
 $fontMed: "Inter Medium";
 $fontBold: "Inter Bold";
 $fontSemiBold: "Inter SemiBold";
+$fontRoboto: "Roboto";
 
-
-/* MEDIA QUERIES */
-$mobile: 390px;
-$mobileMax: 479px;
-
-$mobilemd: 480px;
-$mobileemdMax: 575px;
-
-$mobilexl: 576px;
-$mobilexlMax: 767px;
-
-$tablet: 768px;
-$tabletMax: 991px;
-
-$tabletmd: 992px;
-$tabletmdMax: 1023px;
-
-$tabletxl: 1024px;
-$tabletxlMax: 1199px;
-
-$desktopsm: 1200px;
-$desktopmd: 1279px;
-
-$desktop: 1280px;
-$desktopMax: 1439px;
-
-$desktopxl: 1440px;
-$desktopxlMax: 1919px;
-
-$fullHd: 1920px;
 
 /* Spacing */
 $spacing-5xl: 54px;
