@@ -11,9 +11,7 @@
     z-index: 1000;
     right: 88px;
     top: 80px;
-    .globe-menu-wrapper {      
-        display: inline-block; 
-    }
+    
     @include desktop {
         right: 50px;
     }

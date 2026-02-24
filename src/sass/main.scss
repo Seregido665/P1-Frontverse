@@ -21,6 +21,7 @@
 /** FRAGMENTS **/
 @use "fragments/_button-menu-user";
 @use "fragments/_button-menu-globe";
+@use "fragments/_buttons-buguer-menu";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;
@@ -29,3 +30,4 @@
 /** TEMPLATES **/
 @use 'layout/user-window-menu';
 @use 'layout/globe-window-menu';
+@use 'layout/burguer-menu-window';

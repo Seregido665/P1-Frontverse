@@ -1,7 +1,7 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
-.user-menu-window {
+.burguer-menu-window {
     background-color: rgb(255, 255, 255);
     width: 375px;
     height: 390px;
@@ -9,16 +9,8 @@
     border-radius: 12px;
     position: absolute;
     z-index: 1000;
-    right: 241px;
+    left: 270px;
     top: 80px;
-    .titulo {
-        @include font-styles( $font-weight: bold, $font-size: 16px, $color: $grey100);
-        padding: 24px 0 22px 24px;
-    }
-    .texto {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        padding: 0 24px 22px 24px;
-    }
     @include mobile {
         border-top: 1px solid #E6E7E8;
         border-radius: 0;
@@ -27,6 +19,7 @@
         inset: 0;                    // AJUSTADO A LOS BORDES DE LA PANTALLA
         margin-top: 96px;                
         width: 100%;
+        height: 587px;
         .texto {
             margin-right: 20px;
         }

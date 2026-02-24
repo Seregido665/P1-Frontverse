@@ -8,7 +8,7 @@
   gap: 2.5rem; 
   height: 2.5rem;
 
-  > button {
+  button {
     display: flex;
     align-items: center;
     gap: 0.5rem;           
@@ -26,6 +26,7 @@
       padding-left: 8px;
       font-size: $icon-size-arrowDropdown;
     }
+
     .title {
       @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
@@ -33,7 +34,7 @@
       @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
   }
-  .burguer-menu {
+  .burguer-button {
     display: none;
   }
   .close {
@@ -50,8 +51,8 @@
     }
 
     // --- KEY --- 
-    // SE LLAMARA A ESTE ESTADO DESDE main.js Y ASI TRABAJAR CON EL.
-    &.mobile-user-open {        
+    // SE LLAMARA A ESTOS ESTADOS DESDE main.js Y ASI TRABAJAR CON ELLOS.
+    &.mobile-user-open, &.mobile-burguer-open {        
       .close {
         display: inline-block;
         .icon {
@@ -59,7 +60,7 @@
         }
       }
       .user-button,
-      .burguer-menu {
+      .burguer-button {
         display: none;
       }
     }
@@ -70,7 +71,7 @@
     .arrow-dropdown, .globe, .title { 
       display: none;
     }
-    .burguer-menu {   // MOSTRAR menu-burguer
+    .burguer-button {   // MOSTRAR menu-burguer
       display: inline-block;
       font-size: $icon-size-burguerMenu;
       padding-right: 5px;
