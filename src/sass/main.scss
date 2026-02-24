@@ -16,9 +16,11 @@
 @use "layout/header";
 @use "layout/navigation";
 @use "layout/footer";
+@use "layout/home";
 
 /** FRAGMENTS **/
 @use "fragments/_button-menu-user";
+@use "fragments/_button-menu-globe";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;
@@ -26,3 +28,4 @@
 
 /** TEMPLATES **/
 @use 'layout/user-window-menu';
+@use 'layout/globe-window-menu';

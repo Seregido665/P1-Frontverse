@@ -1,0 +1,25 @@
+@use '../helpers/icons-variables' as *;
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+.language-option {
+    background-color: white;
+    border: none;
+    width: 131px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 12px;
+    border-bottom: 1px solid #E6E7E8;
+    cursor: pointer;
+
+    .text {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+
+    &:hover {
+        background-color: #EFF3F5;
+    }
+    
+}

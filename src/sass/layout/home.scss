@@ -1,0 +1,8 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
+.home-hero {
+    @include mobile {
+            display: none;
+    }
+}

@@ -8,13 +8,14 @@
   gap: 2.5rem; 
   height: 2.5rem;
 
-  button {
+  > button {
     display: flex;
     align-items: center;
     gap: 0.5rem;           
     text-decoration: none;    
     background: none;
     border: none;
+    cursor: pointer;
     .user {
       font-size: $icon-size-user;
     }
@@ -35,15 +36,7 @@
   .burguer-menu {
     display: none;
   }
-  @include mobile {
-    gap: 1rem;       
-    .arrow-dropdown, .globe, .title { 
-      display: none;
-    }
-    .burguer-menu {   // MOSTRAR menu-burguer
-      display: inline-block; 
-    }
-  }
+  
 
   @include tablet {
     gap: 1rem;       
@@ -53,16 +46,18 @@
     .burguer-menu {   // MOSTRAR menu-burguer
       display: inline-block;
       font-size: $icon-size-burguerMenu;
+      padding-right: 5px;
     }
-  }
-  @include desktop {
-    gap: 1rem;       
-    .arrow-dropdown, .globe, .title { 
+    .globe-button {
       display: none;
     }
-    .burguer-menu {   // MOSTRAR menu-burguer
-      display: inline-block;
-      font-size: $icon-size-burguerMenu;
+  }
+   
+  @include desktop {
+    gap: 1rem;    
+       
+    .arrow-dropdown, .title { 
+      display: none;
     }
   }
 }
