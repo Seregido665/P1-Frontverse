@@ -5,7 +5,7 @@
 .buttons-left {
   display: flex;
   align-items: center;
-  height: 64px;
+  height: 4rem;
 
   .logo {
     padding-right: 2rem;
@@ -21,6 +21,11 @@
     text-decoration: none;
   } 
   @include mobile {
+    .link { 
+      display: none;
+    }
+  }
+  @include desktop {
     gap: 1rem;       
     .link { 
       display: none;

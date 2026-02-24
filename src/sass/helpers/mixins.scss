@@ -13,22 +13,22 @@
 
 /* @media RANGOS */
 @mixin mobile {
-  @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-mobile) {
     @content;
   }
 }
 @mixin tablet {
-  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+  @media (max-width: $breakpoint-tablet) {
     @content;
   }
 }
 @mixin desktop {
-  @media (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large-desktop) {
+  @media (max-width: $breakpoint-desktop) {
     @content;
   }
 }
 @mixin large-desktop {
-  @media (min-width: $breakpoint-large-desktop) {
+  @media (max-width: $breakpoint-large-desktop) {
     @content;
   }
 }

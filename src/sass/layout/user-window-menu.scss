@@ -1,17 +1,18 @@
 @use '../helpers/variables' as *;
-@use '../helpers/icons-variables' as *;
 @use '../helpers/mixins' as *;
 
 .user-menu-window {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.733);
     width: 375px;
     height: 390px;
+    box-shadow: 0px 3px 10px #37464933;
+    border-radius: 12px;
     .titulo {
         @include font-styles( $font-weight: bold, $font-size: 16px, $color: $grey100);
         padding: 24px 0 22px 24px;
     }
     .texto {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        padding: 0 60px 22px 24px;
+        padding: 0 24px 22px 24px;
     }
 }

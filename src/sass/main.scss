@@ -18,6 +18,7 @@
 @use "layout/footer";
 
 /** FRAGMENTS **/
+@use "fragments/_button-menu-user";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;

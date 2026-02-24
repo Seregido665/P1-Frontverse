@@ -32,25 +32,34 @@
   .burguer-menu {
     display: none;
   }
-
   @include mobile {
-    gap: 0.5rem;       
+    gap: 1rem;       
     .arrow-dropdown, .globe, .text { 
       display: none;
     }
     .burguer-menu {   // MOSTRAR menu-burguer
       display: inline-block; 
-      font-size: $icon-size-burguerMenu;
     }
   }
 
   @include tablet {
     gap: 1rem;       
-    .arrow-dropdown, .text { 
+    .arrow-dropdown, .globe, .text { 
       display: none;
     }
     .burguer-menu {   // MOSTRAR menu-burguer
-      display: none; 
+      display: inline-block;
+      font-size: $icon-size-burguerMenu;
+    }
+  }
+  @include desktop {
+    gap: 1rem;       
+    .arrow-dropdown, .globe, .text { 
+      display: none;
+    }
+    .burguer-menu {   // MOSTRAR menu-burguer
+      display: inline-block;
+      font-size: $icon-size-burguerMenu;
     }
   }
 }

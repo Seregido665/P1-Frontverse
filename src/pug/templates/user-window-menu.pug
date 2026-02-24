@@ -1,4 +1,4 @@
-include ../fragments/_button-menu-user.pug
+include ../../fragments/_button-menu-user
 
 .user-menu-window
   section
@@ -7,4 +7,7 @@ include ../fragments/_button-menu-user.pug
       | En este espacio puedes acceder, modificar, 
       | gestionar y consultar todo lo relacionado con
       | tus servicios de energía. Fácil y rápido.
-    +button-menu-user('frameOn', 'Mis datos personales')
+    +button-menu-user('user', 'Mis datos personales')
+    +button-menu-user('lock', 'Mi contrasña')
+    +button-menu-user('phone', 'Contacto')
+    +button-menu-user('power-off', 'Cerrar sesión')
