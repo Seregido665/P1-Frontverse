@@ -36,8 +36,35 @@
   .burguer-menu {
     display: none;
   }
-  
+  .close {
+    display: none;
+    .icon {
+      filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
+    }
+  }
 
+  @include mobile {
+    .close {
+      display: none;          // POR DEFECTO ESTE BOTON ESTA OCULTO
+      font-size: 1.5rem;
+    }
+
+    // --- KEY --- 
+    // SE LLAMARA A ESTE ESTADO DESDE main.js Y ASI TRABAJAR CON EL.
+    &.mobile-user-open {        
+      .close {
+        display: inline-block;
+        .icon {
+          filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
+        }
+      }
+      .user-button,
+      .burguer-menu {
+        display: none;
+      }
+    }
+  }
+  
   @include tablet {
     gap: 1rem;       
     .arrow-dropdown, .globe, .title { 
