@@ -17,7 +17,6 @@
         padding: 17px 14px 20px 24px;
     }
     .text {
-        margin-left: 114px;
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 

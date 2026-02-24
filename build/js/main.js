@@ -10704,7 +10704,7 @@ return jQuery;
 } );
 document.addEventListener('DOMContentLoaded', function () {
 
-  const btnUser = document.querySelector('.right-nav-buttons');
+  const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
 
   // PARA QUE SE OCULTE POR DEFECTO

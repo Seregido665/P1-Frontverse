@@ -25,6 +25,9 @@
       padding-left: 8px;
       font-size: $icon-size-arrowDropdown;
     }
+    .title {
+      @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
     .text {
       @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
@@ -34,7 +37,7 @@
   }
   @include mobile {
     gap: 1rem;       
-    .arrow-dropdown, .globe, .text { 
+    .arrow-dropdown, .globe, .title { 
       display: none;
     }
     .burguer-menu {   // MOSTRAR menu-burguer
@@ -44,7 +47,7 @@
 
   @include tablet {
     gap: 1rem;       
-    .arrow-dropdown, .globe, .text { 
+    .arrow-dropdown, .globe, .title { 
       display: none;
     }
     .burguer-menu {   // MOSTRAR menu-burguer
@@ -54,7 +57,7 @@
   }
   @include desktop {
     gap: 1rem;       
-    .arrow-dropdown, .globe, .text { 
+    .arrow-dropdown, .globe, .title { 
       display: none;
     }
     .burguer-menu {   // MOSTRAR menu-burguer
