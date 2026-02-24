@@ -3,28 +3,57 @@
 
 .burguer-menu-window {
     background-color: rgb(255, 255, 255);
-    width: 375px;
-    height: 390px;
+    width: 23.438rem;
     box-shadow: 0px 3px 10px #37464933;
     border-radius: 12px;
     position: absolute;
     z-index: 1000;
-    left: 270px;
-    top: 80px;
+    left: 20.313rem;
+    top: 5rem;
+    padding-bottom: 10px;
+
+    .globe-button {
+        margin-top: 11rem;
+        color: aqua;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 2.5rem;
+        padding: 0 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .globe,
+    .title,
+    .arrow-dropdown {
+        display: inline-block;
+    }
+
+    .globe-menu-window {
+        position: static;
+        right: auto;
+        margin-left: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+
     @include mobile {
         border-top: 1px solid #E6E7E8;
         border-radius: 0;
         box-shadow: none;
         position: fixed;
         inset: 0;                    // AJUSTADO A LOS BORDES DE LA PANTALLA
-        margin-top: 96px;                
+        margin-top: 6rem;                
         width: 100%;
-        height: 587px;
         .texto {
-            margin-right: 20px;
+            margin-right: 1.25rem;
+        }
+        .globe-button {
+            margin-top: 20rem;
         }
     }
     @include desktop {
-        right: 90px;
+        right: 6rem;
     }
 }
