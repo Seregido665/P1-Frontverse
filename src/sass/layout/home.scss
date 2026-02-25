@@ -1,8 +1,7 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
-.home-hero {
-    @include mobile {
-            display: none;
-    }
+.title-renovations {
+    @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
+    margin: 40px 0 40px 24px;
 }
