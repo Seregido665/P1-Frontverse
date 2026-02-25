@@ -3,10 +3,21 @@
 
 .body-header {
     position: relative;
-    img {
+    .image-desktop-view {
         width: 100%;
         display: block;
     }
+    .image-mobile-view {
+        display: none;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;                   // QUUE OCUPE TODO EL body-header
+        background-color: #00000080;  
+        z-index: 1;                   // POR ENCIMA DEL CONTENEDOR
+    }
+
     .body-header__content {
         position: absolute;
         inset: 0;
@@ -16,25 +27,56 @@
         align-items: center;
         text-align: center;
         padding: 0 1rem;
+        z-index: 2;                   // POR ENCIMA DEL FILTRO &::before
     }
-
-    .body-header__title {
-        width: min(695px, 90%);
+    .desktop_body-header__title {
+        line-height: 1.2;       // REDUCIR DISTANCIA ENTRE LÍNEAS
         @include font-styles( $font-weight: bold, $font-size: clamp(2rem, 5vw, 4rem), $color: $light);
     }
-    .body-header__description {
+    .desktop_body-header__description {
+        padding-top: 40px;
         @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
     }
-    @include mobile {
-        
+    .mobile_body-header__title {
+        display: none;
     }
+    .mobile_body-header__description {
+        display: none;
+    }
+
     @include tablet {
-        .body-header__title {
-            width: min(495px, 90%);
-            @include font-styles( $font-weight: bold, $font-size: clamp(1.5rem, 5vw, 4rem), $color: $light);
+        .desktop_body-header__description {
+            width: 420px;
+            padding-top: 10px;
         }
-        .body-header__description {
-            @include font-styles( $font-weight: normal, $font-size: clamp(0.9rem, 2.2vw, 1.5rem), $color: $light);
+    }
+
+    @include mobile {
+        .image-desktop-view {
+            display: none;
+        }
+        .image-mobile-view {
+            width: 100%;
+            display: block;
+        }
+        .mobile_body-header__title {
+            display: block;
+            z-index: 2;
+            line-height: 1.2;       // REDUCIR DISTANCIA ENTRE LÍNEAS
+            @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
+        }
+        .mobile_body-header__description {
+            padding-top: 40px;
+            display: block;
+            z-index: 2;
+            @include font-styles( $font-weight: normal, $font-size: 16px, $color: $light);
+        }
+
+        .desktop_body-header__title {
+            display: none;
+        }
+        .desktop_body-header__description {
+            display: none;
         }
     }
 }
