@@ -5,10 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 6rem;
   padding: 1rem 5.5rem;
 
   @include mobile {
-    padding: 1rem 1rem;
+    height: 5rem;
   }
 
   @include tablet {

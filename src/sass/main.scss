@@ -26,6 +26,7 @@
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;
 @use 'components/nav-buttons-right' as *;
+@use 'layout/homepage-header';
 
 /** TEMPLATES **/
 @use 'layout/user-window-menu';

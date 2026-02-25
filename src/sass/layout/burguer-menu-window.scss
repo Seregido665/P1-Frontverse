@@ -9,7 +9,7 @@
     position: absolute;
     z-index: 1000;
     top: 5rem;
-    padding-bottom: 10px;
+    padding-bottom: 0.625rem;
 
     .burguer-menu-window__globe-button {
         margin-top: 11rem;
@@ -45,7 +45,7 @@
         box-shadow: none;
         position: fixed;
         inset: 0;                    // AJUSTADO A LOS BORDES DE LA PANTALLA
-        margin-top: 6rem;                
+        margin-top: 5rem;                
         width: 100%;
         .burguer-menu-window__text {
             margin-right: 1.25rem;

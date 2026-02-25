@@ -9,8 +9,6 @@
     color: $color;
 }
 
-
-
 /* @media RANGOS */
 @mixin mobile {
   @media (max-width: $breakpoint-mobile) {
