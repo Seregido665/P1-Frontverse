@@ -39,4 +39,8 @@
             display: block;
         }
     }
+
+    &:last-child:hover {
+        overflow: hidden;
+    }
 }
