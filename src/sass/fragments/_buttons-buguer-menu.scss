@@ -2,7 +2,7 @@
 @use '../helpers/mixins' as *;
 @use '../helpers/variables' as *;
 
-.submenu-option-style {
+.burguer-menu-window__option {
     width: 375px;
     height: 61px;
     display: flex;
@@ -16,7 +16,7 @@
     cursor: pointer;
     padding-left: 24px;
     
-    .text {
+    .burguer-menu-window__text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 

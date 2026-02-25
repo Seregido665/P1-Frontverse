@@ -1,12 +1,12 @@
 include ../fragments/_buttons-menu-user
 
 .user-menu-window
-    h1.titulo Mi perfil
-    p.texto
-      | En este espacio puedes acceder, modificar, 
-      | gestionar y consultar todo lo relacionado con
-      | tus servicios de energía. Fácil y rápido.
-    +button-menu-user('user', 'Mis datos personales')
-    +button-menu-user('lock', 'Mi contrasña')
-    +button-menu-user('phone', 'Contacto')
-    +button-menu-user('power-off', 'Cerrar sesión')
+  h1.user-menu-window__title Mi perfil
+  p.user-menu-window__description
+    | En este espacio puedes acceder, modificar, 
+    | gestionar y consultar todo lo relacionado con
+    | tus servicios de energía. Fácil y rápido.
+  +button-menu-user('user', 'Mis datos personales')
+  +button-menu-user('lock', 'Mi contrasña')
+  +button-menu-user('phone', 'Contacto')
+  +button-menu-user('power-off', 'Cerrar sesión')

@@ -8,13 +8,11 @@
     border-radius: 12px;
     position: absolute;
     z-index: 1000;
-    left: 20.313rem;
     top: 5rem;
     padding-bottom: 10px;
 
-    .globe-button {
+    .burguer-menu-window__globe-button {
         margin-top: 11rem;
-        color: aqua;
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -23,10 +21,13 @@
         background: none;
         border: none;
         cursor: pointer;
+        .burguer-menu-window__title {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        }
     }
 
     .globe,
-    .title,
+    .burguer-menu-window__title,
     .arrow-dropdown {
         display: inline-block;
     }
@@ -46,14 +47,14 @@
         inset: 0;                    // AJUSTADO A LOS BORDES DE LA PANTALLA
         margin-top: 6rem;                
         width: 100%;
-        .texto {
+        .burguer-menu-window__text {
             margin-right: 1.25rem;
         }
-        .globe-button {
+        .burguer-menu-window__globe-button {
             margin-top: 20rem;
         }
     }
     @include desktop {
-        right: 6rem;
+        right: 2rem;
     }
 }

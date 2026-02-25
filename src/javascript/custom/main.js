@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnBurguer = document.querySelector('.burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
   // HACE REFERENCIA PRIMERO AL BOTON PADRE(.burguer-menu-window) PARA PODER APUNTAR 
-  // LUEGO AL BOTON HIJO(.globe-button).
-  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .globe-button'); 
+  // LUEGO AL BOTON HIJO(.burguer-menu-window__globe-button).
+  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button'); 
   // HACIENDO REFERENCIA PRIMERO AL PADRE SE PUEDE LUEGO BUSCAR A .globe-menu-window SIN IMPORTAR 
   // SU NIVEL DE ANIDACION DENTRO DE .burguer-menu-window
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');

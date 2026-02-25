@@ -2,7 +2,7 @@
 @use '../helpers/mixins' as *;
 @use '../helpers/variables' as *;
 
-.submenu-option-style {
+.user-menu-window__option {
     width: 375px;
     height: 61px;
     display: flex;
@@ -18,7 +18,7 @@
         font-size: $icon-size-user;
         padding: 17px 14px 20px 24px;
     }
-    .text {
+    .user-menu-window__option-text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 
