@@ -8,13 +8,14 @@
   gap: 2.5rem; 
   height: 2.5rem;
 
-  button {
+  > button {
     display: flex;
     align-items: center;
     gap: 0.5rem;           
     text-decoration: none;    
     background: none;
     border: none;
+    cursor: pointer;
     .user {
       font-size: $icon-size-user;
     }
@@ -25,32 +26,66 @@
       padding-left: 8px;
       font-size: $icon-size-arrowDropdown;
     }
+
+    .title {
+      @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
     .text {
       @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
   }
-  .burguer-menu {
+  .burguer-button {
     display: none;
+  }
+  .close {
+    display: none;
+    .icon {
+      filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
+    }
   }
 
   @include mobile {
-    gap: 0.5rem;       
-    .arrow-dropdown, .globe, .text { 
-      display: none;
+    .close {
+      display: none;          // POR DEFECTO ESTE BOTON ESTA OCULTO
+      font-size: 1.5rem;
     }
-    .burguer-menu {   // MOSTRAR menu-burguer
-      display: inline-block; 
-      font-size: $icon-size-burguerMenu;
+
+    // --- KEY --- 
+    // SE LLAMARA A ESTOS ESTADOS DESDE main.js Y ASI TRABAJAR CON ELLOS.
+    &.mobile-user-open, &.mobile-burguer-open {        
+      .close {
+        display: inline-block;
+        .icon {
+          filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
+        }
+      }
+      .user-button,
+      .burguer-button {
+        display: none;
+      }
     }
   }
-
+  
   @include tablet {
     gap: 1rem;       
-    .arrow-dropdown, .text { 
+    .arrow-dropdown, .globe, .title { 
       display: none;
     }
-    .burguer-menu {   // MOSTRAR menu-burguer
-      display: none; 
+    .burguer-button {   // MOSTRAR menu-burguer
+      display: inline-block;
+      font-size: $icon-size-burguerMenu;
+      padding-right: 5px;
+    }
+    .globe-button {
+      display: none;
+    }
+  }
+   
+  @include desktop {
+    gap: 1rem;    
+       
+    .arrow-dropdown, .title { 
+      display: none;
     }
   }
 }

@@ -25,7 +25,7 @@ const path = {
   localeComponents: ['src/pug/components/**/locale/**/[^_]*.json'],
   build: 'build/',
   buildCSS: 'build/css',
-  buildFONTS: 'build/css/fonts',
+  buildFONTS: 'build/fonts',
   buildJS: 'build/js/',
   buildIMAGES: 'build/images',
   buildLocale: 'build/locale/',

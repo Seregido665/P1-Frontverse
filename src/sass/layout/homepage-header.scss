@@ -1,0 +1,40 @@
+@use '../helpers/variables' as *;
+@use '../helpers/mixins' as *;
+
+.body-header {
+    position: relative;
+    img {
+        width: 100%;
+        display: block;
+    }
+    .body-header__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .body-header__title {
+        width: min(695px, 90%);
+        @include font-styles( $font-weight: bold, $font-size: clamp(2rem, 5vw, 4rem), $color: $light);
+    }
+    .body-header__description {
+        @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
+    }
+    @include mobile {
+        
+    }
+    @include tablet {
+        .body-header__title {
+            width: min(495px, 90%);
+            @include font-styles( $font-weight: bold, $font-size: clamp(1.5rem, 5vw, 4rem), $color: $light);
+        }
+        .body-header__description {
+            @include font-styles( $font-weight: normal, $font-size: clamp(0.9rem, 2.2vw, 1.5rem), $color: $light);
+        }
+    }
+}

@@ -5,7 +5,7 @@
 .buttons-left {
   display: flex;
   align-items: center;
-  height: 64px;
+  height: 4rem;
 
   .logo {
     padding-right: 2rem;
@@ -15,12 +15,19 @@
     display: flex;
     align-items: center;
     gap: 32px;
+    
   }
   .link {
     @include font-styles($font-weight: bold, $font-size: 16px, $color: $grey100);
     text-decoration: none;
+    cursor: pointer;
   } 
   @include mobile {
+    .link { 
+      display: none;
+    }
+  }
+  @include tablet {
     gap: 1rem;       
     .link { 
       display: none;

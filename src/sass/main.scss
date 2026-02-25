@@ -16,12 +16,19 @@
 @use "layout/header";
 @use "layout/navigation";
 @use "layout/footer";
+@use "layout/home";
 
 /** FRAGMENTS **/
+@use "fragments/_button-menu-user";
+@use "fragments/_button-menu-globe";
+@use "fragments/_buttons-buguer-menu";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;
 @use 'components/nav-buttons-right' as *;
+@use 'layout/homepage-header';
 
 /** TEMPLATES **/
 @use 'layout/user-window-menu';
+@use 'layout/globe-window-menu';
+@use 'layout/burguer-menu-window';

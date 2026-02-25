@@ -17,28 +17,50 @@
           <div class="directions"><a class="link" href="#inicio">Inicio</a><a class="link" href="#renovaciones">Próximas renovaciones</a></div>
         </div>
         <div class="right-nav-buttons">
-          <button><span class="icon user"></span><span class="text">Mi perfil</span><span class="icon arrow-dropdown"></span></button>
-          <button><span class="icon globe"></span><span class="text">Español</span><span class="icon arrow-dropdown"></span></button>
-          <div class="burguer-menu"><span class="icon burger_menu"></span></div>
+          <button class="user-button"><span class="icon user"></span><span class="title">Mi perfil</span><span class="icon arrow-dropdown"></span></button>
+          <div class="user-menu-window">
+            <h1 class="user-menu-window__title">Mi perfil</h1>
+            <p class="user-menu-window__description">
+              En este espacio puedes acceder, modificar, 
+              gestionar y consultar todo lo relacionado con
+              tus servicios de energía. Fácil y rápido.
+            </p>
+                      <button class="user-menu-window__option"><span class="icon user"></span><span class="user-menu-window__option-text">Mis datos personales</span></button>
+                      <button class="user-menu-window__option"><span class="icon lock"></span><span class="user-menu-window__option-text">Mi contrasña</span></button>
+                      <button class="user-menu-window__option"><span class="icon phone"></span><span class="user-menu-window__option-text">Contacto</span></button>
+                      <button class="user-menu-window__option"><span class="icon power-off"></span><span class="user-menu-window__option-text">Cerrar sesión</span></button>
+          </div>
+          <button class="globe-button"><span class="icon globe"></span><span class="title">Español</span><span class="icon arrow-dropdown"></span></button>
+          <div class="globe-menu-window">
+                      <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Español</span></button>
+                      <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">English</span></button>
+                      <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Catalán</span></button>
+                      <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Gallego</span></button>
+                      <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Euskera</span></button>
+          </div>
+          <button class="burguer-button"><span class="icon burger_menu"></span></button>
+          <div class="burguer-menu-window"><a class="burguer-menu-window__option" href="#inicio"><span class="burguer-menu-window__text">Inicio</span></a><a class="burguer-menu-window__option" href="#renovaciones"><span class="burguer-menu-window__text">Próximas renovaciones</span></a>
+            <button class="burguer-menu-window__globe-button"><span class="icon globe"></span><span class="burguer-menu-window__title">Español</span><span class="icon arrow-dropdown"></span></button>
+            <div class="globe-menu-window">
+                          <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Español</span></button>
+                          <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">English</span></button>
+                          <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Catalán</span></button>
+                          <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Gallego</span></button>
+                          <button class="globe-menu-window__option"><span class="globe-menu-window__option-text">Euskera</span></button>
+            </div>
+          </div>
+          <div class="close"><span class="icon close"></span></div>
         </div>
-      </div>
-      <div class="user-menu-window">
-        <section>
-          <h1 class="titulo">Mi perfil</h1>
-          <p class="texto">
-            En este espacio puedes acceder, modificar, 
-            gestionar y consultar todo lo relacionado con
-            tus servicios de energía. Fácil y rápido.
-          </p>
-                <button class="button-menu-user"><span class="icon frameOn"></span>Mis datos personales
-                </button>
-        </section>
       </div>
     </header>
     <main class="main-content" id="main-content">
-      <div class="home-hero" style="background-color: #7691cfff; min-height: 400px;">
-        <h1>Bienvenido a Secura Insurance</h1>
-        <p>Este es el área de contenido con fondo visible.</p>
+      <div class="body-header"> <img src="../../images/body-homepage-header.svg" alt="img-homepage">
+        <div class="body-header__content">
+          <h1 class="body-header__title">
+             Bienvenido a tu área <br>personal</h1>
+          <p class="body-header__description">
+             Gracias a ti más personas pueden disfrutar de una vida más segura</p>
+        </div>
       </div>
     </main>
     <footer class="footer" id="footer">
