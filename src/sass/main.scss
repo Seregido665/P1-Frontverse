@@ -22,8 +22,12 @@
 @use "fragments/_button-menu-user";
 @use "fragments/_button-menu-globe";
 @use "fragments/_buttons-buguer-menu";
+<<<<<<< HEAD
 @use "fragments/_renovation-card-desktop";
 @use "fragments/_renovation-card-mobile";
+=======
+@use "fragments/_renovation-card";
+>>>>>>> origin/master
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;

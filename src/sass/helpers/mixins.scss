@@ -9,8 +9,14 @@
     color: $color;
 }
 
+<<<<<<< HEAD
 @mixin policy-state-styles($background-color) {
     background-color: $background-color;
+=======
+@mixin policy-state-styles($background-color, $text-color: $grey100, $icon-color: $text-color) {
+    background-color: $background-color;
+    color: $text-color;
+>>>>>>> origin/master
 }
 
 /* @media RANGOS */
