@@ -1,0 +1,19 @@
+mixin renovation-card-mobile(policy, risk, dateContrat, dateMaturity, price, stateHeader)
+    .renovation-card-mobile
+        h2 No. de póliza
+        .renovation-card-mobile__policy= policy
+        h2 Nombre del riesgo 
+        .renovation-card-mobile__risk= risk
+        h2 Fecha de contrato
+        .renovation-card-mobile__date-contrat= dateContrat
+        h2 Fecha de vencimiento
+        .renovation-card-mobile__date-maturity= dateMaturity
+        h2 Importe
+        .renovation-card-mobile__price= price
+        h2 Estado
+        .renovation-card-mobile__state= stateHeader
+            block
+mixin state-policy(icon, text)
+    .state
+        span.state__icon.icon(class=icon)
+        span.state__text= text

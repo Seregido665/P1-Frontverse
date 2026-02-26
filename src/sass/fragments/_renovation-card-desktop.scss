@@ -16,7 +16,7 @@
     }
 }
 
-.renovation-card {
+.renovation-card-desktop {
     height: 76px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -26,7 +26,7 @@
     border-radius: 10px;
     padding: 0 32px 0 56px;
     margin: 0 24px 0 24px;
-    box-shadow: 0px 0px 15px #37464933;
+    box-shadow: 0px 10px 15px #37464933;
 
     &__policy, &__risk, &__date-contrat, &__date-maturity {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
@@ -52,5 +52,9 @@
     .state-warning {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
         @include policy-state-styles($background-color: $state-warning);
+    }
+
+    @include mobile {
+        
     }
 }
