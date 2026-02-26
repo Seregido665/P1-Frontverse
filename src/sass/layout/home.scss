@@ -5,6 +5,11 @@
   background-color: $body-background-color;    
 }
 
+.title-renovations {
+    @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
+    margin: 40px 0 40px 24px;
+}
+
 .renovations-desktop {
     display: block;
 }
@@ -12,9 +17,16 @@
     display: none;
 }
 
-.title-renovations {
-    @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
+.view-more-button {
     margin: 40px 0 40px 24px;
+    display: flex;
+    .main-button {
+        @include button-styles($background-color: $primary25);
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        padding: 10px 16px;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 @include desktop {
@@ -42,7 +54,6 @@
         display: block;
     }
 }
-
 @include mobile {
     .title-renovations {
         margin: 16px 0 16px 16px;
@@ -53,5 +64,9 @@
     }
     .renovations-mobile {
         display: block;
+    }
+
+    .view-more-button {
+        margin: 24px 16px;
     }
 }

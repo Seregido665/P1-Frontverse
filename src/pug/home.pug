@@ -1,4 +1,5 @@
 extends layouts/layout-home
+include components/button
 
 block vars
     - var pageTitle = "Homepage";
@@ -9,9 +10,15 @@ block header
 block content
     .home
         include templates/homepage-header
-        p.title-renovations Próximas renovaciones
-        .renovations-desktop
-            include templates/home-renovations/home-desktop-renovations
-        .renovations-mobile
-            include templates/home-renovations/home-mobile-renovations
+        section
+            p.title-renovations Próximas renovaciones
+            .renovations-desktop
+                include templates/home-renovations/home-desktop-renovations
+            .renovations-mobile
+                include templates/home-renovations/home-mobile-renovations
+        .view-more-button
+            +button('icon', 'Ver todas')
+        section 
+            p.title-renovations Clientes potenciales
+
     

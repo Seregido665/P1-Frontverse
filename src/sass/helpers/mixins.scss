@@ -9,9 +9,17 @@
     color: $color;
 }
 
+/* Estados de renovaciones */
 @mixin policy-state-styles($background-color) {
     background-color: $background-color;
 }
+
+/* Botones */
+@mixin button-styles($background-color: transparent, $border-radius: 8px) {
+    background-color: $background-color;
+    border-radius: $border-radius;
+}
+
 
 /* @media RANGOS */
 @mixin mobile {
