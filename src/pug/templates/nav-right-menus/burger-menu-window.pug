@@ -1,0 +1,10 @@
+include ../../fragments/nav-menu-buttons/_buttons-burger-menu
+
+.burguer-menu-window
+    +button-burger-menu('#inicio', 'Inicio')
+    +button-burger-menu('#renovaciones', 'Próximas renovaciones')
+    button.burguer-menu-window__globe-button
+        span.icon.globe
+        span.burguer-menu-window__title Español
+        span.icon.arrow-dropdown
+    include ../nav-right-menus/globe-window-menu
