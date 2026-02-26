@@ -19,11 +19,11 @@
 @use "layout/home";
 
 /** FRAGMENTS **/
-@use "fragments/_button-menu-user";
-@use "fragments/_button-menu-globe";
-@use "fragments/_buttons-buguer-menu";
-@use "fragments/_renovation-card-desktop";
-@use "fragments/_renovation-card-mobile";
+@use "fragments/nav-right-buttons/_button-menu-user";
+@use "fragments/nav-right-buttons/_button-menu-globe";
+@use "fragments/nav-right-buttons/_buttons-buguer-menu";
+@use "fragments/renovation-card/_renovation-card-desktop";
+@use "fragments/renovation-card/_renovation-card-mobile";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;
@@ -31,6 +31,6 @@
 @use 'layout/homepage-header';
 
 /** TEMPLATES **/
-@use 'layout/user-window-menu';
-@use 'layout/globe-window-menu';
-@use 'layout/burguer-menu-window';
+@use 'layout/nav-menus-right/user-window-menu';
+@use 'layout/nav-menus-right/globe-window-menu';
+@use 'layout/nav-menus-right/burguer-menu-window';
