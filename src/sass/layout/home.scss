@@ -1,7 +1,57 @@
 @use '../helpers/variables' as *;
 @use '../helpers/mixins' as *;
 
+.home {
+  background-color: $body-background-color;    
+}
+
+.renovations-desktop {
+    display: block;
+}
+.renovations-mobile {
+    display: none;
+}
+
 .title-renovations {
     @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
     margin: 40px 0 40px 24px;
+}
+
+@include desktop {
+    .title-renovations {
+        margin: 16px 0 16px 16px;
+    }
+
+    .renovations-desktop {
+        display: none;
+    }
+    .renovations-mobile {
+        display: block;
+    }
+}
+
+@include tablet {
+    .title-renovations {
+        margin: 16px 0 16px 16px;
+    }
+
+    .renovations-desktop {
+        display: none;
+    }
+    .renovations-mobile {
+        display: block;
+    }
+}
+
+@include mobile {
+    .title-renovations {
+        margin: 16px 0 16px 16px;
+    }
+
+    .renovations-desktop {
+        display: none;
+    }
+    .renovations-mobile {
+        display: block;
+    }
 }

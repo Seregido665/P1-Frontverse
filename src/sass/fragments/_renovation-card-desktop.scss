@@ -2,17 +2,31 @@
 @use '../helpers/mixins' as *;
 @use '../helpers/variables' as *;
 
-.renovation-card {
+.home-reservation__header {
+    min-height: 29px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 56px;
+    padding: 0 32px 0 56px;
+    margin: 0 24px 24px;
+    border-bottom: 1px solid #A7B8BF;
+    h2{
+        padding-bottom: 7px;
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+}
+
+.renovation-card-desktop {
     height: 76px;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 56px;
     align-items: center;
-    justify-content: space-between;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 0 32px 0 56px;
-    margin: 0 24px 0 24px;
-    box-shadow: 0px 0px 15px #37464933;
+    margin: 0 24px 24px 24px;
+    box-shadow: 0px 10px 15px #37464933;
 
     &__policy, &__risk, &__date-contrat, &__date-maturity {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
@@ -22,7 +36,7 @@
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
     }
     
-    .state-policy {
+    .state {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -37,5 +51,12 @@
     }
     .state-warning {
         @include policy-state-styles($background-color: $state-warning);
+    }
+    .state-success {
+        @include policy-state-styles($background-color: $state-success);
+
+        .state__text {
+            color: $state-success-text;
+        }
     }
 }

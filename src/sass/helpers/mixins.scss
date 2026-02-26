@@ -9,9 +9,8 @@
     color: $color;
 }
 
-@mixin policy-state-styles($background-color, $text-color: $grey100, $icon-color: $text-color) {
+@mixin policy-state-styles($background-color) {
     background-color: $background-color;
-    color: $text-color;
 }
 
 /* @media RANGOS */

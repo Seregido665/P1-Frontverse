@@ -7,7 +7,11 @@ block header
     title Homepage
 
 block content
-    include templates/homepage-header
-    p.title-renovations Próximas renovaciones
-    include templates/home-next-renovations
+    .home
+        include templates/homepage-header
+        p.title-renovations Próximas renovaciones
+        .renovations-desktop
+            include templates/home-desktop-renovations
+        .renovations-mobile
+            include templates/home-mobile-renovations
     

@@ -22,7 +22,8 @@
 @use "fragments/_button-menu-user";
 @use "fragments/_button-menu-globe";
 @use "fragments/_buttons-buguer-menu";
-@use "fragments/_renovation-card";
+@use "fragments/_renovation-card-desktop";
+@use "fragments/_renovation-card-mobile";
 
 /** COMPONENTS **/
 @use 'components/nav-buttons-left' as *;

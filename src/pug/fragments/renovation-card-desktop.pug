@@ -1,0 +1,13 @@
+mixin renovation-card-desktop(policy, risk, dateContrat, dateMaturity, price, stateHeader)
+    .renovation-card-desktop
+        .renovation-card-desktop__policy= policy
+        .renovation-card-desktop__risk= risk
+        .renovation-card-desktop__date-contrat= dateContrat
+        .renovation-card-desktop__date-maturity= dateMaturity
+        .renovation-card-desktop__price= price
+        .renovation-card-desktop__state= stateHeader
+            block
+mixin state-policy(icon, text)
+    .state
+        span.state__icon.icon(class=icon)
+        span.state__text= text
