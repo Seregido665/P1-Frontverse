@@ -1,0 +1,41 @@
+@use '../helpers/icons-variables' as *;
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+.renovation-card {
+    height: 76px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 0 32px 0 56px;
+    margin: 0 24px 0 24px;
+    box-shadow: 0px 0px 15px #37464933;
+
+    &__policy, &__risk, &__date-contrat, &__date-maturity {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
+    } 
+     
+    &__price {
+        @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
+    }
+    
+    .state-policy {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        &__icon {
+            font-size: $icon-size-clock;
+        }
+        &__text {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
+        }
+    }
+    .state-warning {
+        @include policy-state-styles($background-color: $state-warning);
+    }
+}
