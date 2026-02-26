@@ -9,6 +9,9 @@
     color: $color;
 }
 
+@mixin policy-state-styles($background-color) {
+    background-color: $background-color;
+}
 
 /* @media RANGOS */
 @mixin mobile {

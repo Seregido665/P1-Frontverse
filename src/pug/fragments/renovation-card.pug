@@ -8,5 +8,6 @@ mixin renovation-card(policy, risk, dateContrat, dateMaturity, price, stateHeade
         .renovation-card__state= stateHeader
             block
 mixin state-policy(icon, text)
-    span.icon(class=icon)
-    span.user-menu-window__option-text= text
+    .state-policy
+        span.state-policy__icon.icon(class=icon)
+        span.state-policy__text= text
