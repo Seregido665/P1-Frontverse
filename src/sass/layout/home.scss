@@ -17,6 +17,32 @@
     margin: 40px 0 40px 24px;
 }
 
+@include desktop {
+    .title-renovations {
+        margin: 16px 0 16px 16px;
+    }
+
+    .renovations-desktop {
+        display: none;
+    }
+    .renovations-mobile {
+        display: block;
+    }
+}
+
+@include tablet {
+    .title-renovations {
+        margin: 16px 0 16px 16px;
+    }
+
+    .renovations-desktop {
+        display: none;
+    }
+    .renovations-mobile {
+        display: block;
+    }
+}
+
 @include mobile {
     .title-renovations {
         margin: 16px 0 16px 16px;

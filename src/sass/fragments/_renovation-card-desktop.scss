@@ -3,15 +3,15 @@
 @use '../helpers/variables' as *;
 
 .home-reservation__header {
-    height: 29px;
+    min-height: 29px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 56px;
-    background-color: rgb(255, 255, 255);
     padding: 0 32px 0 56px;
     margin: 0 24px 24px;
     border-bottom: 1px solid #A7B8BF;
     h2{
+        padding-bottom: 7px;
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
     }
 }
@@ -52,9 +52,5 @@
     .state-warning {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
         @include policy-state-styles($background-color: $state-warning);
-    }
-
-    @include mobile {
-        
     }
 }

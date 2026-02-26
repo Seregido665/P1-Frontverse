@@ -36,4 +36,13 @@
             
         }
     }
+
+    @include desktop {
+        .column-split {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;    
+            width: 100%;
+        }
+    }
 }
