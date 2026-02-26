@@ -9,7 +9,7 @@
     box-shadow: 0px 10px 15px #37464933;
     border-radius: 12px;
     padding: 16px;
-    margin: 0 16px 0 16px;
+    margin: 0 16px 16px 16px;
     h2{
         margin-bottom: 2px;
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
@@ -33,7 +33,13 @@
             width: fit-content;
             border-radius: 4px;
             @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-            
+        }
+        &__success {
+            background-color: $state-success;
+            padding: 2px 8px;
+            width: fit-content;
+            border-radius: 4px;
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $state-success-text);
         }
     }
 
@@ -42,6 +48,15 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 48px;    
+            width: 100%;
+        }
+    }
+
+    @include mobile {
+        .column-split {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;    
             width: 100%;
         }
     }
