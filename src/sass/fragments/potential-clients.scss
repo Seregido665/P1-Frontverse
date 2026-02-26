@@ -1,0 +1,56 @@
+@use '../helpers/icons-variables' as *;
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+
+.client-list {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.342);
+  width: 50%;
+  border-radius: 12px;
+  overflow: hidden;           // evita que los hijos se salgan del border-radius
+  display: flex;
+  flex-direction: column;
+}
+
+.top-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: #f8fafc;        // opcional: fondo sutil para diferenciar visualmente
+}
+
+.client-card__header {
+  flex: 1;
+  // ocupa todo el espacio disponible a la izquierda
+}
+
+.client-card__name {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;           // opcional, mejora legibilidad
+}
+
+.client-card__offer {
+  padding: 4px 10px;
+  margin-bottom: 4px;
+  display: inline-block;      // para que no ocupe todo el ancho
+}
+
+.client-card__icon {
+  flex-shrink: 0;
+  margin-left: 20px;          // separación entre header e icono
+  // aquí puedes mantener el tamaño y estilos que ya tengas en icons-variables
+}
+
+.button-card {
+  // ocupa la parte inferior
+  background: #ffffff;        // o el color que prefieras para diferenciar
+}
+
+.client-card__contact {
+  padding: 16px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
