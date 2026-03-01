@@ -1,12 +1,12 @@
 mixin potential-clients(name, offer, icon, mail, phone)
     .client-card
-        .top-card
+        .client-card__top
             .client-card__header 
                 span.client-card__name= name
                 span.client-card__offer= offer
             .client-card__icon 
-                span.client-card__icon.icon(class=icon)
-        .button-card
+                button.client-card__icon.icon(class=icon)
+        .client-card__bottom
             .client-card__contact
                 span.client-card__mail= mail
                 span.client-card__phone= phone

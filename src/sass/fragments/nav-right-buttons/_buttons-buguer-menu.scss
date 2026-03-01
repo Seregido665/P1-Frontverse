@@ -2,8 +2,8 @@
 @use '../../helpers/variables' as *;
 
 .burguer-menu-window__option {
-    width: 375px;
-    height: 61px;
+    width: 23.438rem;
+    height: 3.813rem;
     display: flex;
     align-items: center;
     border: none;
@@ -13,7 +13,7 @@
     border-radius: 0 0 12px 12px;
     text-decoration: none;
     cursor: pointer;
-    padding-left: 24px;
+    padding-left: 1.5rem;
     
     .burguer-menu-window__text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
@@ -27,7 +27,7 @@
         left: 0;
         top: 0;
         width: 2px;
-        height: 61px;              
+        height: 3.813rem;              
         background-color: #4B98D9;
         transform: translateX(-100%);
     }

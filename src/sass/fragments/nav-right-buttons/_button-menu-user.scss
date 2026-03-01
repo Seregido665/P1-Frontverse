@@ -3,8 +3,8 @@
 @use '../../helpers/variables' as *;
 
 .user-menu-window__option {
-    width: 375px;
-    height: 61px;
+    width: 23.438rem;
+    height: 3.813rem;
     display: flex;
     align-items: center;
     border: none;
@@ -16,7 +16,7 @@
     
     .icon {
         font-size: $icon-size-user;
-        padding: 17px 14px 20px 24px;
+        padding: 1.063rem 0.875rem 1.25rem 1.5rem;
     }
     .user-menu-window__option-text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
@@ -29,7 +29,7 @@
         left: 0;
         top: 0;
         width: 2px;
-        height: 61px;              
+        height: 3.813rem;              
         background-color: #4B98D9;
         transform: translateX(-100%);
     }
