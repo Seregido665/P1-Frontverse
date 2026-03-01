@@ -31,13 +31,15 @@
         margin-left: 1rem;
         border: none;
         cursor: pointer;
+
+        &:hover {
+            @include button-styles($background-color: $primary100);
+        }
+        &:active {
+            @include button-styles($background-color: $primary100);
+            transform: translateY(2px);
+        }
     }
-    &:hover .main-button {
-        @include button-styles($background-color: $primary100);
-    }
-    &:active .main-button {
-        @include button-styles($background-color: $primary100);
-        transform: translateY(2px);}
 }
 
 @include desktop {

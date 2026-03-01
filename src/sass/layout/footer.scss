@@ -1,0 +1,19 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/icons-variables' as *;
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 1rem 5.5rem;
+    background-color: aqua;
+
+    @include mobile {
+        height: 5rem;
+    }
+
+    @include tablet {
+        padding: 1rem 3rem;
+    }
+}
