@@ -5,148 +5,140 @@
 .footer {
     padding: 1rem 2rem;
     background-color: white;
+}
+.footer-info {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); 
+}
 
+.footer-contact__question {
+    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
+}
+.footer-contact__email {
+    display: flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
+}
+.footer-contact__phone {
+    display: flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
+}
+.footer-contact__email-icon,
+.footer-contact__phone-icon {
+    margin-right: 0.3125rem;
+}
+.footer-contact__email-icon {
+    font-size: $icon-size-mail;
+}
+.footer-contact__phone-icon {
+    font-size: $icon-size-phone;
+}
+.footer-contact__direction {
+    display: flex;
+    flex-direction: column;
+}
+.footer-contact__direction-country {
+    margin-bottom: 0.75rem;
+}
+.footer-direction {
+    margin-top: 1.40625rem;
+    display: flex;
+    justify-self: end;
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
+}
+.footer-legal {
+    margin-top: 2rem;
+    a {
+        @include font-styles( $font-weight: 500, $font-size: 10px, $color: $grey100);
+        text-decoration: none;
+    }
+    .separation {
+        margin-inline: 1.5rem;
+    }
+}
+.footer-marc {
+    margin-top: 2.03125rem;
+    display: flex;
+    justify-self: end;
+    text-align: right;
+
+    .footer-marc__text {
+        @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
+    }
+}
+
+@include desktop {
     .footer-info {
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        column-gap: clamp(1rem, 4vw, 3.5rem);
-        
-        .footer-contact {
-            &__question {
-                @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
-            }
-            &__email {
-                display: flex;
-                align-items: center;
-                margin-top: 12px;
-                @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
-            }
-            
-            &__phone {
-                display: flex;
-                align-items: center;
-                margin-top: 12px;
-                @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
-            }
-
-            &__email-icon,
-            &__phone-icon {
-                margin-right: 5px;
-            }
-            &__email-icon {
-                font-size: $icon-size-mail;
-            }
-            &__phone-icon {
-                font-size: $icon-size-phone;
-            }
-
-            &__direction {
-                display: flex;
-                flex-direction: column;
-                &-country {
-                    margin-bottom: 12px;
-                }
-            }
-        }
-
-        .footer-direction {
-            margin-top: 22.5px;
-            display: flex;
-            justify-self: end;
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
-        }
-
         .footer-legal {
-            margin-top: 32px;
-
-            a {
-                @include font-styles( $font-weight: 500, $font-size: 10px, $color: $grey100);
-                text-decoration: none;
-            }
             .separation {
-                margin-inline: 24px;
-            }
-        }
-
-        .footer-marc {
-            margin-top: 32.5px;
-            display: flex;
-            justify-self: end;
-            text-align: right;
-
-            &__text {
-                @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
+                margin-inline: 0.875rem;
             }
         }
     }
-    
-    @include desktop {
-        .footer-info {
-            .footer-legal {
-                .separation {
-                    margin-inline: 14px;
-                }
-            }
-        }
-    }
+}
 
 
-    @include tablet {
+@include tablet {
+    .footer {
         padding: 1rem;
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            .footer-contact__direction {
-                margin-top: 10px;
-            }
-            .footer-legal {
-                display: flex;
-                flex-direction: column;
-                a {
-                    @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
-                }
-                .middle {
-                    margin: 14px 0;
-                }
-                .separation {
-                    display: none;
-                }
-            }
-            .footer-marc {
-                &__text {
-                    @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
-                }
-            }
+    }
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-contact__direction {
+        margin-top: 0.625rem;
+    }
+    .footer-legal {
+        display: flex;
+        flex-direction: column;
+        a {
+            @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
+        }
+        .middle {
+            margin: 0.875rem 0;
+        }
+        .separation {
+            display: none;
         }
     }
-
-    @include mobile {
-        padding: 1rem;
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-            .footer-contact__direction {
-                margin-top: 20px;
-            }
-            .footer-legal {
-                display: flex;
-                flex-direction: column;
-                a {
-                    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-                }
-                .middle {
-                    margin: 24px 0;
-                }
-                .separation {
-                    display: none;
-                }
-            }
-            .footer-marc {
-                &__text {
-                    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-                }
-            }
+    .footer-marc {
+        &__text {
+            @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
         }
+    }
+}
+
+@include mobile {
+    .footer {
+        padding: 1rem;
+    }
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-contact__direction {
+        margin-top: 1.25rem;
+    }
+    .footer-legal {
+        display: flex;
+        flex-direction: column;
+        a {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        }
+        .middle {
+            margin: 1.5rem 0;
+        }
+        .separation {
+            display: none;
+        }
+    }
+     
+    .footer-marc .footer-marc__text {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 }

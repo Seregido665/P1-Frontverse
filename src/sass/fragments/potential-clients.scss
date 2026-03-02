@@ -18,7 +18,7 @@
   overflow: hidden;
   background-color: $light;
 
-  &__top {
+  .client-card__top {
     position: relative;
     flex: 1;
     display: grid;
@@ -29,27 +29,27 @@
     background-color: inherit;
   }
 
-  &__bottom {
+  .client-card__bottom {
     background-color: inherit;
   }
 
-  &__header {
+  .client-card__header {
     display: flex;
     flex-direction: column;
   }
 
-  &__name {
+  .client-card__name {
     @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
     margin-bottom: 0.625rem;
   }
 
-  &__offer {
+  .client-card__offer {
     @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary75);
     margin-bottom: 2.4375rem;
     display: inline-block;
   }
 
-  &__icon {
+  .client-card__icon {
     position: absolute;
     font-size: $icon-size-trash;
     top: 1rem;
@@ -59,19 +59,19 @@
     background-color: inherit;
   }
 
-  &__contact {
-    padding: 0px 1.5rem 1.0625rem;
+  .client-card__contact {
+    padding: 0px 1.5rem 1.938rem;
     display: flex;
     gap: 0.625rem;
   }
 
-  &__mail {
+  .client-card__mail {
     @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
     margin-right: 1.5rem;
   }
 
-  &__phone {
+  .client-card__phone {
     @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
   }
@@ -91,20 +91,20 @@
   .client-card {
     height: 22.25rem;
 
-    &__header {
+    .client-card__header {
       margin-top: 3.625rem;
     }
 
-    &__name {
+    .client-card__name {
       width: 14.6875rem;
     }
 
-    &__contact {
+    .client-card__contact {
       flex-direction: column;
       margin-bottom: 4rem;
     }
 
-    &__mail {
+    .client-card__mail {
       margin-bottom: 1.5rem;
     }
   }
@@ -121,20 +121,20 @@
   .client-card {
     height: 22.25rem;
 
-    &__header {
+    .client-card__header {
       margin-top: 3rem;
     }
 
-    &__name {
+    .client-card__name {
       width: 14.6875rem;
     }
 
-    &__contact {
+    .client-card__contact {
       flex-direction: column;
       margin-bottom: 4rem;
     }
 
-    &__mail {
+    .client-card__mail {
       margin-bottom: 1.5rem;
     }
   }
@@ -142,7 +142,7 @@
 
 @include desktop {
   .client-card {
-    &__contact {
+    .client-card__contact {
       flex-direction: column;
     }
   }

@@ -14,13 +14,20 @@
         margin-bottom: 0.125rem;
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
     }
-    &__policy, &__risk, &__date-contrat, &__date-maturity {
+    .renovation-card-mobile__policy, 
+    .renovation-card-mobile__risk, 
+    .renovation-card-mobile__date-contrat, 
+    .renovation-card-mobile__date-maturity {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
     } 
-    &__price {
+    .renovation-card-mobile__price {
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
     }
-    &__policy, &__risk, &__date-contrat, &__date-maturity, &__price {
+    .renovation-card-mobile__policy, 
+    .renovation-card-mobile__risk, 
+    .renovation-card-mobile__date-contrat, 
+    .renovation-card-mobile__date-maturity, 
+    .renovation-card-mobile__price {
         margin-bottom: 1rem;
     } 
     .state {

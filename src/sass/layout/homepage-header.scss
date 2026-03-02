@@ -21,7 +21,7 @@
         z-index: 1;
     }
 
-    &__content {
+    .body-header__content {
         position: absolute;
         inset: 0;
         display: flex;
@@ -31,29 +31,27 @@
         text-align: center;
         padding: 0 1rem;
         z-index: 2;
+    }
 
-        .desktop_body-header__title {
-            line-height: 1.2;
-            @include font-styles( $font-weight: bold, $font-size: clamp(2rem, 5vw, 4rem), $color: $light);
-        }
+    .desktop_body-header__title {
+        line-height: 1.2;
+        @include font-styles( $font-weight: bold, $font-size: clamp(2rem, 5vw, 4rem), $color: $light);
+    }
 
-        .desktop_body-header__description {
-            padding-top: 2.5rem;
-            @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
-        }
+    .desktop_body-header__description {
+        padding-top: 2.5rem;
+        @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
+    }
 
-        .mobile_body-header__title,
-        .mobile_body-header__description {
-            display: none;
-        }
+    .mobile_body-header__title,
+    .mobile_body-header__description {
+        display: none;
     }
 
     @include tablet {
-        .body-header__content {
-            .desktop_body-header__description {
-                width: 26.25rem;
-                padding-top: 0.625rem;
-            }
+        .desktop_body-header__description {
+            width: 26.25rem;
+            padding-top: 0.625rem;
         }
     }
 
@@ -66,25 +64,23 @@
             display: block;
         }
 
-        .body-header__content {
-            .mobile_body-header__title {
-                display: block;
-                z-index: 2;
-                line-height: 1.2;
-                @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
-            }
+        .mobile_body-header__title {
+            display: block;
+            z-index: 2;
+            line-height: 1.2;
+            @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
+        }
 
-            .mobile_body-header__description {
-                padding-top: 2.5rem;
-                display: block;
-                z-index: 2;
-                @include font-styles( $font-weight: normal, $font-size: 16px, $color: $light);
-            }
+        .mobile_body-header__description {
+            padding-top: 2.5rem;
+            display: block;
+            z-index: 2;
+            @include font-styles( $font-weight: normal, $font-size: 16px, $color: $light);
+        }
 
-            .desktop_body-header__title,
-            .desktop_body-header__description {
-                display: none;
-            }
+        .desktop_body-header__title,
+        .desktop_body-header__description {
+            display: none;
         }
     }
 }

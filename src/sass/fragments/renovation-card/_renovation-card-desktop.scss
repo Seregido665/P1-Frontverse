@@ -28,35 +28,37 @@
     margin: 0 1.5rem 1.5rem 1.5rem;
     box-shadow: 0px 10px 15px #3746491A;
 
-    &__policy, &__risk, &__date-contrat, &__date-maturity {
+    .renovation-card-desktop__policy, 
+    .renovation-card-desktop__risk, 
+    .renovation-card-desktop__date-contrat, 
+    .renovation-card-desktop__date-maturity {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
     } 
-     
-    &__price {
+    .renovation-card-desktop__price {
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
     }
-    
-    .state {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.125rem 0.5rem;
-        border-radius: 4px;
-        &__icon {
-            font-size: $icon-size-clock;
-        }
-        &__text {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
-        }
-        &__warning {
-            @include policy-state-styles($background-color: $state-warning);
-        }
-        &__success {
-            @include policy-state-styles($background-color: $state-success);
+}
 
-            &__text {
-                color: $state-success-text;
-            }
+.state {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    .state__icon {
+        font-size: $icon-size-clock;
+    }
+    .state__text {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
+    }
+    .state__warning {
+        @include policy-state-styles($background-color: $state-warning);
+    }
+    .state__success {
+        @include policy-state-styles($background-color: $state-success);
+
+        .state__text {
+            color: $state-success-text;
         }
     }
 }

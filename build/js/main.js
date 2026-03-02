@@ -10703,19 +10703,19 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 document.addEventListener('DOMContentLoaded', function () {
-
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
   const btnBurguer = document.querySelector('.burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
-  const navRight = document.querySelector('.right-nav-buttons');         
-  const btnClose = document.querySelector('.right-nav-buttons .close');  
-  const mobileQuery = window.matchMedia('(max-width: 30rem)');   // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const navRight = document.querySelector('.right-nav-buttons');
+  const btnClose = document.querySelector('.right-nav-buttons .close');
+  const mobileQuery = window.matchMedia('(max-width: 30rem)');
+
   // HACE REFERENCIA PRIMERO AL BOTON PADRE(.burguer-menu-window) PARA PODER APUNTAR 
   // LUEGO AL BOTON HIJO(.burguer-menu-window__globe-button).
-  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button'); 
+  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   // HACIENDO REFERENCIA PRIMERO AL PADRE SE PUEDE LUEGO BUSCAR A .globe-menu-window SIN IMPORTAR 
   // SU NIVEL DE ANIDACION DENTRO DE .burguer-menu-window
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
@@ -10728,6 +10728,56 @@ document.addEventListener('DOMContentLoaded', function () {
   globeMenuInBurguer.style.display = 'none';
 
 
+
+  // FUNCIONES PARA OCULTAR AL HACER click FUERA
+  // Mi perfil
+  document.addEventListener('click', function (e) {
+    if (!mobileQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
+      userMenu.style.display = 'none';
+    }
+  });
+  // Idioma
+  document.addEventListener('click', function (e) {
+    if (!mobileQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
+      globeMenu.style.display = 'none';
+    }
+  });
+  // Idioma (en Menú Burguer)
+  document.addEventListener('click', function (e) {
+    if (btnGlobeInBurguer && globeMenuInBurguer &&
+        !globeMenuInBurguer.contains(e.target) &&
+        !btnGlobeInBurguer.contains(e.target)) {
+      globeMenuInBurguer.style.display = 'none';
+    }
+  });
+
+
+
+  // -- FUNCION PARA EL BOTON DE CERRAR --
+  btnClose.addEventListener('click', function (e) {
+    if (mobileQuery.matches) {
+      userMenu.style.display = 'none';
+      burguerMenu.style.display = 'none';
+      navRight.classList.remove('mobile-user-open');
+      navRight.classList.remove('mobile-burguer-open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const btnUser = document.querySelector('.user-button');
+  const userMenu = document.querySelector('.user-menu-window');
+  const btnGlobe = document.querySelector('.globe-button');
+  const globeMenu = document.querySelector('.globe-menu-window');
+  const btnBurguer = document.querySelector('.burguer-button');
+  const burguerMenu = document.querySelector('.burguer-menu-window');
+  const mobileQuery = window.matchMedia('(max-width: 30rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const navRight = document.querySelector('.right-nav-buttons');
+
+  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
+  const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
+
+  
   // FUNCIONES PARA TRAER LAS CLASES DE nav-buttons-right.scss
   const menuUser = function (isOpen) {
     navRight.classList.toggle('mobile-user-open', isOpen);
@@ -10735,8 +10785,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuBurguer = function (isOpen) {
     navRight.classList.toggle('mobile-burguer-open', isOpen);
   };
-  
 
+  
+  // --- FUNCION PARA BLOQUEAR EL SCROLL EN MOVIL CUANDO LOS MENUS DE user Y burguer ESTEN ACTIVOS ---
+  const updateBodyScroll = function () {
+    const mobileMenuOpen = navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open');
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+  };
+
+
+
+  // ---------------------------------------------------------------------------
   // --- TOGGLEs ---
   // -- Mi Perfil --
   btnUser.addEventListener('click', function (e) {
@@ -10749,8 +10808,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // - MOVIL -
     if (mobileQuery.matches) {
       menuUser(userMenu.style.display === 'block');
+      updateBodyScroll();       // FUNCION DE BLOQUEO DEL SCROLL
     }
   });
+
 
   // -- Idioma --
   btnGlobe.addEventListener('click', function (e) {
@@ -10769,6 +10830,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+
   // -- Menú Burguer --
   btnBurguer.addEventListener('click', function (e) {
     // - ESCRITORIO -
@@ -10780,43 +10842,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // - MOVIL -
     if (mobileQuery.matches) {
       menuBurguer(burguerMenu.style.display === 'block');
+      updateBodyScroll();       // FUNCION DE BLOQUEO DEL SCROLL
     }
   });
+  //----
 
-
-  // FUNCIONES PARA OCULTAR AL HACER click FUERA
-  // Mi perfil
-  document.addEventListener('click', function (e) {
-    if (!mobileQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
-      userMenu.style.display = 'none';
-    }
-  });
-  // Idioma
-  document.addEventListener('click', function (e) {
-    if (!mobileQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
-      globeMenu.style.display = 'none';
-    }
-  });
-  // Idioma (en Menú Burguer)
-  document.addEventListener('click', function (e) {
-    if (btnGlobeInBurguer && globeMenuInBurguer && !globeMenuInBurguer.contains(e.target) && !btnGlobeInBurguer.contains(e.target)) {
-      globeMenuInBurguer.style.display = 'none';
-    }
-  });
-  // Menú Burguer
-  document.addEventListener('click', function (e) {
-    if (!burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
-      burguerMenu.style.display = 'none';
-    }
-  });
-
-
-  // -- FUNCION PARA EL BOTON DE CERRAR --
-  btnClose.addEventListener('click', function (e) {
-    if (mobileQuery.matches) {
-      userMenu.style.display = 'none';
-      menuUser(false);
-      menuBurguer(false);
-    }
+  mobileQuery.addEventListener('change', function () {
+    updateBodyScroll();
   });
 });

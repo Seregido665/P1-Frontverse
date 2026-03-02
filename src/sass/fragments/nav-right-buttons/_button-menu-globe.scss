@@ -1,24 +1,36 @@
 @use '../../helpers/mixins' as *;
 @use '../../helpers/variables' as *;
 
-.globe-menu-window__option {
-    background-color: white;
-    border: none;
-    width: 8.188rem;
-    height: 3.813rem;
-    display: flex;
-    align-items: center;
-    position: relative;
-    border-radius: 12px;
-    border-bottom: 1px solid #E6E7E8;
-    cursor: pointer;
+.globe-menu-window {
+    &__option {
+        background-color: white;
+        border: none;
+        width: 8.188rem;
+        height: 39px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        border-bottom: 1px solid #E6E7E8;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #EFF3F5;
+        }
+    }
 
     .globe-menu-window__option-text {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 
-    &:hover {
-        background-color: #EFF3F5;
+    .globe-menu-window__option-top {
+        .globe-menu-window__option {
+            border-radius: 12px 12px 0 0;
+        }
     }
-    
+
+    .globe-menu-window__option-bottom {
+        .globe-menu-window__option {
+            border-radius: 0 0 12px 12px;
+        }
+    }
 }

@@ -2,7 +2,7 @@
 @use '../../helpers/variables' as *;
 
 .burguer-menu-window__option {
-    width: 23.438rem;
+    width: 100%;
     height: 3.813rem;
     display: flex;
     align-items: center;
@@ -37,5 +37,9 @@
             transform: translateX(0);
             display: block;
         }
+    }
+
+    @include mobile {
+        border-radius: 0 0 0 0;
     }
 }
