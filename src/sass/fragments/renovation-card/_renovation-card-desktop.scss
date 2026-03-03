@@ -38,6 +38,9 @@
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
     }
 }
+.state-cell {
+    width: 115px;
+}
 
 .state {
     display: flex;
