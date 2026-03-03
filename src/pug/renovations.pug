@@ -1,0 +1,13 @@
+extends layouts/layout-home
+include components/button
+
+block vars
+    - var pageTitle = "Renovations";
+
+block header
+    title Renovations
+
+block content
+    include templates/renovationspage-header
+    include templates/next-renovations-list
+        

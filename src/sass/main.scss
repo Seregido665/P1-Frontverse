@@ -27,11 +27,13 @@
 @use "fragments/potential-clients";
 
 /** COMPONENTS **/
-@use 'components/nav-buttons-left' as *;
-@use 'components/nav-buttons-right' as *;
+@use 'components/nav-buttons-left';
+@use 'components/nav-buttons-right';
 @use 'layout/homepage-header';
+@use 'layout/renovationspage-header';
 
 /** TEMPLATES **/
 @use 'layout/nav-menus-right/user-window-menu';
 @use 'layout/nav-menus-right/globe-window-menu';
 @use 'layout/nav-menus-right/burguer-menu-window';
+@use 'layout/next-renovations-list';

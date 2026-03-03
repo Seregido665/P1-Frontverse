@@ -1,0 +1,63 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+
+
+.renovation-list {
+    background-color: $body-background-color;
+    padding: 40px 24px 80px 24px;
+}
+
+.renovations-filter-top  {
+
+}
+
+.renovations-filter-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.renovations-filter__all-filters {
+    padding: 10px 16px;
+    border: 1px solid $primary50;
+    @include button-styles($background-color: $body-background-color, $border-radius: 8px);
+    display: inline-flex;
+    align-items: center;
+    .icon {
+        margin-right: 10px;
+        font-size: $icon-size-filter;
+    }
+    .renovations-filter__all-filters__text {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+}
+
+.renovations-filter__all-policies__text {
+    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey75);
+}
+
+
+.renovations-filter__list__order-by {
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+}
+
+.renovations-filter__list__type-filter {
+    background-color: $light;
+    border: 1px solid $primary50;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10.5px 12px;
+    .renovations-filter__list__type-filter__example {
+        @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
+    }
+    .icon {
+        padding-top: 3px;
+        font-size: $icon-size-chevDown;
+    }
+}
+
+
+
+
