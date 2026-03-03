@@ -3,9 +3,9 @@
 @use '../helpers/icons-variables' as *;
 
 
-.renovation-list {
+.renovation-list-header {
     background-color: $body-background-color;
-    padding: 40px 24px 40px 24px;
+    padding: 10px 24px 40px 24px;
 }
 
 .renovations-filter-bottom {
@@ -16,6 +16,7 @@
 }
 
 .renovations-filter__all-filters {
+    margin-top: 35px;
     padding: 10px 16px;
     border: 1px solid $primary50;
     @include button-styles($background-color: $body-background-color, $border-radius: 8px);
@@ -70,8 +71,8 @@
         display: none;
     }
     .all-mobile-renovations {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
         margin-top: 24px;
         display: block;
     }
@@ -82,8 +83,8 @@
         display: none;
     }
     .all-mobile-renovations {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
         margin-top: 24px;
         display: block;
     }
@@ -91,7 +92,7 @@
 
 @include mobile {
     .renovation-list {
-        padding: 15px 16px 72px 16px;
+        padding: 15px 16px 9px 16px;
         display: flex;
         flex-direction: column;
     }
@@ -99,8 +100,8 @@
         display: contents;
     }
     .renovations-filter__all-filters {    // ASI IGNORA LOS margin Y paddings ANTERIORES
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
         justify-content: center;
         border-radius: 0;
         border: none;
@@ -133,8 +134,8 @@
         display: none;
     }
     .all-mobile-renovations {
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
+        width: 100%;
+        margin-left: 0;
         margin-top: 24px;
         display: block;
         order: 3;

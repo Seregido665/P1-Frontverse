@@ -67,3 +67,65 @@
         }
     }
 }
+
+@include mobile {
+    .home-reservation__header {
+        display: none;
+    }
+
+    .renovation-card-desktop {
+        width: 343px;
+        max-width: calc(100% - 32px);
+        height: 366px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        margin: 0 auto 16px auto;
+    }
+
+    .renovation-card-desktop__policy,
+    .renovation-card-desktop__risk,
+    .renovation-card-desktop__date-contrat,
+    .renovation-card-desktop__date-maturity,
+    .renovation-card-desktop__price,
+    .renovation-card-desktop__state {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    // CABEZERA DE CADA DATO
+    .renovation-card-desktop__policy::before {
+        content: 'No. de póliza';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+
+    .renovation-card-desktop__risk::before {
+        content: 'Nombre del riesgo';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+
+    .renovation-card-desktop__date-contrat::before {
+        content: 'Fecha de contrato';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+
+    .renovation-card-desktop__date-maturity::before {
+        content: 'Fecha de vencimiento';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+
+    .renovation-card-desktop__price::before {
+        content: 'Importe';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+
+    .renovation-card-desktop__state::before {
+        content: 'Estado de póliza';
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+    }
+}

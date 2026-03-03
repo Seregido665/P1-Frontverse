@@ -46,39 +46,15 @@
     .title-renovations {
         margin: 1rem 0 1rem 1rem;
     }
-
-    .renovations-desktop {
-        display: none;
-    }
-    .renovations-mobile {
-        display: block;
-    }
 }
 
 @include tablet {
     .title-renovations {
-        margin: 1rem 0 1rem 1rem;
-    }
-
-    .renovations-desktop {
-        display: none;
-    }
-    .renovations-mobile {
-        display: block;
+        margin: 1rem 0 1rem 1.5rem;
     }
 }
+
 @include mobile {
-    .title-renovations {
-        margin: 1rem 0 1rem 1rem;
-    }
-
-    .renovations-desktop {
-        display: none;
-    }
-    .renovations-mobile {
-        display: block;
-    }
-
     .view-more-button {
         margin: 1.5rem 1rem;
     }
