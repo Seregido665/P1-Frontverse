@@ -8,13 +8,6 @@
     padding: 10px 24px 40px 24px;
 }
 
-.renovations-filter-bottom {
-    margin-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .renovations-filter__all-filters {
     margin-top: 35px;
     padding: 10px 16px;
@@ -30,13 +23,17 @@
     }
 }
 
-.renovations-filter__all-policies__text {
-    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey75);
-}
-
-
-.renovations-filter__list__order-by {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+.renovations-filter-bottom {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .renovations-filter__all-policies__text {
+        @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey75);
+    }
+    .renovations-filter__list__order-by {
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+    }
 }
 
 .renovations-filter__list__type-filter {
@@ -47,7 +44,6 @@
     display: inline-flex;
     align-items: center;
     padding: 10.5px 12px;
-    
     .renovations-filter__list__type-filter__example {
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
     }
@@ -56,6 +52,9 @@
         font-size: $icon-size-chevDown;
     }
 }
+
+
+
 
 .all-desktop-renovations {
     background-color: $body-background-color;

@@ -10777,27 +10777,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  const setScrollableLanguageMenu = function (menuElement) {
-    if (!menuElement) return;
-
-    menuElement.style.overflowY = '';
-    menuElement.style.maxHeight = '';
-
-    const menuRect = menuElement.getBoundingClientRect();
-    const availableHeight = window.innerHeight - menuRect.top - 16;
-
-    if (availableHeight > 0) {
-      menuElement.style.maxHeight = `${availableHeight}px`;
-      menuElement.style.overflowY = 'auto';
-    }
-  };
-
-  const resetScrollableLanguageMenu = function (menuElement) {
-    if (!menuElement) return;
-    menuElement.style.overflowY = '';
-    menuElement.style.maxHeight = '';
-  };
-
   
   // FUNCIONES PARA TRAER LAS CLASES DE nav-buttons-right.scss
   const menuUser = function (isOpen) {
@@ -10838,20 +10817,16 @@ document.addEventListener('DOMContentLoaded', function () {
   btnGlobe.addEventListener('click', function (e) {
     if (globeMenu.style.display === 'none') {
       globeMenu.style.display = 'block';
-      setScrollableLanguageMenu(globeMenu);
     } else {
       globeMenu.style.display = 'none';
-      resetScrollableLanguageMenu(globeMenu);
     }
   });
   // -- Idioma (en Menú Burguer) --
   btnGlobeInBurguer.addEventListener('click', function (e) {
     if (globeMenuInBurguer.style.display === 'none') {
       globeMenuInBurguer.style.display = 'block';
-      setScrollableLanguageMenu(globeMenuInBurguer);
     } else {
       globeMenuInBurguer.style.display = 'none';
-      resetScrollableLanguageMenu(globeMenuInBurguer);
     }
   });
 
@@ -10874,20 +10849,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
   mobileQuery.addEventListener('change', function () {
     updateBodyScroll();
-    if (globeMenu.style.display === 'block') {
-      setScrollableLanguageMenu(globeMenu);
-    }
-    if (globeMenuInBurguer && globeMenuInBurguer.style.display === 'block') {
-      setScrollableLanguageMenu(globeMenuInBurguer);
-    }
-  });
-
-  window.addEventListener('resize', function () {
-    if (globeMenu.style.display === 'block') {
-      setScrollableLanguageMenu(globeMenu);
-    }
-    if (globeMenuInBurguer && globeMenuInBurguer.style.display === 'block') {
-      setScrollableLanguageMenu(globeMenuInBurguer);
-    }
   });
 });

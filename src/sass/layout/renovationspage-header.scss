@@ -7,28 +7,27 @@
     border-top: 1px solid #E6E7E8;
 }
 
+.renovations-header__menu-subtitle {
+        margin-bottom: 44px;
+        .renovations-header__menu-subtitle__policies {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
+        }
+        .separation {
+            margin: 0 5px 0 5px;
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        }
+        .renovations-header__menu-subtitle__next-renovations {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        }
+    }
+
 .renovations-header__bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.renovations-header__menu-subtitle {
-    margin-bottom: 44px;
-    .renovations-header__menu-subtitle__policies {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
+    .renovations-header__menu-title__next-renovations {
+        @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
     }
-    .separation {
-        margin: 0 5px 0 5px;
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
-    }
-    .renovations-header__menu-subtitle__next-renovations {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
-    }
-}
-
-
-.renovations-header__menu-title__next-renovations {
-    @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
 }
 
 .renovations-header__number-policies {
@@ -48,6 +47,8 @@
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 }
+
+
 
 @include tablet {
     .renovations-header {

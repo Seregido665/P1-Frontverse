@@ -29,10 +29,6 @@
     background-color: inherit;
   }
 
-  .client-card__bottom {
-    background-color: inherit;
-  }
-
   .client-card__header {
     display: flex;
     flex-direction: column;
@@ -56,6 +52,10 @@
     right: 1rem;
     text-decoration: none;
     border: none;
+    background-color: inherit;
+  }
+
+  .client-card__bottom {
     background-color: inherit;
   }
 
@@ -90,20 +90,17 @@
 
   .client-card {
     height: 22.25rem;
-
-    .client-card__header {
-      margin-top: 3.625rem;
-    }
-
+  }
+  .client-card__header {
+    margin-top: 3.625rem;
     .client-card__name {
       width: 14.6875rem;
     }
+  }
 
-    .client-card__contact {
-      flex-direction: column;
-      margin-bottom: 4rem;
-    }
-
+  .client-card__contact {
+    flex-direction: column;
+    margin-bottom: 4rem;
     .client-card__mail {
       margin-bottom: 1.5rem;
     }
@@ -123,19 +120,17 @@
 
     .client-card__header {
       margin-top: 3rem;
-    }
-
-    .client-card__name {
-      width: 14.6875rem;
+      .client-card__name {
+        width: 14.6875rem;
+      }
     }
 
     .client-card__contact {
       flex-direction: column;
       margin-bottom: 4rem;
-    }
-
-    .client-card__mail {
-      margin-bottom: 1.5rem;
+      .client-card__mail {
+        margin-bottom: 1.5rem;
+      }
     }
   }
 }
