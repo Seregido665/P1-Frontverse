@@ -24,6 +24,7 @@
         margin-left: 1.5rem;
         border: none;
         cursor: pointer;
+        text-decoration: none;
 
         &:hover {
             @include button-styles($background-color: $primary100);

@@ -43,3 +43,29 @@ $icon-size-powerOff: 1.5rem;
 $icon-size-phone: 1.25rem;
 $icon-size-mail: 1.25rem;
 $icon-size-lock: 1.5rem;
+
+
+
+@mixin icon-content-classes {
+	.icon.user:before { content: $icon-user; }
+	.icon.globe:before { content: $icon-globe; }
+	.icon.arrow-dropdown:before { content: $icon-arrowDropdown; }
+	.icon.frameOn:before { content: $icon-frameOn; }
+	.icon.frameOff:before { content: $icon-frameOff; }
+	.icon.filter:before { content: $icon-filter; }
+	.icon.file:before { content: $icon-file; }
+	.icon.close:before { content: $icon-close; }
+	.icon.clock:before { content: $icon-clock; }
+	.icon.chev-down:before { content: $icon-chevDown; }
+	.icon.check:before { content: $icon-check; }
+	.icon.burger_menu:before { content: $icon-burguerMenu; }
+	.icon.back:before { content: $icon-back; }
+	.icon.arrow-right:before { content: $icon-arrowRight; }
+	.icon.trash:before { content: $icon-trash; }
+	.icon.skip-right:before { content: $icon-skipRight; }
+	.icon.skip-left:before { content: $icon-skipLeft; }
+	.icon.power-off:before { content: $icon-powerOff; }
+	.icon.phone:before { content: $icon-phone; }
+	.icon.mail:before { content: $icon-mail; }
+	.icon.lock:before { content: $icon-lock; }
+}

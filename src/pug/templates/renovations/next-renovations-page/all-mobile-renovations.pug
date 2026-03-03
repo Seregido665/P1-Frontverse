@@ -1,9 +1,17 @@
 include ../../../components/renovation-card/renovation-card-mobile
 
-.home-reservation
-    +renovation-card-mobile("75846843", "Hyundai Ioniq", "01/12/2022 ", "14/02/2024", "30.203,76 €")
-        .state__success
-            +state-policy("check", "Pagada")
-    +renovation-card-mobile("75846843", "Hyundai Ioniq", "01/12/2022 ", "14/02/2024", "30.203,76 €")
-        .state__error
-            +state-policy("close", "Vencido")
+.home-reservation-mobile
+    +renovation-card-mobile("75846843", "Hyundai Ioniq", "01/12/2022", "14/02/2024", "30.203,76 €")
+        .state
+            .state__warning
+                +state-policy("clock", "Pendiente")
+
+    +renovation-card-mobile("75846843", "Hyundai Ioniq", "01/12/2022", "14/02/2024", "30.203,76 €")
+        .state
+            .state__success
+                +state-policy("check", "Pagada")
+
+    +renovation-card-mobile("75846843", "Hyundai Ioniq", "01/12/2022", "14/02/2024", "30.203,76 €")
+        .state
+            .state__error
+                +state-policy("close", "Vencido")

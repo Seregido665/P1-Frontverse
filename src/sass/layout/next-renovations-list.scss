@@ -61,33 +61,6 @@
     padding-bottom: 40px;
 }
 
-.all-mobile-renovations {
-    display: none;
-}
-
-@include desktop {
-    .all-desktop-renovations {
-        display: none;
-    }
-    .all-mobile-renovations {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 24px;
-        display: block;
-    }
-}
-
-@include tablet {
-    .all-desktop-renovations {
-        display: none;
-    }
-    .all-mobile-renovations {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 24px;
-        display: block;
-    }
-}
 
 @include mobile {
     .renovation-list {
@@ -128,16 +101,6 @@
     .renovations-filter__all-policies {
         margin-top: 24px;
         order: 2;
-    }
-    .all-desktop-renovations {
-        display: none;
-    }
-    .all-mobile-renovations {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 24px;
-        display: block;
-        order: 3;
     }
 }
 
