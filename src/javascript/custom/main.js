@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
       userMenu.style.display = 'none';
     }
   });
+  // Menú Burguer
+  document.addEventListener('click', function (e) {
+    if (!mobileQuery.matches && !burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
+      burguerMenu.style.display = 'none';
+    }
+  });
   // Idioma
   document.addEventListener('click', function (e) {
     if (!mobileQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {

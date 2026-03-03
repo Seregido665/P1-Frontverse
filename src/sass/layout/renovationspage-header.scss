@@ -3,33 +3,33 @@
 @use '../helpers/icons-variables' as *;
 
 .renovations-header {
-    padding-inline: 88px;
+    padding: 32px 88px 32px 88px;
     border-top: 1px solid #E6E7E8;
 }
 
-.renovations-header__top {
-    margin-top: 32px;
-}
+.renovations-header__menu-subtitle {
+        margin-bottom: 44px;
+        .renovations-header__menu-subtitle__policies {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
+        }
+        .separation {
+            margin: 0 5px 0 5px;
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        }
+        .renovations-header__menu-subtitle__next-renovations {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        }
+    }
+
 .renovations-header__bottom {
-    margin: 44px 0 32px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .renovations-header__menu-title__next-renovations {
+        @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
+    }
 }
 
-.renovations-header__menu-subtitle__policies {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
-}
-.renovations-header__menu-subtitle__next-renovations {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
-}
-.separation {
-    margin: 0 5px 0 5px;
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
-}
-.renovations-header__menu-title__next-renovations {
-    @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
-}
 .renovations-header__number-policies {
     padding: 8.5px 12px;
     @include button-styles($background-color: #B7CBD3, $border-radius: 8px);
@@ -45,5 +45,39 @@
     }
     .renovations-header__number-policies__policies {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+}
+
+
+
+@include tablet {
+    .renovations-header {
+        padding: 24px 109px 30px 16px;
+    }
+    .renovations-header__menu-subtitle {
+        display: none;
+    }
+    .renovations-header__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        .renovations-header__number-policies {
+            margin-top: 16px;
+        }
+    }
+}
+
+@include mobile {
+    .renovations-header {
+        padding: 24px 109px 30px 16px;
+    }
+    .renovations-header__menu-subtitle {
+        display: none;
+    }
+    .renovations-header__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        .renovations-header__number-policies {
+            margin-top: 16px;
+        }
     }
 }

@@ -21,16 +21,16 @@
     .globe-menu-window__option-text {
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
     }
+}
 
-    .globe-menu-window__option-top {
-        .globe-menu-window__option {
-            border-radius: 12px 12px 0 0;
-        }
+.globe-menu-window__option-top {
+    .globe-menu-window__option {
+        border-radius: 12px 12px 0 0;
     }
+}
 
-    .globe-menu-window__option-bottom {
-        .globe-menu-window__option {
-            border-radius: 0 0 12px 12px;
-        }
+.globe-menu-window__option-bottom {
+    .globe-menu-window__option {
+        border-radius: 0 0 12px 12px;
     }
 }

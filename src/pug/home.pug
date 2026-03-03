@@ -13,11 +13,9 @@ block content
         section
             p.title-renovations Próximas renovaciones
             .renovations-desktop
-                include templates/home-renovations/home-desktop-renovations
-            .renovations-mobile
-                include templates/home-renovations/home-mobile-renovations
+                include templates/renovations/home-desktop-renovations
         .view-more-button
-            +button('icon', 'Ver todas')
+            +see-all('icon', 'Ver todas', 'renovations.html')
         section 
             p.title-clients Clientes potenciales
             .potential-clients
