@@ -1,6 +1,6 @@
-@use '../../helpers/icons-variables' as *;
-@use '../../helpers/mixins' as *;
-@use '../../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
 
 .home-reservation__header {
     min-height: 1.813rem;
@@ -206,7 +206,7 @@
     .renovation-card-desktop {
         width: 100%;
         max-width: calc(100% - 32px);
-        height: 366px;
+        height: 395px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;

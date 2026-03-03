@@ -62,7 +62,11 @@
 }
 
 
+
 @include mobile {
+    .all-desktop-renovations .home-reservation > .renovation-card-desktop:nth-child(n + 4) {
+        display: none;
+    }
     .renovation-list {
         padding: 15px 16px 9px 16px;
         display: flex;
