@@ -56,9 +56,14 @@
     }
     .state__success {
         @include policy-state-styles($background-color: $state-success);
-
         .state__text {
             color: $state-success-text;
+        }
+    }
+    .state__error {
+        @include policy-state-styles($background-color: $state-error);
+        .state__text {
+            color: $state-error-text;
         }
     }
 }

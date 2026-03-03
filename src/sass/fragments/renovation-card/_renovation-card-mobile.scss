@@ -48,6 +48,13 @@
             border-radius: 4px;
             @include font-styles( $font-weight: 400, $font-size: 16px, $color: $state-success-text);
         }
+        &__error {
+            background-color: $state-error;
+            padding: 0.125rem 0.5rem;
+            width: fit-content;
+            border-radius: 4px;
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $state-error-text);
+        }
     }
 
     @include desktop {

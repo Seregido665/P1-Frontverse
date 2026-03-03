@@ -5,14 +5,11 @@
 
 .renovation-list {
     background-color: $body-background-color;
-    padding: 40px 24px 80px 24px;
-}
-
-.renovations-filter-top  {
-
+    padding: 40px 24px 40px 24px;
 }
 
 .renovations-filter-bottom {
+    margin-top: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,7 +22,6 @@
     display: inline-flex;
     align-items: center;
     .icon {
-        margin-right: 10px;
         font-size: $icon-size-filter;
     }
     .renovations-filter__all-filters__text {
@@ -43,18 +39,105 @@
 }
 
 .renovations-filter__list__type-filter {
+    margin-left: 14px;
     background-color: $light;
     border: 1px solid $primary50;
     border-radius: 4px;
     display: inline-flex;
     align-items: center;
     padding: 10.5px 12px;
+    
     .renovations-filter__list__type-filter__example {
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
     }
     .icon {
         padding-top: 3px;
         font-size: $icon-size-chevDown;
+    }
+}
+
+.all-desktop-renovations {
+    background-color: $body-background-color;
+    padding-bottom: 40px;
+}
+
+.all-mobile-renovations {
+    display: none;
+}
+
+@include desktop {
+    .all-desktop-renovations {
+        display: none;
+    }
+    .all-mobile-renovations {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-top: 24px;
+        display: block;
+    }
+}
+
+@include tablet {
+    .all-desktop-renovations {
+        display: none;
+    }
+    .all-mobile-renovations {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-top: 24px;
+        display: block;
+    }
+}
+
+@include mobile {
+    .renovation-list {
+        padding: 15px 16px 72px 16px;
+        display: flex;
+        flex-direction: column;
+    }
+    .renovations-filter {
+        display: contents;
+    }
+    .renovations-filter__all-filters {    // ASI IGNORA LOS margin Y paddings ANTERIORES
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        justify-content: center;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid $primary50;
+        background-color: $light;
+        .renovations-filter__all-filters__text {
+            @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
+        }
+    }
+    .renovations-filter-top {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
+    }
+    .renovations-filter-bottom {
+        order: 1;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .renovations-filter__list {
+        order: 1;
+    }
+    .renovations-filter__all-policies {
+        margin-top: 24px;
+        order: 2;
+    }
+    .all-desktop-renovations {
+        display: none;
+    }
+    .all-mobile-renovations {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-top: 24px;
+        display: block;
+        order: 3;
     }
 }
 
