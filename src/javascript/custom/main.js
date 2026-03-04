@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const btnUser = document.querySelector('.user-button');
+  const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');

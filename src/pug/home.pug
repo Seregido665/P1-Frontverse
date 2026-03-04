@@ -10,13 +10,14 @@ block header
 block content
     .home
         include templates/homepage-header
-        section
-            p.title-renovations Próximas renovaciones
-            .renovations-desktop
-                include templates/renovations/home-desktop-renovations
-        .view-more-button
-            +see-all('icon', 'Ver todas', 'renovations.html')
-        section 
-            p.title-clients Clientes potenciales
-            .potential-clients
-                include templates/potential-clients
+        .home-content
+            section
+                p.title-renovations Próximas renovaciones
+                .renovations-desktop
+                    include templates/renovations/home-renovations
+            .view-more-button
+                +see-all('icon', 'Ver todas', 'renovations.html')
+            section 
+                p.title-clients Clientes potenciales
+                .potential-clients
+                    include templates/potential-clients

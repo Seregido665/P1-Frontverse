@@ -3,15 +3,20 @@
 
 .home {
     background-color: $body-background-color;    
+    
     .title-renovations {
         @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
-        margin: 2.5rem 0 2rem 1.5rem;
+        margin-bottom: 2rem;
     }
 
     .title-clients {
         @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
-        margin: 1.5rem 0 1.5rem 1.5rem;
+        margin: 1.5rem 0;
     }
+}
+
+.home-content {
+    padding: 40px 24px 80px 24px;
 }
 
 
@@ -21,7 +26,6 @@
         @include button-styles($background-color: $primary25);
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
         padding: 0.625rem 1rem;
-        margin-left: 1.5rem;
         border: none;
         cursor: pointer;
         text-decoration: none;
@@ -37,13 +41,6 @@
 }
 
 
-
-.renovations-desktop {
-    display: block;
-}
-.renovations-mobile {
-    display: none;
-}
 
 @include desktop {
     .title-renovations {

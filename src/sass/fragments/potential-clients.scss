@@ -5,10 +5,7 @@
 .client-list {
   display: grid;
   grid-template-columns: 1fr 1fr;    
-  gap: 1.25rem;                     
-  margin-inline: 1.5625rem;
-  padding-bottom: 80px;
-  
+  gap: 1.25rem;              
 }
 
 .client-card {
@@ -49,7 +46,7 @@
     position: absolute;
     font-size: $icon-size-trash;
     top: 1rem;
-    right: 1rem;
+    right: 1.5rem;
     text-decoration: none;
     border: none;
     background-color: inherit;
