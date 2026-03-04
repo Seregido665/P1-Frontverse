@@ -35,27 +35,76 @@ button {
   gap: 2.5rem; 
   height: 2.5rem;
 
+  @include desktop {
+    gap: 1rem;
+  }
+
+  @include tablet {
+    gap: 1rem;
+  }
+
   
   .burguer-button {
     display: none;
+
+    @include tablet {   // MOSTRAR menu-burguer
+      display: inline-block;
+      font-size: $icon-size-burguerMenu;
+      padding-right: 0.313rem;
+      margin-top: 5px;
+    }
   }
+
+  .arrow-dropdown {
+    @include desktop {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .globe {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .title {
+    @include desktop {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .globe-button {
+    @include tablet {
+      display: none;
+    }
+  }
+
   .close {
     display: none;
     .icon {
       filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
     }
-  }
 
-  @include mobile {
-    .close {
+    @include mobile {
       display: none;          // POR DEFECTO ESTE BOTON ESTA OCULTO
       font-size: 1.5rem;
     }
+  }
 
+  @include mobile {
     // --- KEY --- 
     // SE LLAMARA A ESTOS ESTADOS DESDE main.js Y ASI TRABAJAR CON ELLOS.
     &.mobile-user-open, &.mobile-burguer-open {        
       .close {
+        margin-right: 3px;
         display: inline-block;
         .icon {
           filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
@@ -65,29 +114,6 @@ button {
       .burguer-button {
         display: none;
       }
-    }
-  }
-  
-  @include tablet {
-    gap: 1rem;       
-    .arrow-dropdown, .globe, .title { 
-      display: none;
-    }
-    .burguer-button {   // MOSTRAR menu-burguer
-      display: inline-block;
-      font-size: $icon-size-burguerMenu;
-      padding-right: 0.313rem;
-    }
-    .globe-button {
-      display: none;
-    }
-  }
-   
-  @include desktop {
-    gap: 1rem;    
-       
-    .arrow-dropdown, .title { 
-      display: none;
     }
   }
 }

@@ -5,6 +5,32 @@
 .footer {
     padding: 1rem 2rem;
     background-color: white; 
+
+    @include tablet {
+        padding: 1rem;
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-contact__direction {
+            margin-top: 0.625rem;
+        }
+    }
+
+    @include mobile {
+        padding: 1rem;
+        margin-bottom: 10px;
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer-contact__direction {
+            margin-top: 0.625rem;
+        }
+        .footer-marc .footer-marc__text {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        }
+    }
 }
 
 .footer-info {
@@ -63,6 +89,40 @@
     .separation {
         margin-inline: 1.5rem;
     }
+
+    @include desktop {
+        .separation {
+            margin-inline: 0.875rem;
+        }
+    }
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        a {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        }
+        .middle {
+            margin: 0.875rem 0;
+        }
+        .separation {
+            display: none;
+        }
+    }
+
+    @include mobile {
+        display: flex;
+        flex-direction: column;
+        a {
+            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        }
+        .middle {
+            margin: 0.875rem 0;
+        }
+        .separation {
+            display: none;
+        }
+    }
 }
 .footer-marc {
     margin-top: 2.03125rem;
@@ -73,77 +133,10 @@
     .footer-marc__text {
         @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
     }
-}
 
-
-@include desktop {
-    .footer-legal {
-        .separation {
-            margin-inline: 0.875rem;
-        }
-    }
-}
-
-
-@include tablet {
-    .footer {
-        padding: 1rem;
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .footer-contact__direction {
-            margin-top: 0.625rem;
-        }
-    }
-
-    .footer-legal {
-        display: flex;
-        flex-direction: column;
-        a {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
-        .middle {
-            margin: 0.875rem 0;
-        }
-        .separation {
-            display: none;
-        }
-    }
-    .footer-marc {
+    @include tablet {
         .footer-marc__text {
             @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
-    }
-}
-
-@include mobile {
-    .footer {
-        padding: 1rem;
-        margin-bottom: 10px;
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .footer-contact__direction {
-            margin-top: 0.625rem;
-        }
-        .footer-marc .footer-marc__text {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
-    }
-
-    .footer-legal {
-        display: flex;
-        flex-direction: column;
-        a {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
-        .middle {
-            margin: 0.875rem 0;
-        }
-        .separation {
-            display: none;
         }
     }
 }

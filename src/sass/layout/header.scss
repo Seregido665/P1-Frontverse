@@ -8,11 +8,12 @@
   height: 6rem;
   padding: 1rem 5.5rem;
 
-  @include mobile {
-    height: 5rem;
+  @include tablet {
+    
   }
 
-  @include tablet {
-    padding: 1rem 3rem;
+  @include mobile {
+    padding: 16px 16px 18px 12px;
+    height: 5rem;
   }
 }

@@ -7,6 +7,9 @@
     .title-renovations {
         @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
         margin-bottom: 2rem;
+        @include tablet {
+            margin-bottom: 1rem;
+        }
     }
 
     .title-clients {
@@ -17,11 +20,19 @@
 
 .home-content {
     padding: 40px 24px 80px 24px;
+    @include tablet {
+        padding: 16px 16px 24px 16px;
+    }
 }
 
 
 .view-more-button {
     display: flex;
+
+    @include mobile {
+        margin-top: 1.5rem;
+    }
+
     .main-button {
         @include button-styles($background-color: $primary25);
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
@@ -37,25 +48,5 @@
             @include button-styles($background-color: $primary100);
             transform: translateY(2px);
         }
-    }
-}
-
-
-
-@include desktop {
-    .title-renovations {
-        margin: 1rem 0 1rem 1rem;
-    }
-}
-
-@include tablet {
-    .title-renovations {
-        margin: 1rem 0 1rem 1.5rem;
-    }
-}
-
-@include mobile {
-    .view-more-button {
-        margin-top: 1.5rem;
     }
 }

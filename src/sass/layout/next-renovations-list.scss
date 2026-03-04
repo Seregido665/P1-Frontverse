@@ -21,6 +21,19 @@
     .renovations-filter__all-filters__text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
+
+    @include mobile {    // ASI IGNORA LOS margin Y paddings ANTERIORES
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid $primary50;
+        background-color: $light;
+        .renovations-filter__all-filters__text {
+            @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
+        }
+    }
 }
 
 .renovations-filter-bottom {
@@ -33,6 +46,12 @@
     }
     .renovations-filter__list__order-by {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+    }
+
+    @include mobile {
+        order: 1;
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -59,50 +78,46 @@
 .all-desktop-renovations {
     background-color: $body-background-color;
     padding-bottom: 40px;
+    @include mobile {
+        .home-reservation > .renovation-card-desktop:nth-child(n + 4) {
+            display: none;
+        }
+    }
 }
 
 
-
-@include mobile {
-    .all-desktop-renovations .home-reservation > .renovation-card-desktop:nth-child(n + 4) {
-        display: none;
-    }
-    .renovation-list {
+.renovation-list {
+    @include mobile {
         padding: 15px 16px 9px 16px;
         display: flex;
         flex-direction: column;
     }
-    .renovations-filter {
+}
+
+.renovations-filter {
+    @include mobile {
         display: contents;
     }
-    .renovations-filter__all-filters {    // ASI IGNORA LOS margin Y paddings ANTERIORES
-        width: 100%;
-        margin-left: 0;
-        justify-content: center;
-        border-radius: 0;
-        border: none;
-        border-top: 1px solid $primary50;
-        background-color: $light;
-        .renovations-filter__all-filters__text {
-            @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
-        }
-    }
-    .renovations-filter-top {
+}
+
+.renovations-filter-top {
+    @include mobile {
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         z-index: 1000;
     }
-    .renovations-filter-bottom {
-        order: 1;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .renovations-filter__list {
+}
+
+.renovations-filter__list {
+    @include mobile {
         order: 1;
     }
-    .renovations-filter__all-policies {
+}
+
+.renovations-filter__all-policies {
+    @include mobile {
         margin-top: 24px;
         order: 2;
     }

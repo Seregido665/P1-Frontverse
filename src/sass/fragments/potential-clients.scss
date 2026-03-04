@@ -5,7 +5,21 @@
 .client-list {
   display: grid;
   grid-template-columns: 1fr 1fr;    
-  gap: 1.25rem;              
+  gap: 1.25rem;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .client-card {
@@ -72,45 +86,14 @@
     @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
   }
-}
 
-
-@include mobile {
-  .client-list {
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1.5rem;
-  }
-
-  .client-card {
-    height: 22.25rem;
-  }
-  .client-card__header {
-    margin-top: 3.625rem;
-    .client-card__name {
-      width: 14.6875rem;
+  @include desktop {
+    .client-card__contact {
+      flex-direction: column;
     }
   }
 
-  .client-card__contact {
-    flex-direction: column;
-    margin-bottom: 4rem;
-    .client-card__mail {
-      margin-bottom: 1.5rem;
-    }
-  }
-}
-
-@include tablet {
-  .client-list {
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1.5rem;
-  }
-
-  .client-card {
+  @include tablet {
     height: 22.25rem;
 
     .client-card__header {
@@ -128,12 +111,23 @@
       }
     }
   }
-}
 
-@include desktop {
-  .client-card {
+  @include mobile {
+    height: 22.25rem;
+
+    .client-card__header {
+      margin-top: 3.625rem;
+      .client-card__name {
+        width: 14.6875rem;
+      }
+    }
+
     .client-card__contact {
       flex-direction: column;
+      margin-bottom: 4rem;
+      .client-card__mail {
+        margin-bottom: 1.5rem;
+      }
     }
   }
 }
