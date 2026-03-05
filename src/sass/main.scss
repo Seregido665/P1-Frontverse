@@ -16,23 +16,25 @@
 @use "layout/header";
 @use "layout/navigation";
 @use "layout/footer";
-@use "layout/home";
+@use "layout/home/home";
 
 /** FRAGMENTS **/
-@use "fragments/nav-right-buttons/_button-menu-user";
-@use "fragments/nav-right-buttons/_button-menu-globe";
-@use "fragments/nav-right-buttons/_buttons-buguer-menu";
+@use "components/navbar/menu-buttons/_button-menu-user";
+@use "components/navbar/menu-buttons/_button-menu-globe";
+@use "components/navbar/menu-buttons/_buttons-buguer-menu";
 @use "fragments/_renovation-card-desktop";
 @use "fragments/potential-clients";
 
 /** COMPONENTS **/
-@use 'components/nav-buttons-left';
-@use 'components/nav-buttons-right';
-@use 'layout/homepage-header';
-@use 'layout/renovationspage-header';
+@use 'components/navbar/nav-buttons-left';
+@use 'components/navbar/nav-buttons-right';
+@use 'layout/home/homepage-header';
+@use 'layout/renovations/renovationspage-header';
+@use 'layout/renovations/filters';
+@use 'layout/renovations/pagination';
 
 /** TEMPLATES **/
-@use 'layout/nav-menus-right/user-window-menu';
-@use 'layout/nav-menus-right/globe-window-menu';
-@use 'layout/nav-menus-right/burguer-menu-window';
-@use 'layout/next-renovations-list';
+@use 'components/navbar/nav-menus/user-window-menu';
+@use 'components/navbar/nav-menus/globe-window-menu';
+@use 'components/navbar/nav-menus/burguer-menu-window';
+@use 'layout/renovations/next-renovations-list';
