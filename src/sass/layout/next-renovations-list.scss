@@ -19,6 +19,8 @@
         column-gap: 12px;
     }
     @include mobile {
+        display: flex;
+        flex-direction: column;
         padding-bottom: 24px;
     }
 }
@@ -27,19 +29,31 @@
     display: flex;
     align-items: center;
     width: max-content;
+    @include tablet {
+        order: 0;
+        overflow-x: auto;
+    }
+
     .apply-filters__filter1, .apply-filters__filter2, .apply-filters__filter3 {
         display: inline-flex;
         align-items: center;
         column-gap: 8px;
         margin-left: 12px;
         padding-inline: 16px;
+        min-width: fit-content;
         height: 36px;
         border-radius: 99px;
         background-color: $primary100;
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $light);
+        @include tablet {
+            order: 0;
+            overflow-x: auto;
+            margin-right: 12px;
+            margin-left: 0;
+        }
     }
 
-    .apply-filters__filter3 > .number {
+    .number {
         width: 28px;
         height: 28px;
         display: inline-flex;
@@ -73,6 +87,12 @@
     @include mobile {    // ASI IGNORA LOS margin Y paddings ANTERIORES
         width: 100%;
         margin-left: 0;
+        order: 3;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1000;
         justify-content: center;
         border-radius: 0;
         border: none;
@@ -94,6 +114,12 @@
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
     }
 
+    @include tablet {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 16px;
+    }
+
     @include mobile {
         order: 1;
         flex-direction: column;
@@ -104,8 +130,12 @@
 .renovations-filter__all-policies {
     display: flex;
     align-items: center;
+    @include tablet {
+        margin-top: 16px;
+    }
     .renovations-filter__all-policies__text-results,
     .renovations-filter__all-policies__text-filters {
+        margin-left: 5px;
         margin-right: 16px;
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100);
     }
@@ -115,6 +145,11 @@
     }
     .renovations-filter__all-policies__clear-filters {
         @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
+        
+        @include mobile {
+            flex-basis: 100%;
+            margin-top: 16px;
+        }
     }
 
 }
@@ -261,24 +296,30 @@
 
 .renovations-filter-top {
     @include mobile {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1000;
+        display: contents;
     }
 }
 
 .renovations-filter__list {
+    @include tablet {
+        order: 1;
+    }
+
     @include mobile {
         order: 1;
     }
 }
 
 .renovations-filter__all-policies {
-    @include mobile {
-        margin-top: 24px;
+    @include tablet {
         order: 2;
+        flex-wrap: wrap;
+    }
+
+    @include mobile {
+        margin-top: 14px;
+        order: 2;
+        flex-wrap: wrap;
     }
 }
 
