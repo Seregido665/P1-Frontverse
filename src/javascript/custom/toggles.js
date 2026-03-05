@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const globeMenu = document.querySelector('.globe-menu-window');
   const btnBurguer = document.querySelector('.burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
+  const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
+  const filterMenu = document.querySelector('.filter-menu');
   const mobileQuery = window.matchMedia('(max-width: 30rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
   const navRight = document.querySelector('.right-nav-buttons');
 
@@ -79,6 +81,18 @@ document.addEventListener('DOMContentLoaded', function () {
       updateBodyScroll();       // FUNCION DE BLOQUEO DEL SCROLL
     }
   });
+
+
+  // -- Filtros (Renovations) --
+  if (btnAllFilters && filterMenu) {
+    btnAllFilters.addEventListener('click', function () {
+      if (filterMenu.style.display === 'none') {
+        filterMenu.style.display = 'block';
+      } else {
+        filterMenu.style.display = 'none';
+      }
+    });
+  }
   //----
 
   mobileQuery.addEventListener('change', function () {

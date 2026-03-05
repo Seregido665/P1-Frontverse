@@ -1,0 +1,55 @@
+.filter-menu 
+    .filter-menu__header
+        span.filter-menu__header__title Filtros 
+        button.icon.close
+        
+    .filter-menu__body   
+        form
+            .filter-menu__body__sec1
+                .filter-menu__body__title1 No. de póliza
+                select.filter-menu__body__select1
+                    option Todas las pólizas
+                    option Opción 2
+                    option Opción 3
+                    option Opción 4
+                span.icon.chev-down
+            .filter-menu__body__sec2
+                .filter-menu__body__title2 Nombre del riesgo
+                input(
+                    type="text"
+                    placeholder="Introduce el nombre del riesgo"
+                )
+            .filter-menu__body__sec3
+                .filter-menu__body__title3 Fecha de validez
+                input(
+                    type="date"
+                    placeholder="Fecha inicio"
+                )
+                span.icon.calendar
+                span al
+                input(
+                    type="date"
+                    placeholder="Fecha fin"
+                )
+                span.icon.calendar
+            .filter-menu__body__sec4
+                .filter-menu__body__title4 Importe
+                input(
+                    type="number"
+                    placeholder="Introduzca importe"
+                )
+            .filter-menu__body__sec5
+                .filter-menu__body__title5 Estado
+                select.filter-menu__body__select2
+                    option Todos los estados
+                    option Opción 2
+                    option Opción 3
+                    option Opción 4
+                span.icon.chev-down
+
+    .filter-menu__bottom 
+        button.filter-menu__bottom__clear Borrar filtros
+        button.filter-menu__bottom__apply Aplicar filtros
+
+
+    

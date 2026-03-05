@@ -28,6 +28,7 @@
 /** COMPONENTS **/
 @use 'components/navbar/nav-buttons-left';
 @use 'components/navbar/nav-buttons-right';
+@use 'components/filter-menu';
 @use 'layout/home/homepage-header';
 @use 'layout/renovations/renovationspage-header';
 @use 'layout/renovations/filters';
