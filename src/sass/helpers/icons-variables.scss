@@ -59,11 +59,13 @@ $icon-size-lock: 1.5rem;
 	.icon.chev-down:before { content: $icon-chevDown; }
 	.icon.check:before { content: $icon-check; }
 	.icon.burger_menu:before { content: $icon-burguerMenu; }
+
 	.icon.back:before { content: $icon-back; }
 	.icon.arrow-right:before { content: $icon-arrowRight; }
-	.icon.trash:before { content: $icon-trash; }
 	.icon.skip-right:before { content: $icon-skipRight; }
 	.icon.skip-left:before { content: $icon-skipLeft; }
+	
+	.icon.trash:before { content: $icon-trash; }
 	.icon.power-off:before { content: $icon-powerOff; }
 	.icon.phone:before { content: $icon-phone; }
 	.icon.mail:before { content: $icon-mail; }

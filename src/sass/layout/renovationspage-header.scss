@@ -63,7 +63,7 @@
 
 .renovations-header__number-policies {
     padding: 8.5px 12px;
-    @include button-styles($background-color: #B7CBD3, $border-radius: 8px);
+    @include button-styles($background-color: #EFF3F5, $border-radius: 8px);
     display: inline-flex;
     align-items: center;
     width: fit-content;
@@ -72,9 +72,9 @@
     }
     .renovations-header__number-policies__number {
         margin: 0 4px 0 10px;
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
     }
     .renovations-header__number-policies__policies {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
     }
 }

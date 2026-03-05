@@ -1,16 +1,35 @@
-.renovation-list-header
-    .renovations-filter 
-        .renovations-filter-top 
-            button.renovations-filter__all-filters 
-                span.icon.filter 
-                span.renovations-filter__all-filters__text Filtros
-        .renovations-filter-bottom
-            .renovations-filter__all-policies 
-                span.renovations-filter__all-policies__text 770 pólizas
-            .renovations-filter__list
-                span.renovations-filter__list__order-by Ordenar por :
-                button.renovations-filter__list__type-filter
-                    span.renovations-filter__list__type-filter__example Más recientes
-                    span.icon.chev-down
-.all-desktop-renovations
-    include renovations/all-renovation
+.renovations
+    .renovation-list-header
+        .renovations-filter 
+            .renovations-filter-top 
+                button.renovations-filter__all-filters 
+                    span.icon.filter 
+                    span.renovations-filter__all-filters__text Filtros
+            .renovations-filter-bottom
+                .renovations-filter__all-policies 
+                    span.renovations-filter__all-policies__text 770 pólizas
+                .renovations-filter__list
+                    span.renovations-filter__list__order-by Ordenar por :
+                    button.renovations-filter__list__type-filter
+                        span.renovations-filter__list__type-filter__example Más recientes
+                        span.icon.chev-down
+    .all-desktop-renovations
+        include renovations/all-renovation
+    .pagination 
+        .pagination__rows 
+            span.pagination__rows__rows-text Filas por página:
+            button.pagination__rows__option 
+                span.pagination__rows__option-text 10
+                span.icon.chev-down 
+        .pagination__page 
+            span.pagination__page__text Página 1 de 77
+        .pagination__page-option
+            button.pagination__page-option__skip-left
+                span.icon.skip-left
+            button.pagination__page-option__left
+                span.icon.back
+            button.pagination__page-option__right
+                span.icon.arrow-right
+            button.pagination__page-option__skip-right
+                span.icon.skip-right
+        
