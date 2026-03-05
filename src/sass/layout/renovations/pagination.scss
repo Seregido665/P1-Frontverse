@@ -1,0 +1,97 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+@use '../../helpers/icons-variables' as *;
+
+.pagination {
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	@include tablet {
+		flex-direction: column;
+		align-items: flex-end;
+
+		.pagination__page {
+			margin-block: 20px;
+		}
+
+		.pagination__page {
+			margin-right: 40px;
+		}
+
+		.pagination__page-option {
+			margin-right: 26px;
+		}
+	}
+
+	@include mobile {
+		display: none;
+	}
+
+	.pagination__rows {
+		display: flex;
+		align-items: center;
+		margin-right: 32px;
+	}
+
+	.pagination__page-option {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.pagination__rows__rows-text {
+	margin-right: 12px;
+	@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+}
+
+.pagination__rows__option {
+	width: 72px;
+	height: 48px;
+	border: 1px solid $primary50;
+	justify-content: center;
+	@include button-styles($background-color: $light, $border-radius: 8px);
+	@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+
+	.icon {
+		font-size: $icon-size-chevDown;
+	}
+}
+
+.pagination__page {
+	margin-right: 32px;
+	@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+}
+
+.pagination__page-option__skip-left,
+.pagination__page-option__left,
+.pagination__page-option__right,
+.pagination__page-option__skip-right {
+	width: 48px;
+	height: 48px;
+	margin-right: 8px;
+	justify-content: center;
+	@include button-styles($background-color: $light, $border-radius: 8px);
+}
+
+.pagination__page-option__right,
+.pagination__page-option__skip-right {
+	box-shadow: 0 6px 16px #3746491A;
+}
+
+.pagination__page-option__skip-left {
+	font-size: $icon-size-skipLeft;
+}
+
+.pagination__page-option__left {
+	font-size: $icon-size-back;
+}
+
+.pagination__page-option__right {
+	font-size: $icon-size-arrowRight;
+}
+
+.pagination__page-option__skip-right {
+	font-size: $icon-size-skipRight;
+}
