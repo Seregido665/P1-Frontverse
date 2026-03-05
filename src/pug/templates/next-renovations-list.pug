@@ -5,13 +5,31 @@
                 button.renovations-filter__all-filters 
                     span.icon.filter 
                     span.renovations-filter__all-filters__text Filtros
+                span.apply-filters
+                    .apply-filters__filter1
+                        span Hyundai Ioniq 
+                        span.icon.close-white
+                    .apply-filters__filter2
+                        span 2022 
+                        span.icon.close-white
+                    .apply-filters__filter3
+                        span 75846843
+                        span.number +2
+                        span.icon.close-white
             .renovations-filter-bottom
                 .renovations-filter__all-policies 
-                    span.renovations-filter__all-policies__text 770 pólizas
+                    span.renovations-filter__all-policies__text-results 770 pólizas
+                    span.separation |
+                    span.renovations-filter__all-policies__text-filters 7 filtros aplicados 
+                    button.renovations-filter__all-policies__clear-filters Borrar filtros
                 .renovations-filter__list
                     span.renovations-filter__list__order-by Ordenar por :
-                    button.renovations-filter__list__type-filter
-                        span.renovations-filter__list__type-filter__example Más recientes
+                    .renovations-filter__list__type-filter
+                        select.renovations-filter__list__select
+                            option Mayor importe
+                            option Menos importe
+                            option Más recientes
+                            option Menos recientes
                         span.icon.chev-down
     .all-desktop-renovations
         include renovations/all-renovation
