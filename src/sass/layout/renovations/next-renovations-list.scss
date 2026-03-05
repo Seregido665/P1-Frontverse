@@ -1,0 +1,32 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+
+.renovations {
+    background-color: $body-background-color;
+    padding: 10px 24px 80px 24px;
+    @include mobile {
+        padding: 9px 16px 9px 16px;
+    }
+}
+
+
+.all-desktop-renovations {
+    @include mobile {
+        .home-reservation > .renovation-card-desktop:nth-child(n + 4) {
+            display: none;
+        }
+    }
+}
+
+.renovation-list {
+    @include mobile {
+        padding: 15px 16px 9px 16px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+
+

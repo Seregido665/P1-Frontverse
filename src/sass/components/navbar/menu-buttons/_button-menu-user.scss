@@ -1,26 +1,28 @@
-@use '../../helpers/mixins' as *;
-@use '../../helpers/variables' as *;
+@use '../../../helpers/icons-variables' as *;
+@use '../../../helpers/mixins' as *;
+@use '../../../helpers/variables' as *;
 
-.burguer-menu-window__option {
-    width: 100%;
+.user-menu-window__option {
+    width: 23.438rem;
     height: 3.813rem;
     display: flex;
     align-items: center;
     border: none;
     position: relative;
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid #E6E7E8;
+    border-top: 1px solid #E6E7E8;
     border-radius: 0 0 12px 12px;
-    text-decoration: none;
     cursor: pointer;
-    padding-left: 1.5rem;
     
-    .burguer-menu-window__text {
+    .icon {
+        font-size: $icon-size-user;
+        padding: 1.063rem 0.875rem 1.25rem 1.5rem;
+    }
+    .user-menu-window__option-text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
 
-    // CREA LA BARRA AZUL LATERAL Y LA OCULA HASTA HACER HOVER EN EL BOTÓN
-    &::before {     
+    &::before {
         content: "";
         position: absolute;
         display: none;
@@ -32,14 +34,13 @@
         transform: translateX(-100%);
     }
     &:hover {
-        text-decoration: none;
         &::before {
             transform: translateX(0);
             display: block;
         }
     }
 
-    @include mobile {
-        border-radius: 0 0 0 0;
+    &:last-child:hover {
+        overflow: hidden;
     }
 }
