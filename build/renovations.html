@@ -89,20 +89,26 @@
                         <option>Opción 2</option>
                         <option>Opción 3</option>
                         <option>Opción 4</option>
-                      </select><span class="icon chev-down"></span>
+                      </select><span class="icon chev-down-policy"></span>
                     </div>
                     <div class="filter-menu__body__sec2">
                       <div class="filter-menu__body__title2">Nombre del riesgo</div>
-                      <input type="text" placeholder="Introduce el nombre del riesgo">
+                      <input class="filter-menu__body__input1" type="text" placeholder="Introduce el nombre del riesgo">
                     </div>
                     <div class="filter-menu__body__sec3">
                       <div class="filter-menu__body__title3">Fecha de validez</div>
-                      <input type="date" placeholder="Fecha inicio"><span class="icon calendar"></span><span>al</span>
-                      <input type="date" placeholder="Fecha fin"><span class="icon calendar"></span>
+                      <div class="filter-menu__body__date-range">
+                        <div class="filter-menu__body__date-field">
+                          <input class="filter-menu__body__input2" type="text" placeholder="Fecha inicio"><span class="icon calendar"></span>
+                        </div><span class="separation">al</span>
+                        <div class="filter-menu__body__date-field">
+                          <input class="filter-menu__body__input3" type="text" placeholder="Fecha fin"><span class="icon calendar"></span>
+                        </div>
+                      </div>
                     </div>
                     <div class="filter-menu__body__sec4">
                       <div class="filter-menu__body__title4">Importe</div>
-                      <input type="number" placeholder="Introduzca importe">
+                      <input class="filter-menu__body__input4" type="number" placeholder="Introduzca importe">
                     </div>
                     <div class="filter-menu__body__sec5">
                       <div class="filter-menu__body__title5">Estado</div>
@@ -111,7 +117,7 @@
                         <option>Opción 2</option>
                         <option>Opción 3</option>
                         <option>Opción 4</option>
-                      </select><span class="icon chev-down"></span>
+                      </select><span class="icon chev-down-status"></span>
                     </div>
                   </form>
                 </div>
@@ -135,7 +141,7 @@
                     <option>Menos importe</option>
                     <option>Más recientes</option>
                     <option>Menos recientes</option>
-                  </select><span class="icon chev-down"></span>
+                  </select><span class="icon chev-down-order-by"></span>
                 </div>
               </div>
             </div>
@@ -315,7 +321,7 @@
         </div>
         <div class="pagination"> 
           <div class="pagination__rows"> <span class="pagination__rows__rows-text">Filas por página:</span>
-            <button class="pagination__rows__option"> <span class="pagination__rows__option-text">10</span><span class="icon chev-down"> </span></button>
+            <button class="pagination__rows__option"> <span class="pagination__rows__option-text">10</span><span class="icon chev-down-rows"> </span></button>
           </div>
           <div class="pagination__page"> <span class="pagination__page__text">Página 1 de 77</span></div>
           <div class="pagination__page-option">

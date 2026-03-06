@@ -12,29 +12,36 @@
                     option Opción 2
                     option Opción 3
                     option Opción 4
-                span.icon.chev-down
+                span.icon.chev-down-policy
             .filter-menu__body__sec2
                 .filter-menu__body__title2 Nombre del riesgo
-                input(
+                input.filter-menu__body__input1(
                     type="text"
                     placeholder="Introduce el nombre del riesgo"
                 )
+
+
             .filter-menu__body__sec3
                 .filter-menu__body__title3 Fecha de validez
-                input(
-                    type="date"
-                    placeholder="Fecha inicio"
-                )
-                span.icon.calendar
-                span al
-                input(
-                    type="date"
-                    placeholder="Fecha fin"
-                )
-                span.icon.calendar
+                .filter-menu__body__date-range
+                    .filter-menu__body__date-field
+                        input.filter-menu__body__input2(
+                            type="text"
+                            placeholder="Fecha inicio"
+                        )
+                        span.icon.calendar
+                    span.separation al
+                    .filter-menu__body__date-field
+                        input.filter-menu__body__input3(
+                            type="text"
+                            placeholder="Fecha fin"
+                        )
+                        span.icon.calendar
+
+
             .filter-menu__body__sec4
                 .filter-menu__body__title4 Importe
-                input(
+                input.filter-menu__body__input4(
                     type="number"
                     placeholder="Introduzca importe"
                 )
@@ -45,7 +52,7 @@
                     option Opción 2
                     option Opción 3
                     option Opción 4
-                span.icon.chev-down
+                span.icon.chev-down-status
 
     .filter-menu__bottom 
         button.filter-menu__bottom__clear Borrar filtros

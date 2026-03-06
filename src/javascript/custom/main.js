@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  filterMenu.style.display = 'none';
+  filterMenu.style.display = 'none';    
 
 
 
