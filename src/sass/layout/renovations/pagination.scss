@@ -54,7 +54,7 @@
 	@include button-styles($background-color: $light, $border-radius: 8px);
 	@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
 
-	.icon {
+	.icon.chev-down-rows {
 		font-size: $icon-size-chevDown;
 	}
 }

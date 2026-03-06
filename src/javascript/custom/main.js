@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const globeMenu = document.querySelector('.globe-menu-window');
   const btnBurguer = document.querySelector('.burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
-  const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const navRight = document.querySelector('.right-nav-buttons');
   const btnClose = document.querySelector('.right-nav-buttons .close');
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  filterMenu.style.display = 'none';
+  filterMenu.style.display = 'none';    
 
 
 
@@ -55,16 +54,10 @@ document.addEventListener('DOMContentLoaded', function () {
       globeMenuInBurguer.style.display = 'none';
     }
   });
-  // Filtros (Renovations)
-  document.addEventListener('click', function (e) {
-    if (filterMenu && btnAllFilters && !filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
-      filterMenu.style.display = 'none';
-    }
-  });
 
 
 
-  // -- FUNCION PARA EL BOTON DE CERRAR --
+  // -- FUNCION PARA EL BOTON DE CERRAR DEL nav-right--
   btnClose.addEventListener('click', function (e) {
     if (mobileQuery.matches) {
       userMenu.style.display = 'none';
