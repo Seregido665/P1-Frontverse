@@ -1,11 +1,21 @@
 @use '../../helpers/mixins' as *;
 @use '../../helpers/variables' as *;
 
-.renovations {
+.background {
     background-color: $body-background-color;
+}
+
+.renovations {
     padding: 10px 24px 80px 24px;
+    max-width: 1440px;
+    margin-inline: auto;
+    @include large-desktop {
+        padding: 10px 24px 80px 24px;
+    }
     @include mobile {
-        padding: 9px 16px 9px 16px;
+        padding: 9px 0 9px 0;
+        max-width: 21.438rem;
+        margin-inline: auto;
     }
 }
 

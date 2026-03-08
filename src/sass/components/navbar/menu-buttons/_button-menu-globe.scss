@@ -5,7 +5,7 @@
     &__option {
         background-color: white;
         border: none;
-        width: 8.188rem;
+        width: 131px;
         height: 39px;
         display: flex;
         align-items: center;
@@ -19,7 +19,8 @@
     }
 
     .globe-menu-window__option-text {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        margin-left: 24px;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
     }
 }
 
@@ -32,5 +33,13 @@
 .globe-menu-window__option-bottom {
     .globe-menu-window__option {
         border-radius: 0 0 12px 12px;
+    }
+}
+
+.globe-menu-window {
+    &__option--selected {
+        .globe-menu-window__option-text {
+            @include font-styles($font-weight: 700, $font-size: 16px, $color: $text2);
+        }
     }
 }

@@ -20,8 +20,15 @@
 
 .home-content {
     padding: 40px 24px 80px 24px;
-    @include tablet {
-        padding: 16px 16px 24px 16px;
+    max-width: 1440px;
+    margin-inline: auto;
+    @include desktop {
+        padding: 40px 16px 80px 16px;
+    }
+    @include mobile {
+        padding: 16px 0 24px 0;
+        max-width: 21.438rem;
+        margin-inline: auto;
     }
 }
 

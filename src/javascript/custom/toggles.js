@@ -26,8 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // --- FUNCION PARA BLOQUEAR EL SCROLL EN MOVIL CUANDO LOS MENUS DE user Y burguer ESTEN ACTIVOS ---
   const updateBodyScroll = function () {
-    const mobileMenuOpen = navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open');
-    const filterMenuOpen = filterMenu.style.display === 'block';
+    const mobileMenuOpen = navRight
+      ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open')
+      : false;
+    const filterMenuOpen = filterMenu ? filterMenu.style.display === 'block' : false;
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   };
 

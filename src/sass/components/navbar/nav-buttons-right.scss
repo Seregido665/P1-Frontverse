@@ -17,15 +17,15 @@ button {
     font-size: $icon-size-globe;      
   }
   .arrow-dropdown {
-    padding-left: 0.5rem;
+    padding-right: 8px;
     font-size: $icon-size-arrowDropdown;
   }
 
   .title {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $text2);
   }
   .text {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $text2);
   }
 }
   
