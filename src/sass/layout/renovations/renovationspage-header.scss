@@ -3,35 +3,35 @@
 @use '../../helpers/icons-variables' as *;
 
 .renovations-header {
-    padding: 32px 88px 32px 88px;
+    padding: rem(32px) rem(88px) rem(32px) rem(88px);
     border-top: 1px solid #E6E7E8;
 
     @include tablet {
-        padding: 24px 109px 30px 16px;
+        padding: rem(24px) rem(109px) rem(30px) rem(16px);
     }
 
     @include mobile {
-        padding: 24px 109px 30px 16px;
+        padding: rem(24px) rem(109px) rem(30px) rem(16px);
     }
 }
 
 .renovations-header__top {
-    max-width: 1264px;
+    max-width: rem(1264px);
     margin-inline: auto;
 }
 
 .renovations-header__bottom {
-    max-width: 1264px;
+    max-width: rem(1264px);
     margin-inline: auto;
 }
 
 .renovations-header__menu-subtitle {
-    margin-bottom: 44px;
+    margin-bottom: rem(44px);
     .renovations-header__menu-subtitle__policies {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
     }
     .separation {
-        margin: 0 5px 0 5px;
+        margin: 0 rem(5px) 0 rem(5px);
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
     }
     .renovations-header__menu-subtitle__next-renovations {
@@ -58,7 +58,7 @@
         flex-direction: column;
         align-items: flex-start;
         .renovations-header__number-policies {
-            margin-top: 16px;
+            margin-top: rem(16px);
         }
     }
 
@@ -66,13 +66,13 @@
         flex-direction: column;
         align-items: flex-start;
         .renovations-header__number-policies {
-            margin-top: 16px;
+            margin-top: rem(16px);
         }
     }
 }
 
 .renovations-header__number-policies {
-    padding: 8.5px 12px;
+    padding: rem(8.5px) rem(12px);
     @include button-styles($background-color: #EFF3F5, $border-radius: 8px);
     display: inline-flex;
     align-items: center;
@@ -81,7 +81,7 @@
         font-size: $icon-size-file;
     }
     .renovations-header__number-policies__number {
-        margin: 0 4px 0 10px;
+        margin: 0 rem(4px) 0 rem(10px);
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
     }
     .renovations-header__number-policies__policies {

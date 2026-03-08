@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const options = document.querySelectorAll('.globe-menu-window__option');
+function selectLanguage() { 
+    const options = document.querySelectorAll('.globe-menu-window__option');
   const mainLabel = document.querySelector('.globe-button .title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
 
@@ -34,4 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (menu) menu.style.display = 'none';
     });
   });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  selectLanguage();
 });
+

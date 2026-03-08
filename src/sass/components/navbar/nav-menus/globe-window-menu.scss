@@ -3,16 +3,16 @@
 
 .globe-menu-window {
     background-color: rgb(255, 255, 255);
-    width: 8.188rem;
-    height: 12.188rem;
+    width: rem(131.008px);
+    height: rem(195.008px);
     box-shadow: 0px 3px 10px #37464933;
     border-radius: 12px;
     position: absolute;
     z-index: 1000;
-    right: 5.5rem;
-    top: 5.2rem;
+    right: rem(88px);
+    top: rem(83.2px);
     
     @include desktop {
-        right: 3.125rem;
+        right: rem(50px);
     }
 }

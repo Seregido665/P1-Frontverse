@@ -38,7 +38,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 0 1rem;
+        padding: 0 rem(16px);
         z-index: 2;
     }
 
@@ -52,12 +52,12 @@
     }
 
     .desktop_body-header__description {
-        padding-top: 2.5rem;
+        padding-top: rem(40px);
         @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
 
         @include tablet {
-            width: 26.25rem;
-            padding-top: 0.625rem;
+            width: rem(420px);
+            padding-top: rem(10px);
         }
 
         @include mobile {
@@ -80,7 +80,7 @@
         display: none;
 
         @include mobile {
-            padding-top: 2.5rem;
+            padding-top: rem(40px);
             display: block;
             z-index: 2;
             @include font-styles( $font-weight: normal, $font-size: 16px, $color: $light);

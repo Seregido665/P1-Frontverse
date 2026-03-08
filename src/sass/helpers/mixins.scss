@@ -1,4 +1,12 @@
 @use './variables' as *;
+@use 'sass:math';
+
+
+// /* Convertir px a rem */
+@function rem($pixel) {
+  @return math.div(math.div($pixel, 1px), 16) * 1rem;
+}
+
 
 /* Fuente */
 @mixin font-styles( $font-family: "Roboto", $font-weight, $font-size, $letter-spacing: 0, $color ) {
@@ -28,6 +36,7 @@
     border-radius: $border-radius;
     border: $border-color;
 }
+
 
 
 /* @media RANGOS */

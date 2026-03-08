@@ -3,23 +3,23 @@
 
 .burguer-menu-window {
     background-color: rgb(255, 255, 255);
-    width: 23.438rem;
-    max-height: calc(100vh - 6rem);
+    width: rem(375.008px);
+    max-height: calc(100vh - rem(96px));
     overflow-y: auto;              // ACTIVA EL SCROLL CUANDO EL CONTENIDO SUPERA LA ALTURA DEL burger-menu-window
     box-shadow: 0px 3px 10px #37464933;
     border-radius: 12px;
     position: absolute;
     z-index: 1001;
-    top: 5rem;
-    padding-bottom: 0.625rem;
+    top: rem(80px);
+    padding-bottom: rem(10px);
 
     .burguer-menu-window__globe-button {
-        margin-top: 11rem;
+        margin-top: rem(176px);
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        min-height: 2.5rem;
-        padding: 0 1.5rem;
+        gap: rem(8px);
+        min-height: rem(40px);
+        padding: 0 rem(24px);
         background: none;
         border: none;
         cursor: pointer;
@@ -37,8 +37,8 @@
     .globe-menu-window {
         position: static;
         right: auto;
-        margin-left: 1.5rem;
-        margin-bottom: 0.8rem;
+        margin-left: rem(24px);
+        margin-bottom: rem(12.8px);
     }
 
     @include mobile {
@@ -52,13 +52,13 @@
         max-height: none;
         width: 100%;
         .burguer-menu-window__text {
-            margin-right: 1.25rem;
+            margin-right: rem(20px);
         }
         .burguer-menu-window__globe-button {
-            margin-top: 20rem;
+            margin-top: rem(320px);
         }
     }
     @include desktop {
-        right: 2rem;
+        right: rem(32px);
     }
 }

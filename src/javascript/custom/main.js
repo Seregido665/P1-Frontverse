@@ -1,5 +1,7 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
+
+
+function main() {
+    const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
@@ -69,4 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = '';
     }
   });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  main();
 });

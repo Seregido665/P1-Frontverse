@@ -3,15 +3,15 @@
 @use '../helpers/variables' as *;
 
 .home-reservation__header {
-    min-height: 1.813rem;
+    min-height: rem(29.008px);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 3.5rem;
-    padding: 0 2rem 0 3.5rem;
-    margin-bottom: 1.5rem;
+    gap: rem(56px);
+    padding: 0 rem(32px) 0 rem(56px);
+    margin-bottom: rem(24px);
     border-bottom: 1px solid #A7B8BF;
     h2{
-        padding-bottom: 0.438rem;
+        padding-bottom: rem(7.008px);
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
     }
 
@@ -21,15 +21,15 @@
 }
 
 .renovation-card-desktop {
-    gap: 3.5rem;
-    height: 4.75rem;
+    gap: rem(56px);
+    height: rem(76px);
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    padding: 0 2rem 0 3.5rem;
-    margin-bottom: 1.5rem;
+    padding: 0 rem(32px) 0 rem(56px);
+    margin-bottom: rem(24px);
     box-shadow: 0px 10px 15px #3746491A;
 
     .renovation-card-desktop__policy, 
@@ -48,11 +48,11 @@
         box-sizing: border-box;
         display: grid;
         grid-template-columns: repeat(1, minmax(0, 1fr));
-        column-gap: 16px;
-        row-gap: 12px;
+        column-gap: rem(16px);
+        row-gap: rem(12px);
         align-items: flex-start;
-        padding: 16px;
-        margin: 0 auto 24px auto;
+        padding: rem(16px);
+        margin: 0 auto rem(24px) auto;
     }
 
     @include mobile {
@@ -61,17 +61,17 @@
     }
 }
 .state-cell {
-    width: 115px;
+    width: rem(115px);
 }
 
 .state {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.125rem 0.5rem 0.125rem 0;
+    gap: rem(8px);
+    padding: rem(2px) rem(8px) rem(2px) 0;
     border-radius: 4px;
     .state__icon {
-        padding-left: 5px;
+        padding-left: rem(5px);
         font-size: $icon-size-clock;
     }
     .state__text {
@@ -101,11 +101,11 @@
 .renovation-card-desktop__price,
 .renovation-card-desktop__state {
     @include desktop {
-        width: 200px;
+        width: rem(200px);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 2px;
+        gap: rem(2px);
     }
 }
 

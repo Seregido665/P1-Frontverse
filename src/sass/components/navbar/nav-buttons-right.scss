@@ -5,7 +5,7 @@
 button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;           
+  gap: rem(8px);           
   text-decoration: none;    
   background: none;
   border: none;
@@ -17,7 +17,7 @@ button {
     font-size: $icon-size-globe;      
   }
   .arrow-dropdown {
-    padding-right: 8px;
+    padding-right: rem(8px);
     font-size: $icon-size-arrowDropdown;
   }
 
@@ -32,15 +32,15 @@ button {
 .right-nav-buttons {
   display: flex;
   align-items: center;
-  gap: 2.5rem; 
-  height: 2.5rem;
+  gap: rem(40px); 
+  height: rem(40px);
 
   @include desktop {
-    gap: 1rem;
+    gap: rem(16px);
   }
 
   @include tablet {
-    gap: 1rem;
+    gap: rem(16px);
   }
 
   
@@ -50,8 +50,8 @@ button {
     @include tablet {   // MOSTRAR menu-burguer
       display: inline-block;
       font-size: $icon-size-burguerMenu;
-      padding-right: 0.313rem;
-      margin-top: 5px;
+      padding-right: rem(5.008px);
+      margin-top: rem(5px);
     }
   }
 
@@ -95,7 +95,7 @@ button {
 
     @include mobile {
       display: none;          // POR DEFECTO ESTE BOTON ESTA OCULTO
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
@@ -104,7 +104,7 @@ button {
     // SE LLAMARA A ESTOS ESTADOS DESDE main.js Y ASI TRABAJAR CON ELLOS.
     &.mobile-user-open, &.mobile-burguer-open {        
       .close {
-        margin-right: 3px;
+        margin-right: rem(3px);
         display: inline-block;
         .icon {
           filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL

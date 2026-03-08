@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+function toggles() {
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
@@ -15,15 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
   
-  // FUNCIONES PARA TRAER LAS CLASES DE nav-buttons-right.scss
-  const menuUser = function (isOpen) {
-    navRight.classList.toggle('mobile-user-open', isOpen);
-  };
-  const menuBurguer = function (isOpen) {
-    navRight.classList.toggle('mobile-burguer-open', isOpen);
+  // Cambia entre mostrar/ocultar y devuelve si queda abierto.
+  const toggleDisplay = function (menu) {
+    if (!menu) {
+      return false;
+    }
+
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    return menu.style.display === 'block';
   };
 
-  
   // --- FUNCION PARA BLOQUEAR EL SCROLL EN MOVIL CUANDO LOS MENUS DE user Y burguer ESTEN ACTIVOS ---
   const updateBodyScroll = function () {
     const mobileMenuOpen = navRight
@@ -33,65 +34,50 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   };
 
+  // Asocia un boton a un menu y permite ejecutar logica extra al abrir/cerrar.
+  const bindToggle = function (button, menu, onToggle) {
+    if (!button || !menu) {
+      return;
+    }
+
+    button.addEventListener('click', function () {
+      const isOpen = toggleDisplay(menu);
+      if (onToggle) {
+        onToggle(isOpen);
+      }
+    });
+  };
+
 
 
   // ---------------------------------------------------------------------------
   // --- TOGGLEs ---
   // -- Mi Perfil --
-  btnUser.addEventListener('click', function (e) {
-    // - ESCRITORIO -
-    if (userMenu.style.display === 'none') {
-      userMenu.style.display = 'block';
-    } else {
-      userMenu.style.display = 'none';
-    }
-    // - MOVIL -
-    if (mobileQuery.matches) {
-      menuUser(userMenu.style.display === 'block');
-      updateBodyScroll();       // FUNCION DE BLOQUEO DEL SCROLL
+  bindToggle(btnUser, userMenu, function (isOpen) {
+    if (mobileQuery.matches && navRight) {
+      navRight.classList.toggle('mobile-user-open', isOpen);
+      updateBodyScroll();
     }
   });
 
   // -- Idioma --
-  btnGlobe.addEventListener('click', function (e) {
-    if (globeMenu.style.display === 'none') {
-      globeMenu.style.display = 'block';
-    } else {
-      globeMenu.style.display = 'none';
-    }
-  });
+  bindToggle(btnGlobe, globeMenu);
+
   // -- Idioma (en Menú Burguer) --
-  btnGlobeInBurguer.addEventListener('click', function (e) {
-    if (globeMenuInBurguer.style.display === 'none') {
-      globeMenuInBurguer.style.display = 'block';
-    } else {
-      globeMenuInBurguer.style.display = 'none';
-    }
-  });
+  bindToggle(btnGlobeInBurguer, globeMenuInBurguer);
 
   // -- Menú Burguer --
-  btnBurguer.addEventListener('click', function (e) {
-    // - ESCRITORIO -
-    if (burguerMenu.style.display === 'none') {
-      burguerMenu.style.display = 'block';
-    } else {
-      burguerMenu.style.display = 'none';
-    }
-    // - MOVIL -
-    if (mobileQuery.matches) {
-      menuBurguer(burguerMenu.style.display === 'block');
-      updateBodyScroll();       // FUNCION DE BLOQUEO DEL SCROLL
+  bindToggle(btnBurguer, burguerMenu, function (isOpen) {
+    if (mobileQuery.matches && navRight) {
+      navRight.classList.toggle('mobile-burguer-open', isOpen);
+      updateBodyScroll();
     }
   });
 
   // -- Filtros (Renovations) --
   if (btnAllFilters && filterMenu) {
     btnAllFilters.addEventListener('click', function () {
-      if (filterMenu.style.display === 'none') {
-        filterMenu.style.display = 'block';
-      } else {
-        filterMenu.style.display = 'none';
-      }
+      toggleDisplay(filterMenu);
       updateBodyScroll();
     });
   }
@@ -107,4 +93,8 @@ document.addEventListener('DOMContentLoaded', function () {
   mobileQuery.addEventListener('change', function () {
     updateBodyScroll();
   });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  toggles();
 });

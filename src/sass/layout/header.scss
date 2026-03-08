@@ -5,15 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 6rem;
-  padding: 1rem 5.5rem;
-
-  @include tablet {
-    
-  }
+  height: rem(96px);
+  padding: rem(16px) rem(88px);
 
   @include mobile {
-    padding: 16px 16px 18px 12px;
-    height: 5rem;
+    padding: rem(16px) rem(16px) rem(18px) rem(12px);
+    height: rem(80px);
   }
 }

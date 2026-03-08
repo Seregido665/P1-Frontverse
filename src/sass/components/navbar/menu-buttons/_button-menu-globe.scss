@@ -5,8 +5,8 @@
     &__option {
         background-color: white;
         border: none;
-        width: 131px;
-        height: 39px;
+        width: rem(131px);
+        height: rem(39px);
         display: flex;
         align-items: center;
         position: relative;
@@ -19,7 +19,7 @@
     }
 
     .globe-menu-window__option-text {
-        margin-left: 24px;
+        margin-left: rem(24px);
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
     }
 }

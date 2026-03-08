@@ -3,7 +3,7 @@
 @use '../../helpers/icons-variables' as *;
 
 .pagination {
-	margin-top: 40px;
+	margin-top: rem(40px);
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -13,15 +13,15 @@
 		align-items: flex-end;
 
 		.pagination__page {
-			margin-block: 20px;
+			margin-block: rem(20px);
 		}
 
 		.pagination__page {
-			margin-right: 40px;
+			margin-right: rem(40px);
 		}
 
 		.pagination__page-option {
-			margin-right: 26px;
+			margin-right: rem(26px);
 		}
 	}
 
@@ -32,7 +32,7 @@
 	.pagination__rows {
 		display: flex;
 		align-items: center;
-		margin-right: 32px;
+		margin-right: rem(32px);
 	}
 
 	.pagination__page-option {
@@ -42,13 +42,13 @@
 }
 
 .pagination__rows__rows-text {
-	margin-right: 12px;
+	margin-right: rem(12px);
 	@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
 }
 
 .pagination__rows__option {
-	width: 72px;
-	height: 48px;
+	width: rem(72px);
+	height: rem(48px);
 	border: 1px solid $primary50;
 	justify-content: center;
 	@include button-styles($background-color: $light, $border-radius: 8px);
@@ -60,7 +60,7 @@
 }
 
 .pagination__page {
-	margin-right: 32px;
+	margin-right: rem(32px);
 	@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
 }
 
@@ -68,9 +68,9 @@
 .pagination__page-option__left,
 .pagination__page-option__right,
 .pagination__page-option__skip-right {
-	width: 48px;
-	height: 48px;
-	margin-right: 8px;
+	width: rem(48px);
+	height: rem(48px);
+	margin-right: rem(8px);
 	justify-content: center;
 	@include button-styles($background-color: $light, $border-radius: 8px);
 }

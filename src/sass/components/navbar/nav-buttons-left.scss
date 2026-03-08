@@ -5,16 +5,16 @@
 .buttons-left {
   display: flex;
   align-items: center;
-  height: 4rem;
+  height: rem(64px);
 
   .logo {
-    padding-right: 2rem;
+    padding-right: rem(32px);
   }
 
   .directions {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: rem(32px);
     
   }
   .link {
@@ -28,7 +28,7 @@
     }
   }
   @include tablet {
-    gap: 1rem;       
+    gap: rem(16px);       
     .link { 
       display: none;
     }

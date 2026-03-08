@@ -5,20 +5,20 @@
 .client-list {
   display: grid;
   grid-template-columns: 1fr 1fr;    
-  gap: 1.25rem;
+  gap: rem(20px);
 
   @include tablet {
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-    padding-bottom: 1.5rem;
+    padding-bottom: rem(24px);
   }
 
   @include mobile {
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-    padding-bottom: 1.5rem;
+    padding-bottom: rem(24px);
   }
 }
 
@@ -35,7 +35,7 @@
     display: grid;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 1.5rem 0;
+    padding: rem(20px) rem(24px) 0;
     flex-direction: column;
     background-color: inherit;
   }
@@ -47,20 +47,20 @@
 
   .client-card__name {
     @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
-    margin-bottom: 0.625rem;
+    margin-bottom: rem(10px);
   }
 
   .client-card__offer {
     @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary75);
-    margin-bottom: 2.4375rem;
+    margin-bottom: rem(39px);
     display: inline-block;
   }
 
   .client-card__icon {
     position: absolute;
     font-size: $icon-size-trash;
-    top: 1rem;
-    right: 1.5rem;
+    top: rem(16px);
+    right: rem(24px);
     text-decoration: none;
     border: none;
     background-color: inherit;
@@ -71,15 +71,15 @@
   }
 
   .client-card__contact {
-    padding: 0px 1.5rem 1.938rem;
+    padding: 0 rem(24px) rem(31.008px);
     display: flex;
-    gap: 0.625rem;
+    gap: rem(10px);
   }
 
   .client-card__mail {
     @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
-    margin-right: 1.5rem;
+    margin-right: rem(24px);
   }
 
   .client-card__phone {
@@ -94,39 +94,39 @@
   }
 
   @include tablet {
-    height: 22.25rem;
+    height: rem(356px);
 
     .client-card__header {
-      margin-top: 3rem;
+      margin-top: rem(48px);
       .client-card__name {
-        width: 14.6875rem;
+        width: rem(235px);
       }
     }
 
     .client-card__contact {
       flex-direction: column;
-      margin-bottom: 4rem;
+      margin-bottom: rem(64px);
       .client-card__mail {
-        margin-bottom: 1.5rem;
+        margin-bottom: rem(24px);
       }
     }
   }
 
   @include mobile {
-    height: 22.25rem;
+    height: rem(356px);
 
     .client-card__header {
-      margin-top: 3.625rem;
+      margin-top: rem(58px);
       .client-card__name {
-        width: 14.6875rem;
+        width: rem(235px);
       }
     }
 
     .client-card__contact {
       flex-direction: column;
-      margin-bottom: 4rem;
+      margin-bottom: rem(64px);
       .client-card__mail {
-        margin-bottom: 1.5rem;
+        margin-bottom: rem(24px);
       }
     }
   }
