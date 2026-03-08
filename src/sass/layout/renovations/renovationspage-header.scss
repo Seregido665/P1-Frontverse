@@ -10,81 +10,73 @@
         padding: rem(24px) rem(109px) rem(30px) rem(16px);
     }
 
-    @include mobile {
-        padding: rem(24px) rem(109px) rem(30px) rem(16px);
+    .renovations-header__top {
+        max-width: rem(1264px);
+        margin-inline: auto;
     }
-}
 
-.renovations-header__top {
-    max-width: rem(1264px);
-    margin-inline: auto;
-}
+    .renovations-header__bottom {
+        max-width: rem(1264px);
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-.renovations-header__bottom {
-    max-width: rem(1264px);
-    margin-inline: auto;
-}
+        @include tablet {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
 
-.renovations-header__menu-subtitle {
-    margin-bottom: rem(44px);
+    .renovations-header__menu-subtitle {
+        margin-bottom: rem(44px);
+
+        @include tablet {
+            display: none;
+        }
+    }
+
     .renovations-header__menu-subtitle__policies {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary100);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary100);
     }
-    .separation {
+
+    .renovations-header__menu-subtitle .separation {
         margin: 0 rem(5px) 0 rem(5px);
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
     }
+
     .renovations-header__menu-subtitle__next-renovations {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
     }
 
-    @include tablet {
-        display: none;
-    }
-
-    @include mobile {
-        display: none;
-    }
-}
-.renovations-header__bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     .renovations-header__menu-title__next-renovations {
-        @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 24px, $color: $grey100);
     }
 
-    @include tablet {
-        flex-direction: column;
-        align-items: flex-start;
-        .renovations-header__number-policies {
+    .renovations-header__bottom .renovations-header__number-policies {
+        @include tablet {
             margin-top: rem(16px);
         }
     }
 
-    @include mobile {
-        flex-direction: column;
-        align-items: flex-start;
-        .renovations-header__number-policies {
-            margin-top: rem(16px);
-        }
+    .renovations-header__number-policies {
+        padding: rem(8.5px) rem(12px);
+        @include button-styles($background-color: #EFF3F5, $border-radius: 8px);
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
     }
-}
 
-.renovations-header__number-policies {
-    padding: rem(8.5px) rem(12px);
-    @include button-styles($background-color: #EFF3F5, $border-radius: 8px);
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    .icon {
+    .renovations-header__number-policies .icon {
         font-size: $icon-size-file;
     }
+
     .renovations-header__number-policies__number {
         margin: 0 rem(4px) 0 rem(10px);
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
     }
+
     .renovations-header__number-policies__policies {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
     }
 }

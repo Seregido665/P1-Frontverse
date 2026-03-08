@@ -14,20 +14,17 @@
     padding-bottom: rem(24px);
   }
 
-  @include mobile {
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: rem(24px);
-  }
-}
+  .client-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.342);
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: $light;
 
-.client-card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.342);
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: $light;
+    @include tablet {
+      height: rem(356px);
+    }
+  }
 
   .client-card__top {
     position: relative;
@@ -43,15 +40,27 @@
   .client-card__header {
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+      margin-top: rem(48px);
+    }
+
+    @include mobile {
+      margin-top: rem(58px);
+    }
   }
 
   .client-card__name {
-    @include font-styles( $font-weight: 400, $font-size: 24px, $color: $grey100);
+    @include font-styles($font-weight: 400, $font-size: 24px, $color: $grey100);
     margin-bottom: rem(10px);
+
+    @include tablet {
+      width: rem(235px);
+    }
   }
 
   .client-card__offer {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $primary75);
+    @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary75);
     margin-bottom: rem(39px);
     display: inline-block;
   }
@@ -74,60 +83,32 @@
     padding: 0 rem(24px) rem(31.008px);
     display: flex;
     gap: rem(10px);
+
+    @include desktop {
+      flex-direction: column;
+    }
+
+    @include tablet {
+      margin-bottom: rem(64px);
+    }
   }
 
   .client-card__mail {
-    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
+    @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
     margin-right: rem(24px);
+
+    @include tablet {
+      margin-bottom: rem(24px);
+    }
+
+    @include mobile {
+      margin-bottom: rem(24px);
+    }
   }
 
   .client-card__phone {
-    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
+    @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
-  }
-
-  @include desktop {
-    .client-card__contact {
-      flex-direction: column;
-    }
-  }
-
-  @include tablet {
-    height: rem(356px);
-
-    .client-card__header {
-      margin-top: rem(48px);
-      .client-card__name {
-        width: rem(235px);
-      }
-    }
-
-    .client-card__contact {
-      flex-direction: column;
-      margin-bottom: rem(64px);
-      .client-card__mail {
-        margin-bottom: rem(24px);
-      }
-    }
-  }
-
-  @include mobile {
-    height: rem(356px);
-
-    .client-card__header {
-      margin-top: rem(58px);
-      .client-card__name {
-        width: rem(235px);
-      }
-    }
-
-    .client-card__contact {
-      flex-direction: column;
-      margin-bottom: rem(64px);
-      .client-card__mail {
-        margin-bottom: rem(24px);
-      }
-    }
   }
 }

@@ -13,6 +13,22 @@
     top: rem(80px);
     padding-bottom: rem(10px);
 
+    @include desktop {
+        right: rem(32px);
+    }
+
+    @include mobile {
+        border-top: 1px solid #E6E7E8;
+        border-radius: 0;
+        box-shadow: none;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        max-height: none;
+        width: 100%;
+    }
+
     .burguer-menu-window__globe-button {
         margin-top: rem(176px);
         display: flex;
@@ -23,7 +39,18 @@
         background: none;
         border: none;
         cursor: pointer;
+
+        @include mobile {
+            margin-top: rem(320px);
+        }
     }
+
+    .burguer-menu-window__text {
+        @include mobile {
+            margin-right: rem(20px);
+        }
+    }
+
     .burguer-menu-window__title {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
     }
@@ -39,26 +66,5 @@
         right: auto;
         margin-left: rem(24px);
         margin-bottom: rem(12.8px);
-    }
-
-    @include mobile {
-        border-top: 1px solid #E6E7E8;
-        border-radius: 0;
-        box-shadow: none;
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        max-height: none;
-        width: 100%;
-        .burguer-menu-window__text {
-            margin-right: rem(20px);
-        }
-        .burguer-menu-window__globe-button {
-            margin-top: rem(320px);
-        }
-    }
-    @include desktop {
-        right: rem(32px);
     }
 }

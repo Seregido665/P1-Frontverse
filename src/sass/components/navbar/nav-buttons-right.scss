@@ -2,19 +2,27 @@
 @use '../../helpers/icons-variables' as *;
 @use '../../helpers/mixins' as *;
 
-button {
+.right-nav-buttons {
   display: flex;
   align-items: center;
-  gap: rem(8px);           
-  text-decoration: none;    
-  background: none;
-  border: none;
-  cursor: pointer;
+  gap: rem(40px);
+  height: rem(40px);
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
   .user {
     font-size: $icon-size-user;
   }
   .globe {
-    font-size: $icon-size-globe;      
+    font-size: $icon-size-globe;
   }
   .arrow-dropdown {
     padding-right: rem(8px);
@@ -22,32 +30,20 @@ button {
   }
 
   .title {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $text2);
+    @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
   }
   .text {
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $text2);
+    @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
   }
-}
-  
-.right-nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: rem(40px); 
-  height: rem(40px);
 
   @include desktop {
     gap: rem(16px);
   }
 
-  @include tablet {
-    gap: rem(16px);
-  }
-
-  
   .burguer-button {
     display: none;
 
-    @include tablet {   // MOSTRAR menu-burguer
+    @include tablet {
       display: inline-block;
       font-size: $icon-size-burguerMenu;
       padding-right: rem(5.008px);
@@ -59,28 +55,17 @@ button {
     @include desktop {
       display: none;
     }
-
-    @include tablet {
-      display: none;
-    }
   }
-
   .globe {
     @include tablet {
       display: none;
     }
   }
-
   .title {
     @include desktop {
       display: none;
     }
-
-    @include tablet {
-      display: none;
-    }
   }
-
   .globe-button {
     @include tablet {
       display: none;
@@ -89,31 +74,30 @@ button {
 
   .close {
     display: none;
-    .icon {
-      filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
-    }
 
+    .icon {
+      filter: hue-rotate(240deg) saturate(1.5);
+    }
     @include mobile {
-      display: none;          // POR DEFECTO ESTE BOTON ESTA OCULTO
+      display: none;
       font-size: 24px;
     }
   }
+}
 
+.right-nav-buttons.mobile-user-open,
+.right-nav-buttons.mobile-burguer-open {
   @include mobile {
-    // --- KEY --- 
-    // SE LLAMARA A ESTOS ESTADOS DESDE main.js Y ASI TRABAJAR CON ELLOS.
-    &.mobile-user-open, &.mobile-burguer-open {        
-      .close {
-        margin-right: rem(3px);
-        display: inline-block;
-        .icon {
-          filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
-        }
-      }
-      .user-button,
-      .burguer-button {
-        display: none;
-      }
+    .close {
+      margin-right: rem(3px);
+      display: inline-block;
+    }
+    .close .icon {
+      filter: hue-rotate(240deg) saturate(1.5);
+    }
+    .user-button,
+    .burguer-button {
+      display: none;
     }
   }
 }

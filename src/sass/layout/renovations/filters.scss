@@ -5,29 +5,33 @@
 .renovation-list-header {
 	padding-bottom: rem(40px);
 
+	@include mobile {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: rem(24px);
+	}
+
 	.renovations-filter-top {
 		margin-top: rem(35px);
 		width: 100%;
 		display: flex;
 		align-items: center;
 		column-gap: rem(12px);
+
+		@include mobile {
+			display: contents;
+		}
 	}
 
-	@include mobile {
+	.apply-filters {
 		display: flex;
-		flex-direction: column;
-		padding-bottom: rem(24px);
-	}
-}
+		align-items: center;
+		width: max-content;
 
-.apply-filters {
-	display: flex;
-	align-items: center;
-	width: max-content;
-
-	@include tablet {
-		order: 0;
-		overflow-x: auto;
+		@include tablet {
+			order: 0;
+			overflow-x: auto;
+		}
 	}
 
 	.apply-filters__filter1,
@@ -52,7 +56,7 @@
 		}
 	}
 
-	.number {
+	.apply-filters .number {
 		width: rem(28px);
 		height: rem(28px);
 		display: inline-flex;
@@ -63,80 +67,86 @@
 		@include font-styles($font-weight: 600, $font-size: 16px, $color: $primary100);
 	}
 
-	.icon {
+	.apply-filters .icon {
 		display: inline-flex;
 		align-items: center;
 		font-size: $icon-size-closeWhite;
 	}
-}
 
-.renovations-filter__all-filters {
-	padding: rem(10px) rem(16px);
-	border: 1px solid $primary50;
-	@include button-styles($background-color: $body-background-color, $border-radius: 8px);
-	display: inline-flex;
-	align-items: center;
+	.renovations-filter__all-filters {
+		padding: rem(10px) rem(16px);
+		border: 1px solid $primary50;
+		@include button-styles($background-color: $body-background-color, $border-radius: 8px);
+		display: inline-flex;
+		align-items: center;
 
-	.icon {
+		@include mobile {
+			width: 100%;
+			margin-left: 0;
+			order: 3;
+			position: fixed;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1000;
+			justify-content: center;
+			border-radius: 0;
+			border: none;
+			border-top: 1px solid $primary50;
+			background-color: $light;
+		}
+	}
+
+	.renovations-filter__all-filters .icon {
 		font-size: $icon-size-filter;
 	}
 
 	.renovations-filter__all-filters__text {
 		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
-	}
 
-	@include mobile {
-		width: 100%;
-		margin-left: 0;
-		order: 3;
-		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 1000;
-		justify-content: center;
-		border-radius: 0;
-		border: none;
-		border-top: 1px solid $primary50;
-		background-color: $light;
-
-		.renovations-filter__all-filters__text {
+		@include mobile {
 			@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
 		}
 	}
-}
 
-.renovations-filter-bottom {
-	margin-top: rem(24px);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	.renovations-filter-bottom {
+		margin-top: rem(24px);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include tablet {
+			flex-direction: column;
+			align-items: flex-start;
+			row-gap: rem(16px);
+		}
+
+		@include mobile {
+			order: 1;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
 
 	.renovations-filter__list__order-by {
 		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
 	}
 
-	@include tablet {
-		flex-direction: column;
-		align-items: flex-start;
-		row-gap: rem(16px);
-	}
+	.renovations-filter__all-policies {
+		display: flex;
+		align-items: center;
 
-	@include mobile {
-		order: 1;
-		flex-direction: column;
-		align-items: flex-start;
-	}
-}
+		@include tablet {
+			margin-top: rem(16px);
+			order: 2;
+			flex-wrap: wrap;
+		}
 
-.renovations-filter__all-policies {
-	display: flex;
-	align-items: center;
-
-	@include tablet {
-		margin-top: rem(16px);
-		order: 2;
-		flex-wrap: wrap;
+		@include mobile {
+			margin-top: rem(14px);
+			order: 2;
+			flex-wrap: wrap;
+		}
 	}
 
 	.renovations-filter__all-policies__text-results,
@@ -146,7 +156,7 @@
 		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
 	}
 
-	.separation {
+	.renovations-filter__all-policies .separation {
 		margin-right: rem(16px);
 		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey75);
 	}
@@ -160,23 +170,17 @@
 		}
 	}
 
-	@include mobile {
-		margin-top: rem(14px);
-		order: 2;
-		flex-wrap: wrap;
+	.renovations-filter__list__type-filter {
+		width: rem(162px);
+		height: rem(44px);
+		margin-left: rem(14px);
+		background-color: $light;
+		border: 1px solid $primary50;
+		border-radius: 4px;
+		display: inline-flex;
+		align-items: center;
+		position: relative;
 	}
-}
-
-.renovations-filter__list__type-filter {
-	width: rem(162px);
-	height: rem(44px);
-	margin-left: rem(14px);
-	background-color: $light;
-	border: 1px solid $primary50;
-	border-radius: 4px;
-	display: inline-flex;
-	align-items: center;
-	position: relative;
 
 	.renovations-filter__list__select {
 		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
@@ -191,32 +195,26 @@
 		outline: none;
 	}
 
-	.icon.chev-down-order-by {
+	.renovations-filter__list__type-filter .icon.chev-down-order-by {
 		position: absolute;
 		left: rem(130px);
 		pointer-events: none;
 		font-size: $icon-size-chevDown;
 	}
-}
 
-.renovations-filter {
-	@include mobile {
-		display: contents;
-	}
-}
-
-.renovations-filter-top {
-	@include mobile {
-		display: contents;
-	}
-}
-
-.renovations-filter__list {
-	@include tablet {
-		order: 1;
+	.renovations-filter {
+		@include mobile {
+			display: contents;
+		}
 	}
 
-	@include mobile {
-		order: 1;
+	.renovations-filter__list {
+		@include tablet {
+			order: 1;
+		}
+
+		@include mobile {
+			order: 1;
+		}
 	}
 }

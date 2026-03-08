@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    width: rem(496px);
+    width: 31rem;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 0 100vmax #00000029;
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: rem(24px) rem(40px);
+    padding: 1.5rem 2.5rem;
     border-bottom: 0.0625rem solid #E6E7E8;
     .filter-menu__header__title {
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
@@ -41,15 +41,15 @@
 }
 
 .filter-menu__body {
-    padding: rem(32px) rem(40px) rem(415px) rem(40px);
+    padding: 2rem 2.5rem 25.9375rem 2.5rem;
 } 
 
 // --- SECCION 1: No. de poliza ---
 .filter-menu__body__sec1 {
-    margin-bottom: rem(32px);
+    margin-bottom: 2rem;
     position: relative;
     .filter-menu__body__title1 {
-        margin-bottom: rem(8px);
+        margin-bottom: 0.5rem;
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
     .filter-menu__body__select1 {
@@ -61,10 +61,10 @@
 
 // --- SECCION 2: Nombre del riesgo ---
 .filter-menu__body__sec2 {
-    margin-bottom: rem(32px);
+    margin-bottom: 2rem;
     position: relative;
     .filter-menu__body__title2 {
-        margin-bottom: rem(8px);
+        margin-bottom: 0.5rem;
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
     .filter-menu__body__input1 {
@@ -75,7 +75,7 @@
 
 // --- SECCION 3: Fecha ---
 .filter-menu__body__sec3 {
-    margin-bottom: rem(32px);
+    margin-bottom: 2rem;
     position: relative;
 
     .filter-menu__body__date-range {
@@ -91,13 +91,13 @@
     }
 
     .filter-menu__body__title3 {
-        margin-bottom: rem(8px);
+        margin-bottom: 0.5rem;
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
     .filter-menu__body__input2 {
-        @include menu-filter-field($width: rem(177.5px));
+        @include menu-filter-field($width: 11.09375rem);
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
-        padding-right: rem(36px);
+        padding-right: 2.25rem;
         &::-webkit-calendar-picker-indicator {
             display: none;
         }
@@ -106,9 +106,9 @@
         @include font-styles($font-weight: 400, $font-size: 16px, $color: black);
     }
     .filter-menu__body__input3 {
-        @include menu-filter-field($width: rem(177.5px));
+        @include menu-filter-field($width: 11.09375rem);
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
-        padding-right: rem(36px);
+        padding-right: 2.25rem;
         &::-webkit-calendar-picker-indicator {
             display: none;
         }
@@ -117,10 +117,10 @@
 
 // --- SECCION 4: Importe ---
 .filter-menu__body__sec4 {
-    margin-bottom: rem(32px);
+    margin-bottom: 2rem;
     position: relative;
     .filter-menu__body__title4 {
-        margin-bottom: rem(8px);
+        margin-bottom: 0.5rem;
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
     .filter-menu__body__input4 {
@@ -133,7 +133,7 @@
 .filter-menu__body__sec5 {
     position: relative;
     .filter-menu__body__title5 {
-        margin-bottom: rem(8px);
+        margin-bottom: 0.5rem;
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
     .filter-menu__body__select2 {
@@ -148,13 +148,13 @@
     font-size: $icon-size-chevDown;  
     position: absolute;
     top: 58%;
-    right: rem(12px);
+    right: 0.75rem;
     pointer-events: none;
 }
 
 .icon.calendar {
     position: absolute;
-    right: rem(12px);
+    right: 0.75rem;
     top: 50%;
     transform: translateY(-50%);
     font-size: $icon-size-calendar;
@@ -165,16 +165,16 @@
 .filter-menu__bottom {
     display: flex;
     justify-content: space-between;
-    padding: rem(20.5px) rem(40px);
+    padding: 20.5px 40px;
     border-top: 0.0625rem solid #E6E7E8;
     .filter-menu__bottom__clear {
-        padding: rem(10px) rem(16px);
+        padding: 10px 16px;
         border: 0.0625rem solid $primary50;
         @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
         @include button-styles($background-color: transparent);
     }
     .filter-menu__bottom__apply {
-        padding: rem(10px) rem(16px);
+        padding: 10px 16px;
         @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
         @include button-styles($background-color: $primary25);
     }

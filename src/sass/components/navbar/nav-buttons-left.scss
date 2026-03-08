@@ -21,16 +21,12 @@
     @include font-styles($font-weight: bold, $font-size: 16px, $color: $grey100);
     text-decoration: none;
     cursor: pointer;
+    @include mobile {
+      display: none;
+    }
+    @include tablet {
+      gap: rem(16px);    
+        display: none;
+    }
   } 
-  @include mobile {
-    .link { 
-      display: none;
-    }
-  }
-  @include tablet {
-    gap: rem(16px);       
-    .link { 
-      display: none;
-    }
-  }
 }

@@ -2,58 +2,61 @@
 @use '../../helpers/mixins' as *;
 
 .home {
-    background-color: $body-background-color;    
-    
+    background-color: $body-background-color;
+
     .title-renovations {
-        @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
+        @include font-styles($font-weight: 500, $font-size: 24px, $color: $grey100);
         margin-bottom: rem(32px);
+
         @include tablet {
             margin-bottom: rem(16px);
         }
     }
 
     .title-clients {
-        @include font-styles( $font-weight: 500, $font-size: 24px, $color: $grey100);
+        @include font-styles($font-weight: 500, $font-size: 24px, $color: $grey100);
         margin: rem(24px) 0;
     }
-}
 
-.home-content {
-    padding: rem(40px) rem(24px) rem(80px) rem(24px);
-    max-width: rem(1440px);
-    margin-inline: auto;
-    @include desktop {
-        padding: rem(40px) rem(16px) rem(80px) rem(16px);
-    }
-    @include mobile {
-        padding: rem(16px) 0 rem(24px) 0;
-        max-width: rem(343.008px);
+    .home-content {
+        padding: rem(40px) rem(24px) rem(80px) rem(24px);
+        max-width: rem(1440px);
         margin-inline: auto;
+
+        @include desktop {
+            padding: rem(40px) rem(16px) rem(80px) rem(16px);
+        }
+
+        @include mobile {
+            padding: rem(16px) 0 rem(24px) 0;
+            max-width: rem(343.008px);
+            margin-inline: auto;
+        }
     }
-}
 
+    .view-more-button {
+        display: flex;
 
-.view-more-button {
-    display: flex;
-
-    @include mobile {
-        margin-top: rem(24px);
+        @include mobile {
+            margin-top: rem(24px);
+        }
     }
 
-    .main-button {
+    .view-more-button .main-button {
         @include button-styles($background-color: $primary25);
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
         padding: rem(10px) rem(16px);
         border: none;
         cursor: pointer;
         text-decoration: none;
+    }
 
-        &:hover {
-            @include button-styles($background-color: $primary100);
-        }
-        &:active {
-            @include button-styles($background-color: $primary100);
-            transform: translateY(2px);
-        }
+    .view-more-button .main-button:hover {
+        @include button-styles($background-color: $primary100);
+    }
+
+    .view-more-button .main-button:active {
+        @include button-styles($background-color: $primary100);
+        transform: translateY(2px);
     }
 }

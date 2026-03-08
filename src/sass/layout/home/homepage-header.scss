@@ -22,7 +22,7 @@
         }
     }
 
-    &::before {
+    .body-header::before {
         content: "";
         position: absolute;
         inset: 0;

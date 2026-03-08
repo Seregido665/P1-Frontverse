@@ -2,163 +2,164 @@
 @use '../helpers/mixins' as *;
 @use '../helpers/variables' as *;
 
-.home-reservation__header {
-    min-height: rem(29.008px);
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: rem(56px);
-    padding: 0 rem(32px) 0 rem(56px);
-    margin-bottom: rem(24px);
-    border-bottom: 1px solid #A7B8BF;
-    h2{
-        padding-bottom: rem(7.008px);
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
-    }
 
-    @include desktop {
-        display: none;
-    }
-}
-
-.renovation-card-desktop {
-    gap: rem(56px);
-    height: rem(76px);
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 0 rem(32px) 0 rem(56px);
-    margin-bottom: rem(24px);
-    box-shadow: 0px 10px 15px #3746491A;
-
-    .renovation-card-desktop__policy, 
-    .renovation-card-desktop__risk, 
-    .renovation-card-desktop__date-contrat, 
-    .renovation-card-desktop__date-maturity {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
-    } 
-    .renovation-card-desktop__price {
-        @include font-styles( $font-weight: 700, $font-size: 16px, $color: $grey100)
-    }
-
-    @include desktop {
-        width: 100%;
-        height: auto;
-        box-sizing: border-box;
+.home-reservation {
+    .home-reservation__header {
+        min-height: rem(29.008px);
         display: grid;
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-        column-gap: rem(16px);
-        row-gap: rem(12px);
-        align-items: flex-start;
-        padding: rem(16px);
-        margin: 0 auto rem(24px) auto;
+        grid-template-columns: repeat(6, 1fr);
+        gap: rem(56px);
+        padding: 0 rem(32px) 0 rem(56px);
+        margin-bottom: rem(24px);
+        border-bottom: 1px solid #A7B8BF;
+
+        @include desktop {
+            display: none;
+        }
     }
 
-    @include mobile {
+    .home-reservation__header h2 {
+        padding-bottom: rem(7.008px);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+    }
+
+    .renovation-card-desktop {
+        gap: rem(56px);
+        height: rem(76px);
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        padding: 0 rem(32px) 0 rem(56px);
+        margin-bottom: rem(24px);
+        box-shadow: 0px 10px 15px #3746491A;
+
+        @include desktop {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            column-gap: rem(16px);
+            row-gap: rem(12px);
+            align-items: flex-start;
+            padding: rem(16px);
+            margin: 0 auto rem(24px) auto;
+        }
+
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .renovation-card-desktop__policy,
+    .renovation-card-desktop__risk,
+    .renovation-card-desktop__date-contrat,
+    .renovation-card-desktop__date-maturity {
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+
+    .renovation-card-desktop__price {
+        @include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+    }
+
+    .state-cell {
+        width: rem(115px);
+    }
+
+    .state {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        gap: rem(8px);
+        padding: rem(2px) rem(8px) rem(2px) 0;
+        border-radius: 4px;
     }
-}
-.state-cell {
-    width: rem(115px);
-}
 
-.state {
-    display: flex;
-    align-items: center;
-    gap: rem(8px);
-    padding: rem(2px) rem(8px) rem(2px) 0;
-    border-radius: 4px;
-    .state__icon {
+    .state .state__icon {
         padding-left: rem(5px);
         font-size: $icon-size-clock;
     }
-    .state__text {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100)
+
+    .state .state__text {
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
     }
-    .state__warning {
+
+    .state .state__warning {
         @include policy-state-styles($background-color: $state-warning);
     }
-    .state__success {
+
+    .state .state__success {
         @include policy-state-styles($background-color: $state-success);
-        .state__text {
-            color: $state-success-text;
-        }
     }
-    .state__error {
+
+    .state .state__success .state__text {
+        color: $state-success-text;
+    }
+
+    .state .state__error {
         @include policy-state-styles($background-color: $state-error);
-        .state__text {
-            color: $state-error-text;
+    }
+
+    .state .state__error .state__text {
+        color: $state-error-text;
+    }
+
+    .renovation-card-desktop__policy,
+    .renovation-card-desktop__risk,
+    .renovation-card-desktop__date-contrat,
+    .renovation-card-desktop__date-maturity,
+    .renovation-card-desktop__price,
+    .renovation-card-desktop__state {
+        @include desktop {
+            width: rem(200px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(2px);
         }
     }
-}
 
-.renovation-card-desktop__policy,
-.renovation-card-desktop__risk,
-.renovation-card-desktop__date-contrat,
-.renovation-card-desktop__date-maturity,
-.renovation-card-desktop__price,
-.renovation-card-desktop__state {
-    @include desktop {
-        width: rem(200px);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: rem(2px);
-    }
-}
-
-.renovation-card-desktop__policy {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__policy::before {
+        @include desktop {
             content: 'No. de póliza';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
-}
 
-.renovation-card-desktop__risk {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__risk::before {
+        @include desktop {
             content: 'Nombre del riesgo';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
-}
 
-.renovation-card-desktop__date-contrat {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__date-contrat::before {
+        @include desktop {
             content: 'Fecha de contrato';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
-}
 
-.renovation-card-desktop__date-maturity {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__date-maturity::before {
+        @include desktop {
             content: 'Fecha de vencimiento';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
-}
 
-.renovation-card-desktop__price {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__price::before {
+        @include desktop {
             content: 'Importe';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
-}
 
-.renovation-card-desktop__state {
-    @include desktop {
-        &::before {
+    .renovation-card-desktop__state::before {
+        @include desktop {
             content: 'Estado de póliza';
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey75)
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
         }
     }
 }

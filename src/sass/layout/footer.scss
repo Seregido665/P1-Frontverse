@@ -3,140 +3,124 @@
 @use '../helpers/icons-variables' as *;
 
 .footer {
-    padding: rem(16px) rem(32px);
-    background-color: white; 
+    padding: 1rem 2rem;
+    background-color: white;
 
     @include tablet {
-        padding: rem(16px);
-        .footer-info {
-            display: flex;
-            flex-direction: column;
-        }
-        .footer-contact__direction {
-            margin-top: rem(10px);
-        }
+        padding: 1rem;
     }
 
     @include mobile {
-        padding: rem(16px);
-        margin-bottom: rem(10px);
-        .footer-info {
+        margin-bottom: 10px;
+    }
+
+    .footer-info {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+        @include tablet {
             display: flex;
             flex-direction: column;
         }
-        .footer-contact__direction {
-            margin-top: rem(10px);
-        }
-        .footer-marc .footer-marc__text {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
     }
-}
 
-.footer-info {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); 
-}
+    .footer-contact__question {
+        @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
+    }
 
-.footer-contact__question {
-    @include font-styles( $font-weight: 700, $font-size: 16px, $color: $primary100);
-}
-.footer-contact__email {
-    display: flex;
-    align-items: center;
-    margin-top: rem(12px);
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
+    .footer-contact__email {
+        display: flex;
+        align-items: center;
+        margin-top: 0.75rem;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+
+    .footer-contact__phone {
+        display: flex;
+        align-items: center;
+        margin-top: 0.75rem;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
+
     .footer-contact__email-icon {
+        margin-right: 0.3125rem;
         font-size: $icon-size-mail;
     }
-}
-.footer-contact__phone {
-    display: flex;
-    align-items: center;
-    margin-top: rem(12px);
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
+
     .footer-contact__phone-icon {
+        margin-right: 0.3125rem;
         font-size: $icon-size-phone;
     }
-}
-.footer-contact__email-icon,
-.footer-contact__phone-icon {
-    margin-right: rem(5px);
-}
 
+    .footer-direction {
+        margin-top: 1.40625rem;
+        display: flex;
+        justify-self: end;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+    }
 
-
-.footer-direction {
-    margin-top: rem(22.5px);
-    display: flex;
-    justify-self: end;
-    @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100); 
     .footer-contact__direction {
         display: flex;
         flex-direction: column;
+
+        @include tablet {
+            margin-top: 0.625rem;
+        }
     }
+
     .footer-contact__direction-country {
-        margin-bottom: rem(12px);
+        margin-bottom: 0.75rem;
     }
-}
-.footer-legal {
-    margin-top: rem(32px);
-    a {
-        @include font-styles( $font-weight: 500, $font-size: 10px, $color: $grey100);
+
+    .footer-legal {
+        margin-top: 2rem;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .footer-legal a {
+        @include font-styles($font-weight: 500, $font-size: 10px, $color: $grey100);
         text-decoration: none;
-    }
-    .separation {
-        margin-inline: rem(24px);
-    }
 
-    @include desktop {
-        .separation {
-            margin-inline: rem(14px);
+        @include tablet {
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
         }
     }
 
-    @include tablet {
-        display: flex;
-        flex-direction: column;
-        a {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    .footer-legal .separation {
+        margin-inline: 1.5rem;
+
+        @include desktop {
+            margin-inline: 0.875rem;
         }
-        .middle {
-            margin: rem(14px) 0;
-        }
-        .separation {
+
+        @include tablet {
             display: none;
         }
     }
 
-    @include mobile {
+    .footer-legal .middle {
+        @include tablet {
+            margin: 0.875rem 0;
+        }
+    }
+
+    .footer-marc {
+        margin-top: 2.03125rem;
         display: flex;
-        flex-direction: column;
-        a {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
-        }
-        .middle {
-            margin: rem(14px) 0;
-        }
-        .separation {
-            display: none;
-        }
-    }
-}
-.footer-marc {
-    margin-top: rem(32.5px);
-    display: flex;
-    justify-self: end;
-    text-align: right;
-
-    .footer-marc__text {
-        @include font-styles( $font-weight: 400, $font-size: 10px, $color: $grey100);
+        justify-self: end;
+        text-align: right;
     }
 
-    @include tablet {
-        .footer-marc__text {
-            @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    .footer-marc .footer-marc__text {
+        @include font-styles($font-weight: 400, $font-size: 10px, $color: $grey100);
+
+        @include tablet {
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
         }
     }
 }
