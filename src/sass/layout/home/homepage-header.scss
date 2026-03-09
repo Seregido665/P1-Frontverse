@@ -50,18 +50,20 @@
         }
     }
 
-    .desktop_body-header__title {
+    .body-header__title {
+        width: 695px;
         line-height: 1.2;
-        @include font-styles( $font-weight: bold, $font-size: clamp(2rem, 5vw, 4rem), $color: $light);
+        @include font-styles( $font-weight: bold, $font-size: 64px, $color: $light);
 
-        @include mobile {
-            display: none;
+        @include tablet {
+            width: 278px;
+            @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
         }
     }
 
-    .desktop_body-header__description {
+    .body-header__description {
         padding-top: rem(40px);
-        @include font-styles( $font-weight: normal, $font-size: clamp(1rem, 2.2vw, 1.5rem), $color: $light);
+        @include font-styles( $font-weight: normal, $font-size: clamp(16px, 2.5vw, 24px), $color: $light);
 
         @include tablet {
             width: rem(420px);
@@ -69,30 +71,8 @@
         }
 
         @include mobile {
-            display: none;
-        }
-    }
-
-    .mobile_body-header__title {
-        display: none;
-
-        @include mobile {
-            display: block;
-            z-index: 2;
-            line-height: 1.2;
-            @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
-        }
-    }
-
-    .mobile_body-header__description {
-        display: none;
-
-        @include mobile {
             padding-top: rem(40px);
-            display: block;
-            z-index: 2;
-            @include font-styles( $font-weight: normal, $font-size: 16px, $color: $light);
+            width: rem(204px);
         }
     }
-
 }

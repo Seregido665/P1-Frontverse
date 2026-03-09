@@ -10745,8 +10745,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-
 function main() {
     const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
@@ -10823,7 +10821,7 @@ function main() {
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-function toggles() {
+function menuToggles() {
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
@@ -10921,5 +10919,5 @@ function toggles() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  toggles();
+  menuToggles();
 });

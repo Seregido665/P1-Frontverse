@@ -1,5 +1,3 @@
-
-
 function main() {
     const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');

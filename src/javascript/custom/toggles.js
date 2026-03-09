@@ -1,4 +1,4 @@
-function toggles() {
+function menuToggles() {
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
@@ -96,5 +96,5 @@ function toggles() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  toggles();
+  menuToggles();
 });
