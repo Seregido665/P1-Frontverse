@@ -4,6 +4,15 @@
 .body-header {
     position: relative;
 
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #00000080;
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .image-desktop-view {
         width: 100%;
         display: block;
@@ -22,13 +31,6 @@
         }
     }
 
-    .body-header::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: #00000080;
-        z-index: 1;
-    }
 
     .body-header__content {
         position: absolute;
@@ -38,8 +40,14 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        padding: 0 rem(16px);
+        margin-bottom: rem(40px);
         z-index: 2;
+        @include desktop {
+            margin-bottom: rem(0px);
+        }
+        @include mobile {
+            margin-bottom: rem(24px);
+        }
     }
 
     .desktop_body-header__title {

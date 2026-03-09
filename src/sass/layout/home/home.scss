@@ -6,7 +6,7 @@
 
     .title-renovations {
         @include font-styles($font-weight: 500, $font-size: 24px, $color: $grey100);
-        margin-bottom: rem(32px);
+        margin-bottom: rem(40px);
 
         @include tablet {
             margin-bottom: rem(16px);
@@ -15,7 +15,7 @@
 
     .title-clients {
         @include font-styles($font-weight: 500, $font-size: 24px, $color: $grey100);
-        margin: rem(24px) 0;
+        margin-bottom: rem(32px);
     }
 
     .home-content {
@@ -35,6 +35,7 @@
     }
 
     .view-more-button {
+        margin-block: rem(40px);
         display: flex;
 
         @include mobile {

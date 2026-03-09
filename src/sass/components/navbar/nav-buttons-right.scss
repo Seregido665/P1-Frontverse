@@ -62,11 +62,22 @@
     }
   }
   .title {
+    width: rem(59px);
     @include desktop {
       display: none;
     }
   }
+  .user-button {
+    .title {
+      @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+    }
+  }
+
   .globe-button {
+    .title {
+      @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+    }
+
     @include tablet {
       display: none;
     }

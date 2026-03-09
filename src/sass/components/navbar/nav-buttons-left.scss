@@ -18,7 +18,7 @@
     
   }
   .link {
-    @include font-styles($font-weight: bold, $font-size: 16px, $color: $grey100);
+    @include font-styles($font-weight: bold, $font-size: 16px, $color: $text);
     text-decoration: none;
     cursor: pointer;
     @include mobile {

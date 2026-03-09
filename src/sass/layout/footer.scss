@@ -3,15 +3,15 @@
 @use '../helpers/icons-variables' as *;
 
 .footer {
-    padding: 1rem 2rem;
+    padding: rem(16px) rem(32px);
     background-color: white;
 
     @include tablet {
-        padding: 1rem;
+        padding: rem(16px);
     }
 
     @include mobile {
-        margin-bottom: 10px;
+        margin-bottom: rem(10px);
     }
 
     .footer-info {
@@ -32,32 +32,32 @@
     .footer-contact__email {
         display: flex;
         align-items: center;
-        margin-top: 0.75rem;
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        margin-top: rem(12px);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .footer-contact__phone {
         display: flex;
         align-items: center;
-        margin-top: 0.75rem;
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        margin-top: rem(12px);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .footer-contact__email-icon {
-        margin-right: 0.3125rem;
+        margin-right: rem(5px);
         font-size: $icon-size-mail;
     }
 
     .footer-contact__phone-icon {
-        margin-right: 0.3125rem;
+        margin-right: rem(5px);
         font-size: $icon-size-phone;
     }
 
     .footer-direction {
-        margin-top: 1.40625rem;
+        margin-top: rem(22.5px);
         display: flex;
         justify-self: end;
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .footer-contact__direction {
@@ -65,16 +65,16 @@
         flex-direction: column;
 
         @include tablet {
-            margin-top: 0.625rem;
+            margin-top: rem(10px);
         }
     }
 
     .footer-contact__direction-country {
-        margin-bottom: 0.75rem;
+        margin-bottom: rem(12px);
     }
 
     .footer-legal {
-        margin-top: 2rem;
+        margin-top: rem(32px);
 
         @include tablet {
             display: flex;
@@ -83,19 +83,20 @@
     }
 
     .footer-legal a {
-        @include font-styles($font-weight: 500, $font-size: 10px, $color: $grey100);
+        @include font-styles($font-weight: 500, $font-size: 10px, $color: $text);
         text-decoration: none;
 
         @include tablet {
-            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
         }
     }
 
     .footer-legal .separation {
-        margin-inline: 1.5rem;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $border-filterMenu-option);
+        margin-inline: rem(24px);
 
         @include desktop {
-            margin-inline: 0.875rem;
+            margin-inline: rem(14px);
         }
 
         @include tablet {
@@ -105,22 +106,22 @@
 
     .footer-legal .middle {
         @include tablet {
-            margin: 0.875rem 0;
+            margin: rem(14px) 0;
         }
     }
 
     .footer-marc {
-        margin-top: 2.03125rem;
+        margin-top: rem(32.5px);
         display: flex;
         justify-self: end;
         text-align: right;
     }
 
     .footer-marc .footer-marc__text {
-        @include font-styles($font-weight: 400, $font-size: 10px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 10px, $color: $text);
 
         @include tablet {
-            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
         }
     }
 }

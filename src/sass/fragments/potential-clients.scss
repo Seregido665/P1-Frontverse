@@ -32,7 +32,7 @@
     display: grid;
     align-items: center;
     justify-content: space-between;
-    padding: rem(20px) rem(24px) 0;
+    padding: rem(16px) rem(24px) 0 rem(24px);
     flex-direction: column;
     background-color: inherit;
   }
@@ -51,7 +51,7 @@
   }
 
   .client-card__name {
-    @include font-styles($font-weight: 400, $font-size: 24px, $color: $grey100);
+    @include font-styles($font-weight: 400, $font-size: 24px, $color: $text4);
     margin-bottom: rem(10px);
 
     @include tablet {
@@ -60,7 +60,7 @@
   }
 
   .client-card__offer {
-    @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary75);
+    @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary50);
     margin-bottom: rem(39px);
     display: inline-block;
   }
@@ -80,7 +80,7 @@
   }
 
   .client-card__contact {
-    padding: 0 rem(24px) rem(31.008px);
+    padding: 0 rem(24px) rem(32px);
     display: flex;
     gap: rem(10px);
 
@@ -96,7 +96,7 @@
   .client-card__mail {
     @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
-    margin-right: rem(24px);
+    margin-right: rem(40px);
 
     @include tablet {
       margin-bottom: rem(24px);

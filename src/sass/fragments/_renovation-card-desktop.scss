@@ -18,9 +18,13 @@
         }
     }
 
-    .home-reservation__header h2 {
-        padding-bottom: rem(7.008px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+    .renovations-desktop {
+        margin-bottom: rem(116px);
+    }
+
+    .home-reservation__header {
+        padding-bottom: rem(7.5px);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .renovation-card-desktop {
@@ -32,7 +36,7 @@
         background-color: rgb(255, 255, 255);
         border-radius: 10px;
         padding: 0 rem(32px) 0 rem(56px);
-        margin-bottom: rem(24px);
+        margin: rem(24px) 0 rem(24px) 0;
         box-shadow: 0px 10px 15px #3746491A;
 
         @include desktop {
@@ -58,36 +62,41 @@
     .renovation-card-desktop__risk,
     .renovation-card-desktop__date-contrat,
     .renovation-card-desktop__date-maturity {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text3);
     }
 
     .renovation-card-desktop__price {
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 700, $font-size: 16px, $color: $text3);
     }
 
     .state-cell {
-        width: rem(115px);
+        width: rem(116px);
     }
 
     .state {
         display: flex;
         align-items: center;
         gap: rem(8px);
-        padding: rem(2px) rem(8px) rem(2px) 0;
+        padding: rem(2px) 0 rem(2px) 0;
         border-radius: 4px;
     }
 
     .state .state__icon {
-        padding-left: rem(5px);
+        padding-left: rem(8px);
         font-size: $icon-size-clock;
     }
 
     .state .state__text {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
+        padding-right: rem(8px);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .state .state__warning {
         @include policy-state-styles($background-color: $state-warning);
+    }
+
+    .state .state__warning .state__text {
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: #405258);
     }
 
     .state .state__success {
@@ -159,7 +168,7 @@
     .renovation-card-desktop__state::before {
         @include desktop {
             content: 'Estado de póliza';
-            @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+            @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
         }
     }
 }
