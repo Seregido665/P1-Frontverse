@@ -1,7 +1,10 @@
 function selectLanguage() { 
-    const options = document.querySelectorAll('.globe-menu-window__option');
+  const options = document.querySelectorAll('.globe-menu-window__option');
   const mainLabel = document.querySelector('.globe-button .title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
+  const mainElement = document.querySelector('.globe-menu-window');
+
+  if (!mainElement) return;
 
   // --- APLICA EL ESTILO bold AL IDIOMA SELECCIONADO POR DEFECTO ---
   document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {

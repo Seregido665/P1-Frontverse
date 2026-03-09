@@ -43,6 +43,16 @@
         @include mobile {
             margin-top: rem(320px);
         }
+
+        .arrow-dropdown {
+            transition: transform 0.2s ease;
+        }
+
+        &.is-open {             
+            .arrow-dropdown {
+                transform: scaleY(-1);
+            }
+        }
     }
 
     .burguer-menu-window__text {
@@ -61,10 +71,18 @@
         display: inline-block;
     }
 
+    
+
     .globe-menu-window {
         position: static;
         right: auto;
         margin-left: rem(24px);
         margin-bottom: rem(12.8px);
+
+        @include mobile {
+            position: relative;
+            top: -240px;
+            right: auto;
+        }
     }
 }

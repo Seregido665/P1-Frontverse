@@ -71,6 +71,8 @@
 
     .state-cell {
         width: rem(116px);
+        border-radius: 4px;
+        overflow: hidden;
     }
 
     .state {
@@ -93,6 +95,7 @@
 
     .state .state__warning {
         @include policy-state-styles($background-color: $state-warning);
+        border-radius: 4px;
     }
 
     .state .state__warning .state__text {
@@ -101,6 +104,7 @@
 
     .state .state__success {
         @include policy-state-styles($background-color: $state-success);
+        border-radius: 4px;
     }
 
     .state .state__success .state__text {
@@ -109,6 +113,7 @@
 
     .state .state__error {
         @include policy-state-styles($background-color: $state-error);
+        border-radius: 4px;
     }
 
     .state .state__error .state__text {

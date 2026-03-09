@@ -145,6 +145,6 @@ sub {
 a {
   &:hover,
   &:focus-visible {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }

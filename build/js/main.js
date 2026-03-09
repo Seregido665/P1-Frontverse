@@ -10703,9 +10703,12 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 function selectLanguage() { 
-    const options = document.querySelectorAll('.globe-menu-window__option');
+  const options = document.querySelectorAll('.globe-menu-window__option');
   const mainLabel = document.querySelector('.globe-button .title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
+  const mainElement = document.querySelector('.globe-menu-window');
+
+  if (!mainElement) return;
 
   // --- APLICA EL ESTILO bold AL IDIOMA SELECCIONADO POR DEFECTO ---
   document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {
@@ -10811,6 +10814,8 @@ function main() {
     if (mobileQuery.matches) {
       userMenu.style.display = 'none';
       burguerMenu.style.display = 'none';
+      globeMenuInBurguer.style.display = 'none';
+      btnGlobeInBurguer.classList.remove('is-open');
       navRight.classList.remove('mobile-user-open');
       navRight.classList.remove('mobile-burguer-open');
       document.body.style.overflow = '';
@@ -10821,7 +10826,7 @@ function main() {
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-function menuToggles() {
+function navbarMenusToggles() {
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
@@ -10887,10 +10892,19 @@ function menuToggles() {
   bindToggle(btnGlobe, globeMenu);
 
   // -- Idioma (en Menú Burguer) --
-  bindToggle(btnGlobeInBurguer, globeMenuInBurguer);
+  bindToggle(btnGlobeInBurguer, globeMenuInBurguer, function (isOpen) {
+    if (btnGlobeInBurguer) {
+      btnGlobeInBurguer.classList.toggle('is-open', isOpen);
+    }
+  });
 
   // -- Menú Burguer --
   bindToggle(btnBurguer, burguerMenu, function (isOpen) {
+    if (!isOpen && globeMenuInBurguer && btnGlobeInBurguer) {
+      globeMenuInBurguer.style.display = 'none';
+      btnGlobeInBurguer.classList.remove('is-open');
+    }
+
     if (mobileQuery.matches && navRight) {
       navRight.classList.toggle('mobile-burguer-open', isOpen);
       updateBodyScroll();
@@ -10919,5 +10933,5 @@ function menuToggles() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  menuToggles();
+  navbarMenusToggles();
 });

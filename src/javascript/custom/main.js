@@ -64,6 +64,8 @@ function main() {
     if (mobileQuery.matches) {
       userMenu.style.display = 'none';
       burguerMenu.style.display = 'none';
+      globeMenuInBurguer.style.display = 'none';
+      btnGlobeInBurguer.classList.remove('is-open');
       navRight.classList.remove('mobile-user-open');
       navRight.classList.remove('mobile-burguer-open');
       document.body.style.overflow = '';

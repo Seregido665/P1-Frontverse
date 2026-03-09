@@ -1,4 +1,4 @@
-function menuToggles() {
+function navbarMenusToggles() {
   const btnUser = document.querySelector('.user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.globe-button');
@@ -64,10 +64,19 @@ function menuToggles() {
   bindToggle(btnGlobe, globeMenu);
 
   // -- Idioma (en Menú Burguer) --
-  bindToggle(btnGlobeInBurguer, globeMenuInBurguer);
+  bindToggle(btnGlobeInBurguer, globeMenuInBurguer, function (isOpen) {
+    if (btnGlobeInBurguer) {
+      btnGlobeInBurguer.classList.toggle('is-open', isOpen);
+    }
+  });
 
   // -- Menú Burguer --
   bindToggle(btnBurguer, burguerMenu, function (isOpen) {
+    if (!isOpen && globeMenuInBurguer && btnGlobeInBurguer) {
+      globeMenuInBurguer.style.display = 'none';
+      btnGlobeInBurguer.classList.remove('is-open');
+    }
+
     if (mobileQuery.matches && navRight) {
       navRight.classList.toggle('mobile-burguer-open', isOpen);
       updateBodyScroll();
@@ -96,5 +105,5 @@ function menuToggles() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  menuToggles();
+  navbarMenusToggles();
 });

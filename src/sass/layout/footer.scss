@@ -58,6 +58,9 @@
         display: flex;
         justify-self: end;
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+        @include mobile {
+            margin-top: rem(43.5px);
+        }
     }
 
     .footer-contact__direction {
@@ -89,6 +92,7 @@
         @include tablet {
             @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
         }
+
     }
 
     .footer-legal .separation {
@@ -106,7 +110,7 @@
 
     .footer-legal .middle {
         @include tablet {
-            margin: rem(14px) 0;
+            margin: rem(24px) 0;
         }
     }
 
@@ -115,10 +119,13 @@
         display: flex;
         justify-self: end;
         text-align: right;
+        @include mobile {
+            margin-top: rem(18px);
+        }
     }
 
     .footer-marc .footer-marc__text {
-        @include font-styles($font-weight: 400, $font-size: 10px, $color: $text);
+        @include font-styles($font-weight: 500, $font-size: 10px, $color: $text);
 
         @include tablet {
             @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);

@@ -59,9 +59,14 @@
             width: 278px;
             @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
         }
+        @include mobile {
+            width: 100%;
+            padding-inline: rem(40px);
+           }
     }
 
     .body-header__description {
+        width: 100%;
         padding-top: rem(40px);
         @include font-styles( $font-weight: normal, $font-size: clamp(16px, 2.5vw, 24px), $color: $light);
 
@@ -71,8 +76,8 @@
         }
 
         @include mobile {
+            padding-inline: rem(108px);
             padding-top: rem(40px);
-            width: rem(204px);
         }
     }
 }
