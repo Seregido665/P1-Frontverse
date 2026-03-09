@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    width: 31rem;
+    width: rem(496px);
     height: 100vh;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 0 100vmax #00000029;
@@ -22,61 +22,68 @@
         width: 100vw;
         height: 100vh;
     }
-}
 
-.filter-menu__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2.5rem;
-    border-bottom: 0.0625rem solid #E6E7E8;
+    .filter-menu__header {
+        max-height: rem(72px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(24px) rem(40px);
+        border-bottom: 1px solid #E6E7E8;
+    }
+
     .filter-menu__header__title {
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
     }
-    .icon {
+
+    .filter-menu__header .icon {
+        padding-top: rem(5px);
         font-size: $icon-size-close;
         cursor: pointer;
-      filter: hue-rotate(240deg) saturate(1.5);   // PARA FORZAR EL COLOR AZUL
+        filter: hue-rotate(240deg) saturate(1.5);
+        border: none;
+        background: transparent;
     }
-}
 
-.filter-menu__body {
-    padding: 2rem 2.5rem 25.9375rem 2.5rem;
-} 
+    .filter-menu__body {
+        padding: rem(32px) rem(40px) rem(415px) rem(40px);
+    }
 
-// --- SECCION 1: No. de poliza ---
-.filter-menu__body__sec1 {
-    margin-bottom: 2rem;
-    position: relative;
+    .filter-menu__body__sec1 {
+        margin-bottom: rem(32px);
+        position: relative;
+    }
+
     .filter-menu__body__title1 {
-        margin-bottom: 0.5rem;
+        margin-bottom: rem(8px);
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
+
     .filter-menu__body__select1 {
         @include menu-filter-field();
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
         appearance: none;
     }
-}
 
-// --- SECCION 2: Nombre del riesgo ---
-.filter-menu__body__sec2 {
-    margin-bottom: 2rem;
-    position: relative;
+    .filter-menu__body__sec2 {
+        margin-bottom: rem(32px);
+        position: relative;
+    }
+
     .filter-menu__body__title2 {
-        margin-bottom: 0.5rem;
+        margin-bottom: rem(8px);
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
+
     .filter-menu__body__input1 {
         @include menu-filter-field();
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
     }
-}
 
-// --- SECCION 3: Fecha ---
-.filter-menu__body__sec3 {
-    margin-bottom: 2rem;
-    position: relative;
+    .filter-menu__body__sec3 {
+        margin-bottom: rem(32px);
+        position: relative;
+    }
 
     .filter-menu__body__date-range {
         justify-content: space-between;
@@ -91,91 +98,100 @@
     }
 
     .filter-menu__body__title3 {
-        margin-bottom: 0.5rem;
+        margin-bottom: rem(8px);
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
+
     .filter-menu__body__input2 {
-        @include menu-filter-field($width: 11.09375rem);
+        @include menu-filter-field($width: rem(177.5px));
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
-        padding-right: 2.25rem;
-        &::-webkit-calendar-picker-indicator {
-            display: none;
-        }
+        padding-right: rem(36px);
     }
+
+    .filter-menu__body__input2::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
     .separation {
         @include font-styles($font-weight: 400, $font-size: 16px, $color: black);
     }
-    .filter-menu__body__input3 {
-        @include menu-filter-field($width: 11.09375rem);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
-        padding-right: 2.25rem;
-        &::-webkit-calendar-picker-indicator {
-            display: none;
-        }
-    }
-}
 
-// --- SECCION 4: Importe ---
-.filter-menu__body__sec4 {
-    margin-bottom: 2rem;
-    position: relative;
+    .filter-menu__body__input3 {
+        @include menu-filter-field($width: rem(177.5px));
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        padding-right: rem(36px);
+    }
+
+    .filter-menu__body__input3::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+
+    .filter-menu__body__sec4 {
+        margin-bottom: rem(32px);
+        position: relative;
+    }
+
     .filter-menu__body__title4 {
-        margin-bottom: 0.5rem;
+        margin-bottom: rem(8px);
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
+
     .filter-menu__body__input4 {
         @include menu-filter-field();
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
     }
-}
 
-// --- SECCION 5: Estado ---
-.filter-menu__body__sec5 {
-    position: relative;
+    .filter-menu__body__sec5 {
+        position: relative;
+    }
+
     .filter-menu__body__title5 {
-        margin-bottom: 0.5rem;
+        margin-bottom: rem(8px);
         @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
     }
+
     .filter-menu__body__select2 {
         @include menu-filter-field();
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
         appearance: none;
     }
-}
 
-.icon.chev-down-policy,
-.icon.chev-down-status {
-    font-size: $icon-size-chevDown;  
-    position: absolute;
-    top: 58%;
-    right: 0.75rem;
-    pointer-events: none;
-}
+    .icon.chev-down-policy,
+    .icon.chev-down-status {
+        font-size: $icon-size-chevDown;
+        position: absolute;
+        top: 58%;
+        right: rem(12px);
+        pointer-events: none;
+    }
 
-.icon.calendar {
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: $icon-size-calendar;
-    pointer-events: none;
-}
+    .icon.calendar {
+        position: absolute;
+        right: rem(12px);
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: $icon-size-calendar;
+        pointer-events: none;
+    }
 
+    .filter-menu__bottom {
+        display: flex;
+        justify-content: space-between;
+        padding: rem(20.5px) rem(40px);
+        border-top: 1px solid #E6E7E8;
+    }
 
-.filter-menu__bottom {
-    display: flex;
-    justify-content: space-between;
-    padding: 20.5px 40px;
-    border-top: 0.0625rem solid #E6E7E8;
     .filter-menu__bottom__clear {
-        padding: 10px 16px;
-        border: 0.0625rem solid $primary50;
+        padding: rem(10px) rem(16px);
+        border: 1px solid $primary50;
         @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
         @include button-styles($background-color: transparent);
     }
+
     .filter-menu__bottom__apply {
-        padding: 10px 16px;
+        padding: rem(10px) rem(16px);
         @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
         @include button-styles($background-color: $primary25);
+        border: none;
     }
 }

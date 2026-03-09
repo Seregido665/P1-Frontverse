@@ -49,6 +49,10 @@
 		}
 	}
 
+	.renovations-filter__all-policies__text-results {
+		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+	}
+
 	.renovations-filter__all-filters .icon {
 		font-size: $icon-size-filter;
 	}
@@ -82,7 +86,7 @@
 	}
 
 	.renovations-filter__list__order-by {
-		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+		@include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
 	}
 
 	.renovations-filter__all-policies {
@@ -106,12 +110,12 @@
 	.renovations-filter__all-policies__text-filters {
 		margin-left: rem(5px);
 		margin-right: rem(16px);
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+		@include font-styles($font-weight: 700, $font-size: 16px, $color: $text);
 	}
 
 	.renovations-filter__all-policies .separation {
 		margin-right: rem(16px);
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey75);
+		@include font-styles($font-weight: 700, $font-size: 16px, $color: $border-filterMenu-option);
 	}
 
 	.renovations-filter__all-policies__clear-filters {
