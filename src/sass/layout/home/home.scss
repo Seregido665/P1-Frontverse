@@ -16,6 +16,9 @@
     .title-clients {
         @include font-styles($font-weight: 500, $font-size: 24px, $color: $grey100);
         margin-bottom: rem(32px);
+        @include mobile {
+            margin-bottom: rem(24px);
+        }
     }
 
     .home-content {
@@ -39,7 +42,7 @@
         display: flex;
 
         @include mobile {
-            margin-top: rem(24px);
+            margin-block: rem(24px);
         }
     }
 

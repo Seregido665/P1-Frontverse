@@ -14,13 +14,16 @@
 	}
 
 	@include mobile {
-		display: none;
+		margin-block: 24px;
 	}
 
 	.pagination__rows {
 		display: flex;
 		align-items: center;
 		margin-right: rem(32px);
+		@include tablet {
+			margin-right: rem(16px);
+		}
 	}
 
 	.pagination__rows__rows-text {
@@ -28,16 +31,23 @@
 		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
 	}
 
+	.pagination__rows__option-text {
+		margin-left: rem(3px);
+	}
+
 	.pagination__rows__option {
 		width: rem(72px);
 		height: rem(48px);
 		border: 1px solid $primary50;
+		display: flex;
+		align-items: center;
 		justify-content: center;
 		@include button-styles($background-color: $light, $border-radius: 8px);
 		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
 	}
 
 	.pagination__rows__option .icon.chev-down-rows {
+		padding-left: rem(10px);
 		font-size: $icon-size-chevDown;
 	}
 
@@ -56,7 +66,7 @@
 		align-items: center;
 
 		@include tablet {
-			margin-right: rem(26px);
+			margin-right: rem(8px);
 		}
 	}
 
@@ -64,9 +74,12 @@
 	.pagination__page-option__left,
 	.pagination__page-option__right,
 	.pagination__page-option__skip-right {
+		border: none;
 		width: rem(48px);
 		height: rem(48px);
 		margin-right: rem(8px);
+		display: flex;
+		align-items: center;
 		justify-content: center;
 		@include button-styles($background-color: $light, $border-radius: 8px);
 	}

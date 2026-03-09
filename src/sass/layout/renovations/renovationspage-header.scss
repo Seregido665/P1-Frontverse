@@ -3,11 +3,12 @@
 @use '../../helpers/icons-variables' as *;
 
 .renovations-header {
-    padding: rem(32px) rem(88px) rem(32px) rem(88px);
+    padding: rem(32px) rem(88px);
     border-top: 1px solid #E6E7E8;
+    border-bottom: 1px solid #B7CBD3;
 
     @include tablet {
-        padding: rem(24px) rem(109px) rem(30px) rem(16px);
+        padding: rem(24px) rem(109px) rem(24px) rem(16px);
     }
 
     .renovations-header__top {
@@ -23,13 +24,18 @@
         align-items: center;
 
         @include tablet {
+            margin-left: rem(16px);
             flex-direction: column;
             align-items: flex-start;
         }
     }
 
+    .renovations-header__menu-title {
+        width: 270px;
+    }
+
     .renovations-header__menu-subtitle {
-        margin-bottom: rem(44px);
+        margin-bottom: rem(40px);
 
         @include tablet {
             display: none;
@@ -46,14 +52,16 @@
     }
 
     .renovations-header__menu-subtitle__next-renovations {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text5);
     }
 
     .renovations-header__menu-title__next-renovations {
-        @include font-styles($font-weight: 400, $font-size: 24px, $color: $grey100);
+        @include font-styles($font-weight: 400, $font-size: 24px, $color: $text4);
     }
 
     .renovations-header__bottom .renovations-header__number-policies {
+        width: 139px;
+        height: 36px;
         @include tablet {
             margin-top: rem(16px);
         }
@@ -61,7 +69,7 @@
 
     .renovations-header__number-policies {
         padding: rem(8.5px) rem(12px);
-        @include button-styles($background-color: #EFF3F5, $border-radius: 8px);
+        @include button-styles($background-color: $background-number-policies, $border-radius: 8px);
         display: inline-flex;
         align-items: center;
         width: fit-content;
@@ -73,10 +81,10 @@
 
     .renovations-header__number-policies__number {
         margin: 0 rem(4px) 0 rem(10px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 
     .renovations-header__number-policies__policies {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey75);
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
     }
 }

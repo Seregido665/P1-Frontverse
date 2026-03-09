@@ -101,7 +101,9 @@
   @include mobile {
     .close {
       margin-right: rem(3px);
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      align-self: center;
     }
     .close .icon {
       filter: hue-rotate(240deg) saturate(1.5);

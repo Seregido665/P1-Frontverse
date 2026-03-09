@@ -1,0 +1,77 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+
+.renovation-list-header {
+    .apply-filters {
+        display: flex;
+        align-items: center;
+        width: max-content;
+
+        @include desktop {
+            order: 0;
+            overflow-x: auto;
+        }
+
+        @include tablet {
+            width: 100%;
+            max-width: 100%;
+            margin-inline: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+            scrollbar-width: auto;
+            scrollbar-color: #7B8F98 #D7E0E3;
+        }
+
+        @include mobile {
+            width: 100%;
+            max-width: 100%;
+            gap: rem(12px);
+        }
+    }
+
+    .apply-filters__filter1,
+    .apply-filters__filter2,
+    .apply-filters__filter3 {
+        display: inline-flex;
+        align-items: center;
+        column-gap: rem(8px);
+        margin-left: rem(12px);
+        padding-inline: rem(16px);
+        min-width: fit-content;
+        height: rem(36px);
+        border-radius: 99px;
+        background-color: $primary100;
+        @include font-styles($font-weight: 400, $font-size: 16px, $color: $light);
+
+        @include tablet {
+            order: 0;
+            margin-right: rem(12px);
+            margin-left: 0;
+            flex: 0 0 auto;
+        }
+
+        @include mobile {
+            margin: 0;
+            flex: 0 0 auto;
+        }
+    }
+
+    .apply-filters .number {
+        width: rem(28px);
+        height: rem(28px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+        background-color: $light;
+        @include font-styles($font-weight: 600, $font-size: 16px, $color: $primary100);
+    }
+
+    .apply-filters .icon {
+        display: inline-flex;
+        align-items: center;
+        font-size: $icon-size-closeWhite;
+    }
+}

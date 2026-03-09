@@ -3,12 +3,14 @@
 @use '../../helpers/icons-variables' as *;
 
 .renovation-list-header {
+	padding-top: rem(1px);
 	padding-bottom: rem(40px);
 
 	@include mobile {
 		display: flex;
 		flex-direction: column;
 		padding-bottom: rem(24px);
+		margin-top: rem(26px);
 	}
 
 	.renovations-filter-top {
@@ -21,56 +23,6 @@
 		@include mobile {
 			display: contents;
 		}
-	}
-
-	.apply-filters {
-		display: flex;
-		align-items: center;
-		width: max-content;
-
-		@include tablet {
-			order: 0;
-			overflow-x: auto;
-		}
-	}
-
-	.apply-filters__filter1,
-	.apply-filters__filter2,
-	.apply-filters__filter3 {
-		display: inline-flex;
-		align-items: center;
-		column-gap: rem(8px);
-		margin-left: rem(12px);
-		padding-inline: rem(16px);
-		min-width: fit-content;
-		height: rem(36px);
-		border-radius: 99px;
-		background-color: $primary100;
-		@include font-styles($font-weight: 400, $font-size: 16px, $color: $light);
-
-		@include tablet {
-			order: 0;
-			overflow-x: auto;
-			margin-right: rem(12px);
-			margin-left: 0;
-		}
-	}
-
-	.apply-filters .number {
-		width: rem(28px);
-		height: rem(28px);
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 40px;
-		background-color: $light;
-		@include font-styles($font-weight: 600, $font-size: 16px, $color: $primary100);
-	}
-
-	.apply-filters .icon {
-		display: inline-flex;
-		align-items: center;
-		font-size: $icon-size-closeWhite;
 	}
 
 	.renovations-filter__all-filters {
@@ -102,6 +54,7 @@
 	}
 
 	.renovations-filter__all-filters__text {
+		margin-left: rem(10px);
 		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
 
 		@include mobile {
@@ -162,11 +115,13 @@
 	}
 
 	.renovations-filter__all-policies__clear-filters {
+		border: none;
+		background-color: transparent;
 		@include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
 
 		@include mobile {
-			flex-basis: 100%;
 			margin-top: rem(16px);
+			
 		}
 	}
 
@@ -197,7 +152,9 @@
 
 	.renovations-filter__list__type-filter .icon.chev-down-order-by {
 		position: absolute;
+		top: 50%;
 		left: rem(130px);
+		transform: translateY(-50%);
 		pointer-events: none;
 		font-size: $icon-size-chevDown;
 	}

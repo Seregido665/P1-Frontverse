@@ -7,11 +7,14 @@
   grid-template-columns: 1fr 1fr;    
   gap: rem(20px);
 
+  @include mobile {
+    gap: rem(24px);
+  }
+
   @include tablet {
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
-    padding-bottom: rem(24px);
   }
 
   .client-card {
@@ -63,6 +66,9 @@
     @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary50);
     margin-bottom: rem(39px);
     display: inline-block;
+    @include tablet {
+      margin-bottom: rem(55.5px);
+    }
   }
 
   .client-card__icon {
@@ -75,9 +81,6 @@
     background-color: inherit;
   }
 
-  .client-card__bottom {
-    background-color: inherit;
-  }
 
   .client-card__contact {
     padding: 0 rem(24px) rem(32px);
@@ -87,9 +90,8 @@
     @include desktop {
       flex-direction: column;
     }
-
     @include tablet {
-      margin-bottom: rem(64px);
+      gap: 0;
     }
   }
 
@@ -99,16 +101,19 @@
     margin-right: rem(40px);
 
     @include tablet {
-      margin-bottom: rem(24px);
+      margin-bottom: rem(24.5px);
     }
 
     @include mobile {
-      margin-bottom: rem(24px);
+      margin-left: rem(8px);
     }
   }
 
   .client-card__phone {
     @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
     align-items: center;
+    @include mobile {
+      margin-left: rem(8px);
+    }
   }
 }
