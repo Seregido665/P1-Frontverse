@@ -16,14 +16,11 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: $primary100;
   }
 
   .user {
     font-size: $icon-size-user;
-    @include desktop {
-      border-radius: 99px;
-      background-color: $background-user-button;
-    }
   }
   .globe {
     font-size: $icon-size-globe;
@@ -91,7 +88,7 @@
     display: none;
 
     .icon {
-      filter: hue-rotate(240deg) saturate(1.5);
+      color: $primary100;
     }
     @include mobile {
       display: none;
@@ -110,7 +107,7 @@
       align-self: center;
     }
     .close .icon {
-      filter: hue-rotate(240deg) saturate(1.5);
+      color: $primary100;
     }
     .user-button,
     .burguer-button {

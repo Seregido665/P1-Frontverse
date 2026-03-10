@@ -96,6 +96,7 @@
     .state .state__warning {
         @include policy-state-styles($background-color: $state-warning);
         border-radius: 4px;
+        color: $text;
     }
 
     .state .state__warning .state__text {
@@ -105,6 +106,7 @@
     .state .state__success {
         @include policy-state-styles($background-color: $state-success);
         border-radius: 4px;
+        color: $state-success-text;
     }
 
     .state .state__success .state__text {
@@ -114,6 +116,7 @@
     .state .state__error {
         @include policy-state-styles($background-color: $state-error);
         border-radius: 4px;
+        color: $state-error-text;
     }
 
     .state .state__error .state__text {

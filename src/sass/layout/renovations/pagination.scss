@@ -95,17 +95,21 @@
 
 	.pagination__page-option__skip-left {
 		font-size: $icon-size-skipLeft;
+		color: $border-filterMenu-option;
 	}
 
 	.pagination__page-option__left {
 		font-size: $icon-size-back;
+		color: $border-filterMenu-option;
 	}
 
 	.pagination__page-option__right {
 		font-size: $icon-size-arrowRight;
+		color: $primary100;
 	}
 
 	.pagination__page-option__skip-right {
 		font-size: $icon-size-skipRight;
+		color: $primary100;
 	}
 }

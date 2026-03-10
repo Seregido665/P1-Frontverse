@@ -40,9 +40,9 @@
         padding-top: rem(5px);
         font-size: $icon-size-close;
         cursor: pointer;
-        filter: hue-rotate(240deg) saturate(1.5);
         border: none;
         background: transparent;
+        color: $primary100;
     }
 
     .filter-menu__body {
@@ -172,6 +172,7 @@
         transform: translateY(-50%);
         font-size: $icon-size-calendar;
         pointer-events: none;
+        color: $primary100;
     }
 
     .filter-menu__bottom {

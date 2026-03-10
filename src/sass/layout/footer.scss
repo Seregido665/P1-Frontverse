@@ -46,11 +46,14 @@
     .footer-contact__email-icon {
         margin-right: rem(5px);
         font-size: $icon-size-mail;
+        color: $primary100;
     }
 
     .footer-contact__phone-icon {
         margin-right: rem(5px);
         font-size: $icon-size-phone;
+        color: $primary100;
+
     }
 
     .footer-direction {
@@ -58,7 +61,7 @@
         display: flex;
         justify-self: end;
         @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
-        @include mobile {
+        @include tablet {
             margin-top: rem(43.5px);
         }
     }
@@ -119,7 +122,7 @@
         display: flex;
         justify-self: end;
         text-align: right;
-        @include mobile {
+        @include tablet {
             margin-top: rem(18px);
         }
     }

@@ -14,6 +14,7 @@
     text-decoration: none;
     cursor: pointer;
     padding-left: rem(24px);
+    color: $primary100;
 
     .burguer-menu-window__text {
         @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
@@ -35,6 +36,7 @@
     height: rem(61.008px);
     background-color: #4B98D9;
     transform: translateX(-100%);
+    
 }
 
 .burguer-menu-window__option:hover {

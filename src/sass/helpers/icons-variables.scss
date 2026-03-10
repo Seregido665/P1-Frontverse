@@ -62,19 +62,14 @@ $icon-size-calendar: 1.25rem;
 	.icon.file:before { content: $icon-file; }
 	.icon.close:before { content: $icon-close; }
 	.icon.clock:before { content: $icon-clock; }
-	.icon.chev-down-policy:before { content: $icon-chevDown; }
-	.icon.chev-down-status:before { content: $icon-chevDown; }
-	.icon.chev-down-order-by:before { content: $icon-chevDown; }
-	.icon.chev-down-rows:before { content: $icon-chevDown; }
+	.icon.chev-down:before { content: $icon-chevDown; }
 	.icon.check:before { content: $icon-check; }
 	.icon.burger_menu:before { content: $icon-burguerMenu; }
-
 	.icon.back:before { content: $icon-back; }
 	.icon.arrow-right:before { content: $icon-arrowRight; }
 	.icon.skip-right:before { content: $icon-skipRight; }
 	.icon.skip-left:before { content: $icon-skipLeft; }
 	.icon.edit:before { content: $icon-edit; }
-	
 	.icon.trash:before { content: $icon-trash; }
 	.icon.power-off:before { content: $icon-powerOff; }
 	.icon.phone:before { content: $icon-phone; }
