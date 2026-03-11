@@ -13,7 +13,7 @@
         pointer-events: none;
     }
 
-    .image-desktop-view {
+    .body-header__image-desktop-view {
         width: 100%;
         display: block;
 
@@ -22,7 +22,7 @@
         }
     }
 
-    .image-mobile-view {
+    .body-header__image-mobile-view {
         display: none;
 
         @include mobile {
@@ -50,14 +50,14 @@
         }
     }
 
-    .body-header__title {
-        width: 695px;
+    .body-header__content-title {
+        width: rem(695px);
         line-height: 1.2;
-        @include font-styles( $font-weight: bold, $font-size: 64px, $color: $light);
+        @include font-styles( $font-weight: bold, $font-size: rem(64px), $color: $light);
 
         @include tablet {
-            width: 278px;
-            @include font-styles( $font-weight: bold, $font-size: 40px, $color: $light);
+            width: rem(278px);
+            @include font-styles( $font-weight: bold, $font-size: rem(40px), $color: $light);
         }
         @include mobile {
             width: 100%;
@@ -65,7 +65,7 @@
            }
     }
 
-    .body-header__description {
+    .body-header__content-description {
         width: 100%;
         padding-top: rem(40px);
         @include font-styles( $font-weight: normal, $font-size: clamp(16px, 2.5vw, 24px), $color: $light);

@@ -26,21 +26,21 @@
     }
 
     .footer-contact__question {
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
     }
 
     .footer-contact__email {
         display: flex;
         align-items: center;
         margin-top: rem(12px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
     }
 
     .footer-contact__phone {
         display: flex;
         align-items: center;
         margin-top: rem(12px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
     }
 
     .footer-contact__email-icon {
@@ -60,7 +60,7 @@
         margin-top: rem(22.5px);
         display: flex;
         justify-self: end;
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
         @include tablet {
             margin-top: rem(43.5px);
         }
@@ -89,17 +89,17 @@
     }
 
     .footer-legal a {
-        @include font-styles($font-weight: 500, $font-size: 10px, $color: $text);
+        @include font-styles($font-weight: 500, $font-size: rem(10px), $color: $text);
         text-decoration: none;
 
         @include tablet {
-            @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+            @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
         }
 
     }
 
     .footer-legal .separation {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $border-filterMenu-option);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $border-filterMenu-option);
         margin-inline: rem(24px);
 
         @include desktop {
@@ -128,10 +128,10 @@
     }
 
     .footer-marc .footer-marc__text {
-        @include font-styles($font-weight: 500, $font-size: 10px, $color: $text);
+        @include font-styles($font-weight: 500, $font-size: rem(10px), $color: $text);
 
         @include tablet {
-            @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+            @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
         }
     }
 }

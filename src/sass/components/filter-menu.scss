@@ -10,7 +10,7 @@
     left: 0;
     z-index: 9999;
     width: rem(496px);
-    height: 100vh;
+    height: 100%;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 0 100vmax #00000029;
 
@@ -19,8 +19,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
     }
 
     .filter-menu__header {
@@ -29,11 +29,11 @@
         justify-content: space-between;
         align-items: center;
         padding: rem(24px) rem(40px);
-        border-bottom: 1px solid #E6E7E8;
+        border-bottom: rem(1px) solid #E6E7E8;
     }
 
     .filter-menu__header__title {
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
     }
 
     .filter-menu__header .icon {
@@ -48,7 +48,9 @@
     .filter-menu__body {
         padding: rem(32px) rem(40px) rem(415px) rem(40px);
     }
+    
 
+    // --- SECCION 1: No DE POLIZA ---
     .filter-menu__body__sec1 {
         margin-bottom: rem(32px);
         position: relative;
@@ -56,15 +58,17 @@
 
     .filter-menu__body__title1 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
     }
 
     .filter-menu__body__select1 {
         @include menu-filter-field();
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         appearance: none;
     }
 
+
+    // --- SECCION 2: NOMBRE DEL RIESGO ---
     .filter-menu__body__sec2 {
         margin-bottom: rem(32px);
         position: relative;
@@ -72,14 +76,16 @@
 
     .filter-menu__body__title2 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
     }
 
     .filter-menu__body__input1 {
         @include menu-filter-field();
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
     }
 
+    
+    // --- SECCION 3: RANGO DE FECHAS ---
     .filter-menu__body__sec3 {
         margin-bottom: rem(32px);
         position: relative;
@@ -99,33 +105,27 @@
 
     .filter-menu__body__title3 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
     }
 
     .filter-menu__body__input2 {
         @include menu-filter-field($width: rem(177.5px));
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         padding-right: rem(36px);
     }
 
-    .filter-menu__body__input2::-webkit-calendar-picker-indicator {
-        display: none;
-    }
-
     .separation {
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: black);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: black);
     }
 
     .filter-menu__body__input3 {
         @include menu-filter-field($width: rem(177.5px));
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         padding-right: rem(36px);
     }
 
-    .filter-menu__body__input3::-webkit-calendar-picker-indicator {
-        display: none;
-    }
 
+    // --- SECCION 4: IMPORTE ---
     .filter-menu__body__sec4 {
         margin-bottom: rem(32px);
         position: relative;
@@ -133,26 +133,28 @@
 
     .filter-menu__body__title4 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
     }
 
     .filter-menu__body__input4 {
         @include menu-filter-field();
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
     }
 
+
+    // --- SECCION 5: ESTADO DE PÓLIZA ---
     .filter-menu__body__sec5 {
         position: relative;
     }
 
     .filter-menu__body__title5 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
     }
 
     .filter-menu__body__select2 {
         @include menu-filter-field();
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $grey50);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         appearance: none;
     }
 
@@ -185,13 +187,13 @@
     .filter-menu__bottom__clear {
         padding: rem(10px) rem(16px);
         border: 1px solid $primary50;
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: #191C3D);
         @include button-styles($background-color: transparent);
     }
 
     .filter-menu__bottom__apply {
         padding: rem(10px) rem(16px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: #191C3D);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: #191C3D);
         @include button-styles($background-color: $primary25);
         border: none;
     }

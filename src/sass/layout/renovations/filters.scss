@@ -28,7 +28,7 @@
 	.renovations-filter__all-filters {
 		padding: rem(10px) rem(16px);
 		border: 1px solid $primary50;
-		@include button-styles($background-color: $body-background-color, $border-radius: 8px);
+		@include button-styles($background-color: $body-background-color, $border-radius: rem(8px));
 		display: inline-flex;
 		align-items: center;
 
@@ -44,13 +44,18 @@
 			justify-content: center;
 			border-radius: 0;
 			border: none;
-			border-top: 1px solid $primary50;
+			border-top: rem(1px) solid $primary50;
 			background-color: $light;
 		}
 	}
 
-	.renovations-filter__all-policies__text-results {
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+	.renovations-filter__all-filters__text {
+		margin-left: rem(10px);
+		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey100);
+
+		@include mobile {
+			@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
+		}
 	}
 
 	.renovations-filter__all-filters .icon {
@@ -58,14 +63,11 @@
 		color: $primary100;
 	}
 
-	.renovations-filter__all-filters__text {
-		margin-left: rem(10px);
-		@include font-styles($font-weight: 400, $font-size: 16px, $color: $grey100);
 
-		@include mobile {
-			@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
-		}
+	.renovations-filter__all-policies__text-results {
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
 	}
+	
 
 	.renovations-filter-bottom {
 		margin-top: rem(24px);
@@ -87,7 +89,7 @@
 	}
 
 	.renovations-filter__list__order-by {
-		@include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
 	}
 
 	.renovations-filter__all-policies {
@@ -111,18 +113,18 @@
 	.renovations-filter__all-policies__text-filters {
 		margin-left: rem(5px);
 		margin-right: rem(16px);
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $text);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 	}
 
 	.renovations-filter__all-policies .separation {
 		margin-right: rem(16px);
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $border-filterMenu-option);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $border-filterMenu-option);
 	}
 
 	.renovations-filter__all-policies__clear-filters {
 		border: none;
 		background-color: transparent;
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
 
 		@include mobile {
 			margin-top: rem(16px);
@@ -135,24 +137,24 @@
 		height: rem(44px);
 		margin-left: rem(14px);
 		background-color: $light;
-		border: 1px solid $primary50;
-		border-radius: 4px;
+		border: rem(1px) solid $primary50;
+		border-radius: rem(4px);
 		display: inline-flex;
 		align-items: center;
 		position: relative;
 	}
 
 	.renovations-filter__list__select {
-		@include font-styles($font-weight: 700, $font-size: 16px, $color: $grey100);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
 		background-color: transparent;
 		border: none;
 		padding: rem(12px) rem(36px) rem(12px) rem(12px);
 		appearance: none;
 		cursor: pointer;
-	}
 
-	.renovations-filter__list__select:focus {
-		outline: none;
+		&:focus {
+			outline: none;
+		}
 	}
 
 	.renovations-filter__list__type-filter .icon.chev-down-order-by {

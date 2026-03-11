@@ -3,16 +3,36 @@
 @use '../../../helpers/variables' as *;
 
 .user-menu-window__option {
-    width: rem(375.008px);
-    height: rem(61.008px);
+    width: rem(375px);
+    height: rem(61px);
     display: flex;
     align-items: center;
     border: none;
     position: relative;
     background-color: rgb(255, 255, 255);
-    border-top: 1px solid #E6E7E8;
-    border-radius: 0 0 12px 12px;
+    border-top: rem(1px) solid #E6E7E8;
+    border-radius: 0 0 rem(12px) rem(12px);
     cursor: pointer;
+
+    &::before {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 0;
+        top: 0;
+        width: rem(2px);
+        height: rem(61px);
+        background-color: $primary100;
+        transform: translateX(-100%);
+    }
+    &:hover::before {
+        transform: translateX(0);
+        display: block;
+    }
+    &:last-child:hover {
+        overflow: hidden;
+        text-decoration: none;
+    }
 
     @include mobile {
         border-radius: 0%;
@@ -21,31 +41,9 @@
     .icon {
         font-size: $icon-size-user;
         color: $primary100;
-        padding: rem(17.008px) rem(14px) rem(20px) rem(24px);
+        padding: rem(17px) rem(14px) rem(20px) rem(24px);
     }
     .user-menu-window__option-text {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: 400, $font-size: rem(16px), $color: $grey100);
     }
-}
-
-.user-menu-window__option::before {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: rem(61.008px);
-    background-color: $primary100;
-    transform: translateX(-100%);
-}
-
-.user-menu-window__option:hover::before {
-    transform: translateX(0);
-    display: block;
-}
-
-.user-menu-window__option:last-child:hover {
-    overflow: hidden;
-    text-decoration: none;
 }

@@ -3,11 +3,11 @@
 
 .burguer-menu-window {
     background-color: rgb(255, 255, 255);
-    width: rem(375.008px);
+    width: rem(375px);
     max-height: calc(100vh - rem(96px));
     overflow-y: auto;              // ACTIVA EL SCROLL CUANDO EL CONTENIDO SUPERA LA ALTURA DEL burger-menu-window
-    box-shadow: 0px 3px 10px #37464933;
-    border-radius: 12px;
+    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    border-radius: rem(12px);
     position: absolute;
     z-index: 1001;
     top: rem(80px);
@@ -18,7 +18,7 @@
     }
 
     @include mobile {
-        border-top: 1px solid #E6E7E8;
+        border-top: rem(1px) solid #E6E7E8;
         border-radius: 0;
         box-shadow: none;
         position: fixed;
@@ -49,36 +49,33 @@
             color: $primary100;
         }
 
-        &.is-open {             
+        // SE LLAMA A ESTE ESTILO DESDE language-selection.js PARA EL VOLTEO DEL arrow-dropdown
+        &.is-open {            
             .arrow-dropdown {
                 transform: scaleY(-1);
             }
         }
     }
 
-    .burguer-menu-window__text {
-        @include mobile {
-            margin-right: rem(20px);
-        }
-    }
 
     .burguer-menu-window__title {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: 400, $font-size: rem(16px), $color: $grey100);
     }
 
+    
+    // --- BOTONES DEL globe-button DENTRO DEL burger-menu ---
+    // - BOTON -
     .globe,
     .burguer-menu-window__title,
     .arrow-dropdown {
         display: inline-block;
     }
-
     .globe,
     .arrow-dropdown {
         color: $primary100;
     }
 
-    
-
+    // - DESPLEGABLE -
     .globe-menu-window {
         position: static;
         right: auto;
@@ -87,7 +84,7 @@
 
         @include mobile {
             position: relative;
-            top: -240px;
+            top: rem(-240px);
             right: auto;
         }
     }

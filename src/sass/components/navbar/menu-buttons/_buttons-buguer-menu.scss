@@ -9,41 +9,40 @@
     border: none;
     position: relative;
     background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid #E6E7E8;
-    border-radius: 0 0 12px 12px;
+    border-bottom: rem(1px) solid #E6E7E8;
+    border-radius: 0 0 rem(12px) rem(12px);
     text-decoration: none;
     cursor: pointer;
     padding-left: rem(24px);
     color: $primary100;
 
-    .burguer-menu-window__text {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+    &::before {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 0;
+        top: 0;
+        width: rem(2px);
+        height: rem(61px);
+        background-color: #4B98D9;
+        transform: translateX(-100%);
+        
+    }
+    &:hover {
+        text-decoration: none;
+    }
+    &:hover::before {
+        transform: translateX(0);
+        display: block;
     }
 
     @include mobile {
         border-radius: 0 0 0 0;
     }
+
+    .burguer-menu-window__text {
+        @include font-styles( $font-weight: 400, $font-size: rem(16px), $color: $grey100);
+    }
 }
 
 
-.burguer-menu-window__option::before {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: rem(61.008px);
-    background-color: #4B98D9;
-    transform: translateX(-100%);
-    
-}
-
-.burguer-menu-window__option:hover {
-    text-decoration: none;
-}
-
-.burguer-menu-window__option:hover::before {
-    transform: translateX(0);
-    display: block;
-}

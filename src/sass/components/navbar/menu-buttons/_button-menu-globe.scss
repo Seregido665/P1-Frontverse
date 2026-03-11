@@ -10,13 +10,13 @@
         display: flex;
         align-items: center;
         position: relative;
-        border-bottom: 1px solid #E6E7E8;
+        border-bottom: rem(1px) solid #E6E7E8;
         cursor: pointer;
     }
 
     .globe-menu-window__option-text {
         margin-left: rem(24px);
-        @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text2);
     }
 
     .globe-menu-window__option:hover {
@@ -24,14 +24,14 @@
     }
 
     .globe-menu-window__option-top .globe-menu-window__option {
-        border-radius: 12px 12px 0 0;
+        border-radius: rem(12px) rem(12px) 0 0;
     }
 
     .globe-menu-window__option-bottom .globe-menu-window__option {
-        border-radius: 0 0 12px 12px;
+        border-radius: 0 0 rem(12px) rem(12px);
     }
 
     .globe-menu-window__option--selected .globe-menu-window__option-text {
-        @include font-styles($font-weight: 700, $font-size: 16px, $color: $text2);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text2);
     }
 }

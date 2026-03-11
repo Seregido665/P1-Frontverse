@@ -16,23 +16,9 @@
         }
     }
 
-    .all-desktop-renovations .home-reservation > .renovation-card-desktop:nth-child(n + 4) {
+    .renovation-card-desktop:nth-child(n + 4) {     // PARA QUE SOLO SE VEAN 2 TARJETAS
         @include mobile {
             display: none;
-        }
-    }
-
-    .all-desktop-renovations .home-reservation > .renovation-card-desktop {
-        @include desktop {
-            margin-bottom: rem(16px);
-        }
-    }
-
-    .renovation-list {
-        @include mobile {
-            padding: rem(15px) rem(16px) rem(9px) rem(16px);
-            display: flex;
-            flex-direction: column;
         }
     }
 }

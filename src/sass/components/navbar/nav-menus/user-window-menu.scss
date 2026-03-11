@@ -3,17 +3,17 @@
 
 .user-menu-window {
     background-color: rgb(255, 255, 255);
-    width: rem(375.008px);
+    width: rem(375px);
     height: rem(390px);
-    box-shadow: 0px 3px 10px #37464933;
-    border-radius: 12px;
+    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    border-radius: rem(12px);
     position: absolute;
     z-index: 1001;
-    right: rem(241.008px);
-    top: rem(83.2px);
+    right: rem(241px);
+    top: rem(83px);
 
     @include mobile {
-        border-top: 1px solid #E6E7E8;
+        border-top: rem(1px) solid #E6E7E8;
         border-radius: 0;
         box-shadow: none;
         position: fixed;
@@ -30,11 +30,11 @@
     }
     
     .user-menu-window__title {
-        @include font-styles( $font-weight: bold, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: bold, $font-size: rem(16px), $color: $grey100);
         padding: rem(24px) 0 rem(22px) rem(24px);
     }
     .user-menu-window__description {
-        @include font-styles( $font-weight: 400, $font-size: 16px, $color: $grey100);
+        @include font-styles( $font-weight: 400, $font-size: rem(16px), $color: $grey100);
         padding: 0 rem(24px) rem(22px) rem(24px);
     }
     

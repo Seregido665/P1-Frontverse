@@ -3,10 +3,10 @@
 
 .globe-menu-window {
     background-color: rgb(255, 255, 255);
-    width: rem(131.008px);
-    height: rem(195.008px);
-    box-shadow: 0px 3px 10px #37464933;
-    border-radius: 12px;
+    width: rem(131px);
+    height: rem(195px);
+    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    border-radius: rem(12px);
     position: absolute;
     z-index: 1000;
     right: rem(88px);

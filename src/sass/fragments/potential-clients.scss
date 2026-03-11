@@ -7,20 +7,22 @@
   grid-template-columns: 1fr 1fr;    
   gap: rem(20px);
 
-  @include mobile {
-    gap: rem(24px);
-  }
-
   @include tablet {
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
   }
 
+  @include mobile {
+    gap: rem(24px);
+  }
+
+  
+
   .client-card {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.342);
+    box-shadow: 0 rem(2px) rem(8px) rgba(0, 0, 0, 0.342);
     width: 100%;
-    border-radius: 12px;
+    border-radius: rem(12px);
     overflow: hidden;
     background-color: $light;
 
@@ -54,7 +56,7 @@
   }
 
   .client-card__name {
-    @include font-styles($font-weight: 400, $font-size: 24px, $color: $text4);
+    @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
     margin-bottom: rem(10px);
 
     @include tablet {
@@ -63,7 +65,7 @@
   }
 
   .client-card__offer {
-    @include font-styles($font-weight: 400, $font-size: 16px, $color: $primary50);
+    @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $primary50);
     margin-bottom: rem(39px);
     display: inline-block;
     @include tablet {
@@ -97,7 +99,7 @@
   }
 
   .client-card__mail {
-    @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
+    @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
     align-items: center;
     margin-right: rem(40px);
 
@@ -111,7 +113,7 @@
   }
 
   .client-card__phone {
-    @include font-styles($font-weight: 700, $font-size: 16px, $color: $primary100);
+    @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
     align-items: center;
     @include mobile {
       margin-left: rem(8px);

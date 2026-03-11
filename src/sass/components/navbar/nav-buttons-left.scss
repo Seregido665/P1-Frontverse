@@ -7,17 +7,17 @@
   align-items: center;
   height: rem(64px);
 
-  .logo {
+  .buttons-left__logo {
     padding-right: rem(32px);
   }
 
-  .directions {
+  .buttons-left__directions {
     display: flex;
     align-items: center;
     gap: rem(32px);
     
   }
-  .link {
+  .buttons-left__directions__link {
     @include font-styles($font-weight: bold, $font-size: 16px, $color: $text);
     text-decoration: none;
     cursor: pointer;
