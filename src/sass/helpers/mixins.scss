@@ -19,7 +19,8 @@
 
 /* Estados de renovaciones */
 @mixin policy-state-styles($background-color) {
-    background-color: $background-color;
+  background-color: $background-color;
+  @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
 }
 
 /* Botones */

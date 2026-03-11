@@ -80,45 +80,34 @@
         border-radius: rem(4px);
     }
 
-    .state .state__icon {
+    .state__icon {
         padding-left: rem(8px);
         font-size: $icon-size-clock;
     }
 
-    .state .state__text {
+    .state__text {
         padding-right: rem(8px);
-        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
     }
 
-    .state .state__warning {
+    .state__warning {
         @include policy-state-styles($background-color: $state-warning);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
         border-radius: rem(4px);
         color: $text;
     }
 
-    .state .state__warning .state__text {
-        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: #405258);
-    }
-
-    .state .state__success {
+    .state__success {
         @include policy-state-styles($background-color: $state-success);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-success-text);
         border-radius: rem(4px);
-        color: $state-success-text;
     }
 
-    .state .state__success .state__text {
-        color: $state-success-text;
-    }
-
-    .state .state__error {
+    .state__error {
         @include policy-state-styles($background-color: $state-error);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-error-text);
         border-radius: rem(4px);
-        color: $state-error-text;
     }
 
-    .state .state__error .state__text {
-        color: $state-error-text;
-    }
 
     .renovation-card-desktop__policy,
     .renovation-card-desktop__risk,

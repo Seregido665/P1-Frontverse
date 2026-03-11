@@ -58,7 +58,7 @@
         }
     }
 
-    .apply-filters .number {
+    .apply-filters__number {
         width: rem(28px);
         height: rem(28px);
         display: inline-flex;
@@ -69,7 +69,7 @@
         @include font-styles($font-weight: 600, $font-size: rem(16px), $color: $primary100);
     }
 
-    .apply-filters .icon {
+    .apply-filters__icon {
         display: inline-flex;
         align-items: center;
         font-size: $icon-size-closeWhite;

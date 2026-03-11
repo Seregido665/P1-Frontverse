@@ -58,7 +58,7 @@
 		}
 	}
 
-	.renovations-filter__all-filters .icon {
+	.renovations-filter__all-filters__icon {
 		font-size: $icon-size-filter;
 		color: $primary100;
 	}
@@ -157,7 +157,7 @@
 		}
 	}
 
-	.renovations-filter__list__type-filter .icon.chev-down-order-by {
+	.renovations-filter__list__type-filter__icon {
 		position: absolute;
 		top: 50%;
 		left: rem(130px);

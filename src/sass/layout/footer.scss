@@ -3,15 +3,15 @@
 @use '../helpers/icons-variables' as *;
 
 .footer {
-    padding: rem(16px) rem(32px);
+    padding: rem(20px) rem(88px);
     background-color: white;
 
-    @include tablet {
-        padding: rem(16px);
+    @include desktop {
+        padding: rem(16px) rem(40px);
     }
 
     @include mobile {
-        margin-bottom: rem(10px);
+        padding: rem(36px) 0 rem(50px) rem(16px);
     }
 
     .footer-info {
@@ -88,7 +88,9 @@
         }
     }
 
-    .footer-legal a {
+    .footer-legal__link1,
+    .footer-legal__link2,
+    .footer-legal__link3 {
         @include font-styles($font-weight: 500, $font-size: rem(10px), $color: $text);
         text-decoration: none;
 
@@ -98,7 +100,7 @@
 
     }
 
-    .footer-legal .separation {
+    .footer-legal__separation {
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $border-filterMenu-option);
         margin-inline: rem(24px);
 
@@ -111,9 +113,9 @@
         }
     }
 
-    .footer-legal .middle {
+    .footer-legal__link2 {
         @include tablet {
-            margin: rem(24px) 0;
+            margin-block: rem(24px);
         }
     }
 
@@ -127,7 +129,7 @@
         }
     }
 
-    .footer-marc .footer-marc__text {
+    .footer-marc__text {
         @include font-styles($font-weight: 500, $font-size: rem(10px), $color: $text);
 
         @include tablet {

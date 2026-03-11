@@ -12,12 +12,12 @@ block content
         include templates/home/homepage-header
         .home-content
             section
-                p.home-content__title-renovations Próximas renovaciones
+                h2.home-content__title-renovations Próximas renovaciones
                 .renovations-desktop
                     include templates/home/home-renovations
             .home-content__view-more-button
                 +see-all('icon', 'Ver todas', 'renovations.html')
             section 
-                p.home-content__title-clients Clientes potenciales
+                h2.home-content__title-clients Clientes potenciales
                 .potential-clients
                     include templates/home/potential-clients

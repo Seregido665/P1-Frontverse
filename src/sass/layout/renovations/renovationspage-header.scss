@@ -46,7 +46,7 @@
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $primary100);
     }
 
-    .renovations-header__menu-subtitle .separation {
+    .renovations-header__menu-subtitle__separation {
         margin: 0 rem(5px) 0 rem(5px);
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
     }
@@ -75,7 +75,7 @@
         width: fit-content;
     }
 
-    .renovations-header__number-policies .icon {
+    .renovations-header__number-policies__icon {
         font-size: $icon-size-file;
         color: $text;
     }

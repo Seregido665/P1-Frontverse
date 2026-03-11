@@ -36,7 +36,7 @@
         @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
     }
 
-    .filter-menu__header .icon {
+    .filter-menu__header__icon {
         padding-top: rem(5px);
         font-size: $icon-size-close;
         cursor: pointer;

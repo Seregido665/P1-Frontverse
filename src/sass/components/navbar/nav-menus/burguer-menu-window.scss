@@ -1,5 +1,6 @@
 @use '../../../helpers/mixins' as *;
 @use '../../../helpers/variables' as *;
+@use '../../../helpers/icons-variables' as *;
 
 .burguer-menu-window {
     background-color: rgb(255, 255, 255);
@@ -65,7 +66,7 @@
     
     // --- BOTONES DEL globe-button DENTRO DEL burger-menu ---
     // - BOTON -
-    .globe,
+    .icon-menu-globe,
     .burguer-menu-window__title,
     .arrow-dropdown {
         display: inline-block;
@@ -73,6 +74,10 @@
     .globe,
     .arrow-dropdown {
         color: $primary100;
+    }
+
+    .globe {
+        font-size: $icon-size-globe;
     }
 
     // - DESPLEGABLE -

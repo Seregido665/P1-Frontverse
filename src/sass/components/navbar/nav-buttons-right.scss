@@ -25,6 +25,7 @@
     color: $primary100;
   }
 
+
   .right-nav-buttons__burguer-button {
     display: none;
 
@@ -42,6 +43,10 @@
     }
   }
 
+  .icon-menu-user {
+    background-color: #FAFCFE;
+    border-radius: 99px;
+  }
   
 
   .user-button__title,
@@ -55,23 +60,23 @@
 
  
   // --- ICONOS ---
-  .icon.user {
+  .icon-menu-user {
     font-size: $icon-size-user;
   }
-  .icon.arrow-dropdown {
+  .icon-arrow {
     padding-right: rem(8px);
     font-size: $icon-size-arrowDropdown;
     @include desktop {
       display: none;
     }
   }
-  .icon.globe {
+  .icon-menu-globe {
     font-size: $icon-size-globe;
     @include tablet {
       display: none;
     }
   }
-   .icon.close {
+   .icon-close {
     display: none;
   }
 }
@@ -82,12 +87,12 @@
 .right-nav-buttons.mobile-burguer-open {
   @include mobile {
     .close {
-      margin-right: rem(3px);
+      margin-right: rem(10px);
       display: flex;
       align-items: center;
       align-self: center;
     }
-    .close .icon {
+    .icon-close {
       color: $primary100;
       font-size: $icon-size-close;
     }

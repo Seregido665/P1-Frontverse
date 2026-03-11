@@ -13,9 +13,9 @@
             padding: rem(40px) rem(16px) rem(80px) rem(16px);
         }
 
-        @include mobile {
-            padding: rem(16px) 0 rem(24px) 0;
-            max-width: rem(343px);
+        @include tablet {
+            padding: rem(16px) rem(16px) rem(24px) rem(16px);
+            width: 100%;
             margin-inline: auto;
         }
     }
