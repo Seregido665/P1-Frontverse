@@ -103,6 +103,7 @@
 		}
 
 		@include mobile {
+			width: 300px;
 			margin-top: rem(14px);
 			order: 2;
 			flex-wrap: wrap;
@@ -133,7 +134,7 @@
 	}
 
 	.renovations-filter__list__type-filter {
-		width: rem(162px);
+		width: fit-content;
 		height: rem(44px);
 		margin-left: rem(14px);
 		background-color: $light;
@@ -148,7 +149,7 @@
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
 		background-color: transparent;
 		border: none;
-		padding: rem(12px) rem(36px) rem(12px) rem(12px);
+		padding: rem(12px) rem(23px) rem(12px) rem(12px);
 		appearance: none;
 		cursor: pointer;
 
@@ -159,11 +160,12 @@
 
 	.renovations-filter__list__type-filter__icon {
 		position: absolute;
-		top: 50%;
+		top: 23px;
 		left: rem(130px);
 		transform: translateY(-50%);
 		pointer-events: none;
 		font-size: $icon-size-chevDown;
+		color: $primary100;
 	}
 
 	.renovations-filter {

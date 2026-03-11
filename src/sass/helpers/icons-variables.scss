@@ -29,7 +29,7 @@ $icon-size-filter: 1.25rem;
 $icon-size-file: 1.25rem;
 $icon-size-close: 1.5rem;
 $icon-size-clock: 1.25rem;
-$icon-size-chevDown: 1.25rem;
+$icon-size-chevDown: 0.6255rem;
 $icon-size-check: 1.25rem;
 $icon-size-burguerMenu: 1.5rem;
 $icon-size-back: 1.5rem;
@@ -56,11 +56,13 @@ $icon-size-calendar: 1.25rem;
 	.icon.file:before { content: $icon-file; }
 	.icon.close:before { content: $icon-close; }
 	.icon.clock:before { content: $icon-clock; }
+
 	.icon.chevDown:before { content: $icon-chevDown; }
 	.icon.chev-down:before { content: $icon-chevDown; }
 	.icon.chev-down-policy:before { content: $icon-chevDown; }
 	.icon.chev-down-status:before { content: $icon-chevDown; }
 	.icon.chev-down-rows:before { content: $icon-chevDown; }
+
 	.icon.check:before { content: $icon-check; }
 	.icon.burger_menu:before { content: $icon-burguerMenu; }
 	.icon.back:before { content: $icon-back; }

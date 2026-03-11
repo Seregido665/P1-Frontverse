@@ -9,10 +9,10 @@
         max-width: rem(1440px);
         margin-inline: auto;
 
-        @include mobile {
-            padding: rem(9px) 0 rem(9px) 0;
-            max-width: rem(343px);
-            margin-inline: auto;
+        @include tablet {
+            padding-block: rem(9px);
+            width: 100%;
+            padding-inline: rem(16px);
         }
     }
 

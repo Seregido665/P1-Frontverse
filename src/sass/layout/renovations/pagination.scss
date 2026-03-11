@@ -11,6 +11,7 @@
 	@include tablet {
 		flex-direction: column;
 		align-items: flex-end;
+		padding-bottom: rem(40px);
 	}
 
 	@include mobile {
@@ -31,9 +32,6 @@
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 	}
 
-	.pagination__rows__option-text {
-		margin-left: rem(3px);
-	}
 
 	.pagination__page__text {
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
@@ -43,6 +41,7 @@
 		width: rem(72px);
 		height: rem(48px);
 		border: 1px solid $primary50;
+		border-radius: rem(4px);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -50,9 +49,11 @@
 		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey100);
 	}
 
-	.pagination__rows__option .icon.chev-down-rows {
-		padding-left: rem(10px);
+	.pagination__rows__option__icon {
+		margin-top: rem(2px);
+		padding-left: rem(13px);
 		font-size: $icon-size-chevDown;
+		color: $primary100;
 	}
 
 	.pagination__page {
