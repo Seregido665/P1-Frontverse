@@ -42,9 +42,11 @@
         text-align: center;
         margin-bottom: rem(40px);
         z-index: 2;
+
         @include desktop {
             margin-bottom: rem(0px);
         }
+
         @include mobile {
             margin-bottom: rem(24px);
         }
@@ -53,22 +55,23 @@
     .body-header__content-title {
         width: rem(695px);
         line-height: 1.2;
-        @include font-styles( $font-weight: bold, $font-size: rem(64px), $color: $light);
+        @include font-styles($font-weight: bold, $font-size: rem(64px), $color: $light);
 
         @include tablet {
             width: rem(278px);
-            @include font-styles( $font-weight: bold, $font-size: rem(40px), $color: $light);
+            @include font-styles($font-weight: bold, $font-size: rem(40px), $color: $light);
         }
+
         @include mobile {
             width: 100%;
             padding-inline: rem(40px);
-           }
+        }
     }
 
     .body-header__content-description {
         width: 100%;
         padding-top: rem(40px);
-        @include font-styles( $font-weight: normal, $font-size: clamp(16px, 2.5vw, 24px), $color: $light);
+        @include font-styles($font-weight: normal, $font-size: clamp(24px, 2.5vw, 24px), $color: $light);
 
         @include tablet {
             width: rem(420px);
@@ -76,7 +79,7 @@
         }
 
         @include mobile {
-            padding-inline: rem(108px);
+            padding-inline: rem(48px);
             padding-top: rem(40px);
         }
     }
