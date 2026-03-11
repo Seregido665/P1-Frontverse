@@ -1,6 +1,19 @@
 .right-nav-buttons
-  include ./nav-right-menus/nav-right-buttons/_button-user
-  include ./nav-right-menus/nav-right-buttons/_button-globe
-  include ./nav-right-menus/nav-right-buttons/_button-burger
+  // User button
+  button.right-nav-buttons__user-button
+    span.icon.user
+    span.user-button__title Mi perfil
+    span.icon.arrow-dropdown
+  include ./nav-right-menus/user-window-menu
+  // Globe button
+  button.right-nav-buttons__globe-button
+    span.icon.globe
+    span.globe-button__title Español
+    span.icon.arrow-dropdown
+  include ./nav-right-menus/globe-window-menu
+  // Burger button
+  button.right-nav-buttons__burguer-button
+    span.icon.burger_menu
+  include ./nav-right-menus/burger-menu-window
   .close
     span.icon.close

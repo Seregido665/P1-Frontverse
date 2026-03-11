@@ -1,9 +1,9 @@
 function navbarMenusToggles() {
-  const btnUser = document.querySelector('.user-button');
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.globe-button');
+  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.burguer-button');
+  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');

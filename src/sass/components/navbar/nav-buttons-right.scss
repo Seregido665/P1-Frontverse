@@ -8,7 +8,13 @@
   gap: rem(40px);
   height: rem(40px);
 
-  button {
+  @include desktop {
+    gap: rem(16px);
+  }
+
+  .right-nav-buttons__user-button,
+  .right-nav-buttons__globe-button,
+  .right-nav-buttons__burguer-button {
     display: flex;
     align-items: center;
     gap: rem(8px);
@@ -19,84 +25,59 @@
     color: $primary100;
   }
 
-  .user {
-    font-size: $icon-size-user;
-  }
-  .globe {
-    font-size: $icon-size-globe;
-  }
-  .arrow-dropdown {
-    padding-right: rem(8px);
-    font-size: $icon-size-arrowDropdown;
-  }
-
-  .title {
-    @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
-  }
-  .text {
-    @include font-styles($font-weight: 400, $font-size: 16px, $color: $text2);
-  }
-
-  @include desktop {
-    gap: rem(16px);
-  }
-
-  .burguer-button {
+  .right-nav-buttons__burguer-button {
     display: none;
 
     @include tablet {
       display: inline-block;
       font-size: $icon-size-burguerMenu;
-      padding-right: rem(5.008px);
+      padding-right: rem(5px);
       margin-top: rem(5px);
     }
   }
 
-  .arrow-dropdown {
-    @include desktop {
-      display: none;
-    }
-  }
-  .globe {
+  .right-nav-buttons__globe-button {
     @include tablet {
       display: none;
     }
   }
-  .title {
+
+  
+
+  .user-button__title,
+  .globe-button__title {
     width: rem(59px);
+    @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
     @include desktop {
       display: none;
     }
   }
-  .user-button {
-    .title {
-      @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
+
+ 
+  // --- ICONOS ---
+  .icon.user {
+    font-size: $icon-size-user;
+  }
+  .icon.arrow-dropdown {
+    padding-right: rem(8px);
+    font-size: $icon-size-arrowDropdown;
+    @include desktop {
+      display: none;
     }
   }
-
-  .globe-button {
-    .title {
-      @include font-styles($font-weight: 400, $font-size: 16px, $color: $text);
-    }
-
+  .icon.globe {
+    font-size: $icon-size-globe;
     @include tablet {
       display: none;
     }
   }
-
-  .close {
+   .icon.close {
     display: none;
-
-    .icon {
-      color: $primary100;
-    }
-    @include mobile {
-      display: none;
-      font-size: 24px;
-    }
   }
 }
 
+
+// --> SE LLAMA DESDE toggles.js PARA QUE CUANDO SE ABRA EL MENU DE USUARIO O DE BURGUER, APAREZCA EL ICONO DE CERRAR Y DESAPAREZCAN LOS BOTONES DE USUARIO Y BURGUER
 .right-nav-buttons.mobile-user-open,
 .right-nav-buttons.mobile-burguer-open {
   @include mobile {
@@ -108,9 +89,10 @@
     }
     .close .icon {
       color: $primary100;
+      font-size: $icon-size-close;
     }
-    .user-button,
-    .burguer-button {
+    .right-nav-buttons__user-button,
+    .right-nav-buttons__burguer-button {
       display: none;
     }
   }

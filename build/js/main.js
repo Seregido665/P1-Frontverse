@@ -10704,7 +10704,7 @@ return jQuery;
 } );
 function selectLanguage() { 
   const options = document.querySelectorAll('.globe-menu-window__option');
-  const mainLabel = document.querySelector('.globe-button .title');
+  const mainLabel = document.querySelector('.right-nav-buttons__globe-button .title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
   const mainElement = document.querySelector('.globe-menu-window');
 
@@ -10749,11 +10749,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function main() {
-    const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
+    const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.globe-button');
+  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.burguer-button');
+  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
   const filterMenu = document.querySelector('.filter-menu');
   const navRight = document.querySelector('.right-nav-buttons');
@@ -10827,11 +10827,11 @@ document.addEventListener('DOMContentLoaded', function () {
   main();
 });
 function navbarMenusToggles() {
-  const btnUser = document.querySelector('.user-button');
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.globe-button');
+  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.burguer-button');
+  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');

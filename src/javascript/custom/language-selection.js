@@ -1,6 +1,6 @@
 function selectLanguage() { 
   const options = document.querySelectorAll('.globe-menu-window__option');
-  const mainLabel = document.querySelector('.globe-button .title');
+  const mainLabel = document.querySelector('.right-nav-buttons__globe-button .title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
   const mainElement = document.querySelector('.globe-menu-window');
 

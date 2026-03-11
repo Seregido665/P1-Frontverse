@@ -1,9 +1,9 @@
 function main() {
-    const btnUser = document.querySelector('.user-button');           // SIEMPRE BUSACAR CON querySelector
+    const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.globe-button');
+  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.burguer-button');
+  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
   const burguerMenu = document.querySelector('.burguer-menu-window');
   const filterMenu = document.querySelector('.filter-menu');
   const navRight = document.querySelector('.right-nav-buttons');
