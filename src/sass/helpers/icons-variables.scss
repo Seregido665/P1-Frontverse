@@ -56,7 +56,11 @@ $icon-size-calendar: 1.25rem;
 	.icon.file:before { content: $icon-file; }
 	.icon.close:before { content: $icon-close; }
 	.icon.clock:before { content: $icon-clock; }
+	.icon.chevDown:before { content: $icon-chevDown; }
 	.icon.chev-down:before { content: $icon-chevDown; }
+	.icon.chev-down-policy:before { content: $icon-chevDown; }
+	.icon.chev-down-status:before { content: $icon-chevDown; }
+	.icon.chev-down-rows:before { content: $icon-chevDown; }
 	.icon.check:before { content: $icon-check; }
 	.icon.burger_menu:before { content: $icon-burguerMenu; }
 	.icon.back:before { content: $icon-back; }
