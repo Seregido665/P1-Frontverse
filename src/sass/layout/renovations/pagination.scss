@@ -52,6 +52,10 @@
 		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey100);
 	}
 
+	.pagination__rows__option-text {
+		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text4);
+	}
+
 	.pagination__rows__option__icon {
 		margin-top: rem(2px);
 		padding-left: rem(13px);

@@ -49,23 +49,40 @@
 		}
 	}
 
-	.renovations-filter__all-filters__text {
-		margin-left: rem(10px);
-		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey100);
-
-		@include mobile {
-			@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
-		}
-	}
-
 	.renovations-filter__all-filters__icon {
 		font-size: $icon-size-filter;
 		color: $primary100;
 	}
 
+	.renovations-filter__all-filters__text {
+		margin-left: rem(10px);
+		@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $info-text);
+
+		@include mobile {
+			@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $info-text);
+		}
+	}
+
+	.renovations-filter__all-filters__text-number {
+		display: none;
+
+        @include mobile {
+			display: block;
+			justify-content: center;
+			align-items: center;
+			width: rem(26px);
+			height: rem(23px);
+			border-radius: rem(99px);
+			padding-top: rem(2px);
+			margin-left: rem(8px);
+			background-color: $primary100;
+			@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $light);
+        }
+	}
+
 
 	.renovations-filter__all-policies__text-results {
-		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 	}
 	
 
@@ -146,7 +163,7 @@
 	}
 
 	.renovations-filter__list__select {
-		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text4);
 		background-color: transparent;
 		border: none;
 		padding: rem(12px) rem(23px) rem(12px) rem(12px);
