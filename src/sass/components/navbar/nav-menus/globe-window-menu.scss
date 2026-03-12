@@ -2,10 +2,10 @@
 @use '../../../helpers/variables' as *;
 
 .globe-menu-window {
-    background-color: rgb(255, 255, 255);
+    background-color: $light;
     width: rem(131px);
     height: rem(195px);
-    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    box-shadow: 0px rem(3px) rem(10px) $box-shadow2;
     border-radius: rem(12px);
     position: absolute;
     z-index: 1000;

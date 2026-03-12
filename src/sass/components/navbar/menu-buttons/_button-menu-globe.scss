@@ -3,18 +3,18 @@
 
 .globe-menu-window {
     .globe-menu-window__option {
-        background-color: white;
+        background-color: $light;
         border: none;
         width: rem(131px);
         height: rem(39px);
         display: flex;
         align-items: center;
         position: relative;
-        border-bottom: rem(1px) solid #E6E7E8;
+        border-bottom: rem(1px) solid $border-top-renovations-header;
         cursor: pointer;
 
         &:hover {
-            background-color: #EFF3F5;
+            background-color: $background-number-policies;
         }
     }
 

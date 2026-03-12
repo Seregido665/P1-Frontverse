@@ -12,7 +12,6 @@
     width: rem(496px);
     height: 100%;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 0 100vmax #00000029;
 
     @include mobile {
         top: 0;
@@ -29,7 +28,7 @@
         justify-content: space-between;
         align-items: center;
         padding: rem(24px) rem(40px);
-        border-bottom: rem(1px) solid #E6E7E8;
+        border-bottom: rem(1px) solid $border-top-renovations-header;
     }
 
     .filter-menu__header__title {
@@ -71,7 +70,7 @@
         color: $primary100;
         font-size: $icon-size-chevDown;
         margin-top: rem(5px);
-        padding-right: 5px;
+        padding-right: rem(5px);
     }
 
 
@@ -116,17 +115,17 @@
     }
 
     .filter-menu__body__input2 {
-        @include menu-filter-field($width: rem(177.5px));
+        @include menu-filter-field($width: rem(177px));
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         padding-right: rem(36px);
     }
 
     .separation {
-        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: black);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text4);
     }
 
     .filter-menu__body__input3 {
-        @include menu-filter-field($width: rem(177.5px));
+        @include menu-filter-field($width: rem(177px));
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         padding-right: rem(36px);
     }
@@ -169,7 +168,7 @@
         color: $primary100;
         font-size: $icon-size-chevDown;
         margin-top: rem(5px);
-        padding-right: 5px;
+        padding-right: rem(5px);
     }
 
 
@@ -196,20 +195,20 @@
     .filter-menu__bottom {
         display: flex;
         justify-content: space-between;
-        padding: rem(20.5px) rem(40px);
-        border-top: 1px solid #E6E7E8;
+        padding: rem(20px) rem(40px);
+        border-top: 1px solid $border-bottom-renovations-header;
     }
 
     .filter-menu__bottom__clear {
         padding: rem(10px) rem(16px);
         border: 1px solid $primary50;
-        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: #191C3D);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $info-text);
         @include button-styles($background-color: transparent);
     }
 
     .filter-menu__bottom__apply {
         padding: rem(10px) rem(16px);
-        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: #191C3D);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $info-text);
         @include button-styles($background-color: $primary25);
         border: none;
     }

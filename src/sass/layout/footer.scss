@@ -4,7 +4,7 @@
 
 .footer {
     padding: rem(20px) rem(88px);
-    background-color: white;
+    background-color: $light;
 
     @include desktop {
         padding: rem(16px) rem(40px);

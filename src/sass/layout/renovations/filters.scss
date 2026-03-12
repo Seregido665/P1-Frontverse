@@ -120,7 +120,7 @@
 		}
 
 		@include mobile {
-			width: 300px;
+			width: rem(300px);
 			margin-top: rem(14px);
 			order: 2;
 			flex-wrap: wrap;
@@ -177,7 +177,7 @@
 
 	.renovations-filter__list__type-filter__icon {
 		position: absolute;
-		top: 23px;
+		top: rem(23px);
 		left: rem(130px);
 		transform: translateY(-50%);
 		pointer-events: none;

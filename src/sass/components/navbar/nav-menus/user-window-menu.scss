@@ -5,7 +5,7 @@
     background-color: rgb(255, 255, 255);
     width: rem(375px);
     height: rem(390px);
-    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    box-shadow: 0px rem(3px) rem(10px) $box-shadow2;
     border-radius: rem(12px);
     position: absolute;
     z-index: 1001;
@@ -13,7 +13,7 @@
     top: rem(83px);
 
     @include mobile {
-        border-top: rem(1px) solid #E6E7E8;
+        border-top: rem(1px) solid $border-top-renovations-header;
         border-radius: 0;
         box-shadow: none;
         position: fixed;

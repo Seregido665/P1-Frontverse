@@ -21,7 +21,7 @@
             overflow-y: hidden;
             flex-wrap: nowrap;
             scrollbar-width: auto;
-            scrollbar-color: #7B8F98 #D7E0E3;
+            scrollbar-color: $scrollbar-track $scrollbar-thumb;
         }
 
         @include mobile {

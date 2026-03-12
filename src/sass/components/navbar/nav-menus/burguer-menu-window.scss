@@ -3,11 +3,11 @@
 @use '../../../helpers/icons-variables' as *;
 
 .burguer-menu-window {
-    background-color: rgb(255, 255, 255);
+    background-color: $light;
     width: rem(375px);
     max-height: calc(100vh - rem(96px));
     overflow-y: auto;              // ACTIVA EL SCROLL CUANDO EL CONTENIDO SUPERA LA ALTURA DEL burger-menu-window
-    box-shadow: 0px rem(3px) rem(10px) #37464933;
+    box-shadow: 0px rem(3px) rem(10px) $box-shadow2;
     border-radius: rem(12px);
     position: absolute;
     z-index: 1001;
@@ -19,7 +19,7 @@
     }
 
     @include mobile {
-        border-top: rem(1px) solid #E6E7E8;
+        border-top: rem(1px) solid $border-top-renovations-header;
         border-radius: 0;
         box-shadow: none;
         position: fixed;

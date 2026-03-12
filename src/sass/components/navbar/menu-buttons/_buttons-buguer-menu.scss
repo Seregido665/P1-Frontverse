@@ -3,13 +3,13 @@
 
 .burguer-menu-window__option {
     width: 100%;
-    height: rem(61.008px);
+    height: rem(61px);
     display: flex;
     align-items: center;
     border: none;
     position: relative;
-    background-color: rgb(255, 255, 255);
-    border-bottom: rem(1px) solid #E6E7E8;
+    background-color: $light;
+    border-bottom: rem(1px) solid $border-top-renovations-header;
     border-radius: 0 0 rem(12px) rem(12px);
     text-decoration: none;
     cursor: pointer;
@@ -24,7 +24,7 @@
         top: 0;
         width: rem(2px);
         height: rem(61px);
-        background-color: #4B98D9;
+        background-color: $primary100;
         transform: translateX(-100%);
         
     }

@@ -9,8 +9,8 @@
     align-items: center;
     border: none;
     position: relative;
-    background-color: rgb(255, 255, 255);
-    border-top: rem(1px) solid #E6E7E8;
+    background-color: $light;
+    border-top: rem(1px) solid $border-top-renovations-header;
     border-radius: 0 0 rem(12px) rem(12px);
     cursor: pointer;
 

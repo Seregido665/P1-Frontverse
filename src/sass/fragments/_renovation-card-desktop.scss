@@ -12,7 +12,7 @@
         gap: rem(56px);
         padding: 0 rem(32px) 0 rem(56px);
         margin-bottom: rem(24px);
-        border-bottom: rem(1px) solid #A7B8BF;
+        border-bottom: rem(1px) solid $border-filterMenu-option;
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
 
         @include desktop {
@@ -30,11 +30,11 @@
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         align-items: center;
-        background-color: rgb(255, 255, 255);
+        background-color: $light;
         border-radius: rem(10px);
         padding: 0 rem(32px) 0 rem(56px);
         margin: rem(24px) 0 rem(24px) 0;
-        box-shadow: 0px rem(10px) rem(15px) #3746491A;
+        box-shadow: 0px rem(10px) rem(15px) $box-shadow1;
 
         @include desktop {
             width: 100%;

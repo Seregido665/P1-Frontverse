@@ -4,8 +4,8 @@
 
 .renovations-header {
     padding: rem(32px) rem(88px);
-    border-top: rem(1px) solid #E6E7E8;
-    border-bottom: rem(1px) solid #B7CBD3;
+    border-top: rem(1px) solid $border-top-renovations-header;
+    border-bottom: rem(1px) solid $border-bottom-renovations-header;
 
     @include tablet {
         padding: rem(24px) 0 rem(24px) rem(16px);
@@ -58,7 +58,7 @@
         @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
     }
 
-    .renovations-header__bottom .renovations-header__number-policies {
+    .renovations-header__number-policies {
         width: rem(139px);
         height: rem(36px);
         @include tablet {
