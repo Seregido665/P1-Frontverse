@@ -15,7 +15,12 @@
 	}
 
 	@include mobile {
-		margin-block: rem(24px);
+	}
+
+	.pagination-bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	.pagination__rows {
@@ -60,17 +65,16 @@
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 		
 		@include tablet {
-			margin-block: rem(20px);
-			margin-right: rem(40px);
+			margin-block: rem(40px);
 		}
 	}
 	.pagination__page__text1 {
-		@include tablet {
+		@include mobile {
 			display: none;
 		}
 	}
-	.pagination__page__text2 {
-	}
+
+	
 
 
 	.pagination__page-option {
