@@ -1,5 +1,5 @@
 function main() {
-    const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
@@ -23,7 +23,7 @@ function main() {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) {                         
+  if (filterMenu) {
     filterMenu.style.display = 'none';
   }
 
@@ -51,8 +51,8 @@ function main() {
   // Idioma (en Menú Burguer)
   document.addEventListener('click', function (e) {
     if (btnGlobeInBurguer && globeMenuInBurguer &&
-        !globeMenuInBurguer.contains(e.target) &&
-        !btnGlobeInBurguer.contains(e.target)) {
+      !globeMenuInBurguer.contains(e.target) &&
+      !btnGlobeInBurguer.contains(e.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });

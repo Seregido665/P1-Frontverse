@@ -33,9 +33,7 @@
 	}
 
 
-	.pagination__page__text {
-		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
-	}
+	
 
 	.pagination__rows__option {
 		width: rem(72px);
@@ -56,15 +54,24 @@
 		color: $primary100;
 	}
 
+
 	.pagination__page {
 		margin-right: rem(32px);
-		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $grey100);
-
+		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
+		
 		@include tablet {
 			margin-block: rem(20px);
 			margin-right: rem(40px);
 		}
 	}
+	.pagination__page__text1 {
+		@include tablet {
+			display: none;
+		}
+	}
+	.pagination__page__text2 {
+	}
+
 
 	.pagination__page-option {
 		display: flex;

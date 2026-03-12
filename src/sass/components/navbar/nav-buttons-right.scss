@@ -5,7 +5,7 @@
 .right-nav-buttons {
   display: flex;
   align-items: center;
-  gap: rem(40px);
+  margin-left: rem(40px);
   height: rem(40px);
 
   @include desktop {
@@ -25,6 +25,10 @@
     color: $primary100;
   }
 
+  .right-nav-buttons__user-button {
+    padding-right: rem(12px);
+  }
+
 
   .right-nav-buttons__burguer-button {
     display: none;
@@ -38,6 +42,8 @@
   }
 
   .right-nav-buttons__globe-button {
+    margin-left: rem(5px);
+    margin-left: rem(24px);
     @include tablet {
       display: none;
     }
@@ -51,7 +57,6 @@
 
   .user-button__title,
   .globe-button__title {
-    width: rem(59px);
     @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
     @include desktop {
       display: none;
@@ -64,7 +69,6 @@
     font-size: $icon-size-user;
   }
   .icon-arrow {
-    padding-right: rem(8px);
     font-size: $icon-size-arrowDropdown;
     @include desktop {
       display: none;

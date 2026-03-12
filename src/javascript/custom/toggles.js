@@ -14,13 +14,15 @@ function navbarMenusToggles() {
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  
-  // Cambia entre mostrar/ocultar y devuelve si queda abierto.
+  if (!btnUser) return;
+  if (!btnGlobe) return;
+
+
+  // --- PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO ---
   const toggleDisplay = function (menu) {
     if (!menu) {
       return false;
     }
-
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     return menu.style.display === 'block';
   };
@@ -34,12 +36,11 @@ function navbarMenusToggles() {
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   };
 
-  // Asocia un boton a un menu y permite ejecutar logica extra al abrir/cerrar.
+  // --- SE ASOCIA LA FUNCION DE TOGGLE A CADA BOTON ---
   const bindToggle = function (button, menu, onToggle) {
     if (!button || !menu) {
       return;
     }
-
     button.addEventListener('click', function () {
       const isOpen = toggleDisplay(menu);
       if (onToggle) {
@@ -47,7 +48,6 @@ function navbarMenusToggles() {
       }
     });
   };
-
 
 
   // ---------------------------------------------------------------------------
@@ -90,7 +90,6 @@ function navbarMenusToggles() {
       updateBodyScroll();
     });
   }
-
   // -- BLOQUEO DEL SCROLL CUANDO EL MENU DE FILTROS ESTE ABIERTO --
   if (btnCloseFilter && filterMenu) {
     btnCloseFilter.addEventListener('click', function (e) {
@@ -103,6 +102,7 @@ function navbarMenusToggles() {
     updateBodyScroll();
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();

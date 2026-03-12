@@ -10702,13 +10702,13 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
-function selectLanguage() { 
+function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');
   const mainLabel = document.querySelector('.globe-button__title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
-  const mainElement = document.querySelector('.globe-menu-window');
 
-  if (!mainElement) return;
+  if (!mainLabel) return;
+  if (!burgerLabel) return;
 
   // --- APLICA EL ESTILO bold AL IDIOMA SELECCIONADO POR DEFECTO ---
   document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {
@@ -10719,12 +10719,11 @@ function selectLanguage() {
   // --- PARA ACTUALIZAR TEXTOS Y ESTILOS ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
-      
-      const language = option.textContent.trim();       // OBTIENE EL TEXTO DEL IDIOMA SELECCIONADO Y ELIMINA ESPACIOS EN BLANCO
+      const language = option.textContent.trim(); // OBTIENE EL TEXTO DEL IDIOMA SELECCIONADO Y ELIMINA ESPACIOS EN BLANCO
 
-      // -- MUESTRA EL IDIOMA SELECCIONADO EN EL BOTON
-      if (mainLabel) mainLabel.textContent = language;
-      if (burgerLabel) burgerLabel.textContent = language;
+      // -- MUESTRA EL IDIOMA SELECCIONADO EN EL BOTON --
+      mainLabel.textContent = language;
+      burgerLabel.textContent = language;
 
       // -- DEJA SOLO EN bold LA OPCION SELECCIONADA --
       options.forEach(function (item) {
@@ -10749,7 +10748,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function main() {
-    const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
@@ -10773,7 +10772,7 @@ function main() {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) {                         
+  if (filterMenu) {
     filterMenu.style.display = 'none';
   }
 
@@ -10801,8 +10800,8 @@ function main() {
   // Idioma (en Menú Burguer)
   document.addEventListener('click', function (e) {
     if (btnGlobeInBurguer && globeMenuInBurguer &&
-        !globeMenuInBurguer.contains(e.target) &&
-        !btnGlobeInBurguer.contains(e.target)) {
+      !globeMenuInBurguer.contains(e.target) &&
+      !btnGlobeInBurguer.contains(e.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });
@@ -10842,13 +10841,15 @@ function navbarMenusToggles() {
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  
-  // Cambia entre mostrar/ocultar y devuelve si queda abierto.
+  if (!btnUser) return;
+  if (!btnGlobe) return;
+
+
+  // --- PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO ---
   const toggleDisplay = function (menu) {
     if (!menu) {
       return false;
     }
-
     menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
     return menu.style.display === 'block';
   };
@@ -10862,12 +10863,11 @@ function navbarMenusToggles() {
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   };
 
-  // Asocia un boton a un menu y permite ejecutar logica extra al abrir/cerrar.
+  // --- SE ASOCIA LA FUNCION DE TOGGLE A CADA BOTON ---
   const bindToggle = function (button, menu, onToggle) {
     if (!button || !menu) {
       return;
     }
-
     button.addEventListener('click', function () {
       const isOpen = toggleDisplay(menu);
       if (onToggle) {
@@ -10875,7 +10875,6 @@ function navbarMenusToggles() {
       }
     });
   };
-
 
 
   // ---------------------------------------------------------------------------
@@ -10918,7 +10917,6 @@ function navbarMenusToggles() {
       updateBodyScroll();
     });
   }
-
   // -- BLOQUEO DEL SCROLL CUANDO EL MENU DE FILTROS ESTE ABIERTO --
   if (btnCloseFilter && filterMenu) {
     btnCloseFilter.addEventListener('click', function (e) {
@@ -10931,6 +10929,7 @@ function navbarMenusToggles() {
     updateBodyScroll();
   });
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();

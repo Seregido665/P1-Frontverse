@@ -1,12 +1,8 @@
 include ./_buttons-menu-globe
 
 .globe-menu-window
-    .globe-menu-window__option-top      
-        +button-menu-globe('Español')
-
+    +button-menu-globe('Español', 'globe-menu-window__option-top')
     +button-menu-globe('English')
     +button-menu-globe('Catalán')
     +button-menu-globe('Gallego')
-
-    .globe-menu-window__option-bottom
-        +button-menu-globe('Euskera')
+    +button-menu-globe('Euskera', 'globe-menu-window__option-bottom')

@@ -1,10 +1,10 @@
-function selectLanguage() { 
+function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');
   const mainLabel = document.querySelector('.globe-button__title');
   const burgerLabel = document.querySelector('.burguer-menu-window__title');
-  const mainElement = document.querySelector('.globe-menu-window');
 
-  if (!mainElement) return;
+  if (!mainLabel) return;
+  if (!burgerLabel) return;
 
   // --- APLICA EL ESTILO bold AL IDIOMA SELECCIONADO POR DEFECTO ---
   document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {
@@ -15,12 +15,11 @@ function selectLanguage() {
   // --- PARA ACTUALIZAR TEXTOS Y ESTILOS ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
-      
-      const language = option.textContent.trim();       // OBTIENE EL TEXTO DEL IDIOMA SELECCIONADO Y ELIMINA ESPACIOS EN BLANCO
+      const language = option.textContent.trim(); // OBTIENE EL TEXTO DEL IDIOMA SELECCIONADO Y ELIMINA ESPACIOS EN BLANCO
 
-      // -- MUESTRA EL IDIOMA SELECCIONADO EN EL BOTON
-      if (mainLabel) mainLabel.textContent = language;
-      if (burgerLabel) burgerLabel.textContent = language;
+      // -- MUESTRA EL IDIOMA SELECCIONADO EN EL BOTON --
+      mainLabel.textContent = language;
+      burgerLabel.textContent = language;
 
       // -- DEJA SOLO EN bold LA OPCION SELECCIONADA --
       options.forEach(function (item) {

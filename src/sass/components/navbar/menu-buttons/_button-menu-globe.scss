@@ -23,11 +23,11 @@
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text2);
     }
 
-    .globe-menu-window__option {
+    .globe-menu-window__option-top {
         border-radius: rem(12px) rem(12px) 0 0;
     }
 
-    .globe-menu-window__option {
+    .globe-menu-window__option-bottom {
         border-radius: 0 0 rem(12px) rem(12px);
     }
 
