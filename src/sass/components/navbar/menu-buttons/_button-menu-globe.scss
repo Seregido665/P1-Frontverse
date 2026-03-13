@@ -16,6 +16,10 @@
         &:hover {
             background-color: $background-number-policies;
         }
+
+        @include tablet {
+            border-bottom: none;
+        }
     }
 
     .globe-menu-window__option-text {

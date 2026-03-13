@@ -37,8 +37,7 @@
             <button class="burguer-menu-window__globe-button"><span class="icon globe"></span><span class="burguer-menu-window__title">Español</span><span class="icon arrow-dropdown"></span></button>
             <div class="globe-menu-window"><a class="globe-menu-window__option globe-menu-window__option-top"><span class="globe-menu-window__option-text">Español</span></a><a class="globe-menu-window__option"><span class="globe-menu-window__option-text">English</span></a><a class="globe-menu-window__option"><span class="globe-menu-window__option-text">Catalán</span></a><a class="globe-menu-window__option"><span class="globe-menu-window__option-text">Gallego</span></a><a class="globe-menu-window__option globe-menu-window__option-bottom"><span class="globe-menu-window__option-text">Euskera</span></a>
             </div>
-          </div>
-          <div class="close"><span class="icon close icon-close"></span></div>
+          </div><span class="icon close icon-close"></span>
         </div>
       </div>
     </header>
@@ -111,7 +110,7 @@
                 <div class="apply-filters">
                   <div class="apply-filters__filter1"><span>Hyundai Ioniq</span><span class="icon close"></span></div>
                   <div class="apply-filters__filter2"><span>2022</span><span class="icon close"></span></div>
-                  <div class="apply-filters__filter3"><span>75846843</span><span class="apply-filters__number">+2</span><span class="icon close apply-filters__icon"></span></div>
+                  <div class="apply-filters__filter3"><span>75846843</span><span class="apply-filters__number">+2</span><span class="icon close"></span></div>
                 </div>
               </div>
               <div class="renovations-filter-bottom">
@@ -306,11 +305,25 @@
           <div class="renovations__pagination"> 
             <div class="pagination-top">
               <div class="pagination__rows"> <span class="pagination__rows__rows-text">Filas por página:</span>
-                <button class="pagination__rows__option"> <span class="pagination__rows__option-text">10</span><span class="icon chev-down pagination__rows__option__icon"></span></button>
+                <div class="pagination__rows__rows-select">
+                  <select class="pagination__rows__option"> 
+                    <option>10</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                  </select><span class="icon chev-down pagination__rows__option__icon"></span>
+                </div>
               </div>
             </div>
             <div class="pagination-bottom">
-              <div class="pagination__page"> <span class="pagination__page__text1">Página</span><span class="pagination__page__text2">1 de 77</span></div>
+              <div class="pagination__page"> <span class="pagination__page__text1">Página </span><span class="pagination__page__text2">1 de 77</span></div>
               <div class="pagination__page-option">
                 <button class="pagination__page-option__skip-left"><span class="icon skip-left"></span></button>
                 <button class="pagination__page-option__left"><span class="icon back"></span></button>

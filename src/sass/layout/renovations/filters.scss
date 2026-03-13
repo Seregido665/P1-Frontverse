@@ -31,6 +31,7 @@
 		@include button-styles($background-color: $body-background-color, $border-radius: rem(8px));
 		display: inline-flex;
 		align-items: center;
+		cursor: pointer;
 
 		@include mobile {
 			width: 100%;
@@ -66,7 +67,7 @@
 	.renovations-filter__all-filters__text-number {
 		display: none;
 
-        @include mobile {
+		@include mobile {
 			display: block;
 			justify-content: center;
 			align-items: center;
@@ -77,14 +78,14 @@
 			margin-left: rem(8px);
 			background-color: $primary100;
 			@include font-styles($font-weight: 400, $font-size: rem(16px), $color: $light);
-        }
+		}
 	}
 
 
 	.renovations-filter__all-policies__text-results {
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 	}
-	
+
 
 	.renovations-filter-bottom {
 		margin-top: rem(24px);
@@ -141,12 +142,13 @@
 
 	.renovations-filter__all-policies__clear-filters {
 		border: none;
+		cursor: pointer;
 		background-color: transparent;
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
 
 		@include mobile {
 			margin-top: rem(16px);
-			
+
 		}
 	}
 

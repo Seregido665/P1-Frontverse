@@ -7,24 +7,18 @@
   align-items: center;
   height: rem(40px);
 
-  @include desktop {
-    gap: rem(16px);
-  }
-
   .right-nav-buttons__user-button,
   .right-nav-buttons__globe-button,
   .right-nav-buttons__burguer-button {
     display: flex;
     align-items: center;
-    gap: rem(8px);
     text-decoration: none;
+    gap: rem(8px);
     background: none;
     border: none;
     cursor: pointer;
     color: $primary100;
   }
-
-
 
   .right-nav-buttons__burguer-button {
     display: none;
@@ -32,17 +26,19 @@
     @include tablet {
       display: inline-block;
       font-size: $icon-size-burguerMenu;
-      padding-right: rem(5px);
       margin-top: rem(5px);
     }
   }
 
   .right-nav-buttons__globe-button {
-    margin-left: rem(5px);
     margin-left: rem(24px);
     @include tablet {
       display: none;
     }
+  }
+
+  .right-nav-buttons__burguer-button {
+    margin-left: rem(16px);
   }
 
   .icon-menu-user {
@@ -54,34 +50,40 @@
     background-color: $background-user-button;
     border-radius: 99px;
   }
-  
+
 
   .user-button__title,
   .globe-button__title {
     @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+
     @include desktop {
       display: none;
     }
   }
 
- 
+
   // --- ICONOS ---
   .icon-menu-user {
     font-size: $icon-size-user;
   }
+
   .icon-arrow {
     font-size: $icon-size-arrowDropdown;
+
     @include desktop {
       display: none;
     }
   }
+
   .icon-menu-globe {
     font-size: $icon-size-globe;
+
     @include tablet {
       display: none;
     }
   }
-   .icon-close {
+
+  .icon-close {
     display: none;
   }
 }
@@ -91,20 +93,18 @@
 .right-nav-buttons.mobile-user-open,
 .right-nav-buttons.mobile-burguer-open {
   @include tablet {
-    .close {
-      margin-right: rem(10px);
+    .icon-close {
       display: flex;
       align-items: center;
       align-self: center;
-    }
-    .icon-close {
+      margin-right: rem(6px);
       color: $primary100;
       font-size: $icon-size-close;
     }
+
     .right-nav-buttons__user-button,
     .right-nav-buttons__burguer-button {
       display: none;
     }
   }
 }
-

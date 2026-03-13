@@ -3,7 +3,7 @@
 @use '../../../helpers/variables' as *;
 
 .user-menu-window__option {
-    width: rem(375px);
+    width: 100%;
     height: rem(61px);
     display: flex;
     align-items: center;

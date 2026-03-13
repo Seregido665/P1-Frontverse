@@ -75,4 +75,8 @@
         font-size: $icon-size-closeWhite;
         color: $light !important;
     }
+
+    .close {
+        cursor: pointer;
+    }
 }

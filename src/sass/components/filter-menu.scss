@@ -11,7 +11,8 @@
     z-index: 9999;
     width: rem(496px);
     height: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: $light;
+    box-shadow: 0 0 0 100vmax $box-shadow3;
 
     @include mobile {
         top: 0;
