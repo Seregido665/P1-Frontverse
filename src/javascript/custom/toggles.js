@@ -8,7 +8,7 @@ function navbarMenusToggles() {
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const btnCloseFilter = document.querySelector('.filter-menu .close');
-  const mobileQuery = window.matchMedia('(max-width: 30rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const tabletQuery = window.matchMedia('(max-width: 48rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
   const navRight = document.querySelector('.right-nav-buttons');
 
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
@@ -54,7 +54,7 @@ function navbarMenusToggles() {
   // --- TOGGLEs ---
   // -- Mi Perfil --
   bindToggle(btnUser, userMenu, function (isOpen) {
-    if (mobileQuery.matches && navRight) {
+    if (tabletQuery.matches && navRight) {
       navRight.classList.toggle('mobile-user-open', isOpen);
       updateBodyScroll();
     }
@@ -77,7 +77,7 @@ function navbarMenusToggles() {
       btnGlobeInBurguer.classList.remove('is-open');
     }
 
-    if (mobileQuery.matches && navRight) {
+    if (tabletQuery.matches && navRight) {
       navRight.classList.toggle('mobile-burguer-open', isOpen);
       updateBodyScroll();
     }
@@ -98,7 +98,7 @@ function navbarMenusToggles() {
     });
   }
 
-  mobileQuery.addEventListener('change', function () {
+  tabletQuery.addEventListener('change', function () {
     updateBodyScroll();
   });
 }

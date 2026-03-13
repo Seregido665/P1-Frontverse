@@ -5,7 +5,6 @@
 .right-nav-buttons {
   display: flex;
   align-items: center;
-  margin-left: rem(40px);
   height: rem(40px);
 
   @include desktop {
@@ -25,9 +24,6 @@
     color: $primary100;
   }
 
-  .right-nav-buttons__user-button {
-    padding-right: rem(12px);
-  }
 
 
   .right-nav-buttons__burguer-button {
@@ -50,6 +46,11 @@
   }
 
   .icon-menu-user {
+    width: rem(32px);
+    height: rem(32px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: $background-user-button;
     border-radius: 99px;
   }
@@ -89,7 +90,7 @@
 // --> SE LLAMA DESDE toggles.js PARA QUE CUANDO SE ABRA EL MENU DE USUARIO O DE BURGUER, APAREZCA EL ICONO DE CERRAR Y DESAPAREZCAN LOS BOTONES DE USUARIO Y BURGUER
 .right-nav-buttons.mobile-user-open,
 .right-nav-buttons.mobile-burguer-open {
-  @include mobile {
+  @include tablet {
     .close {
       margin-right: rem(10px);
       display: flex;

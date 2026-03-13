@@ -2,7 +2,7 @@
 @use '../../../helpers/variables' as *;
 
 .user-menu-window {
-    background-color: rgb(255, 255, 255);
+    background-color: $light;
     width: rem(375px);
     height: rem(390px);
     box-shadow: 0px rem(3px) rem(10px) $box-shadow2;
@@ -12,7 +12,7 @@
     right: rem(241px);
     top: rem(83px);
 
-    @include mobile {
+    @include tablet {
         border-top: rem(1px) solid $border-top-renovations-header;
         border-radius: 0;
         box-shadow: none;

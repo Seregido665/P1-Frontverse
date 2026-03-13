@@ -10757,7 +10757,7 @@ function main() {
   const filterMenu = document.querySelector('.filter-menu');
   const navRight = document.querySelector('.right-nav-buttons');
   const btnClose = document.querySelector('.right-nav-buttons .close');
-  const mobileQuery = window.matchMedia('(max-width: 30rem)');
+  const tabletQuery = window.matchMedia('(max-width: 48rem)');
 
   // HACE REFERENCIA PRIMERO AL BOTON PADRE(.burguer-menu-window) PARA PODER APUNTAR 
   // LUEGO AL BOTON HIJO(.burguer-menu-window__globe-button).
@@ -10781,19 +10781,19 @@ function main() {
   // FUNCIONES PARA OCULTAR AL HACER click FUERA
   // Mi perfil
   document.addEventListener('click', function (e) {
-    if (!mobileQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
+    if (!tabletQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
       userMenu.style.display = 'none';
     }
   });
   // Menú Burguer
   document.addEventListener('click', function (e) {
-    if (!mobileQuery.matches && !burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
+    if (!tabletQuery.matches && !burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
       burguerMenu.style.display = 'none';
     }
   });
   // Idioma
   document.addEventListener('click', function (e) {
-    if (!mobileQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
+    if (!tabletQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
       globeMenu.style.display = 'none';
     }
   });
@@ -10810,7 +10810,7 @@ function main() {
 
   // -- FUNCION PARA EL BOTON DE CERRAR DEL nav-right--
   btnClose.addEventListener('click', function (e) {
-    if (mobileQuery.matches) {
+    if (tabletQuery.matches) {
       userMenu.style.display = 'none';
       burguerMenu.style.display = 'none';
       globeMenuInBurguer.style.display = 'none';
@@ -10835,7 +10835,7 @@ function navbarMenusToggles() {
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const btnCloseFilter = document.querySelector('.filter-menu .close');
-  const mobileQuery = window.matchMedia('(max-width: 30rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const tabletQuery = window.matchMedia('(max-width: 48rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
   const navRight = document.querySelector('.right-nav-buttons');
 
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
@@ -10881,7 +10881,7 @@ function navbarMenusToggles() {
   // --- TOGGLEs ---
   // -- Mi Perfil --
   bindToggle(btnUser, userMenu, function (isOpen) {
-    if (mobileQuery.matches && navRight) {
+    if (tabletQuery.matches && navRight) {
       navRight.classList.toggle('mobile-user-open', isOpen);
       updateBodyScroll();
     }
@@ -10904,7 +10904,7 @@ function navbarMenusToggles() {
       btnGlobeInBurguer.classList.remove('is-open');
     }
 
-    if (mobileQuery.matches && navRight) {
+    if (tabletQuery.matches && navRight) {
       navRight.classList.toggle('mobile-burguer-open', isOpen);
       updateBodyScroll();
     }
@@ -10925,7 +10925,7 @@ function navbarMenusToggles() {
     });
   }
 
-  mobileQuery.addEventListener('change', function () {
+  tabletQuery.addEventListener('change', function () {
     updateBodyScroll();
   });
 }

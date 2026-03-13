@@ -18,7 +18,7 @@
         right: rem(32px);
     }
 
-    @include mobile {
+    @include tablet {
         border-top: rem(1px) solid $border-top-renovations-header;
         border-radius: 0;
         box-shadow: none;
