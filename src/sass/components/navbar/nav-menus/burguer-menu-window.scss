@@ -42,6 +42,10 @@
         cursor: pointer;
 
         @include tablet {
+            margin-left: rem(21px);
+            align-items: center;
+            justify-content: center;
+            width: rem(129px);
             margin-top: rem(405px);
         }
 
@@ -51,7 +55,9 @@
         }
 
         // SE LLAMA A ESTE ESTILO DESDE language-selection.js PARA EL VOLTEO DEL arrow-dropdown
-        &.is-open {            
+        &.is-open {  
+            border-radius: rem(8px);          
+            background-color: $hover-globe-burger;
             .arrow-dropdown {
                 transform: scaleY(-1);
             }
@@ -91,6 +97,7 @@
             position: relative;
             top: rem(-240px);
             right: auto;
+            box-shadow: none;
         }
     }
 }
