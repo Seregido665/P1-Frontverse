@@ -8,6 +8,9 @@ include ../../components/renovation-car
         h2 Fecha de vencimiento
         h2 Importe
         h2 Estado de póliza
+    // Contenedor donde se pintarán las renovaciones
+    .renovations.json-list
+        script(src="/js/showRenovations.js")
     +renovation-card-desktop("75846843", "Hyundai Ioniq", "01/12/2022 ", "14/02/2024", "30.203,76 €")
         .state
             .state__warning
@@ -48,3 +51,8 @@ include ../../components/renovation-car
         .state
             .state__success
                 +state-policy("check", "Pagada")
+                
+
+//-.renovations-desktop
+    #renovations-list
+        script(src="/js/render-renovations.js")

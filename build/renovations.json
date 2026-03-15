@@ -1,0 +1,18 @@
+[
+  {
+    "No. de póliza": "79268600",
+    "Nombre del riesgo": "Mercedes-Benz Clase C",
+    "Fecha de contrato": "21/12/2023",
+    "Fecha de vencimiento": "20/12/2025",
+    "Importe": "817,10 €",
+    "Estado de póliza": "Vencido"
+  },
+  {
+    "No. de póliza": "79014482",
+    "Nombre del riesgo": "Nissan Qashqai",
+    "Fecha de contrato": "15/11/2021",
+    "Fecha de vencimiento": "15/11/2023",
+    "Importe": "378,91 €",
+    "Estado de póliza": "Pagado"
+  }
+]
