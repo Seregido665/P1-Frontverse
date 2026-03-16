@@ -7,21 +7,28 @@ function showRenovationsJsonList() {
   fetch('/renovations.json')
     .then(res => res.json())
     .then(data => {
-      window._RENOVATIONS_DATA = data;  //--> GUARDA LOS DATOS EN EL ARRAY window
-      window.renovationsPerPage();      //--> INICIA LA PAGINACION TRAS CARGAR LOS DATOS
+      window._RENOVATIONS_DATA = data;     //--> GUARDA LOS DATOS EN EL ARRAY window
+      window.renovationsPerPage();         //--> INICIA LA PAGINACION TRAS CARGAR LOS DATOS
+      window.updateTotalRenovations();     //--> ACTUALIZA EL TOTAL DE RENOVACIONES DE renovationspage-header.pug TRAS CARGAR EL json
     });
 }
 
 
-// --- PARA MOSTRAR RENOVACIONES SEGUN LA OPCION SELECCIONADA DE renovationsPerPage (pagination.js) ---
+// --- PARA MOSTRAR RENOVACIONES SEGUN:
+//   > LA CANTIDAD DE RENOVACIONES POR PAGINA (renovationsPerPage -> pagination.js) 
+//   > Y FORMA DE ORDENAMIENTO (orderBy.js) ---
 window.renderRenovationsWithPagination = function (rowsPerPage, page) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
 
-  // -- PARAS CALCULAR EL RANGO DE RENOVACIONES SEGUN LA PAGINA Y CANTIDAD POR PAGINA --
+  // --- PRIMERO COMPRUEBA SI HAY ALGUNA OPCION DEL orderBy SELECCIONADA CON EL typeof, SI NO, USA EL ARRAY ORIGINAL ---
+  let data = (typeof window.getRenovationsOrderBy === 'function')
+    ? window.getRenovationsOrderBy()
+    : window._RENOVATIONS_DATA;
+
   const start = (page - 1) * rowsPerPage;
   const end = start + rowsPerPage;
-  const currentRenovations = window._RENOVATIONS_DATA.slice(start, end);
+  const currentRenovations = data.slice(start, end);
 
   // -- CONVIERTE CADA RENOVACION EN UN HTML Y LO AÑADE --
   container.innerHTML = currentRenovations.map(renovation => {
