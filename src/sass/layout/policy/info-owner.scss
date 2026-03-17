@@ -1,0 +1,81 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+@use '../../helpers/icons-variables' as *;
+
+.info-owner {
+    width: rem(622px);
+    height: rem(381px);
+    padding: rem(24px);
+    background-color: $light;
+    border-radius: rem(8px);
+
+    @include desktop {
+        width: 100%;
+    }
+    
+    .info-owner__top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .info-owner__top__title {
+        @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
+    }
+
+    .info-owner__top__button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    .info-owner__top__button-icon {
+        color: $primary100;
+        font-size: $icon-size-edit;
+    }
+    .info-owner__top__button-text {
+        margin-left: rem(10px);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
+    }
+
+   
+    .info-owner__bottom__field {
+        margin-top: rem(24px);
+    }
+
+
+    .state {
+        display: flex;
+        align-items: center;
+        gap: rem(8px);
+        padding: rem(2px) rem(8px) rem(2px) 0;
+        border-radius: rem(4px);
+    }
+
+    .state__icon {
+        padding-left: rem(10px);
+        font-size: $icon-size-clock;
+    }
+
+    .state__warning {
+        @include policy-state-styles($background-color: $state-warning);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+        border-radius: rem(4px);
+        color: $text;
+        width: fit-content;
+    }
+
+    .state__success {
+        @include policy-state-styles($background-color: $state-success);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-success-text);
+        border-radius: rem(4px);
+        width: fit-content;
+    }
+
+    .state__error {
+        @include policy-state-styles($background-color: $state-error);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-error-text);
+        border-radius: rem(4px);
+        width: fit-content;
+    }
+}

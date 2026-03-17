@@ -1,0 +1,23 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+@use '../../helpers/icons-variables' as *;
+
+.info-container {
+    background-color: $body-background-color;
+    width: 100%;
+    padding: rem(40px) rem(88px) rem(80px) rem(88px);
+
+    @include desktop {
+        padding: rem(29px) rem(16px) rem(24px) rem(16px);
+    }
+
+    .info-container__top-cards {
+        display: flex;
+        gap: rem(20px);
+
+        @include desktop {
+            flex-direction: column;
+            gap: rem(16px);
+        }
+    }
+}

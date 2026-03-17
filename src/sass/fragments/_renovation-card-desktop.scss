@@ -71,12 +71,6 @@
         @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text3);
     }
 
-    .state-cell {
-        width: rem(116px);
-        border-radius: rem(4px);
-        overflow: hidden;
-    }
-
     .state {
         display: flex;
         align-items: center;

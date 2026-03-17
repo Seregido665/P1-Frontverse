@@ -1,0 +1,16 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    
+    .field-title {
+        margin-bottom: rem(4px);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text5);
+    }
+    .field-text {
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text4);
+    }
+}

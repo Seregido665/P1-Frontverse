@@ -1,0 +1,46 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+@use '../../helpers/icons-variables' as *;
+
+.info-direction {
+    width: rem(622px);
+    height: rem(381px);
+    padding: rem(24px);
+    background-color: $light;
+    border-radius: rem(8px);
+
+    @include desktop {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .info-direction__top {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .info-direction__top__title {
+        @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
+    }
+
+    .info-direction__top__button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    .info-direction__top__button-icon {
+        color: $primary100;
+        font-size: $icon-size-edit;
+    }
+    .info-direction__top__button-text {
+        margin-left: rem(10px);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
+    }
+
+   
+    .info-direction__bottom__field {
+        margin-top: rem(24px);
+    }
+}

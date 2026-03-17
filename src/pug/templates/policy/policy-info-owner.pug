@@ -1,0 +1,21 @@
+include ../../components/info-field
+include ../../components/renovation-car
+
+.info-owner
+    .info-owner__top
+        .info-owner__top__title Titular
+        button.info-owner__top__button
+            span.icon.edit.info-owner__top__button-icon
+            span.info-owner__top__button-text  Actualizar
+    .info-owner__bottom
+        .info-owner__bottom__field
+            +field-info-policy('CIF', 'H59721886')
+        .info-owner__bottom__field
+            +field-info-policy('Nombre', 'José Martínez')
+        .info-owner__bottom__field
+            +field-info-policy('Dirección fiscal', 'Casanova 128')
+        .info-owner__bottom__field
+            +field-info-policy('Estado de la póliza')
+            .state
+                .state__success
+                    +state-policy("check", "Vigente")

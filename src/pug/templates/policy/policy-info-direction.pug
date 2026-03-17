@@ -1,0 +1,17 @@
+include ../../components/info-field
+
+.info-direction
+    .info-direction__top
+        .info-direction__top__title Dirección de facturación
+        button.info-direction__top__button
+            span.icon.edit.info-direction__top__button-icon
+            span.info-direction__top__button-text  Actualizar
+    .info-direction__bottom
+        .info-direction__bottom__field
+            +field-info-policy('Dirección', 'CP LLUIS COMPANYS Nº 6, CL')
+        .info-direction__bottom__field
+            +field-info-policy('Número', '71')
+        .info-direction__bottom__field
+            +field-info-policy('Ciudad', 'Barcelona')
+        .info-direction__bottom__field
+            +field-info-policy('Código Postal', '09001')

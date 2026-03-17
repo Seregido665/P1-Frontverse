@@ -16,6 +16,14 @@
 @use "layout/navigation";
 @use "layout/footer";
 @use "layout/home/home";
+@use 'layout/home/homepage-header';
+@use 'layout/renovations/renovationspage-header';
+@use 'layout/renovations/filters';
+@use 'layout/renovations/pagination';
+@use 'layout/policy/policy-header';
+@use 'layout/policy/info-owner';
+@use 'layout/policy/info-direction';
+@use 'layout/policy/policy-info';
 
 /** FRAGMENTS **/
 @use "components/navbar/menu-buttons/_button-menu-user";
@@ -29,12 +37,7 @@
 @use 'components/navbar/nav-buttons-right';
 @use 'components/filter-menu';
 @use 'components/filters-aplied';
-
-@use 'layout/home/homepage-header';
-@use 'layout/renovations/renovationspage-header';
-@use 'layout/renovations/filters';
-@use 'layout/renovations/pagination';
-@use 'layout/policy/policy-header';
+@use 'components/info-field';
 
 /** TEMPLATES **/
 @use 'components/navbar/nav-menus/user-window-menu';
