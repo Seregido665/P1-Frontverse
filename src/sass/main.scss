@@ -29,10 +29,12 @@
 @use 'components/navbar/nav-buttons-right';
 @use 'components/filter-menu';
 @use 'components/filters-aplied';
+
 @use 'layout/home/homepage-header';
 @use 'layout/renovations/renovationspage-header';
 @use 'layout/renovations/filters';
 @use 'layout/renovations/pagination';
+@use 'layout/policy/policy-header';
 
 /** TEMPLATES **/
 @use 'components/navbar/nav-menus/user-window-menu';
