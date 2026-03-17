@@ -21,18 +21,18 @@ window.renderRenovationsWithPagination = function (rowsPerPage, page) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
 
-  // --- PRIMERO COMPRUEBA SI HAY ALGUNA OPCION DEL orderBy SELECCIONADA CON EL typeof, SI NO, USA EL ARRAY ORIGINAL ---
+  // --- COMPRUEBA SI HAY ALGUNA OPCION DEL orderBy SELECCIONADA CON EL typeof, SI NO, USA EL ARRAY ORIGINAL ---
   let data = (typeof window.getRenovationsOrderBy === 'function')
     ? window.getRenovationsOrderBy()
     : window._RENOVATIONS_DATA;
 
+  // --- CALCULA CUANTAS RENOVACIONES MOSTRAR EN CADA MOMENTO ---
   const start = (page - 1) * rowsPerPage;
   const end = start + rowsPerPage;
   const currentRenovations = data.slice(start, end);
 
   // -- CONVIERTE CADA RENOVACION EN UN HTML Y LO AÑADE --
   container.innerHTML = currentRenovations.map(renovation => {
-
     // - ESTILO DEL ESTADO DE CADA RENOVACIÓN -
     let stateClass = '';
     let icon = '';

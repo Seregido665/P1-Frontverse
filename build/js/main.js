@@ -10829,12 +10829,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const select = document.querySelector('.renovations-filter__list__select');
     if (!select) return;
 
-    // --- PARA CONVERTIR LOS VALORES DE string A numero ---
+    // --- PARA CONVERTIR LOS VALORES DE LOS IMPORTES DE string A numero ---
     const parseImporte = (item) =>
         parseFloat(item['Importe']
             .replace(/\./g, '')     //--> ELIMINA LOS PUNTOS DE LOS MILES
             .replace(',', '.'));    //--> REEMPLAZA LA COMA DECIMAL POR UN PUNTO PARA EL parseFloat
-    // --- PARA CONVERTIR LAS FECHAS A FORMATO Date ---
+    // --- PARA CONVERTIR LAS FECHAS A FORMATO Date Y PODER COMPARARLAS---
     const parseFecha = (item) =>
         new Date(item['Fecha de contrato']
             .split('/')             //--> SEPARA LAS FECHAS EN DIA, MES Y AÑO
@@ -10850,14 +10850,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- SELECTOR DE Ordenar por: ---
     select.addEventListener('change', function () {
-        if (!Array.isArray(window._RENOVATIONS_DATA)) return;     //--> COMPROBACION
         let data = [...window._RENOVATIONS_DATA];
 
         if (orderBy[select.value]) {
             data.sort(orderBy[select.value]);  //--> CON sort ORDENO LOS ELEMENTOS SEGUN LA FUNCION SELECCIONADA
         }
-
-        window._RENOVATIONS_DATA_SORTED = data;
+        window._RENOVATIONS_DATA_ORDERED = data;
         
         // --- APLICA EL NUEVO ORDEN SELECCIONADO SI LA FUNCION ESTA DISPONIBLE ---
         if (typeof window.renderRenovationsWithPagination === 'function') {
@@ -10868,7 +10866,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.getRenovationsOrderBy = function () {
-    return window._RENOVATIONS_DATA_SORTED || window._RENOVATIONS_DATA;
+    return window._RENOVATIONS_DATA_ORDERED || window._RENOVATIONS_DATA;
 };
 
 function renovationsPerPage() {
@@ -10878,18 +10876,18 @@ function renovationsPerPage() {
 	let currentPage = 1;    //--> VARIABLE DE LA PAGINA ACTUAL (SIEMPRE EMPIEZA POR 1)
 	select.value = '10';    //--> MUESTRA 10 FILAS POR DEFECTO ---
 
-	// --- FUNCION PARA CALCULAR EL TOTAL DE PAGINAS SEGUN LA CANTIDAD DE FILAS POR PAGINA ---
+	// --- FUNCION PARA CALCULAR EL TOTAL DE PAGINAS ---
 	function getTotalPages() {
 		const total = Array.isArray(window._RENOVATIONS_DATA) ? window._RENOVATIONS_DATA.length : 0;    //--> COMPRUEBA QUE ES UN ARRAY Y QUE LONGITUD TIENE
-		const rows = parseInt(select.value, 10);
+		const rows = parseInt(select.value);
 		return rows > 0 ? Math.ceil(total / rows) : 1;      //--> PARA CALCULAR TOTAL DE PAGINAS
                                                             // --> ceil ES PARA REDONDEAR HACIA ARRIBA
 	}
 
 	// --- FUNCION PARA RENDERIZAR LA PAGINA ACTUAL ---
 	function renderPage(page) {
-		const rows = parseInt(select.value, 10);
-		const totalPages = getTotalPages();
+		const rows = parseInt(select.value);
+		const totalPages = getTotalPages();			//--> TRAEMOS EL TOTAL DE PAGINAS
 		currentPage = Math.max(1, Math.min(page, totalPages));      //--> ASEGURA QUE LA PAGINA NO SEA MENOR A 1 NI MAYOR AL TOTAL DE PAGINAS
 		window.renderRenovationsWithPagination(rows, currentPage);  //--> EL RENDERIZADO DE LA PAGINA SE HACE EN showRenovations.js
 		
@@ -10915,7 +10913,7 @@ function renovationsPerPage() {
 	if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));   //--> SALTA A LA ULTIMA PAGINA, CALCULADA POR getTotalPPages()
 
 	// --- PARA INICIALIZAR SOLO SI HAY DATOS ---
-	if (Array.isArray(window._RENOVATIONS_DATA) && window._RENOVATIONS_DATA.length > 0) {
+	if (window._RENOVATIONS_DATA.length > 0) {
 		renderPage(1);
 	}
 }
@@ -10942,18 +10940,18 @@ window.renderRenovationsWithPagination = function (rowsPerPage, page) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
 
-  // --- PRIMERO COMPRUEBA SI HAY ALGUNA OPCION DEL orderBy SELECCIONADA CON EL typeof, SI NO, USA EL ARRAY ORIGINAL ---
+  // --- COMPRUEBA SI HAY ALGUNA OPCION DEL orderBy SELECCIONADA CON EL typeof, SI NO, USA EL ARRAY ORIGINAL ---
   let data = (typeof window.getRenovationsOrderBy === 'function')
     ? window.getRenovationsOrderBy()
     : window._RENOVATIONS_DATA;
 
+  // --- CALCULA CUANTAS RENOVACIONES MOSTRAR EN CADA MOMENTO ---
   const start = (page - 1) * rowsPerPage;
   const end = start + rowsPerPage;
   const currentRenovations = data.slice(start, end);
 
   // -- CONVIERTE CADA RENOVACION EN UN HTML Y LO AÑADE --
   container.innerHTML = currentRenovations.map(renovation => {
-
     // - ESTILO DEL ESTADO DE CADA RENOVACIÓN -
     let stateClass = '';
     let icon = '';
@@ -11101,14 +11099,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.updateTotalRenovations = function () {
+    // --- TOTAL DE RENOVACIONES DEL HEADER ---
     const totalRenovationsHeaderSpan = document.querySelector('.renovations-header__number-policies__number');
-    if (totalRenovationsHeaderSpan && Array.isArray(window._RENOVATIONS_DATA)) {
-        totalRenovationsHeaderSpan.textContent = window._RENOVATIONS_DATA.length;
-    }
-
+    totalRenovationsHeaderSpan.textContent = window._RENOVATIONS_DATA.length;
+    
+    // --- TOTAL DE RENOVACIONES DE LOS FILTROS ---
     const totalRenovationsFilterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-    if (totalRenovationsFilterSpan && Array.isArray(window._RENOVATIONS_DATA)) {
-        totalRenovationsFilterSpan.textContent = window._RENOVATIONS_DATA.length + ' pólizas';
-    }
+    totalRenovationsFilterSpan.textContent = window._RENOVATIONS_DATA.length + ' pólizas';
 };
 

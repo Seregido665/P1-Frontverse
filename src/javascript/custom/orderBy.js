@@ -2,12 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const select = document.querySelector('.renovations-filter__list__select');
     if (!select) return;
 
-    // --- PARA CONVERTIR LOS VALORES DE string A numero ---
+    // --- PARA CONVERTIR LOS VALORES DE LOS IMPORTES DE string A numero ---
     const parseImporte = (item) =>
         parseFloat(item['Importe']
             .replace(/\./g, '')     //--> ELIMINA LOS PUNTOS DE LOS MILES
             .replace(',', '.'));    //--> REEMPLAZA LA COMA DECIMAL POR UN PUNTO PARA EL parseFloat
-    // --- PARA CONVERTIR LAS FECHAS A FORMATO Date ---
+    // --- PARA CONVERTIR LAS FECHAS A FORMATO Date Y PODER COMPARARLAS---
     const parseFecha = (item) =>
         new Date(item['Fecha de contrato']
             .split('/')             //--> SEPARA LAS FECHAS EN DIA, MES Y AÑO
@@ -23,14 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- SELECTOR DE Ordenar por: ---
     select.addEventListener('change', function () {
-        if (!Array.isArray(window._RENOVATIONS_DATA)) return;     //--> COMPROBACION
         let data = [...window._RENOVATIONS_DATA];
 
         if (orderBy[select.value]) {
             data.sort(orderBy[select.value]);  //--> CON sort ORDENO LOS ELEMENTOS SEGUN LA FUNCION SELECCIONADA
         }
-
-        window._RENOVATIONS_DATA_SORTED = data;
+        window._RENOVATIONS_DATA_ORDERED = data;
         
         // --- APLICA EL NUEVO ORDEN SELECCIONADO SI LA FUNCION ESTA DISPONIBLE ---
         if (typeof window.renderRenovationsWithPagination === 'function') {
@@ -41,5 +39,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.getRenovationsOrderBy = function () {
-    return window._RENOVATIONS_DATA_SORTED || window._RENOVATIONS_DATA;
+    return window._RENOVATIONS_DATA_ORDERED || window._RENOVATIONS_DATA;
 };

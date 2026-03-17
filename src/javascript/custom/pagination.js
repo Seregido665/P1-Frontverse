@@ -5,18 +5,18 @@ function renovationsPerPage() {
 	let currentPage = 1;    //--> VARIABLE DE LA PAGINA ACTUAL (SIEMPRE EMPIEZA POR 1)
 	select.value = '10';    //--> MUESTRA 10 FILAS POR DEFECTO ---
 
-	// --- FUNCION PARA CALCULAR EL TOTAL DE PAGINAS SEGUN LA CANTIDAD DE FILAS POR PAGINA ---
+	// --- FUNCION PARA CALCULAR EL TOTAL DE PAGINAS ---
 	function getTotalPages() {
 		const total = Array.isArray(window._RENOVATIONS_DATA) ? window._RENOVATIONS_DATA.length : 0;    //--> COMPRUEBA QUE ES UN ARRAY Y QUE LONGITUD TIENE
-		const rows = parseInt(select.value, 10);
+		const rows = parseInt(select.value);
 		return rows > 0 ? Math.ceil(total / rows) : 1;      //--> PARA CALCULAR TOTAL DE PAGINAS
                                                             // --> ceil ES PARA REDONDEAR HACIA ARRIBA
 	}
 
 	// --- FUNCION PARA RENDERIZAR LA PAGINA ACTUAL ---
 	function renderPage(page) {
-		const rows = parseInt(select.value, 10);
-		const totalPages = getTotalPages();
+		const rows = parseInt(select.value);
+		const totalPages = getTotalPages();			//--> TRAEMOS EL TOTAL DE PAGINAS
 		currentPage = Math.max(1, Math.min(page, totalPages));      //--> ASEGURA QUE LA PAGINA NO SEA MENOR A 1 NI MAYOR AL TOTAL DE PAGINAS
 		window.renderRenovationsWithPagination(rows, currentPage);  //--> EL RENDERIZADO DE LA PAGINA SE HACE EN showRenovations.js
 		
@@ -42,7 +42,7 @@ function renovationsPerPage() {
 	if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));   //--> SALTA A LA ULTIMA PAGINA, CALCULADA POR getTotalPPages()
 
 	// --- PARA INICIALIZAR SOLO SI HAY DATOS ---
-	if (Array.isArray(window._RENOVATIONS_DATA) && window._RENOVATIONS_DATA.length > 0) {
+	if (window._RENOVATIONS_DATA.length > 0) {
 		renderPage(1);
 	}
 }
