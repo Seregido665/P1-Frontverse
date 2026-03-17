@@ -1,0 +1,50 @@
+@use '../../helpers/mixins' as *;
+@use '../../helpers/variables' as *;
+@use '../../helpers/icons-variables' as *;
+
+.policy-header {
+    width: 100%;
+    height: rem(186px);
+    padding: rem(32px) rem(88px);
+
+    @include tablet {
+        width: 100%;
+        height: rem(129px);
+        padding: rem(24px) rem(16px);
+    }
+
+    .policy-header__top {
+        margin-bottom: rem(40px);
+        display: flex;
+
+        @include tablet {
+            margin-bottom: rem(24px);
+        }
+    }
+
+    .policy-header__top__detail {
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $primary100);
+    }
+    .policy-header__top__separation {
+        margin: 0 rem(5px) 0 rem(5px);
+        @include font-styles($font-weight: 400, $font-size: rem(14px), $color: $text5);
+    }
+    .policy-header__top__number {
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text5);
+    }
+
+
+
+    .policy-header__bottom__name {
+        margin-bottom: rem(10px);
+        @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
+    
+        @include tablet {
+            margin-bottom: 0;
+            @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text4);
+        }
+    }
+    .policy-header__bottom__number {
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text5);
+    }
+}
