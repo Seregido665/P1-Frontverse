@@ -2,6 +2,8 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 const cleanCss = require('gulp-clean-css');
+
+
 const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const terser = require('gulp-terser');
@@ -163,7 +165,12 @@ gulp.task('deploy', gulp.series(
   'deployIMAGES',
   'copyMinifyedLibs',
   function startServer(cb) {
-    browserSync.init({ server: { baseDir: "./build", directory: true } });
+    browserSync.init({
+      server: {
+        baseDir: ["./build", "./src"],
+        directory: true
+      }
+    });
     cb();
   }
 ));

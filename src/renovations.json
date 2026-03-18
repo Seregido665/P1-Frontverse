@@ -1,4 +1,4 @@
-export const renovations = [
+[
   {
     "No. de póliza": "79268600",
     "Nombre del riesgo": "Mercedes-Benz",
@@ -319,4 +319,4 @@ export const renovations = [
     "Importe": "520,01 €",
     "Estado de póliza": "Vencido"
   }
-];
+]

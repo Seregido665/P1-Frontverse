@@ -10825,51 +10825,257 @@ function main() {
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-import { renovations } from "./utils";
-
-
-// --- PINTA LAS RENOVACIONES ---
-function renderRenovations() {
-  var container = document.querySelector('.renovations-json-list');
-  if (!container) return;
-
-  var renovations = AppData.renovations;
-
-  container.innerHTML = renovations.map(function(renovation) {
-    var stateClass = '';
-    var icon = '';
-    if (renovation["Estado de póliza"] === "Pagado") {
-      stateClass = 'state__success';
-      icon = 'check';
-    } else if (renovation["Estado de póliza"] === "Pendiente") {
-      stateClass = 'state__warning';
-      icon = 'clock';
-    } else {
-      stateClass = 'state__error';
-      icon = 'close';
-    }
-    return '<div class="renovation-card-desktop">' +
-      '<div class="renovation-card-desktop__policy">' + renovation["No. de póliza"] + '</div>' +
-      '<div class="renovation-card-desktop__risk">' + renovation["Nombre del riesgo"] + '</div>' +
-      '<div class="renovation-card-desktop__date-contrat">' + renovation["Fecha de contrato"] + '</div>' +
-      '<div class="renovation-card-desktop__date-maturity">' + renovation["Fecha de vencimiento"] + '</div>' +
-      '<div class="renovation-card-desktop__price">' + renovation["Importe"] + '</div>' +
-      '<div class="state-cell">' +
-        '<div class="renovation-card-desktop__state">' +
-          '<div class="state ' + stateClass + '">' +
-            '<span class="state__icon icon ' + icon + '"></span>' +
-            '<span class="state__text">' + renovation["Estado de póliza"] + '</span>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-  }).join('');
-}
+// ─────────────────────────────────────────────
+//  ORDENACIÓN DE RENOVACIONES
+//  Depende de: RenovationsStore y renderRenovationsWithPagination (showRenovations.js)
+// ─────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function () {
-  renderRenovations();
+  const select = document.querySelector('.renovations-filter__list__select');
+  if (!select) return;
+
+
+  // ─── PARSERS ────────────────────────────────
+
+  function parseImporte(item) {
+    return parseFloat(
+      item['Importe']
+        .replace(/\./g, '')   // Elimina los puntos de los miles
+        .replace(',', '.')    // Sustituye la coma decimal por punto para parseFloat
+    );
+  }
+
+  function parseFecha(item) {
+    return new Date(
+      item['Fecha de contrato']
+        .split('/')           // Separa en [dd, mm, yyyy]
+        .reverse()            // Invierte a [yyyy, mm, dd]
+        .join('-')            // Une con guiones para new Date
+    );
+  }
+
+
+  // ─── CRITERIOS DE ORDENACIÓN ────────────────
+
+  const orderBy = {
+    'Mayor importe':    (a, b) => parseImporte(b) - parseImporte(a),
+    'Menor importe':    (a, b) => parseImporte(a) - parseImporte(b),
+    'Más recientes':    (a, b) => parseFecha(b)   - parseFecha(a),
+    'Menos recientes':  (a, b) => parseFecha(a)   - parseFecha(b),
+  };
+
+
+  // ─── APLICAR ORDEN ──────────────────────────
+
+  function applyOrder(value) {
+    // Partimos siempre de los datos originales para no acumular ordenaciones
+    const sorted = [...RenovationsStore.originalData];
+
+    if (orderBy[value]) {
+      sorted.sort(orderBy[value]);
+    }
+
+    RenovationsStore.data = sorted;   // Actualizamos el store con el nuevo orden
+  }
+
+
+  // ─── EVENTO ─────────────────────────────────
+
+  select.addEventListener('change', function () {
+    applyOrder(select.value);
+
+    // Vuelve a la página 1 con el nuevo orden
+    const rowsSelect = document.querySelector('.pagination__rows__option');
+    const rows = rowsSelect ? parseInt(rowsSelect.value, 10) : 10;
+    renderRenovationsWithPagination(rows, 1);
+  });
 });
 
+
+// ─────────────────────────────────────────────
+//  HELPER PÚBLICO
+//  Devuelve los datos en el orden activo
+// ─────────────────────────────────────────────
+function getRenovationsOrderBy() {
+  return RenovationsStore.data;
+}
+// ─────────────────────────────────────────────
+//  PAGINACIÓN DE RENOVACIONES
+//  Depende de: RenovationsStore y renderRenovationsWithPagination (showRenovations.js)
+// ─────────────────────────────────────────────
+
+function renovationsPerPage() {
+  const select = document.querySelector('.pagination__rows__option');
+  if (!select) return;
+
+  let currentPage = 1;  // La paginación siempre arranca en la página 1
+  select.value = '10';  // Valor por defecto: 10 filas por página
+
+
+  // ─── HELPERS ────────────────────────────────
+
+  function getRowsPerPage() {
+    return parseInt(select.value);
+  }
+
+  function getTotalPages() {
+    const total = RenovationsStore.data.length;
+    const rows  = getRowsPerPage();
+    return rows > 0 ? Math.ceil(total / rows) : 1;
+  }
+
+
+  // ─── RENDERIZADO ────────────────────────────
+
+  function renderPage(page) {
+    const totalPages = getTotalPages();
+    currentPage = Math.max(1, Math.min(page, totalPages));  // Evita salirse del rango
+
+    renderRenovationsWithPagination(getRowsPerPage(), currentPage);
+    updatePageText();
+  }
+
+
+  // ─── TEXTO "X de Y" ─────────────────────────
+
+  function updatePageText() {
+    const pageText = document.querySelector('.pagination__page__text2');
+    if (pageText) pageText.textContent = `${currentPage} de ${getTotalPages()}`;
+  }
+
+
+  // ─── EVENTOS ────────────────────────────────
+
+  function bindSelectChange() {
+    select.addEventListener('change', function () {
+      renderPage(1);  // Al cambiar filas por página, volvemos a la página 1
+    });
+  }
+
+  function bindNavigationButtons() {
+    const btnSkipLeft  = document.querySelector('.pagination__page-option__skip-left');
+    const btnLeft      = document.querySelector('.pagination__page-option__left');
+    const btnRight     = document.querySelector('.pagination__page-option__right');
+    const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
+
+    if (btnSkipLeft)  btnSkipLeft.addEventListener('click',  () => renderPage(1));
+    if (btnLeft)      btnLeft.addEventListener('click',      () => renderPage(currentPage - 1));
+    if (btnRight)     btnRight.addEventListener('click',     () => renderPage(currentPage + 1));
+    if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));
+  }
+
+
+  // ─── INIT ────────────────────────────────────
+
+  bindSelectChange();
+  bindNavigationButtons();
+
+  if (RenovationsStore.data.length > 0) {
+    renderPage(1);
+  }
+}
+// ─────────────────────────────────────────────
+//  MÓDULO COMPARTIDO  (accesible desde pagination.js y orderBy.js)
+// ─────────────────────────────────────────────
+const RenovationsStore = {
+  data: [],           // Array activo (puede estar ordenado/filtrado)
+  originalData: [],   // Copia inmutable del JSON original, solo para lectura
+};
+
+
+// ─────────────────────────────────────────────
+//  CONSTRUCCIÓN DEL HTML DE UNA TARJETA
+// ─────────────────────────────────────────────
+function buildRenovationCard(renovation) {
+  let stateClass = '';
+  let icon = '';
+
+  if (renovation["Estado de póliza"] === "Pagado") {
+    stateClass = 'state__success';
+    icon = 'check';
+  } else if (renovation["Estado de póliza"] === "Pendiente") {
+    stateClass = 'state__warning';
+    icon = 'clock';
+  } else {
+    stateClass = 'state__error';
+    icon = 'close';
+  }
+
+  return `
+    <div class="renovation-card-desktop">
+      <div class="renovation-card-desktop__policy">${renovation["No. de póliza"]}</div>
+      <div class="renovation-card-desktop__risk">${renovation["Nombre del riesgo"]}</div>
+      <div class="renovation-card-desktop__date-contrat">${renovation["Fecha de contrato"]}</div>
+      <div class="renovation-card-desktop__date-maturity">${renovation["Fecha de vencimiento"]}</div>
+      <div class="renovation-card-desktop__price">${renovation["Importe"]}</div>
+      <div class="state-cell">
+        <div class="renovation-card-desktop__state">
+          <div class="state ${stateClass}">
+            <span class="state__icon icon ${icon}"></span>
+            <span class="state__text">${renovation["Estado de póliza"]}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+
+// ─────────────────────────────────────────────
+//  RENDERIZADO CON PAGINACIÓN
+//  Llamado desde pagination.js en cada cambio de página
+// ─────────────────────────────────────────────
+function renderRenovationsWithPagination(rowsPerPage, currentPage) {
+  const container = document.querySelector('.renovations-json-list');
+  if (!container) return;
+
+  const start = (currentPage - 1) * rowsPerPage;
+  const end   = start + rowsPerPage;
+  const slice = RenovationsStore.data.slice(start, end);
+
+  container.innerHTML = slice.map(buildRenovationCard).join('');
+}
+
+
+// ─────────────────────────────────────────────
+//  TOTAL DE RENOVACIONES
+//  Se llama una sola vez al cargar el JSON
+// ─────────────────────────────────────────────
+function updateTotalRenovations() {
+  const total = RenovationsStore.originalData.length;
+
+  const headerSpan = document.querySelector('.renovations-header__number-policies__number');
+  if (headerSpan) headerSpan.textContent = total;
+
+  const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
+  if (filterSpan) filterSpan.textContent = `${total} pólizas`;
+}
+
+
+// ─────────────────────────────────────────────
+//  CARGA INICIAL DEL JSON
+// ─────────────────────────────────────────────
+function showRenovationsJsonList() {
+  const container = document.querySelector('.renovations-json-list');
+  if (!container) return;
+
+  fetch('/renovations.json')
+    .then(res => res.json())
+    .then(data => {
+      RenovationsStore.data         = data;        // Array activo (puede cambiar con el orden)
+      RenovationsStore.originalData = [...data];   // Copia inmutable del JSON original
+      updateTotalRenovations();                    // Pintamos los totales en el header y filtros
+      renovationsPerPage();                        // Iniciamos la paginación una vez hay datos
+    });
+}
+
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+  showRenovationsJsonList();
+});
 function navbarMenusToggles() {
   const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
@@ -10979,326 +11185,3 @@ function navbarMenusToggles() {
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();
 });
-
-export const renovations = [
-  {
-    "No. de póliza": "79268600",
-    "Nombre del riesgo": "Mercedes-Benz",
-    "Fecha de contrato": "21/12/2023",
-    "Fecha de vencimiento": "20/12/2025",
-    "Importe": "817,10 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "79014482",
-    "Nombre del riesgo": "Nissan Qashqai",
-    "Fecha de contrato": "15/11/2021",
-    "Fecha de vencimiento": "15/11/2023",
-    "Importe": "378,91 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "73191853",
-    "Nombre del riesgo": "BMW Serie 3",
-    "Fecha de contrato": "22/06/2024",
-    "Fecha de vencimiento": "23/06/2026",
-    "Importe": "306,35 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "77842674",
-    "Nombre del riesgo": "Opel Corsa",
-    "Fecha de contrato": "13/05/2024",
-    "Fecha de vencimiento": "13/05/2025",
-    "Importe": "629,36 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "77076821",
-    "Nombre del riesgo": "Dacia Sandero",
-    "Fecha de contrato": "24/07/2023",
-    "Fecha de vencimiento": "23/07/2025",
-    "Importe": "549,70 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "77286857",
-    "Nombre del riesgo": "Ford Kuga",
-    "Fecha de contrato": "12/04/2022",
-    "Fecha de vencimiento": "11/04/2024",
-    "Importe": "526,99 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "74680173",
-    "Nombre del riesgo": "Ford Kuga",
-    "Fecha de contrato": "15/08/2021",
-    "Fecha de vencimiento": "16/08/2023",
-    "Importe": "353,91 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "70917199",
-    "Nombre del riesgo": "Fiat 500",
-    "Fecha de contrato": "30/12/2023",
-    "Fecha de vencimiento": "30/12/2024",
-    "Importe": "553,47 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "72846035",
-    "Nombre del riesgo": "Kia Sportage",
-    "Fecha de contrato": "26/06/2022",
-    "Fecha de vencimiento": "26/06/2024",
-    "Importe": "302,68 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "72604444",
-    "Nombre del riesgo": "Toyota Corolla",
-    "Fecha de contrato": "13/09/2023",
-    "Fecha de vencimiento": "13/09/2024",
-    "Importe": "614,27 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "73869697",
-    "Nombre del riesgo": "Nissan Qashqai",
-    "Fecha de contrato": "09/02/2023",
-    "Fecha de vencimiento": "10/02/2024",
-    "Importe": "354,64 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "79946696",
-    "Nombre del riesgo": "Seat León",
-    "Fecha de contrato": "22/05/2024",
-    "Fecha de vencimiento": "23/05/2026",
-    "Importe": "1.059,80 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "72605725",
-    "Nombre del riesgo": "Nissan Qashqai",
-    "Fecha de contrato": "14/01/2023",
-    "Fecha de vencimiento": "13/01/2025",
-    "Importe": "704,70 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "79418064",
-    "Nombre del riesgo": "Mercedes-Benz",
-    "Fecha de contrato": "07/12/2023",
-    "Fecha de vencimiento": "06/12/2024",
-    "Importe": "664,38 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "76921580",
-    "Nombre del riesgo": "Fiat 500",
-    "Fecha de contrato": "07/10/2022",
-    "Fecha de vencimiento": "07/10/2023",
-    "Importe": "709,39 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "74005616",
-    "Nombre del riesgo": "Seat León",
-    "Fecha de contrato": "25/10/2024",
-    "Fecha de vencimiento": "26/10/2025",
-    "Importe": "655,68 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "74137030",
-    "Nombre del riesgo": "Hyundai i20",
-    "Fecha de contrato": "27/12/2021",
-    "Fecha de vencimiento": "28/12/2022",
-    "Importe": "454,66 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "79414157",
-    "Nombre del riesgo": "Ford Kuga",
-    "Fecha de contrato": "25/08/2021",
-    "Fecha de vencimiento": "26/08/2023",
-    "Importe": "1.128,67 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "73513181",
-    "Nombre del riesgo": "Renault Captur",
-    "Fecha de contrato": "06/07/2021",
-    "Fecha de vencimiento": "06/07/2023",
-    "Importe": "642,76 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "73681855",
-    "Nombre del riesgo": "Fiat 500",
-    "Fecha de contrato": "29/01/2021",
-    "Fecha de vencimiento": "30/01/2022",
-    "Importe": "665,08 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "76526698",
-    "Nombre del riesgo": "Dacia Sandero",
-    "Fecha de contrato": "30/06/2023",
-    "Fecha de vencimiento": "30/06/2025",
-    "Importe": "201,11 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "71928056",
-    "Nombre del riesgo": "Volkswagen Golf",
-    "Fecha de contrato": "15/05/2023",
-    "Fecha de vencimiento": "14/05/2024",
-    "Importe": "271,04 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "74110705",
-    "Nombre del riesgo": "Citroën C3",
-    "Fecha de contrato": "15/09/2021",
-    "Fecha de vencimiento": "16/09/2023",
-    "Importe": "270,64 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "78713505",
-    "Nombre del riesgo": "Mercedes-Ben",
-    "Fecha de contrato": "29/09/2022",
-    "Fecha de vencimiento": "30/09/2023",
-    "Importe": "530,45 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "76401349",
-    "Nombre del riesgo": "Mercedes-Benz",
-    "Fecha de contrato": "10/04/2024",
-    "Fecha de vencimiento": "11/04/2025",
-    "Importe": "235,24 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "75859675",
-    "Nombre del riesgo": "Citroën C3",
-    "Fecha de contrato": "23/07/2022",
-    "Fecha de vencimiento": "24/07/2023",
-    "Importe": "942,31 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "78259229",
-    "Nombre del riesgo": "Peugeot 3008",
-    "Fecha de contrato": "11/01/2021",
-    "Fecha de vencimiento": "11/01/2023",
-    "Importe": "1.136,82 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "76053731",
-    "Nombre del riesgo": "Citroën C3",
-    "Fecha de contrato": "16/05/2023",
-    "Fecha de vencimiento": "15/05/2025",
-    "Importe": "790,08 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "75345438",
-    "Nombre del riesgo": "Fiat 500",
-    "Fecha de contrato": "16/04/2023",
-    "Fecha de vencimiento": "16/04/2025",
-    "Importe": "353,99 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "71267303",
-    "Nombre del riesgo": "Peugeot 3008",
-    "Fecha de contrato": "28/09/2023",
-    "Fecha de vencimiento": "28/09/2025",
-    "Importe": "218,01 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "73466876",
-    "Nombre del riesgo": "Opel Corsa",
-    "Fecha de contrato": "01/11/2022",
-    "Fecha de vencimiento": "31/10/2024",
-    "Importe": "349,87 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "79231557",
-    "Nombre del riesgo": "Tesla Model 3",
-    "Fecha de contrato": "01/11/2022",
-    "Fecha de vencimiento": "02/11/2023",
-    "Importe": "372,92 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "78210490",
-    "Nombre del riesgo": "Volkswagen T-Roc",
-    "Fecha de contrato": "04/11/2022",
-    "Fecha de vencimiento": "04/11/2023",
-    "Importe": "787,53 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "72983133",
-    "Nombre del riesgo": "Mercedes-Benz",
-    "Fecha de contrato": "25/04/2023",
-    "Fecha de vencimiento": "24/04/2024",
-    "Importe": "935,98 €",
-    "Estado de póliza": "Pendiente"
-  },
-  {
-    "No. de póliza": "76661703",
-    "Nombre del riesgo": "Nissan Qashqai",
-    "Fecha de contrato": "25/08/2022",
-    "Fecha de vencimiento": "25/08/2024",
-    "Importe": "473,27 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "75395421",
-    "Nombre del riesgo": "Volkswagen T-Roc",
-    "Fecha de contrato": "29/09/2021",
-    "Fecha de vencimiento": "30/09/2023",
-    "Importe": "1.114,70 €",
-    "Estado de póliza": "Vencido"
-  },
-  {
-    "No. de póliza": "78003596",
-    "Nombre del riesgo": "Audi A3",
-    "Fecha de contrato": "06/07/2023",
-    "Fecha de vencimiento": "05/07/2024",
-    "Importe": "310,45 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "75839305",
-    "Nombre del riesgo": "Renault Captur",
-    "Fecha de contrato": "14/10/2021",
-    "Fecha de vencimiento": "15/10/2022",
-    "Importe": "763,06 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "72143079",
-    "Nombre del riesgo": "Kia Sportage",
-    "Fecha de contrato": "21/08/2022",
-    "Fecha de vencimiento": "22/08/2023",
-    "Importe": "1.067,37 €",
-    "Estado de póliza": "Pagado"
-  },
-  {
-    "No. de póliza": "74089010",
-    "Nombre del riesgo": "Opel Corsa",
-    "Fecha de contrato": "16/10/2023",
-    "Fecha de vencimiento": "15/10/2024",
-    "Importe": "520,01 €",
-    "Estado de póliza": "Vencido"
-  }
-];
