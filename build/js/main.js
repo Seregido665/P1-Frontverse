@@ -10704,51 +10704,56 @@ return jQuery;
 } );
 function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');
-  const mainLabel = document.querySelector('.globe-button__title');
-  const burgerLabel = document.querySelector('.burguer-menu-window__title');
+  const mainGlobe = document.querySelector('.globe-button__title');
+  const burgerGlobe = document.querySelector('.burguer-menu-window__title');
 
-  if (!mainLabel) return;
-  if (!burgerLabel) return;
+  if (!mainGlobe || !burgerGlobe) return;
 
-  // --- APLICA EL ESTILO bold AL IDIOMA SELECCIONADO POR DEFECTO ---
+
+  // --- APLICA BOLD AL PRIMER ELEMENTO DE CADA MENÚ POR DEFECTO ---
   document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {
     const firstText = menuWindow.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
     if (firstText) firstText.style.fontWeight = '700';
   });
 
-  // --- PARA ACTUALIZAR TEXTOS Y ESTILOS ---
+
+  // --- CAMBIAR EL ESTILO DEL IDIOMA SELECCIONADO ---
+  function setSelection(selectedOption) {
+    options.forEach(function (item) {
+      const text = item.querySelector('.globe-menu-window__option-text');
+      if (text) text.style.fontWeight = '400';
+    });
+    const selectedLanguage = selectedOption.querySelector('.globe-menu-window__option-text');
+    if (selectedLanguage) selectedLanguage.style.fontWeight = '700';
+  }
+
+
+  // --- CERRAR AL SELECCIONAR UNA OPCION ---
+  function closeMenu(option) {
+    const menu = option.closest('.globe-menu-window');
+    if (menu) menu.style.display = 'none';
+  }
+
+
+  // --- PARA ASIGNAR EVENTOS A CADA OPCIÓN ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
-      const language = option.textContent.trim(); // OBTIENE EL TEXTO DEL IDIOMA SELECCIONADO Y ELIMINA ESPACIOS EN BLANCO
+      const language = option.textContent;
+      mainGlobe.textContent  = language;
+      burgerGlobe.textContent = language;
 
-      // -- MUESTRA EL IDIOMA SELECCIONADO EN EL BOTON --
-      mainLabel.textContent = language;
-      burgerLabel.textContent = language;
-
-      // -- DEJA SOLO EN bold LA OPCION SELECCIONADA --
-      options.forEach(function (item) {
-        const itemText = item.querySelector('.globe-menu-window__option-text');
-        if (itemText) itemText.style.fontWeight = '400';
-      });
-
-      // -- MARCA EN bold LA OPCION SELECCIONADA --
-      const selectedText = option.querySelector('.globe-menu-window__option-text');
-      if (selectedText) selectedText.style.fontWeight = '700';
-
-      // -- CIERRA EL MENU AL SELECCIONAR UNA OPCION --
-      const menu = option.closest('.globe-menu-window');
-      if (menu) menu.style.display = 'none';
+      setSelection(option);
+      closeMenu(option);
     });
   });
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
   selectLanguage();
 });
-
-
 function main() {
-  const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
@@ -10759,66 +10764,55 @@ function main() {
   const btnClose = document.querySelector('.right-nav-buttons .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
 
-  // HACE REFERENCIA PRIMERO AL BOTON PADRE(.burguer-menu-window) PARA PODER APUNTAR 
-  // LUEGO AL BOTON HIJO(.burguer-menu-window__globe-button).
-  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
-  // HACIENDO REFERENCIA PRIMERO AL PADRE SE PUEDE LUEGO BUSCAR A .globe-menu-window SIN IMPORTAR 
-  // SU NIVEL DE ANIDACION DENTRO DE .burguer-menu-window
+  const btnGlobeInBurguer  = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-
-  // PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO
+  
+  // --- MENUS OCULTOS POR DEFECTO ---
   userMenu.style.display = 'none';
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) {
-    filterMenu.style.display = 'none';
-  }
+  if (filterMenu) filterMenu.style.display = 'none';
 
 
-
-  // FUNCIONES PARA OCULTAR AL HACER click FUERA
-  // Mi perfil
+  // --- CERRAR VENTANAS AL CLICAR FUERA ---
+  //- MENU PERFIL -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
+    if (!tabletQuery.matches && !btnUser.contains(e.target)) {
       userMenu.style.display = 'none';
     }
   });
-  // Menú Burguer
+  //- BURGER MENU -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
+    if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
       burguerMenu.style.display = 'none';
     }
   });
-  // Idioma
+  // - IDIOMA -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
+    if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
       globeMenu.style.display = 'none';
     }
   });
-  // Idioma (en Menú Burguer)
+  //- Idioma en burgerMenu -
   document.addEventListener('click', function (e) {
-    if (btnGlobeInBurguer && globeMenuInBurguer &&
-      !globeMenuInBurguer.contains(e.target) &&
-      !btnGlobeInBurguer.contains(e.target)) {
+    if (!btnGlobeInBurguer.contains(e.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });
 
 
+  // --- BOTON DE CERRAR (MOVIL) ---
+  btnClose.addEventListener('click', function () {
+    if (!tabletQuery.matches) return;
 
-  // -- FUNCION PARA EL BOTON DE CERRAR DEL nav-right--
-  btnClose.addEventListener('click', function (e) {
-    if (tabletQuery.matches) {
-      userMenu.style.display = 'none';
-      burguerMenu.style.display = 'none';
-      globeMenuInBurguer.style.display = 'none';
-      btnGlobeInBurguer.classList.remove('is-open');
-      navRight.classList.remove('mobile-user-open');
-      navRight.classList.remove('mobile-burguer-open');
-      document.body.style.overflow = '';
-    }
+    userMenu.style.display          = 'none';
+    burguerMenu.style.display       = 'none';
+
+    navRight.classList.remove('mobile-user-open');
+    navRight.classList.remove('mobile-burguer-open');
+    document.body.style.overflow = '';
   });
 }
 
@@ -11086,101 +11080,81 @@ function navbarMenusToggles() {
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const btnCloseFilter = document.querySelector('.filter-menu .close');
-  const tabletQuery = window.matchMedia('(max-width: 48rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const tabletQuery = window.matchMedia('(max-width: 48rem)');
   const navRight = document.querySelector('.right-nav-buttons');
 
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  if (!btnUser) return;
-  if (!btnGlobe) return;
 
-
-  // --- PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO ---
-  const toggleDisplay = function (menu) {
-    if (!menu) {
-      return false;
-    }
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  // --- MOSTRAR / OCULTAR MENÚS ---
+  function toggleDisplay(menu) {
+    if (!menu) return false;
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  
     return menu.style.display === 'block';
-  };
+  }
 
-  // --- FUNCION PARA BLOQUEAR EL SCROLL EN MOVIL CUANDO LOS MENUS DE user Y burguer ESTEN ACTIVOS ---
-  const updateBodyScroll = function () {
+
+  // --- ACTUALIZAR SCROLL EN VERSION MÓVIL ---
+  function blockScroll() {
     const mobileMenuOpen = navRight
-      ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open')
-      : false;
+      ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open') : false;
     const filterMenuOpen = filterMenu ? filterMenu.style.display === 'block' : false;
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
-  };
+  }
 
-  // --- SE ASOCIA LA FUNCION DE TOGGLE A CADA BOTON ---
-  const bindToggle = function (button, menu, onToggle) {
-    if (!button || !menu) {
-      return;
-    }
+
+  // ----------------------------- TOGGLES -----------------------------
+  // --- AÑADE UN LISTENER A LOS MENUS DEL NAVBAR ---
+  function togglesCore(button, menu, onToggle) {
+    if (!button || !menu) return;
     button.addEventListener('click', function () {
-      const isOpen = toggleDisplay(menu);
-      if (onToggle) {
-        onToggle(isOpen);
-      }
+      const open = toggleDisplay(menu);
+      if (onToggle) onToggle(open);
     });
-  };
+  }
 
-
-  // ---------------------------------------------------------------------------
-  // --- TOGGLEs ---
   // -- Mi Perfil --
-  bindToggle(btnUser, userMenu, function (isOpen) {
-    if (tabletQuery.matches && navRight) {
-      navRight.classList.toggle('mobile-user-open', isOpen);
-      updateBodyScroll();
+  togglesCore(btnUser, userMenu, function (open) {
+    if (tabletQuery.matches) {
+      navRight.classList.toggle('mobile-user-open', open);
+      blockScroll();
     }
   });
 
   // -- Idioma --
-  bindToggle(btnGlobe, globeMenu);
-
-  // -- Idioma (en Menú Burguer) --
-  bindToggle(btnGlobeInBurguer, globeMenuInBurguer, function (isOpen) {
+  togglesCore(btnGlobe, globeMenu);
+  // (en Menú Burguer) 
+  togglesCore(btnGlobeInBurguer, globeMenuInBurguer, function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('is-open', isOpen);
+      btnGlobeInBurguer.classList.toggle('is-open', open);
     }
   });
 
   // -- Menú Burguer --
-  bindToggle(btnBurguer, burguerMenu, function (isOpen) {
-    if (!isOpen && globeMenuInBurguer && btnGlobeInBurguer) {
-      globeMenuInBurguer.style.display = 'none';
-      btnGlobeInBurguer.classList.remove('is-open');
-    }
-
-    if (tabletQuery.matches && navRight) {
-      navRight.classList.toggle('mobile-burguer-open', isOpen);
-      updateBodyScroll();
+  togglesCore(btnBurguer, burguerMenu, function (open) {
+    if (tabletQuery.matches) {
+      navRight.classList.toggle('mobile-burguer-open', open);
+      blockScroll();
     }
   });
 
-  // -- Filtros (Renovations) --
-  if (btnAllFilters && filterMenu) {
+
+
+  // ----- MENU DE FILTROS -----
+  if (filterMenu) {
     btnAllFilters.addEventListener('click', function () {
       toggleDisplay(filterMenu);
-      updateBodyScroll();
+      blockScroll();
     });
+    if (btnCloseFilter) {
+      btnCloseFilter.addEventListener('click', function () {
+        filterMenu.style.display = 'none';
+        blockScroll();
+      });
+    }
   }
-  // -- BLOQUEO DEL SCROLL CUANDO EL MENU DE FILTROS ESTE ABIERTO --
-  if (btnCloseFilter && filterMenu) {
-    btnCloseFilter.addEventListener('click', function (e) {
-      filterMenu.style.display = 'none';
-      updateBodyScroll();
-    });
-  }
-
-  tabletQuery.addEventListener('change', function () {
-    updateBodyScroll();
-  });
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();

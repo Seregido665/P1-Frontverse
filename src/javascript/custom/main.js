@@ -1,5 +1,5 @@
 function main() {
-  const btnUser = document.querySelector('.right-nav-buttons__user-button');           // SIEMPRE BUSACAR CON querySelector
+  const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
   const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = document.querySelector('.globe-menu-window');
@@ -10,66 +10,55 @@ function main() {
   const btnClose = document.querySelector('.right-nav-buttons .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
 
-  // HACE REFERENCIA PRIMERO AL BOTON PADRE(.burguer-menu-window) PARA PODER APUNTAR 
-  // LUEGO AL BOTON HIJO(.burguer-menu-window__globe-button).
-  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
-  // HACIENDO REFERENCIA PRIMERO AL PADRE SE PUEDE LUEGO BUSCAR A .globe-menu-window SIN IMPORTAR 
-  // SU NIVEL DE ANIDACION DENTRO DE .burguer-menu-window
+  const btnGlobeInBurguer  = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-
-  // PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO
+  
+  // --- MENUS OCULTOS POR DEFECTO ---
   userMenu.style.display = 'none';
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) {
-    filterMenu.style.display = 'none';
-  }
+  if (filterMenu) filterMenu.style.display = 'none';
 
 
-
-  // FUNCIONES PARA OCULTAR AL HACER click FUERA
-  // Mi perfil
+  // --- CERRAR VENTANAS AL CLICAR FUERA ---
+  //- MENU PERFIL -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !userMenu.contains(e.target) && !btnUser.contains(e.target)) {
+    if (!tabletQuery.matches && !btnUser.contains(e.target)) {
       userMenu.style.display = 'none';
     }
   });
-  // Menú Burguer
+  //- BURGER MENU -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !burguerMenu.contains(e.target) && !btnBurguer.contains(e.target)) {
+    if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
       burguerMenu.style.display = 'none';
     }
   });
-  // Idioma
+  // - IDIOMA -
   document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !globeMenu.contains(e.target) && !btnGlobe.contains(e.target)) {
+    if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
       globeMenu.style.display = 'none';
     }
   });
-  // Idioma (en Menú Burguer)
+  //- Idioma en burgerMenu -
   document.addEventListener('click', function (e) {
-    if (btnGlobeInBurguer && globeMenuInBurguer &&
-      !globeMenuInBurguer.contains(e.target) &&
-      !btnGlobeInBurguer.contains(e.target)) {
+    if (!btnGlobeInBurguer.contains(e.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });
 
 
+  // --- BOTON DE CERRAR (MOVIL) ---
+  btnClose.addEventListener('click', function () {
+    if (!tabletQuery.matches) return;
 
-  // -- FUNCION PARA EL BOTON DE CERRAR DEL nav-right--
-  btnClose.addEventListener('click', function (e) {
-    if (tabletQuery.matches) {
-      userMenu.style.display = 'none';
-      burguerMenu.style.display = 'none';
-      globeMenuInBurguer.style.display = 'none';
-      btnGlobeInBurguer.classList.remove('is-open');
-      navRight.classList.remove('mobile-user-open');
-      navRight.classList.remove('mobile-burguer-open');
-      document.body.style.overflow = '';
-    }
+    userMenu.style.display          = 'none';
+    burguerMenu.style.display       = 'none';
+
+    navRight.classList.remove('mobile-user-open');
+    navRight.classList.remove('mobile-burguer-open');
+    document.body.style.overflow = '';
   });
 }
 

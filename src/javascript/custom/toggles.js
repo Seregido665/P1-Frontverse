@@ -8,101 +8,81 @@ function navbarMenusToggles() {
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const btnCloseFilter = document.querySelector('.filter-menu .close');
-  const tabletQuery = window.matchMedia('(max-width: 48rem)');      // PARA DETECTAR SI ESTAMOS EN TAMAÑO MÓVIL
+  const tabletQuery = window.matchMedia('(max-width: 48rem)');
   const navRight = document.querySelector('.right-nav-buttons');
 
   const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  if (!btnUser) return;
-  if (!btnGlobe) return;
 
-
-  // --- PARA QUE LOS MENUS ESTEN OCULTOS POR DEFECTO ---
-  const toggleDisplay = function (menu) {
-    if (!menu) {
-      return false;
-    }
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  // --- MOSTRAR / OCULTAR MENÚS ---
+  function toggleDisplay(menu) {
+    if (!menu) return false;
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  
     return menu.style.display === 'block';
-  };
+  }
 
-  // --- FUNCION PARA BLOQUEAR EL SCROLL EN MOVIL CUANDO LOS MENUS DE user Y burguer ESTEN ACTIVOS ---
-  const updateBodyScroll = function () {
+
+  // --- ACTUALIZAR SCROLL EN VERSION MÓVIL ---
+  function blockScroll() {
     const mobileMenuOpen = navRight
-      ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open')
-      : false;
+      ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open') : false;
     const filterMenuOpen = filterMenu ? filterMenu.style.display === 'block' : false;
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
-  };
+  }
 
-  // --- SE ASOCIA LA FUNCION DE TOGGLE A CADA BOTON ---
-  const bindToggle = function (button, menu, onToggle) {
-    if (!button || !menu) {
-      return;
-    }
+
+  // ----------------------------- TOGGLES -----------------------------
+  // --- AÑADE UN LISTENER A LOS MENUS DEL NAVBAR ---
+  function togglesCore(button, menu, onToggle) {
+    if (!button || !menu) return;
     button.addEventListener('click', function () {
-      const isOpen = toggleDisplay(menu);
-      if (onToggle) {
-        onToggle(isOpen);
-      }
+      const open = toggleDisplay(menu);
+      if (onToggle) onToggle(open);
     });
-  };
+  }
 
-
-  // ---------------------------------------------------------------------------
-  // --- TOGGLEs ---
   // -- Mi Perfil --
-  bindToggle(btnUser, userMenu, function (isOpen) {
-    if (tabletQuery.matches && navRight) {
-      navRight.classList.toggle('mobile-user-open', isOpen);
-      updateBodyScroll();
+  togglesCore(btnUser, userMenu, function (open) {
+    if (tabletQuery.matches) {
+      navRight.classList.toggle('mobile-user-open', open);
+      blockScroll();
     }
   });
 
   // -- Idioma --
-  bindToggle(btnGlobe, globeMenu);
-
-  // -- Idioma (en Menú Burguer) --
-  bindToggle(btnGlobeInBurguer, globeMenuInBurguer, function (isOpen) {
+  togglesCore(btnGlobe, globeMenu);
+  // (en Menú Burguer) 
+  togglesCore(btnGlobeInBurguer, globeMenuInBurguer, function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('is-open', isOpen);
+      btnGlobeInBurguer.classList.toggle('is-open', open);
     }
   });
 
   // -- Menú Burguer --
-  bindToggle(btnBurguer, burguerMenu, function (isOpen) {
-    if (!isOpen && globeMenuInBurguer && btnGlobeInBurguer) {
-      globeMenuInBurguer.style.display = 'none';
-      btnGlobeInBurguer.classList.remove('is-open');
-    }
-
-    if (tabletQuery.matches && navRight) {
-      navRight.classList.toggle('mobile-burguer-open', isOpen);
-      updateBodyScroll();
+  togglesCore(btnBurguer, burguerMenu, function (open) {
+    if (tabletQuery.matches) {
+      navRight.classList.toggle('mobile-burguer-open', open);
+      blockScroll();
     }
   });
 
-  // -- Filtros (Renovations) --
-  if (btnAllFilters && filterMenu) {
+
+
+  // ----- MENU DE FILTROS -----
+  if (filterMenu) {
     btnAllFilters.addEventListener('click', function () {
       toggleDisplay(filterMenu);
-      updateBodyScroll();
+      blockScroll();
     });
+    if (btnCloseFilter) {
+      btnCloseFilter.addEventListener('click', function () {
+        filterMenu.style.display = 'none';
+        blockScroll();
+      });
+    }
   }
-  // -- BLOQUEO DEL SCROLL CUANDO EL MENU DE FILTROS ESTE ABIERTO --
-  if (btnCloseFilter && filterMenu) {
-    btnCloseFilter.addEventListener('click', function (e) {
-      filterMenu.style.display = 'none';
-      updateBodyScroll();
-    });
-  }
-
-  tabletQuery.addEventListener('change', function () {
-    updateBodyScroll();
-  });
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();
