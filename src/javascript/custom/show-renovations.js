@@ -1,19 +1,38 @@
-// ─────────────────────────────────────────────
-//  MÓDULO COMPARTIDO  (accesible desde pagination.js y orderBy.js)
-// ─────────────────────────────────────────────
-const RenovationsStore = {
-  data: [],           // Array activo (puede estar ordenado/filtrado)
-  originalData: [],   // Copia inmutable del JSON original, solo para lectura
+const allRenovationsData = {
+  data: [],          
+  originalData: [],   
 };
 
 
-// ─────────────────────────────────────────────
-//  CONSTRUCCIÓN DEL HTML DE UNA TARJETA
-// ─────────────────────────────────────────────
-function buildRenovationCard(renovation) {
+
+function showRenovations() {
+  const container = document.querySelector('.renovations-json-list');
+  if (!container) return;
+
+  fetch('/renovations.json')
+    .then(res => res.json())
+    .then(data => {
+      allRenovationsData.data = data;
+      allRenovationsData.originalData = [...data];
+      updateTotalRenovations();
+      paginationManager();
+    });
+    
+  function updateTotalRenovations() {
+    const total = allRenovationsData.originalData.length;
+
+    const headerSpan = document.querySelector('.renovations-header__number-policies__number');
+    if (headerSpan) headerSpan.textContent = total;
+    const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
+    if (filterSpan) filterSpan.textContent = `${total} pólizas`;
+  }
+}
+
+
+
+function createRenovationCard(renovation) {
   let stateClass = '';
   let icon = '';
-
   if (renovation["Estado de póliza"] === "Pagado") {
     stateClass = 'state__success';
     icon = 'check';
@@ -24,7 +43,6 @@ function buildRenovationCard(renovation) {
     stateClass = 'state__error';
     icon = 'close';
   }
-
   return `
     <div class="renovation-card-desktop">
       <div class="renovation-card-desktop__policy">${renovation["No. de póliza"]}</div>
@@ -44,59 +62,14 @@ function buildRenovationCard(renovation) {
   `;
 }
 
-
-// ─────────────────────────────────────────────
-//  RENDERIZADO CON PAGINACIÓN
-//  Llamado desde pagination.js en cada cambio de página
-// ─────────────────────────────────────────────
-function renderRenovationsWithPagination(rowsPerPage, currentPage) {
+function renderPagination(renovationsPerPage) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
-
-  const start = (currentPage - 1) * rowsPerPage;
-  const end   = start + rowsPerPage;
-  const slice = RenovationsStore.data.slice(start, end);
-
-  container.innerHTML = slice.map(buildRenovationCard).join('');
+  container.innerHTML = renovationsPerPage.map(createRenovationCard).join('');
 }
 
 
-// ─────────────────────────────────────────────
-//  TOTAL DE RENOVACIONES
-//  Se llama una sola vez al cargar el JSON
-// ─────────────────────────────────────────────
-function updateTotalRenovations() {
-  const total = RenovationsStore.originalData.length;
 
-  const headerSpan = document.querySelector('.renovations-header__number-policies__number');
-  if (headerSpan) headerSpan.textContent = total;
-
-  const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${total} pólizas`;
-}
-
-
-// ─────────────────────────────────────────────
-//  CARGA INICIAL DEL JSON
-// ─────────────────────────────────────────────
-function showRenovationsJsonList() {
-  const container = document.querySelector('.renovations-json-list');
-  if (!container) return;
-
-  fetch('/renovations.json')
-    .then(res => res.json())
-    .then(data => {
-      RenovationsStore.data         = data;        // Array activo (puede cambiar con el orden)
-      RenovationsStore.originalData = [...data];   // Copia inmutable del JSON original
-      updateTotalRenovations();                    // Pintamos los totales en el header y filtros
-      renovationsPerPage();                        // Iniciamos la paginación una vez hay datos
-    });
-}
-
-
-// ─────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
-  showRenovationsJsonList();
+  showRenovations();
 });

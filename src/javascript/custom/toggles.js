@@ -15,15 +15,13 @@ function navbarMenusToggles() {
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
 
-  // --- MOSTRAR / OCULTAR MENÚS ---
+
   function toggleDisplay(menu) {
     if (!menu) return false;
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  //--> Selecciona el estilo y lo cambia al contrario
     return menu.style.display === 'block';
   }
 
-
-  // --- ACTUALIZAR SCROLL EN VERSION MÓVIL ---
   function blockScroll() {
     const mobileMenuOpen = navRight
       ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open') : false;
@@ -32,20 +30,22 @@ function navbarMenusToggles() {
   }
 
 
+
   // ----------------------------- TOGGLES -----------------------------
-  // --- AÑADE UN LISTENER A LOS MENUS DEL NAVBAR ---
+  // --- AÑADE LISTENERS A LOS MENUS DEL NAV ---
   function togglesCore(button, menu, onToggle) {
     if (!button || !menu) return;
     button.addEventListener('click', function () {
       const open = toggleDisplay(menu);
+
       if (onToggle) onToggle(open);
     });
   }
 
-  // -- Mi Perfil --
+  // -- Perfil --
   togglesCore(btnUser, userMenu, function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-user-open', open);
+      navRight.classList.toggle('mobile-user-open', open);        //--> nav-buttons-right.scss
       blockScroll();
     }
   });
@@ -55,21 +55,19 @@ function navbarMenusToggles() {
   // (en Menú Burguer) 
   togglesCore(btnGlobeInBurguer, globeMenuInBurguer, function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('is-open', open);
+      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);      //--> burger-menu-window.scss
     }
   });
 
   // -- Menú Burguer --
   togglesCore(btnBurguer, burguerMenu, function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-burguer-open', open);
+      navRight.classList.toggle('mobile-burguer-open', open);     //--> nav-buttons-right.scss
       blockScroll();
     }
   });
 
-
-
-  // ----- MENU DE FILTROS -----
+  // --- Filtros ---
   if (filterMenu) {
     btnAllFilters.addEventListener('click', function () {
       toggleDisplay(filterMenu);
@@ -83,6 +81,8 @@ function navbarMenusToggles() {
     }
   }
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();

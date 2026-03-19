@@ -54,8 +54,8 @@
             color: $primary100;
         }
 
-        // SE LLAMA A ESTE ESTILO DESDE language-selection.js PARA EL VOLTEO DEL arrow-dropdown
-        &.is-open {  
+        //--> language-selection.js 
+        &.globe-burger-open {  
             border-radius: rem(8px);          
             background-color: $hover-globe-burger;
             .arrow-dropdown {

@@ -10710,15 +10710,14 @@ function selectLanguage() {
   if (!mainGlobe || !burgerGlobe) return;
 
 
-  // --- APLICA BOLD AL PRIMER ELEMENTO DE CADA MENÚ POR DEFECTO ---
-  document.querySelectorAll('.globe-menu-window').forEach(function (menuWindow) {
-    const firstText = menuWindow.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
-    if (firstText) firstText.style.fontWeight = '700';
+
+  // --- APLICA BOLD AL IDIOMA POR DEFECTO ---
+  document.querySelectorAll('.globe-menu-window').forEach(function (menuOption) {
+    const defaultOption = menuOption.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
+    if (defaultOption) defaultOption.style.fontWeight = '700';
   });
 
-
-  // --- CAMBIAR EL ESTILO DEL IDIOMA SELECCIONADO ---
-  function setSelection(selectedOption) {
+  function setStyleSelection(selectedOption) {
     options.forEach(function (item) {
       const text = item.querySelector('.globe-menu-window__option-text');
       if (text) text.style.fontWeight = '400';
@@ -10728,25 +10727,27 @@ function selectLanguage() {
   }
 
 
-  // --- CERRAR AL SELECCIONAR UNA OPCION ---
+  
   function closeMenu(option) {
     const menu = option.closest('.globe-menu-window');
     if (menu) menu.style.display = 'none';
   }
 
+  
 
-  // --- PARA ASIGNAR EVENTOS A CADA OPCIÓN ---
+  // --- CLICK DE CADA OPCIÓN ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
       const language = option.textContent;
       mainGlobe.textContent  = language;
       burgerGlobe.textContent = language;
 
-      setSelection(option);
+      setStyleSelection(option);
       closeMenu(option);
     });
   });
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -10767,8 +10768,6 @@ function main() {
   const btnGlobeInBurguer  = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  
-  // --- MENUS OCULTOS POR DEFECTO ---
   userMenu.style.display = 'none';
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
@@ -10776,20 +10775,21 @@ function main() {
   if (filterMenu) filterMenu.style.display = 'none';
 
 
-  // --- CERRAR VENTANAS AL CLICAR FUERA ---
-  //- MENU PERFIL -
+
+  // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
+  //- Perfil -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnUser.contains(e.target)) {
       userMenu.style.display = 'none';
     }
   });
-  //- BURGER MENU -
+  //- Menú Burguer -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
       burguerMenu.style.display = 'none';
     }
   });
-  // - IDIOMA -
+  // - Idioma -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
       globeMenu.style.display = 'none';
@@ -10803,187 +10803,171 @@ function main() {
   });
 
 
-  // --- BOTON DE CERRAR (MOVIL) ---
+  
   btnClose.addEventListener('click', function () {
     if (!tabletQuery.matches) return;
 
-    userMenu.style.display          = 'none';
-    burguerMenu.style.display       = 'none';
+    userMenu.style.display = 'none';
+    burguerMenu.style.display = 'none';
 
-    navRight.classList.remove('mobile-user-open');
-    navRight.classList.remove('mobile-burguer-open');
+    navRight.classList.remove('mobile-user-open');          //--> nav-buttons-right.scss
+    navRight.classList.remove('mobile-burguer-open');       //--> nav-buttons-right.scss
     document.body.style.overflow = '';
   });
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-// ─────────────────────────────────────────────
-//  ORDENACIÓN DE RENOVACIONES
-//  Depende de: RenovationsStore y renderRenovationsWithPagination (showRenovations.js)
-// ─────────────────────────────────────────────
-
-document.addEventListener('DOMContentLoaded', function () {
+function orderByManager() {
   const select = document.querySelector('.renovations-filter__list__select');
   if (!select) return;
 
 
-  // ─── PARSERS ────────────────────────────────
 
-  function parseImporte(item) {
-    return parseFloat(
-      item['Importe']
-        .replace(/\./g, '')   // Elimina los puntos de los miles
-        .replace(',', '.')    // Sustituye la coma decimal por punto para parseFloat
-    );
+  function refactorImport(item) {
+    return parseFloat(item['Importe'].replace(/\./g, '').replace(',', '.'));
   }
-
-  function parseFecha(item) {
-    return new Date(
-      item['Fecha de contrato']
-        .split('/')           // Separa en [dd, mm, yyyy]
-        .reverse()            // Invierte a [yyyy, mm, dd]
-        .join('-')            // Une con guiones para new Date
-    );
+  function refactorDate(item) {
+    return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
   }
-
-
-  // ─── CRITERIOS DE ORDENACIÓN ────────────────
 
   const orderBy = {
-    'Mayor importe':    (a, b) => parseImporte(b) - parseImporte(a),
-    'Menor importe':    (a, b) => parseImporte(a) - parseImporte(b),
-    'Más recientes':    (a, b) => parseFecha(b)   - parseFecha(a),
-    'Menos recientes':  (a, b) => parseFecha(a)   - parseFecha(b),
+    'Mayor importe':   (a, b) => refactorImport(b) - refactorImport(a),
+    'Menor importe':   (a, b) => refactorImport(a) - refactorImport(b),
+    'Más recientes':   (a, b) => refactorDate(b)   - refactorDate(a),
+    'Menos recientes': (a, b) => refactorDate(a)   - refactorDate(b),
   };
 
 
-  // ─── APLICAR ORDEN ──────────────────────────
 
   function applyOrder(value) {
-    // Partimos siempre de los datos originales para no acumular ordenaciones
-    const sorted = [...RenovationsStore.originalData];
-
+    const order = [...allRenovationsData.originalData];
     if (orderBy[value]) {
-      sorted.sort(orderBy[value]);
+      order.sort(orderBy[value]);
     }
-
-    RenovationsStore.data = sorted;   // Actualizamos el store con el nuevo orden
+    allRenovationsData.data = order;  
   }
-
-
-  // ─── EVENTO ─────────────────────────────────
 
   select.addEventListener('change', function () {
     applyOrder(select.value);
-
-    // Vuelve a la página 1 con el nuevo orden
-    const rowsSelect = document.querySelector('.pagination__rows__option');
-    const rows = rowsSelect ? parseInt(rowsSelect.value, 10) : 10;
-    renderRenovationsWithPagination(rows, 1);
+    renderPage(1);
   });
-});
-
-
-// ─────────────────────────────────────────────
-//  HELPER PÚBLICO
-//  Devuelve los datos en el orden activo
-// ─────────────────────────────────────────────
-function getRenovationsOrderBy() {
-  return RenovationsStore.data;
 }
-// ─────────────────────────────────────────────
-//  PAGINACIÓN DE RENOVACIONES
-//  Depende de: RenovationsStore y renderRenovationsWithPagination (showRenovations.js)
-// ─────────────────────────────────────────────
 
-function renovationsPerPage() {
+
+document.addEventListener('DOMContentLoaded', function () {
+  orderByManager();
+});
+let renderPage;  //--> Acceso global para order-by.js
+
+
+function paginationManager() {
   const select = document.querySelector('.pagination__rows__option');
   if (!select) return;
 
-  let currentPage = 1;  // La paginación siempre arranca en la página 1
-  select.value = '10';  // Valor por defecto: 10 filas por página
+  let currentPage = 1; 
+  select.value = '10';    //--> 10 filas por defecto
 
 
-  // ─── HELPERS ────────────────────────────────
 
-  function getRowsPerPage() {
-    return parseInt(select.value);
-  }
-
-  function getTotalPages() {
-    const total = RenovationsStore.data.length;
-    const rows  = getRowsPerPage();
-    return rows > 0 ? Math.ceil(total / rows) : 1;
+  function selectTotalRows() {
+    select.addEventListener('change', function () {
+      renderPage(1);  
+    });
   }
 
 
-  // ─── RENDERIZADO ────────────────────────────
-
-  function renderPage(page) {
-    const totalPages = getTotalPages();
-    currentPage = Math.max(1, Math.min(page, totalPages));  // Evita salirse del rango
-
-    renderRenovationsWithPagination(getRowsPerPage(), currentPage);
-    updatePageText();
-  }
-
-
-  // ─── TEXTO "X de Y" ─────────────────────────
 
   function updatePageText() {
     const pageText = document.querySelector('.pagination__page__text2');
     if (pageText) pageText.textContent = `${currentPage} de ${getTotalPages()}`;
   }
 
-
-  // ─── EVENTOS ────────────────────────────────
-
-  function bindSelectChange() {
-    select.addEventListener('change', function () {
-      renderPage(1);  // Al cambiar filas por página, volvemos a la página 1
-    });
+  function defaultRows() {
+    return parseInt(select.value);
   }
 
-  function bindNavigationButtons() {
-    const btnSkipLeft  = document.querySelector('.pagination__page-option__skip-left');
-    const btnLeft      = document.querySelector('.pagination__page-option__left');
-    const btnRight     = document.querySelector('.pagination__page-option__right');
+  function getTotalPages() {
+    const total = allRenovationsData.data.length;
+    const rows = defaultRows();
+    return rows > 0 ? Math.ceil(total / rows) : 1;
+  }
+
+
+
+  function getRenovationsPerPage(rowsPerPage, page) {
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    return allRenovationsData.data.slice(start, end);
+  }
+
+  renderPage = function (page) {
+    const totalPages = getTotalPages();
+    currentPage = Math.max(1, Math.min(page, totalPages)); 
+
+    renderPagination(getRenovationsPerPage(defaultRows(), currentPage));
+    updatePageText();
+  }
+
+  function navigationButtonsManager() {
+    const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
+    const btnLeft = document.querySelector('.pagination__page-option__left');
+    const btnRight = document.querySelector('.pagination__page-option__right');
     const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
 
-    if (btnSkipLeft)  btnSkipLeft.addEventListener('click',  () => renderPage(1));
-    if (btnLeft)      btnLeft.addEventListener('click',      () => renderPage(currentPage - 1));
-    if (btnRight)     btnRight.addEventListener('click',     () => renderPage(currentPage + 1));
+    if (btnSkipLeft) btnSkipLeft.addEventListener('click', () => renderPage(1));
+    if (btnLeft) btnLeft.addEventListener('click', () => renderPage(currentPage - 1));
+    if (btnRight) btnRight.addEventListener('click', () => renderPage(currentPage + 1));
     if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));
   }
 
+  
+  
+  selectTotalRows();
+  navigationButtonsManager();
 
-  // ─── INIT ────────────────────────────────────
-
-  bindSelectChange();
-  bindNavigationButtons();
-
-  if (RenovationsStore.data.length > 0) {
+  if (allRenovationsData.data.length > 0) {
     renderPage(1);
   }
 }
-// ─────────────────────────────────────────────
-//  MÓDULO COMPARTIDO  (accesible desde pagination.js y orderBy.js)
-// ─────────────────────────────────────────────
-const RenovationsStore = {
-  data: [],           // Array activo (puede estar ordenado/filtrado)
-  originalData: [],   // Copia inmutable del JSON original, solo para lectura
+const allRenovationsData = {
+  data: [],          
+  originalData: [],   
 };
 
 
-// ─────────────────────────────────────────────
-//  CONSTRUCCIÓN DEL HTML DE UNA TARJETA
-// ─────────────────────────────────────────────
-function buildRenovationCard(renovation) {
+
+function showRenovations() {
+  const container = document.querySelector('.renovations-json-list');
+  if (!container) return;
+
+  fetch('/renovations.json')
+    .then(res => res.json())
+    .then(data => {
+      allRenovationsData.data = data;
+      allRenovationsData.originalData = [...data];
+      updateTotalRenovations();
+      paginationManager();
+    });
+    
+  function updateTotalRenovations() {
+    const total = allRenovationsData.originalData.length;
+
+    const headerSpan = document.querySelector('.renovations-header__number-policies__number');
+    if (headerSpan) headerSpan.textContent = total;
+    const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
+    if (filterSpan) filterSpan.textContent = `${total} pólizas`;
+  }
+}
+
+
+
+function createRenovationCard(renovation) {
   let stateClass = '';
   let icon = '';
-
   if (renovation["Estado de póliza"] === "Pagado") {
     stateClass = 'state__success';
     icon = 'check';
@@ -10994,7 +10978,6 @@ function buildRenovationCard(renovation) {
     stateClass = 'state__error';
     icon = 'close';
   }
-
   return `
     <div class="renovation-card-desktop">
       <div class="renovation-card-desktop__policy">${renovation["No. de póliza"]}</div>
@@ -11014,62 +10997,18 @@ function buildRenovationCard(renovation) {
   `;
 }
 
-
-// ─────────────────────────────────────────────
-//  RENDERIZADO CON PAGINACIÓN
-//  Llamado desde pagination.js en cada cambio de página
-// ─────────────────────────────────────────────
-function renderRenovationsWithPagination(rowsPerPage, currentPage) {
+function renderPagination(renovationsPerPage) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
-
-  const start = (currentPage - 1) * rowsPerPage;
-  const end   = start + rowsPerPage;
-  const slice = RenovationsStore.data.slice(start, end);
-
-  container.innerHTML = slice.map(buildRenovationCard).join('');
+  container.innerHTML = renovationsPerPage.map(createRenovationCard).join('');
 }
 
 
-// ─────────────────────────────────────────────
-//  TOTAL DE RENOVACIONES
-//  Se llama una sola vez al cargar el JSON
-// ─────────────────────────────────────────────
-function updateTotalRenovations() {
-  const total = RenovationsStore.originalData.length;
 
-  const headerSpan = document.querySelector('.renovations-header__number-policies__number');
-  if (headerSpan) headerSpan.textContent = total;
-
-  const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${total} pólizas`;
-}
-
-
-// ─────────────────────────────────────────────
-//  CARGA INICIAL DEL JSON
-// ─────────────────────────────────────────────
-function showRenovationsJsonList() {
-  const container = document.querySelector('.renovations-json-list');
-  if (!container) return;
-
-  fetch('/renovations.json')
-    .then(res => res.json())
-    .then(data => {
-      RenovationsStore.data         = data;        // Array activo (puede cambiar con el orden)
-      RenovationsStore.originalData = [...data];   // Copia inmutable del JSON original
-      updateTotalRenovations();                    // Pintamos los totales en el header y filtros
-      renovationsPerPage();                        // Iniciamos la paginación una vez hay datos
-    });
-}
-
-
-// ─────────────────────────────────────────────
-//  INIT
-// ─────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
-  showRenovationsJsonList();
+  showRenovations();
 });
+
 function navbarMenusToggles() {
   const btnUser = document.querySelector('.right-nav-buttons__user-button');
   const userMenu = document.querySelector('.user-menu-window');
@@ -11087,15 +11026,13 @@ function navbarMenusToggles() {
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
 
-  // --- MOSTRAR / OCULTAR MENÚS ---
+
   function toggleDisplay(menu) {
     if (!menu) return false;
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  //--> Selecciona el estilo y lo cambia al contrario
     return menu.style.display === 'block';
   }
 
-
-  // --- ACTUALIZAR SCROLL EN VERSION MÓVIL ---
   function blockScroll() {
     const mobileMenuOpen = navRight
       ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open') : false;
@@ -11104,20 +11041,22 @@ function navbarMenusToggles() {
   }
 
 
+
   // ----------------------------- TOGGLES -----------------------------
-  // --- AÑADE UN LISTENER A LOS MENUS DEL NAVBAR ---
+  // --- AÑADE LISTENERS A LOS MENUS DEL NAV ---
   function togglesCore(button, menu, onToggle) {
     if (!button || !menu) return;
     button.addEventListener('click', function () {
       const open = toggleDisplay(menu);
+
       if (onToggle) onToggle(open);
     });
   }
 
-  // -- Mi Perfil --
+  // -- Perfil --
   togglesCore(btnUser, userMenu, function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-user-open', open);
+      navRight.classList.toggle('mobile-user-open', open);        //--> nav-buttons-right.scss
       blockScroll();
     }
   });
@@ -11127,21 +11066,19 @@ function navbarMenusToggles() {
   // (en Menú Burguer) 
   togglesCore(btnGlobeInBurguer, globeMenuInBurguer, function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('is-open', open);
+      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);      //--> burger-menu-window.scss
     }
   });
 
   // -- Menú Burguer --
   togglesCore(btnBurguer, burguerMenu, function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-burguer-open', open);
+      navRight.classList.toggle('mobile-burguer-open', open);     //--> nav-buttons-right.scss
       blockScroll();
     }
   });
 
-
-
-  // ----- MENU DE FILTROS -----
+  // --- Filtros ---
   if (filterMenu) {
     btnAllFilters.addEventListener('click', function () {
       toggleDisplay(filterMenu);
@@ -11155,6 +11092,8 @@ function navbarMenusToggles() {
     }
   }
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();

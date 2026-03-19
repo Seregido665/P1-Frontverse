@@ -13,8 +13,6 @@ function main() {
   const btnGlobeInBurguer  = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
 
-  
-  // --- MENUS OCULTOS POR DEFECTO ---
   userMenu.style.display = 'none';
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
@@ -22,20 +20,21 @@ function main() {
   if (filterMenu) filterMenu.style.display = 'none';
 
 
-  // --- CERRAR VENTANAS AL CLICAR FUERA ---
-  //- MENU PERFIL -
+
+  // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
+  //- Perfil -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnUser.contains(e.target)) {
       userMenu.style.display = 'none';
     }
   });
-  //- BURGER MENU -
+  //- Menú Burguer -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
       burguerMenu.style.display = 'none';
     }
   });
-  // - IDIOMA -
+  // - Idioma -
   document.addEventListener('click', function (e) {
     if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
       globeMenu.style.display = 'none';
@@ -49,18 +48,20 @@ function main() {
   });
 
 
-  // --- BOTON DE CERRAR (MOVIL) ---
+  
   btnClose.addEventListener('click', function () {
     if (!tabletQuery.matches) return;
 
-    userMenu.style.display          = 'none';
-    burguerMenu.style.display       = 'none';
+    userMenu.style.display = 'none';
+    burguerMenu.style.display = 'none';
 
-    navRight.classList.remove('mobile-user-open');
-    navRight.classList.remove('mobile-burguer-open');
+    navRight.classList.remove('mobile-user-open');          //--> nav-buttons-right.scss
+    navRight.classList.remove('mobile-burguer-open');       //--> nav-buttons-right.scss
     document.body.style.overflow = '';
   });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   main();
