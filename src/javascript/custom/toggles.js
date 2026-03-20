@@ -25,7 +25,7 @@ function navbarMenusToggles() {
   function blockScroll() {
     const mobileMenuOpen = navRight
       ? navRight.classList.contains('mobile-user-open') || navRight.classList.contains('mobile-burguer-open') : false;
-    const filterMenuOpen = filterMenu ? filterMenu.style.display === 'block' : false;
+    const filterMenuOpen = filterMenu ? filterMenu.classList.contains('is-open') : false;
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   }
 
@@ -69,15 +69,16 @@ function navbarMenusToggles() {
 
   // --- Filtros ---
   if (filterMenu) {
+    filterMenu.style.display = '';          //--> Resetea el display
     btnAllFilters.addEventListener('click', function () {
-      toggleDisplay(filterMenu);
-      blockScroll();
+        filterMenu.classList.add('is-open');
+        blockScroll();
     });
     if (btnCloseFilter) {
-      btnCloseFilter.addEventListener('click', function () {
-        filterMenu.style.display = 'none';
-        blockScroll();
-      });
+        btnCloseFilter.addEventListener('click', function () {
+            filterMenu.classList.remove('is-open');
+            blockScroll();
+        });
     }
   }
 }

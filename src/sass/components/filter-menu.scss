@@ -14,6 +14,15 @@
     background-color: $light;
     box-shadow: 0 0 0 100vmax $box-shadow3;
 
+    //--> Slide
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.4s, visibility 0.3s;
+    &.is-open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
     @include mobile {
         top: 0;
         left: 0;
