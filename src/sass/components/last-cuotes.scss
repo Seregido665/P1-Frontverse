@@ -1,0 +1,145 @@
+@use '../helpers/mixins' as *;
+@use '../helpers/variables' as *;
+@use '../helpers/icons-variables' as *;
+
+
+.last-policy-list {
+    margin: rem(32px) 0 rem(48px) 0;
+
+    @include desktop {
+        margin: rem(16px) 0 rem(32px) 0;
+    }
+    .last-policy-list__header {
+        min-height: rem(29px);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding: 0 rem(52px) 0 rem(16px);
+        margin-bottom: rem(24px);
+        border-bottom: rem(1px) solid $border-filterMenu-option;
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
+
+        @include desktop {
+            display: none;
+        }
+    }
+    .last-policy {
+        height: rem(76px);
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        background-color: $light;
+        border-radius: rem(10px);
+        padding: 0 rem(52px) 0 rem(16px);
+        margin-bottom: rem(16px);
+        box-shadow: 0px rem(10px) rem(15px) $box-shadow1;
+
+        @include desktop {
+            width: 100%;
+            height: auto;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            column-gap: rem(16px);
+            row-gap: rem(16px);
+            align-items: flex-start;
+            padding: rem(12px) rem(16px);
+        }
+
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+
+    .last-policy__emision,
+    .last-policy__period {
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text4);
+    }
+    .last-policy__import {
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text4);
+    }
+
+
+
+    .last-policy__emision,
+    .last-policy__period,
+    .last-policy__import {
+        @include desktop {
+            width: rem(200px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(4px);
+        }
+    }
+
+    .last-policy__emision {
+        @include desktop {
+            @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text3);
+        }
+    }
+
+    .last-policy__emision::before {
+        @include desktop {
+            content: 'Fecha de emisión';
+            @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+        }
+    }
+
+    .last-policy__period::before {
+        @include desktop {
+            margin-top: rem(0);
+            content: 'Periodo';
+            @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+        }
+    }
+
+    .last-policy__import::before {
+        @include desktop {
+            content: 'Importe';
+            @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+        }
+    }
+
+
+
+    .state {
+        display: flex;
+        align-items: center;
+        gap: rem(8px);
+        padding-block: rem(2px);
+        border-radius: rem(4px);
+    }
+
+    .state__icon {
+        padding-left: rem(8px);
+        font-size: $icon-size-clock;
+    }
+
+    .state__text {
+        padding-right: rem(8px);
+    }
+
+    .state__warning {
+        @include policy-state-styles($background-color: $state-warning);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text);
+        border-radius: rem(4px);
+        color: $text;
+        width: fit-content;
+    }
+
+    .state__success {
+        @include policy-state-styles($background-color: $state-success);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-success-text);
+        border-radius: rem(4px);
+        width: fit-content;
+    }
+
+    .state__error {
+        @include policy-state-styles($background-color: $state-error);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $state-error-text);
+        border-radius: rem(4px);
+        width: fit-content;
+    }
+}

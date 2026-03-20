@@ -67,7 +67,7 @@
 
     .filter-menu__body__title1 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
     .filter-menu__body__select1 {
@@ -92,7 +92,7 @@
 
     .filter-menu__body__title2 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
     .filter-menu__body__input1 {
@@ -121,7 +121,7 @@
 
     .filter-menu__body__title3 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
     .filter-menu__body__input2 {
@@ -149,7 +149,7 @@
 
     .filter-menu__body__title4 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
     .filter-menu__body__input4 {
@@ -165,7 +165,7 @@
 
     .filter-menu__body__title5 {
         margin-bottom: rem(8px);
-        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $titleSection-filterMenu);
+        @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
     .filter-menu__body__select2 {

@@ -13,3 +13,12 @@ mixin state-policy(icon, text)
     .state
         span.state__icon.icon(class=icon)
         span.state__text= text
+
+mixin last-policy(emision, period, price, state)
+    .last-policy
+        .last-policy__emision= emision
+        .last-policy__period= period
+        .last-policy__import= price
+        .state-cell
+            .renovation-card-desktop__state= state
+                block

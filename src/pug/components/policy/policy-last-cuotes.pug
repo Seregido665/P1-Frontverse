@@ -1,0 +1,20 @@
+include ../renovation-car
+
+.last-policy-list
+    .last-policy-list__header
+        h2 Fecha de emisión
+        h2 Periodo
+        h2 Importe
+        h2 Estado
+    +last-policy("24/07/2024", "01/12/2022 - 31/01/2022", "684,76 €")
+        .state
+            .state__warning
+                +state-policy("clock", "Pendiente")
+    +last-policy("24/04/2024", "01/12/2022 - 31/01/2022", "684,76 €")
+        .state
+            .state__success
+                +state-policy("check", "Pagada")
+    +last-policy("24/02/2024", "01/12/2022 - 31/01/2022", "684,76 €")
+        .state
+            .state__success
+                +state-policy("check", "Pagada")

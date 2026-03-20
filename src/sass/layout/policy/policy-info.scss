@@ -20,4 +20,12 @@
             gap: rem(16px);
         }
     }
+
+    .info-container__last-cuotes__title {
+        margin-top: rem(48px);
+        @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
+        @include desktop {
+            margin-top: rem(32px);
+        }
+    }
 }
