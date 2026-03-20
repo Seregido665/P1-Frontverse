@@ -152,29 +152,22 @@
 		}
 	}
 
-	.renovations-filter__list {
-		display: flex;
-		align-items: center;
-	}
-
 	.renovations-filter__list__type-filter {
-		width: fit-content;
-		gap: rem(8px);
+		width: rem(162px);
 		height: rem(44px);
 		margin-left: rem(14px);
 		background-color: $light;
 		border: rem(1px) solid $primary50;
 		border-radius: rem(4px);
 		display: inline-flex;
-		align-items: center;
-		position: relative;
+		align-items: center;        // ← controlas aquí el espacio select ↔ icono
 	}
 
 	.renovations-filter__list__select {
 		@include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text4);
 		background-color: transparent;
 		border: none;
-		padding: rem(12px) rem(0px) rem(12px) rem(12px);
+		padding: rem(12px) rem(8px) rem(12px) rem(12px);
 		appearance: none;
 		cursor: pointer;
 
@@ -184,9 +177,7 @@
 	}
 
 	.renovations-filter__list__type-filter__icon {
-		margin-top: rem(12px);
-		margin-right: rem(12px);
-		transform: translateY(-50%);
+		padding-top: rem(3px);
 		pointer-events: none;
 		font-size: $icon-size-chevDown;
 		color: $primary100;

@@ -106,35 +106,39 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		cursor: pointer;
+		font-size: $icon-size-back;
 		@include button-styles($background-color: $light, $border-radius: rem(8px));
+	}
+
+
+	.pagination__page-option__skip-left,
+	.pagination__page-option__left {
+		&--able {
+			color: $primary100;
+			cursor: pointer;
+			box-shadow: 0 rem(6px) rem(16px) $box-shadow1;
+		}
+		&--disabled {
+			color: $border-filterMenu-option;
+			cursor: default;
+			pointer-events: none;
+			box-shadow: none;
+		}
 	}
 
 	.pagination__page-option__right,
 	.pagination__page-option__skip-right {
-		box-shadow: 0 rem(6px) rem(16px) $box-shadow1;
-	}
-
-	.pagination__page-option__skip-left {
-		font-size: $icon-size-skipLeft;
-		color: $border-filterMenu-option;
-		cursor: pointer;
-	}
-
-	.pagination__page-option__left {
-		font-size: $icon-size-back;
-		color: $border-filterMenu-option;
-		cursor: pointer;
-	}
-
-	.pagination__page-option__right {
-		font-size: $icon-size-arrowRight;
-		color: $primary100;
-		cursor: pointer;
-	}
-
-	.pagination__page-option__skip-right {
-		font-size: $icon-size-skipRight;
-		color: $primary100;
-		cursor: pointer;
+		&--able {
+			color: $primary100;
+			cursor: pointer;
+			box-shadow: 0 rem(6px) rem(16px) $box-shadow1;
+		}
+		&--disabled {
+			color: $border-filterMenu-option;
+			cursor: default;
+			pointer-events: none;
+			box-shadow: none;
+		}
 	}
 }

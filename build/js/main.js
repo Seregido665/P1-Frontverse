@@ -10869,7 +10869,12 @@ function paginationManager() {
   if (!select) return;
 
   let currentPage = 1; 
-  select.value = '10';    //--> 10 filas por defecto
+  select.value = '10';    //--> Para 10 filas por defecto
+
+  const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
+  const btnLeft = document.querySelector('.pagination__page-option__left');
+  const btnRight = document.querySelector('.pagination__page-option__right');
+  const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
 
 
 
@@ -10878,8 +10883,6 @@ function paginationManager() {
       renderPage(1);  
     });
   }
-
-
 
   function updatePageText() {
     const pageText = document.querySelector('.pagination__page__text2');
@@ -10904,20 +10907,35 @@ function paginationManager() {
     return allRenovationsData.data.slice(start, end);
   }
 
+
+
   renderPage = function (page) {
     const totalPages = getTotalPages();
     currentPage = Math.max(1, Math.min(page, totalPages)); 
 
     renderPagination(getRenovationsPerPage(defaultRows(), currentPage));
     updatePageText();
+    styleNavigationButtons();
+  }
+
+  function styleNavigationButtons() {
+    const firstPage = currentPage <= 1;
+    const lastPage  = currentPage >= getTotalPages();
+
+    btnSkipLeft.classList.toggle('pagination__page-option__skip-left--disabled', firstPage);
+    btnSkipLeft.classList.toggle('pagination__page-option__skip-left--able', !firstPage);
+    
+    btnLeft.classList.toggle('pagination__page-option__left--disabled', firstPage);
+    btnLeft.classList.toggle('pagination__page-option__left--able', !firstPage);
+    
+    btnRight.classList.toggle('pagination__page-option__right--disabled', lastPage);
+    btnRight.classList.toggle('pagination__page-option__right--able', !lastPage);
+    
+    btnSkipRight.classList.toggle('pagination__page-option__skip-right--disabled', lastPage);
+    btnSkipRight.classList.toggle('pagination__page-option__skip-right--able', !lastPage);
   }
 
   function navigationButtonsManager() {
-    const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
-    const btnLeft = document.querySelector('.pagination__page-option__left');
-    const btnRight = document.querySelector('.pagination__page-option__right');
-    const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
-
     if (btnSkipLeft) btnSkipLeft.addEventListener('click', () => renderPage(1));
     if (btnLeft) btnLeft.addEventListener('click', () => renderPage(currentPage - 1));
     if (btnRight) btnRight.addEventListener('click', () => renderPage(currentPage + 1));
