@@ -1,0 +1,15 @@
+include ../info-field
+
+.info-contact
+    .info-contact__top
+        .info-contact__top__title Contacto
+    .info-contact__bottom
+        .info-contact__bottom__field
+            +field-info-policy('Correo principal', 'email@gmail.com')
+        .info-contact__bottom__field
+            +field-info-policy('Correo 2', 'email2@gmail.com')
+        .info-contact__bottom__field
+            +field-info-policy('Teléfono principal', '+23 373 782 939')
+    button.info-contact__top__button
+            span.icon.edit.info-contact__top__button-icon
+            span.info-contact__top__button-text  Actualizar

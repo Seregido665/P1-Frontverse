@@ -13,8 +13,9 @@
         min-height: rem(29px);
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        padding: 0 rem(52px) 0 rem(16px);
+        padding: 0 rem(102px) 0 rem(16px);
         margin-bottom: rem(24px);
+        gap: rem(18px);
         border-bottom: rem(1px) solid $border-filterMenu-option;
         @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
 
@@ -29,8 +30,9 @@
         align-items: center;
         background-color: $light;
         border-radius: rem(10px);
-        padding: 0 rem(52px) 0 rem(16px);
+        padding: 0 rem(102px) 0 rem(16px);
         margin-bottom: rem(16px);
+        gap: rem(18px);
         box-shadow: 0px rem(10px) rem(15px) $box-shadow1;
 
         @include desktop {
@@ -50,7 +52,6 @@
             flex-direction: column;
         }
     }
-
 
     .last-policy__emision,
     .last-policy__period {

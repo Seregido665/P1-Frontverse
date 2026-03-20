@@ -6,6 +6,7 @@
     width: 100%;
     height: rem(186px);
     padding: rem(32px) rem(88px);
+    border-top: rem(1px) solid $background-number-policies;
 
     @include tablet {
         width: 100%;

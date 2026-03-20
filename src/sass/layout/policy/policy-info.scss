@@ -14,6 +14,7 @@
     .info-container__top-cards {
         display: flex;
         gap: rem(20px);
+        width: 100%;
 
         @include desktop {
             flex-direction: column;
@@ -26,6 +27,17 @@
         @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
         @include desktop {
             margin-top: rem(32px);
+        }
+    }
+
+    .info-container__bottom-cards {
+        display: flex;
+        gap: rem(20px);
+        width: 100%;
+
+        @include desktop {
+            flex-direction: column;
+            gap: rem(16px);
         }
     }
 }

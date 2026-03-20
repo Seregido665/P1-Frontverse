@@ -2,12 +2,14 @@
 @use '../../helpers/variables' as *;
 @use '../../helpers/icons-variables' as *;
 
-.info-direction {
+.info-payMethod {
     width: 100%;
-    min-height: rem(381px);
+    min-height: rem(616px);
     padding: rem(24px);
     background-color: $light;
     border-radius: rem(8px);
+    display: flex;
+    flex-direction: column;
     box-shadow: 0px rem(3px) rem(5px) $box-shadow2;
 
     @include desktop {
@@ -16,33 +18,33 @@
         min-height: fit-content;
     }
 
-    .info-direction__top {
+    .info-payMethod__top {
         display: flex;
         justify-content: space-between;
     }
 
-    .info-direction__top__title {
+    .info-payMethod__top__title {
         @include font-styles($font-weight: 400, $font-size: rem(24px), $color: $text4);
     }
 
-    .info-direction__top__button {
+    .info-payMethod__top__button {
         border: none;
         background-color: transparent;
         cursor: pointer;
         display: flex;
         align-items: center;
+        margin-top: auto;
     }
-    .info-direction__top__button-icon {
+    .info-payMethod__top__button-icon {
         color: $primary100;
         font-size: $icon-size-edit;
     }
-    .info-direction__top__button-text {
+    .info-payMethod__top__button-text {
         margin-left: rem(10px);
         @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $primary100);
     }
 
-   
-    .info-direction__bottom__field {
+    .info-payMethod__bottom__field {
         margin-top: rem(24px);
     }
 }

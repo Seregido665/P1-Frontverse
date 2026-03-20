@@ -1,0 +1,20 @@
+include ../info-field
+
+.info-payMethod
+    .info-payMethod__top
+        .info-payMethod__top__title Método de pago
+        
+    .info-payMethod__bottom
+        .info-payMethod__bottom__field
+            +field-info-policy('Nombre', 'GRUP SISQUELLA SERVEIS PROFESSIONALS')
+        .info-payMethod__bottom__field
+            +field-info-policy('CIF', 'B63249544')
+        .info-payMethod__bottom__field
+            +field-info-policy('Tipo de cobro', 'DOMICILIADO Estándar (7 días)')
+        .info-payMethod__bottom__field
+            +field-info-policy('IBAN', 'ES1700810002420001******')
+        .info-payMethod__bottom__field
+            +field-info-policy('Banco', '09Banco de Sabadell, S.A.001')
+    button.info-payMethod__top__button
+            span.icon.edit.info-payMethod__top__button-icon
+            span.info-payMethod__top__button-text  Actualizar

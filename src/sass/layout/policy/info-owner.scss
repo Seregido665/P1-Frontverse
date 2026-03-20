@@ -3,14 +3,17 @@
 @use '../../helpers/icons-variables' as *;
 
 .info-owner {
-    width: rem(622px);
-    height: rem(381px);
+    width: 100%;
+    min-height: rem(381px);
     padding: rem(24px);
     background-color: $light;
     border-radius: rem(8px);
+    box-shadow: 0px rem(3px) rem(5px) $box-shadow2;
 
     @include desktop {
         width: 100%;
+        padding: rem(16px);
+        min-height: fit-content;
     }
     
     .info-owner__top {
@@ -41,7 +44,15 @@
    
     .info-owner__bottom__field {
         margin-top: rem(24px);
+        @include desktop {
+            margin-top: rem(16px);
+        }
     }
+
+
+
+
+
 
 
     .state {

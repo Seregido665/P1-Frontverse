@@ -4,7 +4,6 @@
 
 
 .filter-menu {
-    overflow-y: auto;
     position: fixed;
     top: 0;
     left: 0;
@@ -203,15 +202,22 @@
     }
 
     .filter-menu__bottom {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         padding: rem(20px) rem(40px);
         border-top: 1px solid $border-bottom-renovations-header;
+        background: $light;
+        z-index: 10000;
     }
 
     .filter-menu__bottom__clear {
         padding: rem(10px) rem(16px);
         border: 1px solid $primary50;
+        cursor: pointer;
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $info-text);
         @include button-styles($background-color: transparent);
     }
@@ -221,5 +227,6 @@
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $info-text);
         @include button-styles($background-color: $primary25);
         border: none;
+        cursor: pointer;
     }
 }
