@@ -39,14 +39,14 @@ function paginationManager() {
 
 
   function getRenovationsPerPage(rowsPerPage, page) {
-    const start = (page - 1) * rowsPerPage;
+    const start = (page - 1) * rowsPerPage;           //--> 0-9 página 1, 10-19 página 2...
     const end = start + rowsPerPage;
     return allRenovationsData.data.slice(start, end);
   }
 
 
 
-  renderPage = function (page) {
+  renderPage = function (page) {          //--> Funcion asignada a la variable global renderPage
     const totalPages = getTotalPages();
     currentPage = Math.max(1, Math.min(page, totalPages)); 
 

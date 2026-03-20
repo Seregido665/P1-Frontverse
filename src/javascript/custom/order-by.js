@@ -11,11 +11,19 @@ function orderByManager() {
     return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
   }
 
-  const orderBy = {
-    'Mayor importe':   (a, b) => refactorImport(b) - refactorImport(a),
-    'Menor importe':   (a, b) => refactorImport(a) - refactorImport(b),
-    'Más recientes':   (a, b) => refactorDate(b)   - refactorDate(a),
-    'Menos recientes': (a, b) => refactorDate(a)   - refactorDate(b),
+  const orderBy = {           //--> Se ordena luego en applyOrder con .sort(orderBy[value])
+    'Mayor importe': function(renovation, nextRenovation) {
+      return refactorImport(nextRenovation) - refactorImport(renovation); 
+    },
+    'Menor importe': function(renovation, nextRenovation) {
+      return refactorImport(renovation) - refactorImport(nextRenovation); 
+    },
+    'Más recientes': function(renovation, nextRenovation) {
+      return refactorDate(nextRenovation) - refactorDate(renovation); 
+    },
+    'Menos recientes': function(renovation, nextRenovation) {
+      return refactorDate(renovation) - refactorDate(nextRenovation); 
+    },
   };
 
 

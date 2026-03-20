@@ -33,12 +33,12 @@ function navbarMenusToggles() {
 
   // ----------------------------- TOGGLES -----------------------------
   // --- AÑADE LISTENERS A LOS MENUS DEL NAV ---
-  function togglesCore(button, menu, onToggle) {
+  function togglesCore(button, menu, toggeled) {
     if (!button || !menu) return;
     button.addEventListener('click', function () {
       const open = toggleDisplay(menu);
 
-      if (onToggle) onToggle(open);
+      if (toggeled) toggeled(open);
     });
   }
 

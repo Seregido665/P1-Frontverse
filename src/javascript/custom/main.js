@@ -23,26 +23,26 @@ function main() {
 
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
   //- Perfil -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnUser.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnUser.contains(component.target)) {
       userMenu.style.display = 'none';
     }
   });
   //- Menú Burguer -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnBurguer.contains(component.target)) {
       burguerMenu.style.display = 'none';
     }
   });
   // - Idioma -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnGlobe.contains(component.target)) {
       globeMenu.style.display = 'none';
     }
   });
   //- Idioma en burgerMenu -
-  document.addEventListener('click', function (e) {
-    if (!btnGlobeInBurguer.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!btnGlobeInBurguer.contains(component.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });
@@ -50,7 +50,7 @@ function main() {
 
   
   btnClose.addEventListener('click', function () {
-    if (!tabletQuery.matches) return;
+    if (!btnClose) return;
 
     userMenu.style.display = 'none';
     burguerMenu.style.display = 'none';

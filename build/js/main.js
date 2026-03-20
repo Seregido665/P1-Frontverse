@@ -10711,12 +10711,12 @@ function selectLanguage() {
 
 
 
-  // --- APLICA BOLD AL IDIOMA POR DEFECTO ---
+  //--> BOLD al idioma por defecto
   document.querySelectorAll('.globe-menu-window').forEach(function (menuOption) {
     const defaultOption = menuOption.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
     if (defaultOption) defaultOption.style.fontWeight = '700';
   });
-
+  
   function setStyleSelection(selectedOption) {
     options.forEach(function (item) {
       const text = item.querySelector('.globe-menu-window__option-text');
@@ -10735,7 +10735,6 @@ function selectLanguage() {
 
   
 
-  // --- CLICK DE CADA OPCIÓN ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
       const language = option.textContent;
@@ -10778,26 +10777,26 @@ function main() {
 
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
   //- Perfil -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnUser.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnUser.contains(component.target)) {
       userMenu.style.display = 'none';
     }
   });
   //- Menú Burguer -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnBurguer.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnBurguer.contains(component.target)) {
       burguerMenu.style.display = 'none';
     }
   });
   // - Idioma -
-  document.addEventListener('click', function (e) {
-    if (!tabletQuery.matches && !btnGlobe.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!tabletQuery.matches && !btnGlobe.contains(component.target)) {
       globeMenu.style.display = 'none';
     }
   });
   //- Idioma en burgerMenu -
-  document.addEventListener('click', function (e) {
-    if (!btnGlobeInBurguer.contains(e.target)) {
+  document.addEventListener('click', function (component) {
+    if (!btnGlobeInBurguer.contains(component.target)) {
       globeMenuInBurguer.style.display = 'none';
     }
   });
@@ -10805,7 +10804,7 @@ function main() {
 
   
   btnClose.addEventListener('click', function () {
-    if (!tabletQuery.matches) return;
+    if (!btnClose) return;
 
     userMenu.style.display = 'none';
     burguerMenu.style.display = 'none';
@@ -10834,11 +10833,19 @@ function orderByManager() {
     return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
   }
 
-  const orderBy = {
-    'Mayor importe':   (a, b) => refactorImport(b) - refactorImport(a),
-    'Menor importe':   (a, b) => refactorImport(a) - refactorImport(b),
-    'Más recientes':   (a, b) => refactorDate(b)   - refactorDate(a),
-    'Menos recientes': (a, b) => refactorDate(a)   - refactorDate(b),
+  const orderBy = {           //--> Se ordena luego en applyOrder con .sort(orderBy[value])
+    'Mayor importe': function(renovation, nextRenovation) {
+      return refactorImport(nextRenovation) - refactorImport(renovation); 
+    },
+    'Menor importe': function(renovation, nextRenovation) {
+      return refactorImport(renovation) - refactorImport(nextRenovation); 
+    },
+    'Más recientes': function(renovation, nextRenovation) {
+      return refactorDate(nextRenovation) - refactorDate(renovation); 
+    },
+    'Menos recientes': function(renovation, nextRenovation) {
+      return refactorDate(renovation) - refactorDate(nextRenovation); 
+    },
   };
 
 
@@ -10902,14 +10909,14 @@ function paginationManager() {
 
 
   function getRenovationsPerPage(rowsPerPage, page) {
-    const start = (page - 1) * rowsPerPage;
+    const start = (page - 1) * rowsPerPage;           //--> 0-9 página 1, 10-19 página 2...
     const end = start + rowsPerPage;
     return allRenovationsData.data.slice(start, end);
   }
 
 
 
-  renderPage = function (page) {
+  renderPage = function (page) {          //--> Funcion asignada a la variable global renderPage
     const totalPages = getTotalPages();
     currentPage = Math.max(1, Math.min(page, totalPages)); 
 
@@ -10965,8 +10972,8 @@ function showRenovations() {
   fetch('/renovations.json')
     .then(res => res.json())
     .then(data => {
-      allRenovationsData.data = data;
-      allRenovationsData.originalData = [...data];
+      allRenovationsData.data = data;                   //--> Guarda daton con filtros, ordenaciones, etc
+      allRenovationsData.originalData = [...data];      //--> Guarda los datos original
       updateTotalRenovations();
       paginationManager();
     });
@@ -11062,12 +11069,12 @@ function navbarMenusToggles() {
 
   // ----------------------------- TOGGLES -----------------------------
   // --- AÑADE LISTENERS A LOS MENUS DEL NAV ---
-  function togglesCore(button, menu, onToggle) {
+  function togglesCore(button, menu, toggeled) {
     if (!button || !menu) return;
     button.addEventListener('click', function () {
       const open = toggleDisplay(menu);
 
-      if (onToggle) onToggle(open);
+      if (toggeled) toggeled(open);
     });
   }
 

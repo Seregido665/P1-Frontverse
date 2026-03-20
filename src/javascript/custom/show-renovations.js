@@ -12,8 +12,8 @@ function showRenovations() {
   fetch('/renovations.json')
     .then(res => res.json())
     .then(data => {
-      allRenovationsData.data = data;
-      allRenovationsData.originalData = [...data];
+      allRenovationsData.data = data;                   //--> Guarda daton con filtros, ordenaciones, etc
+      allRenovationsData.originalData = [...data];      //--> Guarda los datos original
       updateTotalRenovations();
       paginationManager();
     });

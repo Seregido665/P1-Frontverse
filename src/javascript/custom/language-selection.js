@@ -7,12 +7,12 @@ function selectLanguage() {
 
 
 
-  // --- APLICA BOLD AL IDIOMA POR DEFECTO ---
+  //--> BOLD al idioma por defecto
   document.querySelectorAll('.globe-menu-window').forEach(function (menuOption) {
     const defaultOption = menuOption.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
     if (defaultOption) defaultOption.style.fontWeight = '700';
   });
-
+  
   function setStyleSelection(selectedOption) {
     options.forEach(function (item) {
       const text = item.querySelector('.globe-menu-window__option-text');
@@ -31,7 +31,6 @@ function selectLanguage() {
 
   
 
-  // --- CLICK DE CADA OPCIÓN ---
   options.forEach(function (option) {
     option.addEventListener('click', function () {
       const language = option.textContent;
