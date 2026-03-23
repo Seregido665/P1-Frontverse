@@ -1,11 +1,48 @@
-let renderPage;  //--> Acceso global para order-by.js
+function renderPagination(renovationsPerPage) {
+  const container = document.querySelector('.renovations-json-list');
+  if (!container) return;
+
+  container.innerHTML = renovationsPerPage.map(renovation => {
+    let stateClass = '';
+    let icon = '';
+    if (renovation["Estado de póliza"] === "Pagado") {
+      stateClass = 'state__success';
+      icon = 'check';
+    } else if (renovation["Estado de póliza"] === "Pendiente") {
+      stateClass = 'state__warning';
+      icon = 'clock';
+    } else {
+      stateClass = 'state__error';
+      icon = 'close';
+    }
+
+    return `
+      <div class="renovation-card-desktop">
+        <div class="renovation-card-desktop__policy">${renovation["No. de póliza"]}</div>
+        <div class="renovation-card-desktop__risk">${renovation["Nombre del riesgo"]}</div>
+        <div class="renovation-card-desktop__date-contrat">${renovation["Fecha de contrato"]}</div>
+        <div class="renovation-card-desktop__date-maturity">${renovation["Fecha de vencimiento"]}</div>
+        <div class="renovation-card-desktop__price">${renovation["Importe"]}</div>
+        <div class="state-cell">
+          <div class="renovation-card-desktop__state">
+            <div class="state ${stateClass}">
+              <span class="state__icon icon ${icon}"></span>
+              <span class="state__text">${renovation["Estado de póliza"]}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
 
 
 function paginationManager() {
   const select = document.querySelector('.pagination__rows__option');
   if (!select) return;
 
-  let currentPage = 1; 
+  let currentPage = 1;
   select.value = '10';    //--> Para 10 filas por defecto
 
   const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
@@ -14,12 +51,6 @@ function paginationManager() {
   const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
 
 
-
-  function selectTotalRows() {
-    select.addEventListener('change', function () {
-      renderPage(1);  
-    });
-  }
 
   function updatePageText() {
     const pageText = document.querySelector('.pagination__page__text2');
@@ -31,43 +62,59 @@ function paginationManager() {
   }
 
   function getTotalPages() {
-    const total = allRenovationsData.data.length;
-    const rows = defaultRows();
-    return rows > 0 ? Math.ceil(total / rows) : 1;
+    const totalRenovations = allRenovationsData.data.length;
+    const currentRows = defaultRows();
+    return currentRows ? Math.ceil(totalRenovations / currentRows) : 1;     //--> .ceil  para minimo 1 pagina minimo.
   }
 
 
 
-  function getRenovationsPerPage(rowsPerPage, page) {
-    const start = (page - 1) * rowsPerPage;           //--> 0-9 página 1, 10-19 página 2...
+  function renovationsPerPage(rowsPerPage, page) {
+    const pageIndex = page - 1;
+    const start = pageIndex * rowsPerPage;    
     const end = start + rowsPerPage;
     return allRenovationsData.data.slice(start, end);
   }
 
 
 
-  renderPage = function (page) {          //--> Funcion asignada a la variable global renderPage
+  function renderPage(page) {
     const totalPages = getTotalPages();
-    currentPage = Math.max(1, Math.min(page, totalPages)); 
+    const currentRows = defaultRows();
 
-    renderPagination(getRenovationsPerPage(defaultRows(), currentPage));
+    const lastPage = Math.min(page, totalPages);
+    currentPage = Math.max(1, lastPage);
+
+    const currentRenovations = renovationsPerPage(currentRows, currentPage);
+    renderPagination(currentRenovations);
+
     updatePageText();
     styleNavigationButtons();
   }
 
+
+
+  function selectTotalRows() {
+    select.addEventListener('change', function () {
+      renderPage(1);
+    });
+  }
+
+
+
   function styleNavigationButtons() {
     const firstPage = currentPage <= 1;
-    const lastPage  = currentPage >= getTotalPages();
+    const lastPage = currentPage >= getTotalPages();
 
     btnSkipLeft.classList.toggle('pagination__page-option__skip-left--disabled', firstPage);
     btnSkipLeft.classList.toggle('pagination__page-option__skip-left--able', !firstPage);
-    
+
     btnLeft.classList.toggle('pagination__page-option__left--disabled', firstPage);
     btnLeft.classList.toggle('pagination__page-option__left--able', !firstPage);
-    
+
     btnRight.classList.toggle('pagination__page-option__right--disabled', lastPage);
     btnRight.classList.toggle('pagination__page-option__right--able', !lastPage);
-    
+
     btnSkipRight.classList.toggle('pagination__page-option__skip-right--disabled', lastPage);
     btnSkipRight.classList.toggle('pagination__page-option__skip-right--able', !lastPage);
   }
@@ -79,8 +126,8 @@ function paginationManager() {
     if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));
   }
 
-  
-  
+
+
   selectTotalRows();
   navigationButtonsManager();
 

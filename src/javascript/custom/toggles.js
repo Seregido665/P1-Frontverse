@@ -32,40 +32,44 @@ function navbarMenusToggles() {
 
 
   // ----------------------------- TOGGLES -----------------------------
-  // --- AÑADE LISTENERS A LOS MENUS DEL NAV ---
-  function togglesCore(button, menu, toggeled) {
+  function togglesCore(button, menu, toggle) {
     if (!button || !menu) return;
     button.addEventListener('click', function () {
       const open = toggleDisplay(menu);
 
-      if (toggeled) toggeled(open);
+      if (toggle) toggle(open);
     });
   }
 
-  // -- Perfil --
-  togglesCore(btnUser, userMenu, function (open) {
+
+    // -- Perfil --
+  const userToggle = function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-user-open', open);        //--> nav-buttons-right.scss
+      navRight.classList.toggle('mobile-user-open', open);                    //--> nav-buttons-right.scss
       blockScroll();
     }
-  });
+  };
+  togglesCore(btnUser, userMenu, userToggle);
 
-  // -- Idioma --
+    // -- Idioma --
   togglesCore(btnGlobe, globeMenu);
-  // (en Menú Burguer) 
-  togglesCore(btnGlobeInBurguer, globeMenuInBurguer, function (open) {
+    // (Idioma en Menú Burguer) 
+  const globeBurgerToggle = function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);      //--> burger-menu-window.scss
+      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);          //--> burguer-menu-window.scss
     }
-  });
+  };
+  togglesCore(btnGlobeInBurguer, globeMenuInBurguer, globeBurgerToggle);
 
-  // -- Menú Burguer --
-  togglesCore(btnBurguer, burguerMenu, function (open) {
+    // -- Menú Burguer --
+  const burguerToggle = function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-burguer-open', open);     //--> nav-buttons-right.scss
+      navRight.classList.toggle('mobile-burguer-open', open);                    //--> nav-buttons-right.scss
       blockScroll();
     }
-  });
+  };
+  togglesCore(btnBurguer, burguerMenu, burguerToggle);
+
 
   // --- Filtros ---
   if (filterMenu) {

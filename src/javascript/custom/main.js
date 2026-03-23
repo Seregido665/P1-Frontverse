@@ -28,15 +28,9 @@ function main() {
       userMenu.style.display = 'none';
     }
   });
-  //- Menú Burguer -
-  document.addEventListener('click', function (component) {
-    if (!tabletQuery.matches && !btnBurguer.contains(component.target)) {
-      burguerMenu.style.display = 'none';
-    }
-  });
   // - Idioma -
   document.addEventListener('click', function (component) {
-    if (!tabletQuery.matches && !btnGlobe.contains(component.target)) {
+    if (!btnGlobe.contains(component.target)) {
       globeMenu.style.display = 'none';
     }
   });

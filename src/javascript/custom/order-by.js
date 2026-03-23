@@ -1,3 +1,4 @@
+/*
 function orderByManager() {
   const select = document.querySelector('.renovations-filter__list__select');
   if (!select) return;
@@ -45,4 +46,4 @@ function orderByManager() {
 
 document.addEventListener('DOMContentLoaded', function () {
   orderByManager();
-});
+});*/

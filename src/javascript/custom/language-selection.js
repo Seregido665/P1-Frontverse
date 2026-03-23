@@ -14,8 +14,8 @@ function selectLanguage() {
   });
   
   function setStyleSelection(selectedOption) {
-    options.forEach(function (item) {
-      const text = item.querySelector('.globe-menu-window__option-text');
+    options.forEach(function (option) {
+      const text = option.querySelector('.globe-menu-window__option-text');
       if (text) text.style.fontWeight = '400';
     });
     const selectedLanguage = selectedOption.querySelector('.globe-menu-window__option-text');
