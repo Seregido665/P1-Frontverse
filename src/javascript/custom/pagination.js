@@ -37,7 +37,6 @@ function renderPagination(renovationsPerPage) {
 }
 
 
-
 function paginationManager() {
   const select = document.querySelector('.pagination__rows__option');
   if (!select) return;
@@ -49,7 +48,6 @@ function paginationManager() {
   const btnLeft = document.querySelector('.pagination__page-option__left');
   const btnRight = document.querySelector('.pagination__page-option__right');
   const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
-
 
 
   function updatePageText() {
@@ -68,14 +66,12 @@ function paginationManager() {
   }
 
 
-
   function renovationsPerPage(rowsPerPage, page) {
     const pageIndex = page - 1;
     const start = pageIndex * rowsPerPage;    
     const end = start + rowsPerPage;
     return allRenovationsData.data.slice(start, end);
   }
-
 
 
   function renderPage(page) {
@@ -93,13 +89,11 @@ function paginationManager() {
   }
 
 
-
   function selectTotalRows() {
     select.addEventListener('change', function () {
       renderPage(1);
     });
   }
-
 
 
   function styleNavigationButtons() {
@@ -127,11 +121,12 @@ function paginationManager() {
   }
 
 
-
   selectTotalRows();
   navigationButtonsManager();
 
   if (allRenovationsData.data.length > 0) {
     renderPage(1);
   }
+  
+  return { renderPage };
 }

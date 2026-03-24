@@ -1,8 +1,6 @@
-/*
-function orderByManager() {
+function orderByManager(renderPage) {
   const select = document.querySelector('.renovations-filter__list__select');
   if (!select) return;
-
 
 
   function refactorImport(item) {
@@ -28,7 +26,6 @@ function orderByManager() {
   };
 
 
-
   function applyOrder(value) {
     const order = [...allRenovationsData.originalData];
     if (orderBy[value]) {
@@ -39,11 +36,6 @@ function orderByManager() {
 
   select.addEventListener('change', function () {
     applyOrder(select.value);
-    renderPage(1);
+    renderPage(1);   //--> Recibida como parámetro, sin necesidad de variable global
   });
 }
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  orderByManager();
-});*/

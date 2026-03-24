@@ -10710,9 +10710,9 @@ function selectLanguage() {
   if (!mainGlobe || !burgerGlobe) return;
 
 
-
   //--> BOLD al idioma por defecto
-  document.querySelectorAll('.globe-menu-window').forEach(function (menuOption) {
+  const allLanguages = document.querySelectorAll('.globe-menu-window');
+  allLanguages.forEach(function (menuOption) {
     const defaultOption = menuOption.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
     if (defaultOption) defaultOption.style.fontWeight = '700';
   });
@@ -10726,14 +10726,12 @@ function selectLanguage() {
     if (selectedLanguage) selectedLanguage.style.fontWeight = '700';
   }
 
-
   
   function closeMenu(option) {
     const menu = option.closest('.globe-menu-window');
     if (menu) menu.style.display = 'none';
   }
 
-  
 
   options.forEach(function (option) {
     option.addEventListener('click', function () {
@@ -10748,31 +10746,31 @@ function selectLanguage() {
 }
 
 
-
 document.addEventListener('DOMContentLoaded', function () {
   selectLanguage();
 });
 function main() {
-  const btnUser = document.querySelector('.right-nav-buttons__user-button');
-  const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
-  const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
-  const burguerMenu = document.querySelector('.burguer-menu-window');
+  const header = document.querySelector('.navbar');
+  if(!header) return;
+  
+  const btnUser = header.querySelector('.right-nav-buttons__user-button');
+  const userMenu = header.querySelector('.user-menu-window');
+  const btnGlobe = header.querySelector('.right-nav-buttons__globe-button');
+  const globeMenu = header.querySelector('.globe-menu-window');
+  const burguerMenu = header.querySelector('.burguer-menu-window');
   const filterMenu = document.querySelector('.filter-menu');
-  const navRight = document.querySelector('.right-nav-buttons');
-  const btnClose = document.querySelector('.right-nav-buttons .close');
+  const navRight = header.querySelector('.right-nav-buttons');
+  const btnClose = header.querySelector('.right-nav-buttons .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
 
-  const btnGlobeInBurguer  = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
-  const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
+  const btnGlobeInBurguer  = header.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
+  const globeMenuInBurguer = header.querySelector('.burguer-menu-window .globe-menu-window');
 
   userMenu.style.display = 'none';
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
   if (filterMenu) filterMenu.style.display = 'none';
-
 
 
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
@@ -10796,29 +10794,23 @@ function main() {
   });
 
 
-  
   btnClose.addEventListener('click', function () {
-    if (!btnClose) return;
-
     userMenu.style.display = 'none';
     burguerMenu.style.display = 'none';
 
     navRight.classList.remove('mobile-user-open');          //--> nav-buttons-right.scss
     navRight.classList.remove('mobile-burguer-open');       //--> nav-buttons-right.scss
-    document.body.style.overflow = '';
+    header.body.style.overflow = '';
   });
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-/*
-function orderByManager() {
+function orderByManager(renderPage) {
   const select = document.querySelector('.renovations-filter__list__select');
   if (!select) return;
-
 
 
   function refactorImport(item) {
@@ -10844,7 +10836,6 @@ function orderByManager() {
   };
 
 
-
   function applyOrder(value) {
     const order = [...allRenovationsData.originalData];
     if (orderBy[value]) {
@@ -10855,14 +10846,9 @@ function orderByManager() {
 
   select.addEventListener('change', function () {
     applyOrder(select.value);
-    renderPage(1);
+    renderPage(1);   //--> Recibida como parámetro, sin necesidad de variable global
   });
 }
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  orderByManager();
-});*/
 function renderPagination(renovationsPerPage) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
@@ -10902,7 +10888,6 @@ function renderPagination(renovationsPerPage) {
 }
 
 
-
 function paginationManager() {
   const select = document.querySelector('.pagination__rows__option');
   if (!select) return;
@@ -10914,7 +10899,6 @@ function paginationManager() {
   const btnLeft = document.querySelector('.pagination__page-option__left');
   const btnRight = document.querySelector('.pagination__page-option__right');
   const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
-
 
 
   function updatePageText() {
@@ -10933,14 +10917,12 @@ function paginationManager() {
   }
 
 
-
   function renovationsPerPage(rowsPerPage, page) {
     const pageIndex = page - 1;
     const start = pageIndex * rowsPerPage;    
     const end = start + rowsPerPage;
     return allRenovationsData.data.slice(start, end);
   }
-
 
 
   function renderPage(page) {
@@ -10958,13 +10940,11 @@ function paginationManager() {
   }
 
 
-
   function selectTotalRows() {
     select.addEventListener('change', function () {
       renderPage(1);
     });
   }
-
 
 
   function styleNavigationButtons() {
@@ -10992,19 +10972,19 @@ function paginationManager() {
   }
 
 
-
   selectTotalRows();
   navigationButtonsManager();
 
   if (allRenovationsData.data.length > 0) {
     renderPage(1);
   }
+  
+  return { renderPage };
 }
 const allRenovationsData = {
   data: [],          
   originalData: [],   
 };
-
 
 
 function updateTotalRenovations(total) {
@@ -11013,7 +10993,6 @@ function updateTotalRenovations(total) {
   const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
   if (filterSpan) filterSpan.textContent = `${total} pólizas`;
 }
-
 
 
 function showRenovations() {
@@ -11026,36 +11005,39 @@ function showRenovations() {
       allRenovationsData.data = data;                   //--> Guarda datos con filtros, ordenaciones, etc
       allRenovationsData.originalData = [...data];      //--> Guarda los datos original
       updateTotalRenovations(allRenovationsData.originalData.length);
-      paginationManager();
+
+      const { renderPage } = paginationManager();   //--> Recoge renderPage del manager
+      orderByManager(renderPage); 
     });
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
   showRenovations();
 });
 function navbarMenusToggles() {
-  const btnUser = document.querySelector('.right-nav-buttons__user-button');
-  const userMenu = document.querySelector('.user-menu-window');
-  const btnGlobe = document.querySelector('.right-nav-buttons__globe-button');
-  const globeMenu = document.querySelector('.globe-menu-window');
-  const btnBurguer = document.querySelector('.right-nav-buttons__burguer-button');
-  const burguerMenu = document.querySelector('.burguer-menu-window');
+  const header = document.querySelector('.navbar');
+  if(!header) return;
+  
+  const btnUser = header.querySelector('.right-nav-buttons__user-button');
+  const userMenu = header.querySelector('.user-menu-window');
+  const btnGlobe = header.querySelector('.right-nav-buttons__globe-button');
+  const globeMenu = header.querySelector('.globe-menu-window');
+  const btnBurguer = header.querySelector('.right-nav-buttons__burguer-button');
+  const burguerMenu = header.querySelector('.burguer-menu-window');
   const btnAllFilters = document.querySelector('.renovations-filter__all-filters');
   const filterMenu = document.querySelector('.filter-menu');
   const btnCloseFilter = document.querySelector('.filter-menu .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
-  const navRight = document.querySelector('.right-nav-buttons');
+  const navRight = header.querySelector('.right-nav-buttons');
 
-  const btnGlobeInBurguer = document.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
-  const globeMenuInBurguer = document.querySelector('.burguer-menu-window .globe-menu-window');
-
+  const btnGlobeInBurguer = header.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
+  const globeMenuInBurguer = header.querySelector('.burguer-menu-window .globe-menu-window');
 
 
   function toggleDisplay(menu) {
     if (!menu) return false;
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';  //--> Selecciona el estilo y lo cambia al contrario
+    menu.style.display = menu.style.display === 'none' ? 'block' : 'none'; 
     return menu.style.display === 'block';
   }
 
@@ -11065,7 +11047,6 @@ function navbarMenusToggles() {
     const filterMenuOpen = filterMenu ? filterMenu.classList.contains('is-open') : false;
     document.body.style.overflow = mobileMenuOpen || filterMenuOpen ? 'hidden' : '';
   }
-
 
 
   // ----------------------------- TOGGLES -----------------------------
@@ -11079,29 +11060,29 @@ function navbarMenusToggles() {
   }
 
 
-    // -- Perfil --
+  // -- Perfil --
   const userToggle = function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-user-open', open);                    //--> nav-buttons-right.scss
+      navRight.classList.toggle('mobile-user-open', open);                 
       blockScroll();
     }
   };
   togglesCore(btnUser, userMenu, userToggle);
 
-    // -- Idioma --
+  // -- Idioma --
   togglesCore(btnGlobe, globeMenu);
-    // (Idioma en Menú Burguer) 
+  // (Idioma en Menú Burguer) 
   const globeBurgerToggle = function (open) {
     if (btnGlobeInBurguer) {
-      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);          //--> burguer-menu-window.scss
+      btnGlobeInBurguer.classList.toggle('globe-burger-open', open);         
     }
   };
   togglesCore(btnGlobeInBurguer, globeMenuInBurguer, globeBurgerToggle);
 
-    // -- Menú Burguer --
+  // -- Menú Burguer --
   const burguerToggle = function (open) {
     if (tabletQuery.matches) {
-      navRight.classList.toggle('mobile-burguer-open', open);                    //--> nav-buttons-right.scss
+      navRight.classList.toggle('mobile-burguer-open', open);                  
       blockScroll();
     }
   };
@@ -11112,18 +11093,23 @@ function navbarMenusToggles() {
   if (filterMenu) {
     filterMenu.style.display = '';          //--> Resetea el display
     btnAllFilters.addEventListener('click', function () {
-        filterMenu.classList.add('is-open');
-        blockScroll();
+      filterMenu.classList.add('is-open');
+      blockScroll();
     });
     if (btnCloseFilter) {
-        btnCloseFilter.addEventListener('click', function () {
-            filterMenu.classList.remove('is-open');
-            blockScroll();
-        });
+      btnCloseFilter.addEventListener('click', function () {
+        filterMenu.classList.remove('is-open');
+        blockScroll();
+      });
     }
   }
+  document.addEventListener('click', function (e) {
+    if (!filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
+      filterMenu.classList.remove('is-open');
+      blockScroll();
+    }
+  });
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {

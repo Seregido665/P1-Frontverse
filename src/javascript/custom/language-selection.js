@@ -6,9 +6,9 @@ function selectLanguage() {
   if (!mainGlobe || !burgerGlobe) return;
 
 
-
   //--> BOLD al idioma por defecto
-  document.querySelectorAll('.globe-menu-window').forEach(function (menuOption) {
+  const allLanguages = document.querySelectorAll('.globe-menu-window');
+  allLanguages.forEach(function (menuOption) {
     const defaultOption = menuOption.querySelector('.globe-menu-window__option .globe-menu-window__option-text');
     if (defaultOption) defaultOption.style.fontWeight = '700';
   });
@@ -22,14 +22,12 @@ function selectLanguage() {
     if (selectedLanguage) selectedLanguage.style.fontWeight = '700';
   }
 
-
   
   function closeMenu(option) {
     const menu = option.closest('.globe-menu-window');
     if (menu) menu.style.display = 'none';
   }
 
-  
 
   options.forEach(function (option) {
     option.addEventListener('click', function () {
@@ -42,7 +40,6 @@ function selectLanguage() {
     });
   });
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
