@@ -43,13 +43,17 @@
 
    
     .info-owner__bottom__field {
-        margin-top: rem(24px);
-        @include desktop {
+        margin-top: rem(32px);
+        @include tablet {
             margin-top: rem(16px);
         }
     }
 
-
+    .info-owner__bottom__state {
+        margin-top: rem(32px);
+        margin-bottom: rem(4px);
+        @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $text5);
+    }
 
 
 

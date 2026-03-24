@@ -43,6 +43,9 @@
 
    
     .info-direction__bottom__field {
-        margin-top: rem(24px);
+        margin-top: rem(32px);
+        @include tablet {
+            margin-top: rem(16px);
+        }
     }
 }

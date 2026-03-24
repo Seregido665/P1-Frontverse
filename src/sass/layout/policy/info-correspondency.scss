@@ -34,6 +34,9 @@
         display: flex;
         align-items: center;
         margin-top: auto;
+        @include desktop {
+            margin-top: rem(16px);
+        }
     }
     .info-correspondency__top__button-icon {
         color: $primary100;
@@ -46,5 +49,8 @@
 
     .info-correspondency__bottom__field {
         margin-top: rem(24px);
+        @include desktop {
+            margin-top: rem(16px);
+        }
     }
 }
