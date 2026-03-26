@@ -10758,7 +10758,6 @@ function main() {
   const btnGlobe = header.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = header.querySelector('.globe-menu-window');
   const burguerMenu = header.querySelector('.burguer-menu-window');
-  const filterMenu = document.querySelector('.filter-menu');
   const navRight = header.querySelector('.right-nav-buttons');
   const btnClose = header.querySelector('.right-nav-buttons .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
@@ -10770,7 +10769,7 @@ function main() {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) filterMenu.style.display = 'none';
+  
 
 
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
@@ -11030,10 +11029,12 @@ function navbarMenusToggles() {
   const btnCloseFilter = document.querySelector('.filter-menu .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
   const navRight = header.querySelector('.right-nav-buttons');
+  const orderSelection = document.querySelector('.renovations-filter__list__select');
 
   const btnGlobeInBurguer = header.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = header.querySelector('.burguer-menu-window .globe-menu-window');
 
+  if (filterMenu) filterMenu.style.display = 'none';
 
   function toggleDisplay(menu) {
     if (!menu) return false;
@@ -11089,80 +11090,37 @@ function navbarMenusToggles() {
   togglesCore(btnBurguer, burguerMenu, burguerToggle);
 
 
-  // --- Filtros ---
   if (filterMenu) {
-    filterMenu.style.display = '';          //--> Resetea el display
+    filterMenu.style.display = '';
+    
     btnAllFilters.addEventListener('click', function () {
       filterMenu.classList.add('is-open');
       blockScroll();
     });
+    
     if (btnCloseFilter) {
       btnCloseFilter.addEventListener('click', function () {
         filterMenu.classList.remove('is-open');
         blockScroll();
       });
     }
+
+    document.addEventListener('click', function (e) {
+      if (!filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
+        if (filterMenu.classList.contains('is-open')) {
+          filterMenu.classList.remove('is-open');
+          blockScroll();
+
+          if (orderSelection) orderSelection.blur();
+          
+          e.stopPropagation();
+        }
+      }
+    }, true);
   }
-  document.addEventListener('click', function (e) {
-    if (!filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
-      filterMenu.classList.remove('is-open');
-      blockScroll();
-    }
-  });
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
   navbarMenusToggles();
-});
-function updatePolicy() {
-  const updateButton = document.querySelector('.info-owner__top__button');
-  const buttonText = updateButton.querySelector('.info-owner__top__button-text');
-  if (!updateButton || !buttonText) return;
-
-  const fields = document.querySelectorAll('.info-owner__bottom__field');
-  if (!fields.length) return;
-
-  let editing = false;
-
-  updateButton.addEventListener('click', () => {
-    if (!editing) {
-      // ---- EDITAR ----
-      editing = true;
-      buttonText.textContent = 'Guardar';
-
-      fields.forEach((field) => {
-        const valueEditable = field.querySelector('.field-text');
-        const currentValue = valueEditable.textContent;
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = currentValue;
-        input.classList.add('field-info-policy__input');
-
-        valueEditable.replaceWith(input);
-      });
-
-
-    } else {
-      // ---- GUARDAR ----
-      editing = false;
-      buttonText.textContent = 'Actualizar';
-
-      fields.forEach((field) => {
-        const input = field.querySelector('.field-info-policy__input');
-        const newValue = input.value;
-        const newValueEditable = document.createElement('span');
-        
-        newValueEditable.classList.add('field-text');
-        newValueEditable.textContent = newValue;
-
-        input.replaceWith(newValueEditable);
-      });
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  updatePolicy();
 });

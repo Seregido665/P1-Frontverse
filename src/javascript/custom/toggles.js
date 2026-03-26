@@ -13,10 +13,12 @@ function navbarMenusToggles() {
   const btnCloseFilter = document.querySelector('.filter-menu .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
   const navRight = header.querySelector('.right-nav-buttons');
+  const orderSelection = document.querySelector('.renovations-filter__list__select');
 
   const btnGlobeInBurguer = header.querySelector('.burguer-menu-window > .burguer-menu-window__globe-button');
   const globeMenuInBurguer = header.querySelector('.burguer-menu-window .globe-menu-window');
 
+  if (filterMenu) filterMenu.style.display = 'none';
 
   function toggleDisplay(menu) {
     if (!menu) return false;
@@ -72,26 +74,34 @@ function navbarMenusToggles() {
   togglesCore(btnBurguer, burguerMenu, burguerToggle);
 
 
-  // --- Filtros ---
   if (filterMenu) {
-    filterMenu.style.display = '';          //--> Resetea el display
+    filterMenu.style.display = '';
+    
     btnAllFilters.addEventListener('click', function () {
       filterMenu.classList.add('is-open');
       blockScroll();
     });
+    
     if (btnCloseFilter) {
       btnCloseFilter.addEventListener('click', function () {
         filterMenu.classList.remove('is-open');
         blockScroll();
       });
     }
+
+    document.addEventListener('click', function (e) {
+      if (!filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
+        if (filterMenu.classList.contains('is-open')) {
+          filterMenu.classList.remove('is-open');
+          blockScroll();
+
+          if (orderSelection) orderSelection.blur();
+          
+          e.stopPropagation();
+        }
+      }
+    }, true);
   }
-  document.addEventListener('click', function (e) {
-    if (!filterMenu.contains(e.target) && !btnAllFilters.contains(e.target)) {
-      filterMenu.classList.remove('is-open');
-      blockScroll();
-    }
-  });
 }
 
 

@@ -7,7 +7,6 @@ function main() {
   const btnGlobe = header.querySelector('.right-nav-buttons__globe-button');
   const globeMenu = header.querySelector('.globe-menu-window');
   const burguerMenu = header.querySelector('.burguer-menu-window');
-  const filterMenu = document.querySelector('.filter-menu');
   const navRight = header.querySelector('.right-nav-buttons');
   const btnClose = header.querySelector('.right-nav-buttons .close');
   const tabletQuery = window.matchMedia('(max-width: 48rem)');
@@ -19,7 +18,7 @@ function main() {
   globeMenu.style.display = 'none';
   burguerMenu.style.display = 'none';
   globeMenuInBurguer.style.display = 'none';
-  if (filterMenu) filterMenu.style.display = 'none';
+  
 
 
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
