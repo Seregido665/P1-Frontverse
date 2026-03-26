@@ -128,5 +128,5 @@ function paginationManager() {
     renderPage(1);
   }
   
-  return { renderPage };
+  return renderPage;      //--> A show-renovations.js
 }

@@ -28,9 +28,7 @@
         }
     }
 
-    .apply-filters__filter1,
-    .apply-filters__filter2,
-    .apply-filters__filter3 {
+    .apply-filters__filter {
         display: inline-flex;
         align-items: center;
         column-gap: rem(8px);

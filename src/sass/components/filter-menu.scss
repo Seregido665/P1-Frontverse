@@ -180,6 +180,9 @@
         padding-right: rem(5px);
     }
 
+    .filter-menu__body__error {
+        @include font-styles($font-weight: 400, $font-size: rem(14px), $color: $error);
+    }
 
 
     .icon.chev-down-policy,

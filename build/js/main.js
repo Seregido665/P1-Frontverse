@@ -10702,6 +10702,148 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
+function filterMenuManager(renderPage, applyCurrentOrder) {
+  const inputNameRisk = document.querySelector('.filter-menu__body__input1');
+  const errorRisk = document.querySelector('.filter-menu__body__error');
+  const btnApply = document.querySelector('.filter-menu__bottom__apply');
+  const filterMenu = document.querySelector('.filter-menu');
+  const filtersAppliedContainer = document.querySelector('.apply-filters');
+  
+  const btnClearAllFilters = document.querySelector('.renovations-filter__all-policies__clear-filters');
+  const totalFiltersApplied = document.querySelector('.renovations-filter__all-policies__text-filters');
+  const separation = document.querySelector('.renovations-filter__all-policies .separation');
+
+  if (!inputNameRisk || !btnApply || !applyCurrentOrder) return;
+
+  const risksFiltered = new Map();   
+
+  function closeFilterMenu() {
+    if (filterMenu) {
+      filterMenu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function showError(message) {
+    if (errorRisk) errorRisk.textContent = message;
+  }
+
+  function clearError() {
+    if (errorRisk) errorRisk.textContent = '';
+  }
+
+  function updateFiltersAppliedInfo() {
+    if (!totalFiltersApplied) return;
+    const totalFilters = risksFiltered.size;
+    if (totalFilters === 0) {
+      totalFiltersApplied.style.display = 'none';
+    } else if (totalFilters === 1) {
+      totalFiltersApplied.textContent = '1 filtro aplicado';
+      totalFiltersApplied.style.display = 'inline';
+    } else {
+      totalFiltersApplied.textContent = `${totalFilters} filtros aplicados`;
+      totalFiltersApplied.style.display = 'inline';
+    }
+  }
+
+  function updateClearButtonVisibility() {
+    const totalFilters = risksFiltered.size;
+    const show = totalFilters > 0;
+    if (separation) separation.style.display = show ? 'inline' : 'none';
+    if (btnClearAllFilters) btnClearAllFilters.style.display = show ? 'inline' : 'none';
+  }
+
+  function getFilteredData() {
+    return allRenovationsData.originalData.filter(renovation => {
+      const riskLower = renovation['Nombre del riesgo'].toLowerCase();
+      return risksFiltered.has(riskLower);
+    });
+  }
+
+  // Aplica filtro + orden actual
+  function applyActiveFilters() {
+    const filtered = getFilteredData();
+    allRenovationsData.data = applyCurrentOrder(filtered);
+    
+    updateTotalRenovations(allRenovationsData.data.length);
+    renderPage(1);
+    
+    updateFiltersAppliedInfo();
+    updateClearButtonVisibility();
+  }
+
+  function renderTags() {
+    if (!filtersAppliedContainer) return;
+    filtersAppliedContainer.innerHTML = '';
+
+    risksFiltered.forEach(originalName => {
+      const tag = document.createElement('div');
+      tag.className = 'apply-filters__filter';
+      tag.innerHTML = `
+        <span>${originalName}</span>
+        <span class="icon close" data-name="${originalName.toLowerCase()}" aria-label="Eliminar filtro ${originalName}"></span>
+      `;
+
+      tag.querySelector('.icon.close').addEventListener('click', () => {
+        risksFiltered.delete(originalName.toLowerCase());
+        renderTags();
+        applyActiveFilters();
+      });
+
+      filtersAppliedContainer.appendChild(tag);
+    });
+  }
+
+  // Limpiar error al escribir
+  inputNameRisk.addEventListener('input', clearError);
+
+  // Botón "Aplicar filtros" del menú
+  btnApply.addEventListener('click', function () {
+    const value = inputNameRisk.value.trim();
+    if (!value) {
+      showError('Introduce un nombre de riesgo.');
+      return;
+    }
+
+    const valueLower = value.toLowerCase();
+
+    const exists = allRenovationsData.originalData.some(r => 
+      r['Nombre del riesgo'].toLowerCase() === valueLower
+    );
+
+    if (!exists) {
+      showError('No hay pólizas con ese nombre.');
+      return;
+    }
+
+    clearError();
+    risksFiltered.set(valueLower, value);
+    inputNameRisk.value = '';
+
+    renderTags();
+    applyActiveFilters();
+    closeFilterMenu();
+  });
+
+  // Botón "Borrar filtros" externo (el que está en la barra superior)
+  if (btnClearAllFilters) {
+    btnClearAllFilters.addEventListener('click', () => {
+      risksFiltered.clear();
+      if (inputNameRisk) inputNameRisk.value = '';
+      renderTags();
+      applyActiveFilters();
+
+      if (filterMenu && filterMenu.classList.contains('is-open')) {
+        filterMenu.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Inicialización
+  updateFiltersAppliedInfo();
+  updateClearButtonVisibility();
+}
 function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');
   const mainGlobe = document.querySelector('.globe-button__title');
@@ -10808,45 +10950,43 @@ document.addEventListener('DOMContentLoaded', function () {
   main();
 });
 function orderByManager(renderPage) {
-  const select = document.querySelector('.renovations-filter__list__select');
-  if (!select) return;
-
+  const orderSelector = document.querySelector('.renovations-filter__list__select');
+  if (!orderSelector) return;
 
   function refactorImport(item) {
     return parseFloat(item['Importe'].replace(/\./g, '').replace(',', '.'));
   }
+
   function refactorDate(item) {
     return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
   }
 
-  const orderBy = {           //--> Se ordena luego en applyOrder con .sort(orderBy[value])
-    'Mayor importe': function(renovation, nextRenovation) {
-      return refactorImport(nextRenovation) - refactorImport(renovation); 
-    },
-    'Menor importe': function(renovation, nextRenovation) {
-      return refactorImport(renovation) - refactorImport(nextRenovation); 
-    },
-    'Más recientes': function(renovation, nextRenovation) {
-      return refactorDate(nextRenovation) - refactorDate(renovation); 
-    },
-    'Menos recientes': function(renovation, nextRenovation) {
-      return refactorDate(renovation) - refactorDate(nextRenovation); 
-    },
+  const orderFunctions = {
+    'Mayor importe': (a, b) => refactorImport(b) - refactorImport(a),
+    'Menor importe': (a, b) => refactorImport(a) - refactorImport(b),
+    'Más recientes': (a, b) => refactorDate(b) - refactorDate(a),
+    'Menos recientes': (a, b) => refactorDate(a) - refactorDate(b),
   };
 
-
-  function applyOrder(value) {
-    const order = [...allRenovationsData.originalData];
-    if (orderBy[value]) {
-      order.sort(orderBy[value]);
+  function applyOrder(data) {
+    const orderOption = orderSelector.value;
+    const orderApplied = orderFunctions[orderOption];
+    
+    if (orderApplied) {
+      return [...data].sort(orderApplied);
     }
-    allRenovationsData.data = order;  
   }
 
-  select.addEventListener('change', function () {
-    applyOrder(select.value);
-    renderPage(1);   //--> Recibida como parámetro, sin necesidad de variable global
+  orderSelector.addEventListener('change', function () {
+    const filteredData = allRenovationsData.data.length > 0 
+      ? allRenovationsData.data 
+      : allRenovationsData.originalData;   
+
+    allRenovationsData.data = applyOrder(filteredData);
+    renderPage(1);
   });
+
+  return applyOrder;    //--> A show-renovations.js
 }
 function renderPagination(renovationsPerPage) {
   const container = document.querySelector('.renovations-json-list');
@@ -10978,7 +11118,7 @@ function paginationManager() {
     renderPage(1);
   }
   
-  return { renderPage };
+  return renderPage;      //--> A show-renovations.js
 }
 const allRenovationsData = {
   data: [],          
@@ -10986,11 +11126,11 @@ const allRenovationsData = {
 };
 
 
-function updateTotalRenovations(total) {
+function updateTotalRenovations(filtered) {
   const headerSpan = document.querySelector('.renovations-header__number-policies__number');
-  if (headerSpan) headerSpan.textContent = total;
+  if (headerSpan) headerSpan.textContent = allRenovationsData.originalData.length;
   const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${total} pólizas`;
+  if (filterSpan) filterSpan.textContent = `${filtered} pólizas`;               
 }
 
 
@@ -11005,8 +11145,9 @@ function showRenovations() {
       allRenovationsData.originalData = [...data];      //--> Guarda los datos original
       updateTotalRenovations(allRenovationsData.originalData.length);
 
-      const { renderPage } = paginationManager();   //--> Recoge renderPage del manager
-      orderByManager(renderPage); 
+      const renderPage = paginationManager();  
+      const applyOrder = orderByManager(renderPage);
+      filterMenuManager(renderPage, applyOrder);
     });
 }
 

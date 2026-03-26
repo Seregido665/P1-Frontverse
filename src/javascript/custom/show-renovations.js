@@ -4,11 +4,11 @@ const allRenovationsData = {
 };
 
 
-function updateTotalRenovations(total) {
+function updateTotalRenovations(filtered) {
   const headerSpan = document.querySelector('.renovations-header__number-policies__number');
-  if (headerSpan) headerSpan.textContent = total;
+  if (headerSpan) headerSpan.textContent = allRenovationsData.originalData.length;
   const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${total} pólizas`;
+  if (filterSpan) filterSpan.textContent = `${filtered} pólizas`;               
 }
 
 
@@ -23,8 +23,9 @@ function showRenovations() {
       allRenovationsData.originalData = [...data];      //--> Guarda los datos original
       updateTotalRenovations(allRenovationsData.originalData.length);
 
-      const { renderPage } = paginationManager();   //--> Recoge renderPage del manager
-      orderByManager(renderPage); 
+      const renderPage = paginationManager();  
+      const applyOrder = orderByManager(renderPage);
+      filterMenuManager(renderPage, applyOrder);
     });
 }
 

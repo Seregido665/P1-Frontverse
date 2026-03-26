@@ -1,41 +1,39 @@
 function orderByManager(renderPage) {
-  const select = document.querySelector('.renovations-filter__list__select');
-  if (!select) return;
-
+  const orderSelector = document.querySelector('.renovations-filter__list__select');
+  if (!orderSelector) return;
 
   function refactorImport(item) {
     return parseFloat(item['Importe'].replace(/\./g, '').replace(',', '.'));
   }
+
   function refactorDate(item) {
     return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
   }
 
-  const orderBy = {           //--> Se ordena luego en applyOrder con .sort(orderBy[value])
-    'Mayor importe': function(renovation, nextRenovation) {
-      return refactorImport(nextRenovation) - refactorImport(renovation); 
-    },
-    'Menor importe': function(renovation, nextRenovation) {
-      return refactorImport(renovation) - refactorImport(nextRenovation); 
-    },
-    'Más recientes': function(renovation, nextRenovation) {
-      return refactorDate(nextRenovation) - refactorDate(renovation); 
-    },
-    'Menos recientes': function(renovation, nextRenovation) {
-      return refactorDate(renovation) - refactorDate(nextRenovation); 
-    },
+  const orderFunctions = {
+    'Mayor importe': (a, b) => refactorImport(b) - refactorImport(a),
+    'Menor importe': (a, b) => refactorImport(a) - refactorImport(b),
+    'Más recientes': (a, b) => refactorDate(b) - refactorDate(a),
+    'Menos recientes': (a, b) => refactorDate(a) - refactorDate(b),
   };
 
-
-  function applyOrder(value) {
-    const order = [...allRenovationsData.originalData];
-    if (orderBy[value]) {
-      order.sort(orderBy[value]);
+  function applyOrder(data) {
+    const orderOption = orderSelector.value;
+    const orderApplied = orderFunctions[orderOption];
+    
+    if (orderApplied) {
+      return [...data].sort(orderApplied);
     }
-    allRenovationsData.data = order;  
   }
 
-  select.addEventListener('change', function () {
-    applyOrder(select.value);
-    renderPage(1);   //--> Recibida como parámetro, sin necesidad de variable global
+  orderSelector.addEventListener('change', function () {
+    const filteredData = allRenovationsData.data.length > 0 
+      ? allRenovationsData.data 
+      : allRenovationsData.originalData;   
+
+    allRenovationsData.data = applyOrder(filteredData);
+    renderPage(1);
   });
+
+  return applyOrder;    //--> A show-renovations.js
 }
