@@ -180,7 +180,8 @@
         padding-right: rem(5px);
     }
 
-    .filter-menu__body__error {
+    .filter-menu__body__error-name-risk,
+    .filter-menu__body__error-date {
         @include font-styles($font-weight: 400, $font-size: rem(14px), $color: $error);
     }
 
