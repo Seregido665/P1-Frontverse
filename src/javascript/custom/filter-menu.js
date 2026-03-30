@@ -13,14 +13,11 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
   const totalFiltersApplied = document.querySelector('.renovations-filter__all-policies__text-filters');
   const separation = document.querySelector('.renovations-filter__all-policies .separation');
 
-  if (!inputNameRisk || !btnApply) return;
+  if (!inputNameRisk || !inputStartDate || !btnApply) return;
 
   const filtersList = new Map();   
 
-  // =================================================================
-  // 1. LÓGICA CENTRAL (Gestión general del filtro y estado compartido)
-  // =================================================================
-
+  
   function closeFilterMenu() {
     if (filterMenu) {
       filterMenu.classList.remove('is-open');
@@ -44,9 +41,9 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
 
   function updateClearButtonVisibility() {
     const totalFilters = filtersList.size;
-    const show = totalFilters > 0;
-    if (separation) separation.style.display = show ? 'inline' : 'none';
-    if (btnClearAllFilters) btnClearAllFilters.style.display = show ? 'inline' : 'none';
+    const showing = totalFilters > 0;
+    if (separation) separation.style.display = showing ? 'inline' : 'none';
+    if (btnClearAllFilters) btnClearAllFilters.style.display = showing ? 'inline' : 'none';
   }
 
   function getFilteredData() {
@@ -54,28 +51,27 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
       return [...allRenovationsData.originalData];
     }
 
-    const riskValues = [];
+    const riskNames = [];
     const dateRanges = [];
 
     filtersList.forEach(filter => {
-      if (filter.type === 'risk') riskValues.push(filter.value);
+      if (filter.type === 'risk') riskNames.push(filter.value);
       if (filter.type === 'date') dateRanges.push(filter);
     });
 
     const filteredData = allRenovationsData.originalData.filter(renovation => {
       const riskName = (renovation['Nombre del riesgo'] || '').toLowerCase();
-      const maturityDateStr = renovation['Fecha de vencimiento'] || '';
+      const matchesRiskNames = riskNames.length === 0 || riskNames.includes(riskName);
 
-      const matchesRisk = riskValues.length === 0 || riskValues.includes(riskName);
-
-      const matchesDate =
+      const maturityDate = renovation['Fecha de vencimiento'] || '';
+      const matchesMaturityDate =
         dateRanges.length === 0 ||
-        dateRanges.some(range => {
-          const maturity = parseDate(maturityDateStr);
-          return maturity !== null && maturity >= range.startDate && maturity <= range.endDate;
+        dateRanges.some(range => {         // Ver si la fecha cae en alguno de los rangos aplicados.
+          const maturity = parseDate(maturityDate);
+          return maturity >= range.startDateParsed && maturity <= range.endDateParsed;
         });
 
-      return matchesRisk && matchesDate;
+      return matchesRiskNames && matchesMaturityDate;
     });
 
     return filteredData;
@@ -93,7 +89,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
     updateClearButtonVisibility();
   }
 
-  function renderTags() {
+  function renderFilters() {
     if (!filtersAppliedContainer) return;
     filtersAppliedContainer.innerHTML = '';
 
@@ -108,7 +104,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
       const closeIcon = filterCard.querySelector('.icon.close');
       closeIcon.addEventListener('click', () => {
         filtersList.delete(idCard);
-        renderTags();
+        renderFilters();
         applyActiveFilters();
       });
 
@@ -117,19 +113,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
   }
 
 
-  // =================================================================
-  // 2. LÓGICA DE NOMBRE DE RIESGO (Validación y gestión del filtro por nombre)
-  // =================================================================
-
-  function showError(message) {
-    if (errorRisk) errorRisk.textContent = message;
-  }
-
-  function clearError() {
-    if (errorRisk) errorRisk.textContent = '';
-  }
-
-  // Evento principal de aplicar filtros
+  
   btnApply.addEventListener('click', function () {
     let anyFilterAdded = false;
 
@@ -142,7 +126,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
       );
 
       if (!coincidence) {
-        showError('No hay pólizas con ese nombre.');
+        errorRisk.textContent = 'No hay pólizas con ese nombre.';
       } else {
         filtersList.set(`risk:${riskSearchedLower}`, {
           type: 'risk',
@@ -150,119 +134,80 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
           value: riskSearchedLower
         });
         inputNameRisk.value = '';
-        clearError();
+        errorRisk.textContent = '';
         anyFilterAdded = true;
       }
     }
 
+
     // --- Filtro por rango de fechas ---
-    const startDateVal = inputStartDate ? inputStartDate.value.trim() : '';
-    const endDateVal = inputEndDate ? inputEndDate.value.trim() : '';
-
-    if (startDateVal || endDateVal) {
-      if (!isValidDateFormat(startDateVal) || !isValidDateFormat(endDateVal) ||
-          !startDateVal || !endDateVal) {
-        if (errorDate) errorDate.textContent = 'Formato correcto: 00/00/0000';
-      } else {
-        const startDate = parseDate(startDateVal);
-        const endDate = parseDate(endDateVal);
-
-        if (!startDate || !endDate) {
-          if (errorDate) errorDate.textContent = 'Formato correcto: 00/00/0000';
-        } else if (endDate < startDate) {
-          if (errorDate) errorDate.textContent = 'La fecha fin debe ser posterior a la fecha inicio.';
-        } else {
-          filtersList.set(`date:${startDateVal}-${endDateVal}`, {
-            type: 'date',
-            label: `${startDateVal} - ${endDateVal}`,
-            startDate,
-            endDate
-          });
-          inputStartDate.value = '';
-          inputEndDate.value = '';
-          if (errorDate) errorDate.textContent = '';
-          anyFilterAdded = true;
-        }
-      }
+    function isValidDateFormat(dateValue) {
+      if (!dateValue || dateValue.trim() === '') return false;
+      
+      const correctFormatDate = /^\d{2}\/\d{2}\/\d{4}$/;
+      const dateValueCleaned = dateValue.trim();
+      const isValid = correctFormatDate.test(dateValueCleaned);
+      
+      return isValid;
     }
 
+    const startDateValue = inputStartDate.value.trim();
+    const endDateValue = inputEndDate.value.trim();
+
+    if (!isValidDateFormat(startDateValue) || !isValidDateFormat(endDateValue)) {
+      errorDate.textContent = 'Formato correcto: 00/00/0000';
+    } else {
+      const startDateParsed = parseDate(startDateValue);
+      const endDateParsed = parseDate(endDateValue);
+
+      if (endDateParsed < startDateParsed) {
+        errorDate.textContent = 'La fecha final debe ser posterior a la inicial.';
+      } else {
+        filtersList.set(`date:${startDateValue}-${endDateValue}`, {
+          type: 'date',
+          label: `${startDateValue} - ${endDateValue}`,
+          startDateParsed,
+          endDateParsed
+        });
+        inputStartDate.value = '';
+        inputEndDate.value = '';
+        errorDate.textContent = '';
+        anyFilterAdded = true;
+      }
+    }
+    
+
     if (anyFilterAdded) {
-      renderTags();
+      renderFilters();
       applyActiveFilters();
       closeFilterMenu();
     }
   });
 
-
-  // =================================================================
-  // 3. LÓGICA DE FECHA DE VALIDEZ (Validación y gestión de fechas)
-  // =================================================================
-
-  function isValidDateFormat(dateValue) {
-    if (!dateValue || dateValue.trim() === '') return false;
-    const regex = /^\d{2}\/\d{2}\/\d{4}$/;
-    return regex.test(dateValue.trim());
-  }
-
-  function parseDate(str) {
-    const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(str);
+  function parseDate(dateEntry) {
+    const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateEntry);
     if (!match) return null;
     const day = Number(match[1]);
     const month = Number(match[2]);
     const year = Number(match[3]);
-    const d = new Date(year, month - 1, day);
-    if (d.getFullYear() !== year || d.getMonth() !== month - 1 || d.getDate() !== day) return null;
-    d.setHours(0, 0, 0, 0);
-    return d;
+    const date = new Date(year, month - 1, day);
+
+    const isValidDate = date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+    if (!isValidDate) return;
+
+    return date;
   }
 
-  function applyDateMask(input) {
-    const digits = input.value.replace(/\D/g, '').slice(0, 8);
-    if (digits.length <= 2) {
-      input.value = digits;
-    } else if (digits.length <= 4) {
-      input.value = `${digits.slice(0, 2)}/${digits.slice(2)}`;
-    } else {
-      input.value = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
-    }
-  }
-
-  if (inputStartDate) {
-    inputStartDate.addEventListener('input', () => {
-      applyDateMask(inputStartDate);
-      if (errorDate) errorDate.textContent = '';
-    });
-  }
-  if (inputEndDate) {
-    inputEndDate.addEventListener('input', () => {
-      applyDateMask(inputEndDate);
-      if (errorDate) errorDate.textContent = '';
-    });
-  }
-
-
-  // =================================================================
-  // LÓGICA DE LIMPIEZA GENERAL (Clear All Filters)
-  // =================================================================
 
   if (btnClearAllFilters) {
     btnClearAllFilters.addEventListener('click', () => {
       filtersList.clear();
-      if (inputNameRisk) inputNameRisk.value = '';
-      if (inputStartDate) inputStartDate.value = '';
-      if (inputEndDate) inputEndDate.value = '';
       
-      renderTags();
+      renderFilters();
       applyActiveFilters();
-
-      if (filterMenu && filterMenu.classList.contains('is-open')) {
-        filterMenu.classList.remove('is-open');
-        document.body.style.overflow = '';
-      }
     });
   }
 
-  // Inicialización
   updateFiltersAppliedInfo();
   updateClearButtonVisibility();
 }
