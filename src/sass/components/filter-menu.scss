@@ -69,7 +69,7 @@
         @include font-styles($font-weight: 700, $font-size: rem(16px), $color: $text);
     }
 
-    .filter-menu__body__select1 {
+    .filter-menu__body__policy-input {
         @include menu-filter-field();
         @include font-styles($font-weight: 400, $font-size: rem(16px), $color: $grey50);
         appearance: none;
@@ -181,7 +181,8 @@
     }
 
     .filter-menu__body__error-name-risk,
-    .filter-menu__body__error-date {
+    .filter-menu__body__error-date,
+    .filter-menu__body__error-import {
         @include font-styles($font-weight: 400, $font-size: rem(14px), $color: $error);
     }
 

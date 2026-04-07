@@ -18,7 +18,7 @@ const path = {
   pug: ['src/pug/*.pug'],
   sass: 'src/sass/main.scss',
   images: ['src/images/**/*.*'],
-  js: ['src/javascript/custom/[^_]*.js'],
+  js: ['src/javascript/custom/filter-menu-fields/[^_]*.js', 'src/javascript/custom/[^_]*.js'],
   jsLibs: ['src/javascript/libs/[^_]*.js'],
   jsPrimaryLibs: ['src/javascript/primaryLibs/[^_]*.js'],
   minifyedLibs: ['src/javascript/minifyedLibs/[^_]*.js'],

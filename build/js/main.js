@@ -10702,13 +10702,180 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
-function filterMenuManager(renderPage, applyCurrentOrder) {
-  const inputNameRisk = document.querySelector('.filter-menu__body__input1');
-  const inputStartDate = document.querySelector('.filter-menu__body__input2');
-  const inputEndDate = document.querySelector('.filter-menu__body__input3');
-  const errorRisk = document.querySelector('.filter-menu__body__error-name-risk');
-  const errorDate = document.querySelector('.filter-menu__body__error-date');
+function datesInputsManager(filtersList, parseDate) {
+	const inputStartDate = document.querySelector('.filter-menu__body__input2');
+	const inputEndDate = document.querySelector('.filter-menu__body__input3');
+	const errorDate = document.querySelector('.filter-menu__body__error-date');
 
+	if (!inputStartDate || !inputEndDate || !errorDate) return;
+
+	function clearDateError() {
+		errorDate.textContent = '';
+	}
+
+	function isValidDateFormat(dateValue) {
+		const correctFormat = /^\d{2}\/\d{2}\/\d{4}$/;
+		return correctFormat.test(dateValue.trim());
+	}
+
+	function dateRangeFilter() {
+		const startDateValue = inputStartDate.value.trim();
+		const endDateValue = inputEndDate.value.trim();
+
+		if (!startDateValue && !endDateValue) {
+			return;
+		}
+		if (!startDateValue) {
+			errorDate.textContent = 'Falta la fecha de inicio.';
+			return;
+		}
+		if (!endDateValue) {
+			errorDate.textContent = 'Falta la fecha final.';
+			return;
+		}
+		if (!isValidDateFormat(startDateValue) || !isValidDateFormat(endDateValue)) {
+			errorDate.textContent = 'Formato correcto: dd/mm/yyyy';
+			return;
+		}
+
+		const startDateParsed = parseDate(startDateValue);
+		const endDateParsed = parseDate(endDateValue);
+		if (endDateParsed < startDateParsed) {
+			errorDate.textContent = 'La fecha final debe ser posterior a la inicial.';
+			return;
+		}
+
+		filtersList.set(`date:${startDateValue}-${endDateValue}`, {
+			type: 'date',
+			label: `${startDateValue} - ${endDateValue}`,
+			startDateParsed,
+			endDateParsed
+		});
+
+		inputStartDate.value = '';
+		inputEndDate.value = '';
+		return true;
+	}
+
+	inputStartDate.addEventListener('input', clearDateError);
+	inputEndDate.addEventListener('input', clearDateError);
+
+	return { dateRangeFilter };
+}
+
+function importInputManager(filtersList) {
+	const inputImport = document.querySelector('.filter-menu__body__input4');
+	const errorImport = document.querySelector('.filter-menu__body__error-import');
+
+	if (!inputImport || !errorImport) return;
+
+	function parseImport(importStr) {
+		const importSearched = String(importStr || '')
+			.replace(/[€\s]/g, '') // Elimina € y espacios
+			.trim();
+		
+		if (importSearched.includes(',')) {
+			// "1.234,56 €" -> "1234.56"
+			return Number(importSearched.replace(/\./g, '').replace(',', '.'));
+		} else {
+			// "817.10" -> mantener como está
+			return Number(importSearched);
+		}
+	}
+
+	function importFilter() {
+		const importValue = inputImport.value.trim();
+		if (!importValue) {
+			errorImport.textContent = '';
+			return;
+		}
+
+		const normalizedImport = parseImport(importValue);
+		const coincidence = allRenovationsData.originalData.some(renovation => {
+			const renovationImport = parseImport(renovation['Importe']);
+			return renovationImport && Math.abs(renovationImport - normalizedImport) < 0.005;
+		});
+
+		if (!coincidence) {
+			errorImport.textContent = 'No hay renovaciones con ese importe.';
+			return;
+		}
+
+		filtersList.set(`import:${normalizedImport}`, {
+			type: 'import',
+			label: `Importe: ${importValue}`,
+			value: normalizedImport
+		});
+
+		inputImport.value = '';
+		errorImport.textContent = '';
+		return true;
+	}
+
+	inputImport.addEventListener('input', () => errorImport.textContent = '');
+	return { importFilter };
+}
+function nameInputManager(filtersList) {
+  const inputNameRisk = document.querySelector('.filter-menu__body__input1');
+  const errorRisk = document.querySelector('.filter-menu__body__error-name-risk');
+
+  if (!inputNameRisk || !errorRisk) return;
+
+  function nameRiskFilter() {
+    const riskSearched = inputNameRisk.value.trim();
+    if (!riskSearched) {
+      errorRisk.textContent = '';
+      return;
+    }
+
+    const riskSearchedLower = riskSearched.toLowerCase();
+    const coincidence = allRenovationsData.originalData.some(renovation =>      // .some devuelve true si al menos un elemento del array coincide.
+      (renovation['Nombre del riesgo'] || '').toLowerCase() === riskSearchedLower
+    );
+
+    if (!coincidence) {
+      errorRisk.textContent = 'No hay pólizas con ese nombre.';
+      return;
+    }
+
+    filtersList.set(`risk:${riskSearchedLower}`, {
+      type: 'risk',
+      label: riskSearched,
+      value: riskSearchedLower
+    });
+    inputNameRisk.value = '';
+    errorRisk.textContent = '';
+    return true;
+  }
+
+  inputNameRisk.addEventListener('input', () => errorRisk.textContent = '');
+  return { nameRiskFilter };
+}
+
+function stateInputManager(filtersList) {
+  const inputState = document.querySelector('.filter-menu__body__select2');
+
+  if (!inputState) return;
+
+  function policyStateFilter() {
+    const selectedState = inputState.value.trim();
+    if (!selectedState) return false;
+
+    const selectedStateLower = selectedState.toLowerCase();
+
+    filtersList.set(`state:${selectedStateLower}`, {
+      type: 'state',
+      label: selectedState,
+      value: selectedStateLower
+    });
+
+    inputState.value = '';
+    return true;
+  }
+
+  return { policyStateFilter };
+}
+function filterMenuManager(renderPage, applyCurrentOrder) {
   const btnApply = document.querySelector('.filter-menu__bottom__apply');
   const filterMenu = document.querySelector('.filter-menu');
   const filtersAppliedContainer = document.querySelector('.apply-filters');
@@ -10717,11 +10884,47 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
   const totalFiltersApplied = document.querySelector('.renovations-filter__all-policies__text-filters');
   const separation = document.querySelector('.renovations-filter__all-policies .separation');
 
-  if (!inputNameRisk || !inputStartDate || !btnApply) return;
+  const LOCAL_STORAGE_FILTERS = 'renovations_filters';
 
-  const filtersList = new Map();   
+  if (!btnApply) return;
 
+  // --- Local Storage ---
+  function saveFiltersToStorage() {
+    const filtersReadyToSave = [...filtersList.entries()].map(([key, filter]) => {                //. entries devuelve un array con los datos de los elementos del Map ([key, filter])
+      const filterInput = { ...filter };
+      // Las fechas parseadas no se guardan bien, por eso mejor a ISOstring
+      if (filterInput.startDateParsed) filterInput.startDateParsed = filterInput.startDateParsed.toISOString();
+      if (filterInput.endDateParsed) filterInput.endDateParsed = filterInput.endDateParsed.toISOString();
+      return [key, filterInput];
+    });
+    localStorage.setItem(LOCAL_STORAGE_FILTERS, JSON.stringify(filtersReadyToSave));
+  }
+
+  function loadFiltersFromStorage() {
+    try {
+      const savedFiltersList = localStorage.getItem(LOCAL_STORAGE_FILTERS);
+      if (!savedFiltersList) return;
+      const filtersParsed = JSON.parse(savedFiltersList);
+      filtersParsed.forEach(([key, filterInput]) => {
+        // Parsear los Date a su formato original
+        if (filterInput.startDateParsed) filterInput.startDateParsed = new Date(filterInput.startDateParsed);
+        if (filterInput.endDateParsed) filterInput.endDateParsed = new Date(filterInput.endDateParsed);
+        filtersList.set(key, filterInput);
+      });
+    } catch {
+      localStorage.removeItem(LOCAL_STORAGE_FILTERS); 
+    }
+  }
+
+
+  const filtersList = new Map();
+  loadFiltersFromStorage(); 
+  const nameInput = nameInputManager(filtersList);
+  const datesInputs = datesInputsManager(filtersList, parseDate);
+  const importInput = importInputManager(filtersList);
+  const stateInput = stateInputManager(filtersList);
   
+
   function closeFilterMenu() {
     if (filterMenu) {
       filterMenu.classList.remove('is-open');
@@ -10743,7 +10946,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
     }
   }
 
-  function updateClearButtonVisibility() {
+  function clearButton() {
     const totalFilters = filtersList.size;
     const showing = totalFilters > 0;
     if (separation) separation.style.display = showing ? 'inline' : 'none';
@@ -10757,25 +10960,41 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
 
     const riskNames = [];
     const dateRanges = [];
+    const importValues = [];
+    const policyStates = [];
 
     filtersList.forEach(filter => {
       if (filter.type === 'risk') riskNames.push(filter.value);
       if (filter.type === 'date') dateRanges.push(filter);
+      if (filter.type === 'import') importValues.push(filter.value);
+      if (filter.type === 'state') policyStates.push(filter.value);
     });
 
     const filteredData = allRenovationsData.originalData.filter(renovation => {
+      // - Nombre -
       const riskName = (renovation['Nombre del riesgo'] || '').toLowerCase();
       const matchesRiskNames = riskNames.length === 0 || riskNames.includes(riskName);
 
+      // - Fecha de vencimiento -
       const maturityDate = renovation['Fecha de vencimiento'] || '';
       const matchesMaturityDate =
         dateRanges.length === 0 ||
-        dateRanges.some(range => {         // Ver si la fecha cae en alguno de los rangos aplicados.
+        dateRanges.some(range => {                      // .some devuelve true si al menos una fecha coincide.
           const maturity = parseDate(maturityDate);
           return maturity >= range.startDateParsed && maturity <= range.endDateParsed;
         });
 
-      return matchesRiskNames && matchesMaturityDate;
+      // - Importe -
+      const renovationImport = parseImport(renovation.Importe);
+      const matchesImport =
+        importValues.length === 0 ||
+        importValues.some(value => Math.abs(renovationImport - value) < 0.005);     // 0.005 para evitar problemas de redondeo con los decimales
+
+      // - Estado de póliza -
+      const policyState = (renovation['Estado de póliza'] || '').toLowerCase();
+      const matchesPolicyStates = policyStates.length === 0 || policyStates.includes(policyState);
+
+      return matchesRiskNames && matchesMaturityDate && matchesPolicyStates && matchesImport;
     });
 
     return filteredData;
@@ -10789,8 +11008,16 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
     updateTotalRenovations(renovationsResult);
 
     renderPage(1);
+
+    if (renovationsResult === 0) {
+      const emptyRenovationsList = document.querySelector('.renovations-json-list');
+      if (emptyRenovationsList) {
+        emptyRenovationsList.innerHTML = '<p class="no-results">No hay coincidencias</p>';
+      }
+    }
+
     updateFiltersAppliedInfo();
-    updateClearButtonVisibility();
+    clearButton();
   }
 
   function renderFilters() {
@@ -10808,6 +11035,7 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
       const closeIcon = filterCard.querySelector('.icon.close');
       closeIcon.addEventListener('click', () => {
         filtersList.delete(idCard);
+        saveFiltersToStorage();    
         renderFilters();
         applyActiveFilters();
       });
@@ -10816,104 +11044,61 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
     });
   }
 
-
   
   btnApply.addEventListener('click', function () {
     let anyFilterAdded = false;
 
-    // --- Filtro por nombre de riesgo ---
-    const riskSearched = inputNameRisk.value.trim();
-    if (riskSearched) {
-      const riskSearchedLower = riskSearched.toLowerCase();
-      const coincidence = allRenovationsData.originalData.some(renovation =>
-        (renovation['Nombre del riesgo'] || '').toLowerCase() === riskSearchedLower
-      );
-
-      if (!coincidence) {
-        errorRisk.textContent = 'No hay pólizas con ese nombre.';
-      } else {
-        filtersList.set(`risk:${riskSearchedLower}`, {
-          type: 'risk',
-          label: riskSearched,
-          value: riskSearchedLower
-        });
-        inputNameRisk.value = '';
-        errorRisk.textContent = '';
-        anyFilterAdded = true;
-      }
-    }
-
-
-    // --- Filtro por rango de fechas ---
-    function isValidDateFormat(dateValue) {
-      if (!dateValue || dateValue.trim() === '') return false;
-      
-      const correctFormatDate = /^\d{2}\/\d{2}\/\d{4}$/;
-      const dateValueCleaned = dateValue.trim();
-      const isValid = correctFormatDate.test(dateValueCleaned);
-      
-      return isValid;
-    }
-
-    const startDateValue = inputStartDate.value.trim();
-    const endDateValue = inputEndDate.value.trim();
-
-    if (!isValidDateFormat(startDateValue) || !isValidDateFormat(endDateValue)) {
-      errorDate.textContent = 'Formato correcto: 00/00/0000';
-    } else {
-      const startDateParsed = parseDate(startDateValue);
-      const endDateParsed = parseDate(endDateValue);
-
-      if (endDateParsed < startDateParsed) {
-        errorDate.textContent = 'La fecha final debe ser posterior a la inicial.';
-      } else {
-        filtersList.set(`date:${startDateValue}-${endDateValue}`, {
-          type: 'date',
-          label: `${startDateValue} - ${endDateValue}`,
-          startDateParsed,
-          endDateParsed
-        });
-        inputStartDate.value = '';
-        inputEndDate.value = '';
-        errorDate.textContent = '';
-        anyFilterAdded = true;
-      }
-    }
-    
+    if (nameInput.nameRiskFilter()) anyFilterAdded = true;
+    if (datesInputs.dateRangeFilter()) anyFilterAdded = true;
+    if (importInput.importFilter()) anyFilterAdded = true;
+    if (stateInput.policyStateFilter()) anyFilterAdded = true;
 
     if (anyFilterAdded) {
+      saveFiltersToStorage(); 
       renderFilters();
       applyActiveFilters();
       closeFilterMenu();
     }
   });
 
+
+  // --- Parseo de fechas e importes ---
   function parseDate(dateEntry) {
-    const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateEntry);
-    if (!match) return null;
-    const day = Number(match[1]);
-    const month = Number(match[2]);
-    const year = Number(match[3]);
+    const dateParts = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateEntry);        // .exec devuelve un array con el valor de cada posición de los numeros de la fecha. 
+    if (!dateParts) return null;
+    const day = Number(dateParts[1]);
+    const month = Number(dateParts[2]);
+    const year = Number(dateParts[3]);
     const date = new Date(year, month - 1, day);
 
     const isValidDate = date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
-    if (!isValidDate) return;
+    if (!isValidDate) return null;
 
     return date;
+  }
+
+  function parseImport(importEntry) {
+    const importNormalized = String(importEntry || '')
+      .replace(/\./g, '')
+      .replace(',', '.')
+      .replace(/[^0-9.-]/g, '');
+
+    const importParsed = Number(importNormalized);
+    return Number.isNaN(importParsed) ? 0 : importParsed;
   }
 
 
   if (btnClearAllFilters) {
     btnClearAllFilters.addEventListener('click', () => {
       filtersList.clear();
-      
+      saveFiltersToStorage(); 
       renderFilters();
       applyActiveFilters();
     });
   }
 
-  updateFiltersAppliedInfo();
-  updateClearButtonVisibility();
+  renderFilters();
+  applyActiveFilters();
 }
 function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');

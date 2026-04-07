@@ -65,12 +65,10 @@
                     <form>
                       <div class="filter-menu__body__sec1">
                         <div class="filter-menu__body__title1">No. de póliza</div>
-                        <select class="filter-menu__body__select1">
-                          <option>Todas las pólizas</option>
-                          <option>Opción 2</option>
-                          <option>Opción 3</option>
-                          <option>Opción 4</option>
-                        </select><span class="icon chev-down-policy filter-menu__body__chevDown1"></span>
+                        <div class="filter-menu__body__custom-select">
+                          <input class="filter-menu__body__policy-input" type="text" placeholder="Todas las pólizas">
+                          <div class="filter-menu__body__policy-dropdown"></div><span class="icon chev-down-policy filter-menu__body__chevDown1"></span>
+                        </div>
                       </div>
                       <div class="filter-menu__body__sec2">
                         <div class="filter-menu__body__title2">Nombre del riesgo</div>
@@ -89,15 +87,15 @@
                       </div>
                       <div class="filter-menu__body__sec4">
                         <div class="filter-menu__body__title4">Importe</div>
-                        <input class="filter-menu__body__input4" type="number" placeholder="Introduzca importe">
+                        <input class="filter-menu__body__input4" type="number" placeholder="Introduzca importe"><span class="filter-menu__body__error-import"></span>
                       </div>
                       <div class="filter-menu__body__sec5">
                         <div class="filter-menu__body__title5">Estado</div>
                         <select class="filter-menu__body__select2">
-                          <option>Todos los estados</option>
-                          <option>Opción 2</option>
-                          <option>Opción 3</option>
-                          <option>Opción 4</option>
+                          <option value="" selected hidden>Todos los estados</option>
+                          <option>Pagado</option>
+                          <option>Pendiente</option>
+                          <option>Vencido</option>
                         </select><span class="icon chev-down-status filter-menu__body__chevDown2"></span>
                       </div>
                     </form>
@@ -110,7 +108,7 @@
                 <div class="apply-filters"></div>
               </div>
               <div class="renovations-filter-bottom">
-                <div class="renovations-filter__all-policies"> <span class="renovations-filter__all-policies__text-results">770 pólizas</span><span class="separation">|</span><span class="renovations-filter__all-policies__text-filters">3 filtros aplicados </span>
+                <div class="renovations-filter__all-policies"> <span class="renovations-filter__all-policies__text-results">770 pólizas</span><span class="separation">|</span><span class="renovations-filter__all-policies__text-filters"></span>
                   <button class="renovations-filter__all-policies__clear-filters">Borrar filtros</button>
                 </div>
                 <div class="renovations-filter__list"><span class="renovations-filter__list__order-by">Ordenar por :</span>
@@ -136,7 +134,6 @@
                 <h2>Importe</h2>
                 <h2>Estado de póliza</h2>
               </div>
-              <!-- --- DONDE SE PINTARAN LAS RENOVACIONES DEL JSON ----->
               <div class="renovations-json-list">
                 <script src="/js/showRenovations.js"></script>
               </div>

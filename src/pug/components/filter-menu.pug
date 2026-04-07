@@ -7,12 +7,13 @@
         form
             .filter-menu__body__sec1
                 .filter-menu__body__title1 No. de póliza
-                select.filter-menu__body__select1
-                    option Todas las pólizas
-                    option Opción 2
-                    option Opción 3
-                    option Opción 4
-                span.icon.chev-down-policy.filter-menu__body__chevDown1
+                .filter-menu__body__custom-select
+                    input.filter-menu__body__policy-input(
+                        type="text"
+                        placeholder="Todas las pólizas"
+                    )
+                    .filter-menu__body__policy-dropdown
+                    span.icon.chev-down-policy.filter-menu__body__chevDown1
             .filter-menu__body__sec2
                 .filter-menu__body__title2 Nombre del riesgo
                 input.filter-menu__body__input1(
@@ -45,13 +46,14 @@
                     type="number"
                     placeholder="Introduzca importe"
                 )
+                span.filter-menu__body__error-import
             .filter-menu__body__sec5
                 .filter-menu__body__title5 Estado
                 select.filter-menu__body__select2
-                    option Todos los estados
-                    option Opción 2
-                    option Opción 3
-                    option Opción 4
+                    option(value="" selected hidden) Todos los estados
+                    option Pagado
+                    option Pendiente
+                    option Vencido
                 span.icon.chev-down-status.filter-menu__body__chevDown2
 
     .filter-menu__bottom 

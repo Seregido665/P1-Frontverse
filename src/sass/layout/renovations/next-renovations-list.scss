@@ -21,6 +21,13 @@
             display: none;
         }
     }
+
+    .no-results {
+        width: 100%;
+        text-align: center;
+        margin-top: rem(52px);
+        @include font-styles($font-weight: 700, $font-size: rem(28px), $color: $text);
+    }
 }
 
 
