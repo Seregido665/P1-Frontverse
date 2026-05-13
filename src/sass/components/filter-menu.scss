@@ -12,6 +12,8 @@
     height: 100%;
     background-color: $light;
     box-shadow: 0 0 0 100vmax $box-shadow3;
+    display: flex;
+    flex-direction: column;
 
     //--> Slide
     transform: translateX(-100%);
@@ -69,7 +71,9 @@
     }
 
     .filter-menu__body {
-        padding: rem(32px) rem(40px) rem(415px) rem(40px);
+        flex: 1;
+        overflow-y: auto;
+        padding: rem(32px) rem(40px);
     }
     
 
@@ -222,16 +226,12 @@
     }
 
     .filter-menu__bottom {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
         display: flex;
         justify-content: space-between;
         padding: rem(20px) rem(40px);
         border-top: 1px solid $border-bottom-renovations-header;
         background: $light;
-        z-index: 10000;
+        flex-shrink: 0;
     }
 
     .filter-menu__bottom__clear {
