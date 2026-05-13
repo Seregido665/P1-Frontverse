@@ -146,6 +146,11 @@ gulp.task('deployJS', gulp.series('buildJS', function ensureJsFolder(cb) {
   return Promise.resolve();
 }));
 
+gulp.task('copyJSON', () =>
+  gulp.src('src/*.json')
+    .pipe(gulp.dest(path.build))
+);
+
 gulp.task('build', gulp.series(
   'buildPUG',
   'buildCSS',
@@ -155,6 +160,7 @@ gulp.task('build', gulp.series(
   'buildLocale',
   'buildLocaleComponents',
   'copyMinifyedLibs',
+  'copyJSON',
 ));
 
 gulp.task('deploy', gulp.series(
