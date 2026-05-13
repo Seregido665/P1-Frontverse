@@ -29,6 +29,21 @@
         bottom: 0;
         width: 100%;
         height: 100%;
+        .filter-menu__body__date-range {
+            flex-direction: column;
+            gap: rem(8px);
+        }
+        .filter-menu__body__date-field {
+            width: 80%;
+            display: block;
+        }
+        .filter-menu__body__input2,
+        .filter-menu__body__input3 {
+            width: 100%;
+        }
+        .separation {
+            display: none;
+        }
     }
 
     .filter-menu__header {
