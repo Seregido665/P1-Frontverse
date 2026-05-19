@@ -118,7 +118,7 @@ public class RenovationService {
 
         List<Renovation> pageData = (start < total) ? data.subList(start, end) : List.of();
 
-        return new PagedResponse<>(pageData, currentPage, totalPages, total, size, allRenovations.size());
+        return new PagedResponse(pageData, currentPage, totalPages, total, size, allRenovations.size());
     }
 
 
