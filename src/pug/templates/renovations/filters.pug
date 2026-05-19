@@ -1,22 +1,22 @@
-.renovations-filter 
-	.renovations-filter-top 
-		button.renovations-filter__all-filters 
+.renovations-filter
+	.renovations-filter-top
+		button.renovations-filter__all-filters
 			span.icon.filter.renovations-filter__all-filters__icon
-			span.renovations-filter__all-filters__text Filtros
+			span.renovations-filter__all-filters__text(data-i18n="filters.titulo") Filtros
 		include ../../components/filter-menu
 		include ../../components/filters-aplied
 	.renovations-filter-bottom
-		.renovations-filter__all-policies 
+		.renovations-filter__all-policies
 			span.renovations-filter__all-policies__text-results 770 pólizas
 			span.separation |
 			span.renovations-filter__all-policies__text-filters
-			button.renovations-filter__all-policies__clear-filters Borrar filtros
+			button.renovations-filter__all-policies__clear-filters(data-i18n="filters.borrar") Borrar filtros
 		.renovations-filter__list
-			span.renovations-filter__list__order-by Ordenar por :
+			span.renovations-filter__list__order-by(data-i18n="filters.ordenar") Ordenar por :
 			.renovations-filter__list__type-filter
 				select.renovations-filter__list__select
-					option Mayor importe
-					option Menor importe
-					option Más recientes
-					option Menos recientes
+					option(value="Mayor importe" data-i18n="filters.mayor_importe") Mayor importe
+					option(value="Menor importe" data-i18n="filters.menor_importe") Menor importe
+					option(value="Más recientes" data-i18n="filters.mas_recientes") Más recientes
+					option(value="Menos recientes" data-i18n="filters.menos_recientes") Menos recientes
 				span.icon.chev-down.renovations-filter__list__type-filter__icon

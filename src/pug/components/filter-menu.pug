@@ -1,64 +1,68 @@
-.filter-menu 
+.filter-menu
     .filter-menu__header
-        span.filter-menu__header__title Filtros 
+        span.filter-menu__header__title(data-i18n="filter_menu.titulo") Filtros
         button.icon.close.filter-menu__header__icon
-        
-    .filter-menu__body   
+
+    .filter-menu__body
         form
             .filter-menu__body__sec1
-                .filter-menu__body__title1 No. de póliza
+                .filter-menu__body__title1(data-i18n="filter_menu.num_poliza") No. de póliza
                 .filter-menu__body__custom-select
                     input.filter-menu__body__policy-input(
                         type="text"
                         placeholder="Todas las pólizas"
+                        data-i18n="[placeholder]filter_menu.placeholder_poliza"
                     )
                     .filter-menu__body__policy-dropdown
                     span.icon.chev-down-policy.filter-menu__body__chevDown1
+
             .filter-menu__body__sec2
-                .filter-menu__body__title2 Nombre del riesgo
+                .filter-menu__body__title2(data-i18n="filter_menu.nombre_riesgo") Nombre del riesgo
                 input.filter-menu__body__input1(
                     type="text"
                     placeholder="Introduce el nombre del riesgo"
+                    data-i18n="[placeholder]filter_menu.placeholder_riesgo"
                 )
                 span.filter-menu__body__error-name-risk
 
             .filter-menu__body__sec3
-                .filter-menu__body__title3 Fecha de validez
+                .filter-menu__body__title3(data-i18n="filter_menu.fecha_validez") Fecha de validez
                 .filter-menu__body__date-range
                     .filter-menu__body__date-field
                         input.filter-menu__body__input2(
                             type="text"
                             placeholder="Fecha inicio"
+                            data-i18n="[placeholder]filter_menu.fecha_inicio"
                         )
                         span.icon.calendar
-                    span.separation al
+                    span.separation(data-i18n="filter_menu.al") al
                     .filter-menu__body__date-field
                         input.filter-menu__body__input3(
                             type="text"
                             placeholder="Fecha fin"
+                            data-i18n="[placeholder]filter_menu.fecha_fin"
                         )
                         span.icon.calendar
                 span.filter-menu__body__error-date
 
             .filter-menu__body__sec4
-                .filter-menu__body__title4 Importe
+                .filter-menu__body__title4(data-i18n="filter_menu.importe") Importe
                 input.filter-menu__body__input4(
                     type="number"
                     placeholder="Introduzca importe"
+                    data-i18n="[placeholder]filter_menu.placeholder_importe"
                 )
                 span.filter-menu__body__error-import
+
             .filter-menu__body__sec5
-                .filter-menu__body__title5 Estado
+                .filter-menu__body__title5(data-i18n="filter_menu.estado") Estado
                 select.filter-menu__body__select2
-                    option(value="" selected hidden) Todos los estados
-                    option Pagado
-                    option Pendiente
-                    option Vencido
+                    option(value="" selected hidden data-i18n="filter_menu.todos_estados") Todos los estados
+                    option(value="Pagado" data-i18n="filter_menu.pagado") Pagado
+                    option(value="Pendiente" data-i18n="filter_menu.pendiente") Pendiente
+                    option(value="Vencido" data-i18n="filter_menu.vencido") Vencido
                 span.icon.chev-down-status.filter-menu__body__chevDown2
 
-    .filter-menu__bottom 
-        button.filter-menu__bottom__clear Borrar filtros
-        button.filter-menu__bottom__apply Aplicar filtros
-
-
-    
+    .filter-menu__bottom
+        button.filter-menu__bottom__clear(data-i18n="filter_menu.borrar") Borrar filtros
+        button.filter-menu__bottom__apply(data-i18n="filter_menu.aplicar") Aplicar filtros

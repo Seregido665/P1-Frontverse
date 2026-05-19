@@ -8,11 +8,11 @@ mixin renovation-card-desktop(policy, risk, dateContrat, dateMaturity, price, st
         .state-cell
             .renovation-card-desktop__state= stateHeader
                 block
-                
-mixin state-policy(icon, text)
+
+mixin state-policy(icon, text, i18nKey)
     .state
         span.state__icon.icon(class=icon)
-        span.state__text= text
+        span.state__text(data-i18n=i18nKey)= text
 
 mixin last-policy(emision, period, price, state)
     .last-policy

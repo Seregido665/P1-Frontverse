@@ -1,0 +1,79 @@
+{
+  "_comment": "Arxiu de traduccions en Català (ca). S'utilitza quan l'usuari selecciona 'Catalán' al menú d'idiomes.",
+
+  "nav": {
+    "inicio": "Inici",
+    "renovaciones": "Pròximes renovacions"
+  },
+
+  "home": {
+    "titulo": "Benvingut a la teva àrea personal",
+    "descripcion": "Gràcies a tu, més persones poden gaudir d'una vida més segura."
+  },
+
+  "tabla": {
+    "poliza": "Núm. de pòlissa",
+    "riesgo": "Nom del risc",
+    "contrato": "Data de contracte",
+    "vencimiento": "Data de venciment",
+    "importe": "Import",
+    "estado": "Estat de la pòlissa"
+  },
+
+  "states": {
+    "pagado": "Pagat",
+    "pendiente": "Pendent",
+    "vencido": "Vençut"
+  },
+
+  "footer": {
+    "ayuda": "Necessiteu ajuda?",
+    "cookies": "Política de cookies",
+    "aviso": "Avís legal",
+    "privacidad": "Política de privacitat",
+    "copyright": "© 2022 SecuraInsurance"
+  },
+
+  "renovations": {
+    "polizas": "Pòlisses",
+    "proximas": "Pròximes renovacions",
+    "polizas_label": "Pòlisses"
+  },
+
+  "filters": {
+    "titulo": "Filtres",
+    "borrar": "Esborrar filtres",
+    "ordenar": "Ordenar per:",
+    "mayor_importe": "Import major",
+    "menor_importe": "Import menor",
+    "mas_recientes": "Més recents",
+    "menos_recientes": "Menys recents",
+    "polizas_label": "pòlisses"
+  },
+
+  "filter_menu": {
+    "titulo": "Filtres",
+    "num_poliza": "Núm. de pòlissa",
+    "placeholder_poliza": "Totes les pòlisses",
+    "nombre_riesgo": "Nom del risc",
+    "placeholder_riesgo": "Introdueix el nom del risc",
+    "fecha_validez": "Data de validesa",
+    "fecha_inicio": "Data d'inici",
+    "al": "fins",
+    "fecha_fin": "Data de fi",
+    "importe": "Import",
+    "placeholder_importe": "Introduïu l'import",
+    "estado": "Estat",
+    "todos_estados": "Tots els estats",
+    "pagado": "Pagat",
+    "pendiente": "Pendent",
+    "vencido": "Vençut",
+    "borrar": "Esborrar filtres",
+    "aplicar": "Aplicar filtres"
+  },
+
+  "pagination": {
+    "filas": "Files per pàgina:",
+    "pagina": "Pàgina"
+  }
+}

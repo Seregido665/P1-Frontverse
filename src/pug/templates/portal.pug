@@ -26,4 +26,7 @@ html(lang="es")
 		footer(id="footer" class="footer")
 			include footer.pug
 
+		//- i18next CDN: debe ir antes que main.js, que ya incluye i18n.js en el bundle
+		script(src="https://unpkg.com/i18next@23/i18next.min.js")
+		//- main.js contiene i18n.js; se inicializa al dispararse DOMContentLoaded al final del body
 		script(src="js/main.js")

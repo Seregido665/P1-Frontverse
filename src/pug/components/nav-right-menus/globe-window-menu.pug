@@ -1,8 +1,9 @@
 include ./_buttons-menu-globe
 
+//- data-lang identifica el código ISO de cada opción; i18n.js lo usa al hacer clic y para marcar el idioma activo al cargar
 .globe-menu-window
-    +button-menu-globe('Español', 'globe-menu-window__option-top')
-    +button-menu-globe('English', '')
-    +button-menu-globe('Catalán', '')
-    +button-menu-globe('Gallego', '')
-    +button-menu-globe('Euskera', 'globe-menu-window__option-bottom')
+    +button-menu-globe('Español', 'globe-menu-window__option-top', 'es')
+    +button-menu-globe('English', '', 'en')
+    +button-menu-globe('Catalán', '', 'ca')
+    +button-menu-globe('Gallego', '', 'gl')
+    +button-menu-globe('Euskera', 'globe-menu-window__option-bottom', 'eu')

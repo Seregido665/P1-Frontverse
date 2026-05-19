@@ -151,6 +151,12 @@ gulp.task('copyJSON', () =>
     .pipe(gulp.dest(path.build))
 );
 
+// Copia los JSON de traducción a build/locales/ para que fetch('locales/lang.json') funcione en producción
+gulp.task('copyLocales', () =>
+  gulp.src('src/locales/*.json')
+    .pipe(gulp.dest('build/locales'))
+);
+
 gulp.task('build', gulp.series(
   'buildPUG',
   'buildCSS',
@@ -161,6 +167,7 @@ gulp.task('build', gulp.series(
   'buildLocaleComponents',
   'copyMinifyedLibs',
   'copyJSON',
+  'copyLocales',
 ));
 
 gulp.task('deploy', gulp.series(
@@ -170,6 +177,7 @@ gulp.task('deploy', gulp.series(
   'deployJS',
   'deployIMAGES',
   'copyMinifyedLibs',
+  'copyLocales',
   function startServer(cb) {
     browserSync.init({
       server: {
@@ -192,6 +200,7 @@ gulp.task('watch', () => {
   gulp.watch('src/pug/components/**/*.js', gulp.series('deployJS'));
   gulp.watch('build/*.html').on('change', browserSync.reload);
   gulp.watch('build/css/**/*.css').on('change', browserSync.reload);
+  gulp.watch('src/locales/*.json', gulp.series('copyLocales'));
   gulp.watch('build/js/*.js').on('change', browserSync.reload);
 });
 

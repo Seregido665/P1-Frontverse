@@ -1,0 +1,79 @@
+{
+  "_comment": "Archivo de traducciones en Español (es). Idioma por defecto de la aplicación Secura Insurance.",
+
+  "nav": {
+    "inicio": "Inicio",
+    "renovaciones": "Próximas renovaciones"
+  },
+
+  "home": {
+    "titulo": "Bienvenido a tu área personal",
+    "descripcion": "Gracias a ti más personas pueden disfrutar de una vida más segura."
+  },
+
+  "tabla": {
+    "poliza": "No. de póliza",
+    "riesgo": "Nombre del riesgo",
+    "contrato": "Fecha de contrato",
+    "vencimiento": "Fecha de vencimiento",
+    "importe": "Importe",
+    "estado": "Estado de póliza"
+  },
+
+  "states": {
+    "pagado": "Pagado",
+    "pendiente": "Pendiente",
+    "vencido": "Vencido"
+  },
+
+  "footer": {
+    "ayuda": "¿Necesitás ayuda?",
+    "cookies": "Política de cookies",
+    "aviso": "Aviso legal",
+    "privacidad": "Política de privacidad",
+    "copyright": "© 2022 SecuraInsurance"
+  },
+
+  "renovations": {
+    "polizas": "Pólizas",
+    "proximas": "Próximas renovaciones",
+    "polizas_label": "Pólizas"
+  },
+
+  "filters": {
+    "titulo": "Filtros",
+    "borrar": "Borrar filtros",
+    "ordenar": "Ordenar por :",
+    "mayor_importe": "Mayor importe",
+    "menor_importe": "Menor importe",
+    "mas_recientes": "Más recientes",
+    "menos_recientes": "Menos recientes",
+    "polizas_label": "pólizas"
+  },
+
+  "filter_menu": {
+    "titulo": "Filtros",
+    "num_poliza": "No. de póliza",
+    "placeholder_poliza": "Todas las pólizas",
+    "nombre_riesgo": "Nombre del riesgo",
+    "placeholder_riesgo": "Introduce el nombre del riesgo",
+    "fecha_validez": "Fecha de validez",
+    "fecha_inicio": "Fecha inicio",
+    "al": "al",
+    "fecha_fin": "Fecha fin",
+    "importe": "Importe",
+    "placeholder_importe": "Introduzca importe",
+    "estado": "Estado",
+    "todos_estados": "Todos los estados",
+    "pagado": "Pagado",
+    "pendiente": "Pendiente",
+    "vencido": "Vencido",
+    "borrar": "Borrar filtros",
+    "aplicar": "Aplicar filtros"
+  },
+
+  "pagination": {
+    "filas": "Filas por página:",
+    "pagina": "Página"
+  }
+}

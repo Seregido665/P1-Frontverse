@@ -1,0 +1,79 @@
+{
+  "_comment": "Ficheiro de traducións en Galego (gl). Úsase cando o usuario selecciona 'Gallego' no menú de idiomas.",
+
+  "nav": {
+    "inicio": "Inicio",
+    "renovaciones": "Próximas renovacións"
+  },
+
+  "home": {
+    "titulo": "Benvido á túa área persoal",
+    "descripcion": "Grazas a ti, máis persoas poden gozar dunha vida máis segura."
+  },
+
+  "tabla": {
+    "poliza": "Núm. de póliza",
+    "riesgo": "Nome do risco",
+    "contrato": "Data de contrato",
+    "vencimiento": "Data de vencemento",
+    "importe": "Importe",
+    "estado": "Estado da póliza"
+  },
+
+  "states": {
+    "pagado": "Pagado",
+    "pendiente": "Pendente",
+    "vencido": "Vencido"
+  },
+
+  "footer": {
+    "ayuda": "Precisas axuda?",
+    "cookies": "Política de cookies",
+    "aviso": "Aviso legal",
+    "privacidad": "Política de privacidade",
+    "copyright": "© 2022 SecuraInsurance"
+  },
+
+  "renovations": {
+    "polizas": "Pólizas",
+    "proximas": "Próximas renovacións",
+    "polizas_label": "Pólizas"
+  },
+
+  "filters": {
+    "titulo": "Filtros",
+    "borrar": "Borrar filtros",
+    "ordenar": "Ordenar por:",
+    "mayor_importe": "Maior importe",
+    "menor_importe": "Menor importe",
+    "mas_recientes": "Máis recentes",
+    "menos_recientes": "Menos recentes",
+    "polizas_label": "pólizas"
+  },
+
+  "filter_menu": {
+    "titulo": "Filtros",
+    "num_poliza": "Núm. de póliza",
+    "placeholder_poliza": "Todas as pólizas",
+    "nombre_riesgo": "Nome do risco",
+    "placeholder_riesgo": "Introduce o nome do risco",
+    "fecha_validez": "Data de validez",
+    "fecha_inicio": "Data de inicio",
+    "al": "ata",
+    "fecha_fin": "Data de fin",
+    "importe": "Importe",
+    "placeholder_importe": "Introduce o importe",
+    "estado": "Estado",
+    "todos_estados": "Todos os estados",
+    "pagado": "Pagado",
+    "pendiente": "Pendente",
+    "vencido": "Vencido",
+    "borrar": "Borrar filtros",
+    "aplicar": "Aplicar filtros"
+  },
+
+  "pagination": {
+    "filas": "Filas por páxina:",
+    "pagina": "Páxina"
+  }
+}

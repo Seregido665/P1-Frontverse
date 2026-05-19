@@ -1,0 +1,79 @@
+{
+  "_comment": "Translation file for English (en). Used when the user selects 'English' in the language menu.",
+
+  "nav": {
+    "inicio": "Home",
+    "renovaciones": "Upcoming Renewals"
+  },
+
+  "home": {
+    "titulo": "Welcome to your personal area",
+    "descripcion": "Thanks to you, more people can enjoy a safer life."
+  },
+
+  "tabla": {
+    "poliza": "Policy No.",
+    "riesgo": "Risk Name",
+    "contrato": "Contract Date",
+    "vencimiento": "Expiration Date",
+    "importe": "Amount",
+    "estado": "Policy Status"
+  },
+
+  "states": {
+    "pagado": "Paid",
+    "pendiente": "Pending",
+    "vencido": "Expired"
+  },
+
+  "footer": {
+    "ayuda": "Need help?",
+    "cookies": "Cookie Policy",
+    "aviso": "Legal Notice",
+    "privacidad": "Privacy Policy",
+    "copyright": "© 2022 SecuraInsurance"
+  },
+
+  "renovations": {
+    "polizas": "Policies",
+    "proximas": "Upcoming Renewals",
+    "polizas_label": "Policies"
+  },
+
+  "filters": {
+    "titulo": "Filters",
+    "borrar": "Clear filters",
+    "ordenar": "Sort by:",
+    "mayor_importe": "Highest amount",
+    "menor_importe": "Lowest amount",
+    "mas_recientes": "Most recent",
+    "menos_recientes": "Least recent",
+    "polizas_label": "policies"
+  },
+
+  "filter_menu": {
+    "titulo": "Filters",
+    "num_poliza": "Policy No.",
+    "placeholder_poliza": "All policies",
+    "nombre_riesgo": "Risk Name",
+    "placeholder_riesgo": "Enter risk name",
+    "fecha_validez": "Validity Date",
+    "fecha_inicio": "Start date",
+    "al": "to",
+    "fecha_fin": "End date",
+    "importe": "Amount",
+    "placeholder_importe": "Enter amount",
+    "estado": "Status",
+    "todos_estados": "All statuses",
+    "pagado": "Paid",
+    "pendiente": "Pending",
+    "vencido": "Expired",
+    "borrar": "Clear filters",
+    "aplicar": "Apply filters"
+  },
+
+  "pagination": {
+    "filas": "Rows per page:",
+    "pagina": "Page"
+  }
+}
