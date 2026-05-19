@@ -1,6 +1,5 @@
-// URL base del backend. En local usa ruta relativa; en producción apunta al backend en Render.
-// Cambiar esta URL por la de tu servicio Render antes de hacer el build para Vercel.
-const API_BASE_URL = '';  // Ejemplo producción: 'https://frontverse-backend.onrender.com'
+// URL del servicio Render para Vercel.
+const API_BASE_URL = 'https://p1-frontverse-backend.onrender.com/';  
 
 // Estado global de paginación y ordenación
 const appState = {

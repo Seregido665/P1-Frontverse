@@ -11167,6 +11167,9 @@ function paginationManager() {
   });
 }
 
+// URL del servicio Render para Vercel.
+const API_BASE_URL = 'https://p1-frontverse-backend.onrender.com/';  
+
 // Estado global de paginación y ordenación
 const appState = {
   page: 1,
@@ -11198,7 +11201,7 @@ function buildQueryParams() {
 
 async function fetchRenovations() {
   const params = buildQueryParams();
-  const response = await fetch(`/api/renovations?${params}`);
+  const response = await fetch(`${API_BASE_URL}/api/renovations?${params}`);
   const result = await response.json();
 
   appState.page = result.currentPage;
