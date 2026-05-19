@@ -32,7 +32,7 @@ function selectLanguage() {
   options.forEach(function (option) {
     option.addEventListener('click', function () {
       const language = option.textContent;
-      mainGlobe.textContent  = language;
+      mainGlobe.textContent = language;
       burgerGlobe.textContent = language;
 
       setStyleSelection(option);

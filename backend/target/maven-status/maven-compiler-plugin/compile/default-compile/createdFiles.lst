@@ -1,0 +1,6 @@
+com\frontverse\dto\PagedResponse.class
+com\frontverse\service\RenovationService$1.class
+com\frontverse\service\RenovationService.class
+com\frontverse\controller\RenovationController.class
+com\frontverse\model\Renovation.class
+com\frontverse\FrontverseApplication.class

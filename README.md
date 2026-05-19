@@ -1,3 +1,10 @@
+CORRER PROYECTO
+cd C:\Users\Sergio\Desktop\P1-Frontverse\backend
+mvn spring-boot:run
+http://localhost:8080
+
+
+
 # Gulp + Bootstrap 5 Starter (2025)
 
 ## Project Description

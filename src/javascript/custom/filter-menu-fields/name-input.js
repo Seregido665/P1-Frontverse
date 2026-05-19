@@ -11,21 +11,12 @@ function nameInputManager(filtersList) {
       return;
     }
 
-    const riskSearchedLower = riskSearched.toLowerCase();
-    const coincidence = allRenovationsData.originalData.some(renovation =>      // .some devuelve true si al menos un elemento del array coincide.
-      (renovation['Nombre del riesgo'] || '').toLowerCase() === riskSearchedLower
-    );
-
-    if (!coincidence) {
-      errorRisk.textContent = 'No hay pólizas con ese nombre.';
-      return;
-    }
-
-    filtersList.set(`risk:${riskSearchedLower}`, {
+    filtersList.set(`risk:${riskSearched.toLowerCase()}`, {
       type: 'risk',
       label: riskSearched,
-      value: riskSearchedLower
+      value: riskSearched.toLowerCase()
     });
+
     inputNameRisk.value = '';
     errorRisk.textContent = '';
     return true;

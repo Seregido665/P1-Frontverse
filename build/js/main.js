@@ -10702,119 +10702,99 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
-function datesInputsManager(filtersList, parseDate) {
-	const inputStartDate = document.querySelector('.filter-menu__body__input2');
-	const inputEndDate = document.querySelector('.filter-menu__body__input3');
-	const errorDate = document.querySelector('.filter-menu__body__error-date');
+function datesInputsManager(filtersList) {
+  const inputStartDate = document.querySelector('.filter-menu__body__input2');
+  const inputEndDate = document.querySelector('.filter-menu__body__input3');
+  const errorDate = document.querySelector('.filter-menu__body__error-date');
 
-	if (!inputStartDate || !inputEndDate || !errorDate) return;
+  if (!inputStartDate || !inputEndDate || !errorDate) return;
 
-	function clearDateError() {
-		errorDate.textContent = '';
-	}
+  function clearDateError() { errorDate.textContent = ''; }
 
-	function isValidDateFormat(dateValue) {
-		const correctFormat = /^\d{2}\/\d{2}\/\d{4}$/;
-		return correctFormat.test(dateValue.trim());
-	}
+  function isValidDateFormat(value) {
+    return /^\d{2}\/\d{2}\/\d{4}$/.test(value.trim());
+  }
 
-	function dateRangeFilter() {
-		const startDateValue = inputStartDate.value.trim();
-		const endDateValue = inputEndDate.value.trim();
+  function toDate(str) {
+    const [d, m, y] = str.trim().split('/');
+    return new Date(+y, +m - 1, +d);
+  }
 
-		if (!startDateValue && !endDateValue) {
-			return;
-		}
-		if (!startDateValue) {
-			errorDate.textContent = 'Falta la fecha de inicio.';
-			return;
-		}
-		if (!endDateValue) {
-			errorDate.textContent = 'Falta la fecha final.';
-			return;
-		}
-		if (!isValidDateFormat(startDateValue) || !isValidDateFormat(endDateValue)) {
-			errorDate.textContent = 'Formato correcto: dd/mm/yyyy';
-			return;
-		}
+  function dateRangeFilter() {
+    const startDateValue = inputStartDate.value.trim();
+    const endDateValue = inputEndDate.value.trim();
 
-		const startDateParsed = parseDate(startDateValue);
-		const endDateParsed = parseDate(endDateValue);
-		if (endDateParsed < startDateParsed) {
-			errorDate.textContent = 'La fecha final debe ser posterior a la inicial.';
-			return;
-		}
+    if (!startDateValue && !endDateValue) return;
+    if (!startDateValue) { errorDate.textContent = 'Falta la fecha de inicio.'; return; }
+    if (!endDateValue)   { errorDate.textContent = 'Falta la fecha final.'; return; }
+    if (!isValidDateFormat(startDateValue) || !isValidDateFormat(endDateValue)) {
+      errorDate.textContent = 'Formato correcto: dd/mm/yyyy';
+      return;
+    }
+    if (toDate(endDateValue) < toDate(startDateValue)) {
+      errorDate.textContent = 'La fecha final debe ser posterior a la inicial.';
+      return;
+    }
 
-		filtersList.set(`date:${startDateValue}-${endDateValue}`, {
-			type: 'date',
-			label: `${startDateValue} - ${endDateValue}`,
-			startDateParsed,
-			endDateParsed
-		});
+    filtersList.set(`date:${startDateValue}-${endDateValue}`, {
+      type: 'date',
+      label: `${startDateValue} - ${endDateValue}`,
+      startDateStr: startDateValue,
+      endDateStr:   endDateValue
+    });
 
-		inputStartDate.value = '';
-		inputEndDate.value = '';
-		return true;
-	}
+    inputStartDate.value = '';
+    inputEndDate.value = '';
+    return true;
+  }
 
-	inputStartDate.addEventListener('input', clearDateError);
-	inputEndDate.addEventListener('input', clearDateError);
-
-	return { dateRangeFilter };
+  inputStartDate.addEventListener('input', clearDateError);
+  inputEndDate.addEventListener('input', clearDateError);
+  return { dateRangeFilter };
 }
 
 function importInputManager(filtersList) {
-	const inputImport = document.querySelector('.filter-menu__body__input4');
-	const errorImport = document.querySelector('.filter-menu__body__error-import');
+  const inputImport = document.querySelector('.filter-menu__body__input4');
+  const errorImport = document.querySelector('.filter-menu__body__error-import');
 
-	if (!inputImport || !errorImport) return;
+  if (!inputImport || !errorImport) return;
 
-	function parseImport(importStr) {
-		const importSearched = String(importStr || '')
-			.replace(/[€\s]/g, '') // Elimina € y espacios
-			.trim();
-		
-		if (importSearched.includes(',')) {
-			// "1.234,56 €" -> "1234.56"
-			return Number(importSearched.replace(/\./g, '').replace(',', '.'));
-		} else {
-			// "817.10" -> mantener como está
-			return Number(importSearched);
-		}
-	}
+  function parseImport(importStr) {
+    const cleaned = String(importStr || '').replace(/[€\s]/g, '').trim();
+    if (cleaned.includes(',')) {
+      return Number(cleaned.replace(/\./g, '').replace(',', '.'));
+    }
+    return Number(cleaned);
+  }
 
-	function importFilter() {
-		const importValue = inputImport.value.trim();
-		if (!importValue) {
-			errorImport.textContent = '';
-			return;
-		}
+  function importFilter() {
+    const importValue = inputImport.value.trim();
+    if (!importValue) {
+      errorImport.textContent = '';
+      return;
+    }
 
-		const normalizedImport = parseImport(importValue);
-		const coincidence = allRenovationsData.originalData.some(renovation => {
-			const renovationImport = parseImport(renovation['Importe']);
-			return renovationImport && Math.abs(renovationImport - normalizedImport) < 0.005;
-		});
+    const normalizedImport = parseImport(importValue);
+    if (isNaN(normalizedImport) || normalizedImport <= 0) {
+      errorImport.textContent = 'Introduce un importe válido.';
+      return;
+    }
 
-		if (!coincidence) {
-			errorImport.textContent = 'No hay renovaciones con ese importe.';
-			return;
-		}
+    filtersList.set(`import:${normalizedImport}`, {
+      type: 'import',
+      label: `Importe: ${importValue}`,
+      value: normalizedImport
+    });
 
-		filtersList.set(`import:${normalizedImport}`, {
-			type: 'import',
-			label: `Importe: ${importValue}`,
-			value: normalizedImport
-		});
+    inputImport.value = '';
+    errorImport.textContent = '';
+    return true;
+  }
 
-		inputImport.value = '';
-		errorImport.textContent = '';
-		return true;
-	}
-
-	inputImport.addEventListener('input', () => errorImport.textContent = '');
-	return { importFilter };
+  inputImport.addEventListener('input', () => errorImport.textContent = '');
+  return { importFilter };
 }
+
 function nameInputManager(filtersList) {
   const inputNameRisk = document.querySelector('.filter-menu__body__input1');
   const errorRisk = document.querySelector('.filter-menu__body__error-name-risk');
@@ -10828,21 +10808,12 @@ function nameInputManager(filtersList) {
       return;
     }
 
-    const riskSearchedLower = riskSearched.toLowerCase();
-    const coincidence = allRenovationsData.originalData.some(renovation =>      // .some devuelve true si al menos un elemento del array coincide.
-      (renovation['Nombre del riesgo'] || '').toLowerCase() === riskSearchedLower
-    );
-
-    if (!coincidence) {
-      errorRisk.textContent = 'No hay pólizas con ese nombre.';
-      return;
-    }
-
-    filtersList.set(`risk:${riskSearchedLower}`, {
+    filtersList.set(`risk:${riskSearched.toLowerCase()}`, {
       type: 'risk',
       label: riskSearched,
-      value: riskSearchedLower
+      value: riskSearched.toLowerCase()
     });
+
     inputNameRisk.value = '';
     errorRisk.textContent = '';
     return true;
@@ -10875,55 +10846,42 @@ function stateInputManager(filtersList) {
 
   return { policyStateFilter };
 }
-function filterMenuManager(renderPage, applyCurrentOrder) {
+// Global: accedido por buildQueryParams() en show-renovations.js
+const filtersList = new Map();
+
+function filterMenuManager() {
   const btnApply = document.querySelector('.filter-menu__bottom__apply');
   const filterMenu = document.querySelector('.filter-menu');
   const filtersAppliedContainer = document.querySelector('.apply-filters');
-  
   const btnClearAllFilters = document.querySelector('.renovations-filter__all-policies__clear-filters');
   const totalFiltersApplied = document.querySelector('.renovations-filter__all-policies__text-filters');
   const separation = document.querySelector('.renovations-filter__all-policies .separation');
-
   const LOCAL_STORAGE_FILTERS = 'renovations_filters';
 
   if (!btnApply) return;
 
   // --- Local Storage ---
   function saveFiltersToStorage() {
-    const filtersReadyToSave = [...filtersList.entries()].map(([key, filter]) => {                //. entries devuelve un array con los datos de los elementos del Map ([key, filter])
-      const filterInput = { ...filter };
-      // Las fechas parseadas no se guardan bien, por eso mejor a ISOstring
-      if (filterInput.startDateParsed) filterInput.startDateParsed = filterInput.startDateParsed.toISOString();
-      if (filterInput.endDateParsed) filterInput.endDateParsed = filterInput.endDateParsed.toISOString();
-      return [key, filterInput];
-    });
-    localStorage.setItem(LOCAL_STORAGE_FILTERS, JSON.stringify(filtersReadyToSave));
+    localStorage.setItem(LOCAL_STORAGE_FILTERS, JSON.stringify([...filtersList.entries()]));
   }
 
   function loadFiltersFromStorage() {
     try {
-      const savedFiltersList = localStorage.getItem(LOCAL_STORAGE_FILTERS);
-      if (!savedFiltersList) return;
-      const filtersParsed = JSON.parse(savedFiltersList);
-      filtersParsed.forEach(([key, filterInput]) => {
-        // Parsear los Date a su formato original
-        if (filterInput.startDateParsed) filterInput.startDateParsed = new Date(filterInput.startDateParsed);
-        if (filterInput.endDateParsed) filterInput.endDateParsed = new Date(filterInput.endDateParsed);
-        filtersList.set(key, filterInput);
-      });
+      const saved = localStorage.getItem(LOCAL_STORAGE_FILTERS);
+      if (!saved) return;
+      JSON.parse(saved).forEach(([key, filter]) => filtersList.set(key, filter));
     } catch {
-      localStorage.removeItem(LOCAL_STORAGE_FILTERS); 
+      localStorage.removeItem(LOCAL_STORAGE_FILTERS);
     }
   }
 
+  loadFiltersFromStorage();
 
-  const filtersList = new Map();
-  loadFiltersFromStorage(); 
   const nameInput = nameInputManager(filtersList);
-  const datesInputs = datesInputsManager(filtersList, parseDate);
+  const datesInputs = datesInputsManager(filtersList);  
   const importInput = importInputManager(filtersList);
   const stateInput = stateInputManager(filtersList);
-  
+
 
   function closeFilterMenu() {
     if (filterMenu) {
@@ -10934,90 +10892,19 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
 
   function updateFiltersAppliedInfo() {
     if (!totalFiltersApplied) return;
-    const totalFilters = filtersList.size;
-    if (totalFilters === 0) {
+    const total = filtersList.size;
+    if (total === 0) {
       totalFiltersApplied.style.display = 'none';
-    } else if (totalFilters === 1) {
-      totalFiltersApplied.textContent = '1 filtro aplicado';
-      totalFiltersApplied.style.display = 'inline';
     } else {
-      totalFiltersApplied.textContent = `${totalFilters} filtros aplicados`;
+      totalFiltersApplied.textContent = total === 1 ? '1 filtro aplicado' : `${total} filtros aplicados`;
       totalFiltersApplied.style.display = 'inline';
     }
   }
 
   function clearButton() {
-    const totalFilters = filtersList.size;
-    const showing = totalFilters > 0;
+    const showing = filtersList.size > 0;
     if (separation) separation.style.display = showing ? 'inline' : 'none';
     if (btnClearAllFilters) btnClearAllFilters.style.display = showing ? 'inline' : 'none';
-  }
-
-  function getFilteredData() {
-    if (filtersList.size === 0) {
-      return [...allRenovationsData.originalData];
-    }
-
-    const riskNames = [];
-    const dateRanges = [];
-    const importValues = [];
-    const policyStates = [];
-
-    filtersList.forEach(filter => {
-      if (filter.type === 'risk') riskNames.push(filter.value);
-      if (filter.type === 'date') dateRanges.push(filter);
-      if (filter.type === 'import') importValues.push(filter.value);
-      if (filter.type === 'state') policyStates.push(filter.value);
-    });
-
-    const filteredData = allRenovationsData.originalData.filter(renovation => {
-      // - Nombre -
-      const riskName = (renovation['Nombre del riesgo'] || '').toLowerCase();
-      const matchesRiskNames = riskNames.length === 0 || riskNames.includes(riskName);
-
-      // - Fecha de vencimiento -
-      const maturityDate = renovation['Fecha de vencimiento'] || '';
-      const matchesMaturityDate =
-        dateRanges.length === 0 ||
-        dateRanges.some(range => {                      // .some devuelve true si al menos una fecha coincide.
-          const maturity = parseDate(maturityDate);
-          return maturity >= range.startDateParsed && maturity <= range.endDateParsed;
-        });
-
-      // - Importe -
-      const renovationImport = parseImport(renovation.Importe);
-      const matchesImport =
-        importValues.length === 0 ||
-        importValues.some(value => Math.abs(renovationImport - value) < 0.005);     // 0.005 para evitar problemas de redondeo con los decimales
-
-      // - Estado de póliza -
-      const policyState = (renovation['Estado de póliza'] || '').toLowerCase();
-      const matchesPolicyStates = policyStates.length === 0 || policyStates.includes(policyState);
-
-      return matchesRiskNames && matchesMaturityDate && matchesPolicyStates && matchesImport;
-    });
-
-    return filteredData;
-  }
-
-  function applyActiveFilters() {
-    const filtered = getFilteredData();
-    allRenovationsData.data = applyCurrentOrder(filtered);
-
-    const renovationsResult = allRenovationsData.data.length;
-    updateTotalRenovations(renovationsResult);
-
-    renderPage(1);
-
-    if (renovationsResult === 0) {
-      const emptyRenovationsList = document.querySelector('.renovations-json-list');
-      if (emptyRenovationsList) {
-        emptyRenovationsList.innerHTML = '<p class="no-results">No hay coincidencias</p>';
-      }
-    }
-
-    updateFiltersAppliedInfo();
-    clearButton();
   }
 
   function renderFilters() {
@@ -11032,10 +10919,9 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
         <span class="icon close" data-name="${idCard}"></span>
       `;
 
-      const closeIcon = filterCard.querySelector('.icon.close');
-      closeIcon.addEventListener('click', () => {
+      filterCard.querySelector('.icon.close').addEventListener('click', () => {
         filtersList.delete(idCard);
-        saveFiltersToStorage();    
+        saveFiltersToStorage();
         renderFilters();
         applyActiveFilters();
       });
@@ -11044,62 +10930,42 @@ function filterMenuManager(renderPage, applyCurrentOrder) {
     });
   }
 
-  
+  function applyActiveFilters() {
+    appState.page = 1;
+    fetchRenovations();
+    updateFiltersAppliedInfo();
+    clearButton();
+  }
+
   btnApply.addEventListener('click', function () {
     let anyFilterAdded = false;
-
     if (nameInput.nameRiskFilter()) anyFilterAdded = true;
     if (datesInputs.dateRangeFilter()) anyFilterAdded = true;
     if (importInput.importFilter()) anyFilterAdded = true;
     if (stateInput.policyStateFilter()) anyFilterAdded = true;
 
     if (anyFilterAdded) {
-      saveFiltersToStorage(); 
+      saveFiltersToStorage();
       renderFilters();
       applyActiveFilters();
       closeFilterMenu();
     }
   });
 
-
-  // --- Parseo de fechas e importes ---
-  function parseDate(dateEntry) {
-    const dateParts = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateEntry);        // .exec devuelve un array con el valor de cada posición de los numeros de la fecha. 
-    if (!dateParts) return null;
-    const day = Number(dateParts[1]);
-    const month = Number(dateParts[2]);
-    const year = Number(dateParts[3]);
-    const date = new Date(year, month - 1, day);
-
-    const isValidDate = date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
-    if (!isValidDate) return null;
-
-    return date;
-  }
-
-  function parseImport(importEntry) {
-    const importNormalized = String(importEntry || '')
-      .replace(/\./g, '')
-      .replace(',', '.')
-      .replace(/[^0-9.-]/g, '');
-
-    const importParsed = Number(importNormalized);
-    return Number.isNaN(importParsed) ? 0 : importParsed;
-  }
-
-
   if (btnClearAllFilters) {
     btnClearAllFilters.addEventListener('click', () => {
       filtersList.clear();
-      saveFiltersToStorage(); 
+      saveFiltersToStorage();
       renderFilters();
       applyActiveFilters();
     });
   }
 
   renderFilters();
-  applyActiveFilters();
+  updateFiltersAppliedInfo();
+  clearButton();
 }
+
 function selectLanguage() {
   const options = document.querySelectorAll('.globe-menu-window__option');
   const mainGlobe = document.querySelector('.globe-button__title');
@@ -11134,7 +11000,7 @@ function selectLanguage() {
   options.forEach(function (option) {
     option.addEventListener('click', function () {
       const language = option.textContent;
-      mainGlobe.textContent  = language;
+      mainGlobe.textContent = language;
       burgerGlobe.textContent = language;
 
       setStyleSelection(option);
@@ -11205,50 +11071,22 @@ function main() {
 document.addEventListener('DOMContentLoaded', function () {
   main();
 });
-function orderByManager(renderPage) {
+function orderByManager() {
   const orderSelector = document.querySelector('.renovations-filter__list__select');
   if (!orderSelector) return;
 
-  function refactorImport(item) {
-    return parseFloat(item['Importe'].replace(/\./g, '').replace(',', '.'));
-  }
-
-  function refactorDate(item) {
-    return new Date(item['Fecha de contrato'].split('/').reverse().join('-'));
-  }
-
-  const orderFunctions = {
-    'Mayor importe': (a, b) => refactorImport(b) - refactorImport(a),
-    'Menor importe': (a, b) => refactorImport(a) - refactorImport(b),
-    'Más recientes': (a, b) => refactorDate(b) - refactorDate(a),
-    'Menos recientes': (a, b) => refactorDate(a) - refactorDate(b),
-  };
-
-  function applyOrder(data) {
-    const orderOption = orderSelector.value;
-    const orderApplied = orderFunctions[orderOption];
-    
-    if (orderApplied) {
-      return [...data].sort(orderApplied);
-    }
-  }
-
   orderSelector.addEventListener('change', function () {
-    const filteredData = allRenovationsData.data.length > 0 
-      ? allRenovationsData.data 
-      : allRenovationsData.originalData;   
-
-    allRenovationsData.data = applyOrder(filteredData);
-    renderPage(1);
+    appState.orderBy = orderSelector.value;
+    appState.page = 1;
+    fetchRenovations();
   });
-
-  return applyOrder;    //--> A show-renovations.js
 }
-function renderPagination(renovationsPerPage) {
+
+function renderPagination(renovations) {
   const container = document.querySelector('.renovations-json-list');
   if (!container) return;
 
-  container.innerHTML = renovationsPerPage.map(renovation => {
+  container.innerHTML = renovations.map(renovation => {
     let stateClass = '';
     let icon = '';
     if (renovation["Estado de póliza"] === "Pagado") {
@@ -11283,134 +11121,116 @@ function renderPagination(renovationsPerPage) {
 }
 
 
-function paginationManager() {
-  const select = document.querySelector('.pagination__rows__option');
-  if (!select) return;
+function updatePaginationControls(currentPage, totalPages) {
+  const pageText = document.querySelector('.pagination__page__text2');
+  if (pageText) pageText.textContent = `${currentPage} de ${totalPages}`;
 
-  let currentPage = 1;
-  select.value = '10';    //--> Para 10 filas por defecto
+  const onFirst = currentPage <= 1;
+  const onLast = currentPage >= totalPages;
 
   const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
   const btnLeft = document.querySelector('.pagination__page-option__left');
   const btnRight = document.querySelector('.pagination__page-option__right');
   const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
 
-
-  function updatePageText() {
-    const pageText = document.querySelector('.pagination__page__text2');
-    if (pageText) pageText.textContent = `${currentPage} de ${getTotalPages()}`;
-  }
-
-  function defaultRows() {
-    return parseInt(select.value);
-  }
-
-  function getTotalPages() {
-    const totalRenovations = allRenovationsData.data.length;
-    const currentRows = defaultRows();
-    return currentRows ? Math.ceil(totalRenovations / currentRows) : 1;     //--> .ceil  para minimo 1 pagina minimo.
-  }
-
-
-  function renovationsPerPage(rowsPerPage, page) {
-    const pageIndex = page - 1;
-    const start = pageIndex * rowsPerPage;    
-    const end = start + rowsPerPage;
-    return allRenovationsData.data.slice(start, end);
-  }
-
-
-  function renderPage(page) {
-    const totalPages = getTotalPages();
-    const currentRows = defaultRows();
-
-    const lastPage = Math.min(page, totalPages);
-    currentPage = Math.max(1, lastPage);
-
-    const currentRenovations = renovationsPerPage(currentRows, currentPage);
-    renderPagination(currentRenovations);
-
-    updatePageText();
-    styleNavigationButtons();
-  }
-
-
-  function selectTotalRows() {
-    select.addEventListener('change', function () {
-      renderPage(1);
-    });
-  }
-
-
-  function styleNavigationButtons() {
-    const firstPage = currentPage <= 1;
-    const lastPage = currentPage >= getTotalPages();
-
-    btnSkipLeft.classList.toggle('pagination__page-option__skip-left--disabled', firstPage);
-    btnSkipLeft.classList.toggle('pagination__page-option__skip-left--able', !firstPage);
-
-    btnLeft.classList.toggle('pagination__page-option__left--disabled', firstPage);
-    btnLeft.classList.toggle('pagination__page-option__left--able', !firstPage);
-
-    btnRight.classList.toggle('pagination__page-option__right--disabled', lastPage);
-    btnRight.classList.toggle('pagination__page-option__right--able', !lastPage);
-
-    btnSkipRight.classList.toggle('pagination__page-option__skip-right--disabled', lastPage);
-    btnSkipRight.classList.toggle('pagination__page-option__skip-right--able', !lastPage);
-  }
-
-  function navigationButtonsManager() {
-    if (btnSkipLeft) btnSkipLeft.addEventListener('click', () => renderPage(1));
-    if (btnLeft) btnLeft.addEventListener('click', () => renderPage(currentPage - 1));
-    if (btnRight) btnRight.addEventListener('click', () => renderPage(currentPage + 1));
-    if (btnSkipRight) btnSkipRight.addEventListener('click', () => renderPage(getTotalPages()));
-  }
-
-
-  selectTotalRows();
-  navigationButtonsManager();
-
-  if (allRenovationsData.data.length > 0) {
-    renderPage(1);
-  }
-  
-  return renderPage;      //--> A show-renovations.js
+  if (btnSkipLeft) { btnSkipLeft.classList.toggle('pagination__page-option__skip-left--disabled', onFirst);   
+                     btnSkipLeft.classList.toggle('pagination__page-option__skip-left--able', !onFirst); }
+  if (btnLeft) { btnLeft.classList.toggle('pagination__page-option__left--disabled', onFirst);             
+                 btnLeft.classList.toggle('pagination__page-option__left--able', !onFirst); }
+  if (btnRight) { btnRight.classList.toggle('pagination__page-option__right--disabled', onLast);           
+                  btnRight.classList.toggle('pagination__page-option__right--able', !onLast); }
+  if (btnSkipRight) { btnSkipRight.classList.toggle('pagination__page-option__skip-right--disabled', onLast);   
+                      btnSkipRight.classList.toggle('pagination__page-option__skip-right--able', !onLast); }
 }
-const allRenovationsData = {
-  data: [],          
-  originalData: [],   
+
+
+function paginationManager() {
+  const select = document.querySelector('.pagination__rows__option');
+  if (!select) return;
+
+  select.value = '10';
+
+  const btnSkipLeft = document.querySelector('.pagination__page-option__skip-left');
+  const btnLeft = document.querySelector('.pagination__page-option__left');
+  const btnRight = document.querySelector('.pagination__page-option__right');
+  const btnSkipRight = document.querySelector('.pagination__page-option__skip-right');
+
+  if (btnSkipLeft) btnSkipLeft.addEventListener('click', () => { appState.page = 1; fetchRenovations(); });
+  if (btnLeft) btnLeft.addEventListener('click', () => { appState.page = Math.max(1, appState.page - 1); fetchRenovations(); });
+  if (btnRight) btnRight.addEventListener('click', () => { appState.page++; fetchRenovations(); });
+  if (btnSkipRight) btnSkipRight.addEventListener('click', () => { appState.page = appState.totalPages; fetchRenovations(); });
+
+  select.addEventListener('change', function () {
+    appState.size = parseInt(select.value);
+    appState.page = 1;
+    fetchRenovations();
+  });
+}
+
+// Estado global de paginación y ordenación
+const appState = {
+  page: 1,
+  size: 10,
+  orderBy: '',
+  totalPages: 1,
 };
 
 
-function updateTotalRenovations(filtered) {
-  const headerSpan = document.querySelector('.renovations-header__number-policies__number');
-  if (headerSpan) headerSpan.textContent = allRenovationsData.originalData.length;
-  const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${filtered} pólizas`;               
+function buildQueryParams() {
+  const params = new URLSearchParams();
+
+  filtersList.forEach(filter => {
+    if (filter.type === 'risk') params.append('riskNames', filter.value);
+    if (filter.type === 'state') params.set('state', filter.value);
+    if (filter.type === 'import') params.set('importValue', filter.value);
+    if (filter.type === 'date') {
+      params.set('startDate', filter.startDateStr);
+      params.set('endDate', filter.endDateStr);
+    }
+  });
+
+  if (appState.orderBy) params.set('orderBy', appState.orderBy);
+                        params.set('page', appState.page);
+                        params.set('size', appState.size);
+
+  return params;
 }
 
+async function fetchRenovations() {
+  const params = buildQueryParams();
+  const response = await fetch(`/api/renovations?${params}`);
+  const result = await response.json();
 
-function showRenovations() {
-  const container = document.querySelector('.renovations-json-list');
-  if (!container) return;
+  appState.page = result.currentPage;
+  appState.totalPages = result.totalPages;
 
-  fetch('/renovations.json')
-    .then(res => res.json())
-    .then(data => {
-      allRenovationsData.data = data;                   //--> Guarda datos con filtros, ordenaciones, etc
-      allRenovationsData.originalData = [...data];      //--> Guarda los datos original
-      updateTotalRenovations(allRenovationsData.originalData.length);
+  renderPagination(result.data);
+  updatePaginationControls(result.currentPage, result.totalPages);
+  updateTotalRenovations(result.originalTotal, result.totalItems);
 
-      const renderPage = paginationManager();  
-      const applyOrder = orderByManager(renderPage);
-      filterMenuManager(renderPage, applyOrder);
-    });
+  if (result.totalItems === 0) {
+    const list = document.querySelector('.renovations-json-list');
+    if (list) list.innerHTML = '<p class="no-results">No hay coincidencias</p>';
+  }
+}
+
+function updateTotalRenovations(original, filtered) {
+  const headerSpan = document.querySelector('.renovations-header__number-policies__number');
+  if (headerSpan) headerSpan.textContent = original;
+  const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
+  if (filterSpan) filterSpan.textContent = `${filtered} pólizas`;
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  showRenovations();
+  if (!document.querySelector('.renovations-json-list')) return;
+
+  paginationManager();
+  orderByManager();
+  filterMenuManager();
+  fetchRenovations();
 });
+
 function navbarMenusToggles() {
   const header = document.querySelector('.navbar');
   if(!header) return;
