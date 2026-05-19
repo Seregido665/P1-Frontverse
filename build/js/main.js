@@ -11168,7 +11168,7 @@ function paginationManager() {
 }
 
 // URL del servicio Render para Vercel.
-const API_BASE_URL = 'https://p1-frontverse-backend.onrender.com/';  
+const API_BASE_URL = 'https://p1-frontverse-backend.onrender.com';
 
 // Estado global de paginación y ordenación
 const appState = {
