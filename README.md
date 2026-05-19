@@ -1,7 +1,7 @@
 CORRER PROYECTO
 cd C:\Users\Sergio\Desktop\P1-Frontverse\backend
-mvn spring-boot:run
-http://localhost:8080
+mvn spring-boot:run   (en carpeta backend)
+npx gulp    (En P1-FRONTVERE)
 
 
 

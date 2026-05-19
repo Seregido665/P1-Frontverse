@@ -30,10 +30,28 @@ function buildQueryParams() {
   return params;
 }
 
+function showLoader() {
+  const list = document.querySelector('.renovations-json-list');
+  if (!list || list.querySelector('.loading-backend')) return;
+  const loader = document.createElement('p');
+  loader.className = 'loading-backend';
+  loader.textContent = 'Cargando datos del backend...';
+  list.insertBefore(loader, list.firstChild);
+}
+
+function hideLoader() {
+  const loader = document.querySelector('.loading-backend');
+  if (loader) loader.remove();
+}
+
 async function fetchRenovations() {
+  showLoader();
+
   const params = buildQueryParams();
   const response = await fetch(`${API_BASE_URL}/api/renovations?${params}`);
   const result = await response.json();
+
+  hideLoader();
 
   appState.page = result.currentPage;
   appState.totalPages = result.totalPages;
