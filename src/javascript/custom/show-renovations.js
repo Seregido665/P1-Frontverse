@@ -35,7 +35,7 @@ function showLoader() {
   if (!list || list.querySelector('.loading-backend')) return;
   const loader = document.createElement('p');
   loader.className = 'loading-backend';
-  loader.textContent = 'Cargando datos del backend...';
+  loader.textContent = 'Cargando backend en Render...';
   list.insertBefore(loader, list.firstChild);
 }
 
