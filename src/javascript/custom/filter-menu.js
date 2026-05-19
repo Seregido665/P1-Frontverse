@@ -48,7 +48,7 @@ function filterMenuManager() {
     if (total === 0) {
       totalFiltersApplied.style.display = 'none';
     } else {
-      totalFiltersApplied.textContent = total === 1 ? '1 filtro aplicado' : `${total} filtros aplicados`;
+      totalFiltersApplied.textContent = total === 1 ? i18next.t('filters.filtro_aplicado') : i18next.t('filters.filtros_aplicados', { count: total });
       totalFiltersApplied.style.display = 'inline';
     }
   }

@@ -1,4 +1,4 @@
-mixin see-all(icon, text, href = '#')
+mixin see-all(icon, text, href = '#', i18nKey)
   a.main-button(href="renovations.html")
     span.icon(class=icon)
-    span.main-button__text= text
+    span.main-button__text(data-i18n=i18nKey)= text

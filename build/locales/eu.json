@@ -3,12 +3,16 @@
 
   "nav": {
     "inicio": "Hasiera",
-    "renovaciones": "Hurrengo berritzealdiak"
+    "renovaciones": "Hurrengo berritzealdiak",
+    "perfil": "Nire profila"
   },
 
   "home": {
     "titulo": "Ongi etorri zure eremu pertsonalera",
-    "descripcion": "Zuri esker, pertsona gehiagok bizitza seguruagoa goza dezakete."
+    "descripcion": "Zuri esker, pertsona gehiagok bizitza seguruagoa goza dezakete.",
+    "renovaciones": "Hurrengo berritzealdiak",
+    "ver_todas": "Ikusi denak",
+    "clientes": "Bezero potentzialak"
   },
 
   "tabla": {
@@ -48,7 +52,9 @@
     "menor_importe": "Zenbateko txikiena",
     "mas_recientes": "Berrienak",
     "menos_recientes": "Zaharrenak",
-    "polizas_label": "poliza"
+    "polizas_label": "poliza",
+    "filtro_aplicado": "1 iragazki aplikatua",
+    "filtros_aplicados": "{{count}} iragazki aplikatuak"
   },
 
   "filter_menu": {

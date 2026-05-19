@@ -3,12 +3,16 @@
 
   "nav": {
     "inicio": "Inici",
-    "renovaciones": "Pròximes renovacions"
+    "renovaciones": "Pròximes renovacions",
+    "perfil": "El meu perfil"
   },
 
   "home": {
     "titulo": "Benvingut a la teva àrea personal",
-    "descripcion": "Gràcies a tu, més persones poden gaudir d'una vida més segura."
+    "descripcion": "Gràcies a tu, més persones poden gaudir d'una vida més segura.",
+    "renovaciones": "Pròximes renovacions",
+    "ver_todas": "Veure totes",
+    "clientes": "Clients potencials"
   },
 
   "tabla": {
@@ -48,7 +52,9 @@
     "menor_importe": "Import menor",
     "mas_recientes": "Més recents",
     "menos_recientes": "Menys recents",
-    "polizas_label": "pòlisses"
+    "polizas_label": "pòlisses",
+    "filtro_aplicado": "1 filtre aplicat",
+    "filtros_aplicados": "{{count}} filtres aplicats"
   },
 
   "filter_menu": {

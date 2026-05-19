@@ -3,12 +3,16 @@
 
   "nav": {
     "inicio": "Home",
-    "renovaciones": "Upcoming Renewals"
+    "renovaciones": "Upcoming Renewals",
+    "perfil": "My profile"
   },
 
   "home": {
     "titulo": "Welcome to your personal area",
-    "descripcion": "Thanks to you, more people can enjoy a safer life."
+    "descripcion": "Thanks to you, more people can enjoy a safer life.",
+    "renovaciones": "Upcoming renewals",
+    "ver_todas": "View all",
+    "clientes": "Potential clients"
   },
 
   "tabla": {
@@ -48,7 +52,9 @@
     "menor_importe": "Lowest amount",
     "mas_recientes": "Most recent",
     "menos_recientes": "Least recent",
-    "polizas_label": "policies"
+    "polizas_label": "policies",
+    "filtro_aplicado": "1 filter applied",
+    "filtros_aplicados": "{{count}} filters applied"
   },
 
   "filter_menu": {

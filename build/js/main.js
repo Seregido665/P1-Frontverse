@@ -10896,7 +10896,7 @@ function filterMenuManager() {
     if (total === 0) {
       totalFiltersApplied.style.display = 'none';
     } else {
-      totalFiltersApplied.textContent = total === 1 ? '1 filtro aplicado' : `${total} filtros aplicados`;
+      totalFiltersApplied.textContent = total === 1 ? i18next.t('filters.filtro_aplicado') : i18next.t('filters.filtros_aplicados', { count: total });
       totalFiltersApplied.style.display = 'inline';
     }
   }
@@ -11329,7 +11329,7 @@ function updateTotalRenovations(original, filtered) {
   const headerSpan = document.querySelector('.renovations-header__number-policies__number');
   if (headerSpan) headerSpan.textContent = original;
   const filterSpan = document.querySelector('.renovations-filter__all-policies__text-results');
-  if (filterSpan) filterSpan.textContent = `${filtered} pólizas`;
+  if (filterSpan) filterSpan.textContent = `${filtered} ${i18next.t('filters.polizas_label')}`;
 }
 
 

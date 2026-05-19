@@ -3,12 +3,16 @@
 
   "nav": {
     "inicio": "Inicio",
-    "renovaciones": "Próximas renovaciones"
+    "renovaciones": "Próximas renovaciones",
+    "perfil": "Mi perfil"
   },
 
   "home": {
     "titulo": "Bienvenido a tu área personal",
-    "descripcion": "Gracias a ti más personas pueden disfrutar de una vida más segura."
+    "descripcion": "Gracias a ti más personas pueden disfrutar de una vida más segura.",
+    "renovaciones": "Próximas renovaciones",
+    "ver_todas": "Ver todas",
+    "clientes": "Clientes potenciales"
   },
 
   "tabla": {
@@ -48,7 +52,9 @@
     "menor_importe": "Menor importe",
     "mas_recientes": "Más recientes",
     "menos_recientes": "Menos recientes",
-    "polizas_label": "pólizas"
+    "polizas_label": "pólizas",
+    "filtro_aplicado": "1 filtro aplicado",
+    "filtros_aplicados": "{{count}} filtros aplicados"
   },
 
   "filter_menu": {
