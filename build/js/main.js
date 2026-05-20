@@ -11294,7 +11294,7 @@ function showLoader() {
   if (!list || list.querySelector('.loading-backend')) return;
   const loader = document.createElement('p');
   loader.className = 'loading-backend';
-  loader.textContent = 'Cargando backend en Render...';
+  loader.textContent = 'Cargando backend en Render... Tarda 40-50 segundos aprox.';
   list.insertBefore(loader, list.firstChild);
 }
 
