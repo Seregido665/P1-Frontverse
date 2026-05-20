@@ -12,26 +12,10 @@
     background-color: $light;
     border-top: rem(1px) solid $border-top-renovations-header;
     border-radius: 0 0 rem(12px) rem(12px);
-    cursor: pointer;
 
-    &::before {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 0;
-        top: 0;
-        width: rem(2px);
-        height: rem(61px);
-        background-color: $primary100;
-        transform: translateX(-100%);
-    }
-    &:hover::before {
-        transform: translateX(0);
-        display: block;
-    }
-    &:last-child:hover {
-        overflow: hidden;
-        text-decoration: none;
+    &:hover {
+        opacity: 0.45;
+        background-color: #ff00000e;
     }
 
     @include mobile {

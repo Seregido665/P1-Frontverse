@@ -24,7 +24,7 @@ function main() {
   // ------------- CERRAR VENTANAS AL CLICAR FUERA -------------
   //- Perfil -
   document.addEventListener('click', function (component) {
-    if (!tabletQuery.matches && !btnUser.contains(component.target)) {
+    if (!tabletQuery.matches && !btnUser.contains(component.target) && !userMenu.contains(component.target)) {
       userMenu.style.display = 'none';
     }
   });
